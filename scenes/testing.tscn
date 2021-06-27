@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Player/player_tilesheet.png" type="Texture" id=1]
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/script/Player.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -13,39 +13,55 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 400, 220, 80, 110 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 80, 110, 80, 110 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 110, 80, 110 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
-"speed": 3.0
+"speed": 4.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32.0201, 54.2831 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 208.148, 5.02351 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 212.148, 5.02351 )
-
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 5.14813, 66.6076 )
+extents = Vector2( 273.971, 5.64093 )
 
-[node name="Node" type="Node"]
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 268.849, 5.18362 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.25366, 106.763 )
+
+[node name="testing" type="Node"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 102.376, 118.983 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
-frames = SubResource( 3 )
-animation = "idle"
+position = Vector2( 0, 11 )
+frames = SubResource( 5 )
+animation = "move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 10.091 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Area di gioco" type="Node" parent="."]
 
@@ -53,24 +69,26 @@ shape = SubResource( 4 )
 position = Vector2( 204.792, 143.484 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D"]
-position = Vector2( 1.05945, -86.876 )
-shape = SubResource( 5 )
+position = Vector2( 69.6488, -86.876 )
+shape = SubResource( 7 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 205.792, 165.484 )
+position = Vector2( 207.206, 163.363 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D2"]
-position = Vector2( 3.05945, 35.124 )
-shape = SubResource( 6 )
+position = Vector2( 63.8707, 104.42 )
+shape = SubResource( 8 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Area di gioco"]
 position = Vector2( 418, 128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D3"]
-shape = SubResource( 7 )
+position = Vector2( 124.451, 37.4767 )
+shape = SubResource( 9 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Area di gioco"]
 position = Vector2( 3, 128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D4"]
-shape = SubResource( 7 )
+position = Vector2( 1.41422, 36.7696 )
+shape = SubResource( 9 )
