@@ -9,17 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scenes/Enemy.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://assets/Scripts/Player.gd"
+}, {
+"base": "State",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://assets/Scripts/PlayerState.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://assets/script/State.gd"
+"path": "res://assets/Scripts/State.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://assets/script/StateMachine.gd"
+"path": "res://assets/Scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
+"Player": "",
+"PlayerState": "",
 "State": "",
 "StateMachine": ""
 }
@@ -36,6 +54,8 @@ window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
 window/size/borderless=true
+window/size/test_width=1280
+window/size/test_height=720
 
 [input]
 

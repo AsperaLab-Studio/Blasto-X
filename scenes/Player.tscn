@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Player/player_tilesheet.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Idle.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Move.gd" type="Script" id=3]
-[ext_resource path="res://assets/script/StateMachine.gd" type="Script" id=4]
-[ext_resource path="res://assets/script/Player.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Attack.gd" type="Script" id=6]
+[ext_resource path="res://assets/Scripts/PlayerStates/Idle.gd" type="Script" id=2]
+[ext_resource path="res://assets/Scripts/PlayerStates/Move.gd" type="Script" id=3]
+[ext_resource path="res://assets/Scripts/StateMachine.gd" type="Script" id=4]
+[ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
+[ext_resource path="res://assets/Scripts/PlayerStates/Attack.gd" type="Script" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -17,21 +17,6 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 400, 220, 80, 110 )
 
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 320, 110, 80, 110 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 160, 110, 80, 110 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 400, 110, 80, 110 )
-
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
@@ -42,25 +27,40 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 110, 80, 110 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 160, 110, 80, 110 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 320, 110, 80, 110 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 400, 110, 80, 110 )
+
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": false,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "move",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 5 ), SubResource( 7 ) ],
+"loop": false,
+"name": "attack",
+"speed": 8.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 32.0201, 54.2831 )
 
 [sub_resource type="RectangleShape2D" id=10]
@@ -73,12 +73,12 @@ speed = 100
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 11 )
-frames = SubResource( 5 )
+frames = SubResource( 8 )
 animation = "attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10.091 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -94,8 +94,13 @@ script = ExtResource( 3 )
 script = ExtResource( 6 )
 
 [node name="AttackCollision" type="Area2D" parent="."]
-position = Vector2( 40.3052, 26.163 )
+position = Vector2( 62.3052, 27.163 )
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCollision"]
 position = Vector2( -6.36398, -0.707108 )
 shape = SubResource( 10 )
+
+[connection signal="area_entered" from="AttackCollision" to="StateMachine/Attack" method="_on_AttackCollision_area_entered"]
+[connection signal="body_entered" from="AttackCollision" to="StateMachine/Attack" method="_on_AttackCollision_body_entered"]
