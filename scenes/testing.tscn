@@ -4,48 +4,49 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 273.971, 5.64093 )
+extents = Vector2( 350.341, 5.64093 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 268.849, 5.18362 )
+extents = Vector2( 350.876, 5.18362 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5.25366, 106.763 )
+extents = Vector2( 5.25366, 223.436 )
 
 [node name="testing" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 64.8993, 193.937 )
+position = Vector2( 103.083, 345.258 )
 
 [node name="Area di gioco" type="Node" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 204.792, 143.484 )
+[node name="soffitto" type="StaticBody2D" parent="Area di gioco"]
+position = Vector2( 203.378, 139.241 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D"]
-position = Vector2( 69.6488, -86.876 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/soffitto"]
+position = Vector2( 152.38, -86.1689 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 207.206, 163.363 )
+[node name="terreno" type="StaticBody2D" parent="Area di gioco"]
+position = Vector2( 201.549, 397.416 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D2"]
-position = Vector2( 63.8707, 104.42 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/terreno"]
+position = Vector2( 150.845, 104.42 )
 shape = SubResource( 2 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 418, 128 )
+[node name="parete dx" type="StaticBody2D" parent="Area di gioco"]
+position = Vector2( 461.134, 222.753 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D3"]
-position = Vector2( 124.451, 37.4767 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete dx"]
+position = Vector2( 244.659, 55.8615 )
 shape = SubResource( 3 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 3, 128 )
+[node name="parete sx" type="StaticBody2D" parent="Area di gioco"]
+position = Vector2( 5.82843, 239.016 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete sx"]
 position = Vector2( 1.41422, 36.7696 )
 shape = SubResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 242, 192 )
+position = Vector2( 614.646, 372.313 )
+scale = Vector2( 2.12497, 2.12497 )
