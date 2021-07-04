@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/img/sfondo.png" type="Texture" id=2]
+[ext_resource path="res://assets/video/menuBackground.ogv" type="VideoStream" id=2]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/main theme.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/Scripts/VideoPlayer.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -28,10 +29,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MenuPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 2 )
+autoplay = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
