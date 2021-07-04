@@ -45,15 +45,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Mass Effect - Blasto X"
-run/main_scene="res://scenes/testing.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/MainMenu.tscn"
+config/icon="res://icon.jpg"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
-window/size/borderless=true
 window/size/test_width=1280
 window/size/test_height=720
 

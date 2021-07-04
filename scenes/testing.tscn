@@ -15,7 +15,7 @@ extents = Vector2( 5.25366, 223.436 )
 [node name="testing" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 103.083, 345.258 )
+position = Vector2( 113.162, 347.778 )
 
 [node name="Area di gioco" type="Node" parent="."]
 

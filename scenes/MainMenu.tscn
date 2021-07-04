@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/img/sfondo.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/cursor.png" type="Texture" id=3]
+[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=4]
+[ext_resource path="res://assets/audio/main theme.ogg" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+outline_size = 5
+outline_color = Color( 0.980392, 0.0588235, 0.972549, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/Quickzag-rOzO.otf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+outline_size = 4
+font_data = SubResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 197.48
+margin_top = 200.0
+margin_right = -202.52
+margin_bottom = -200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+margin_right = 1520.0
+margin_bottom = 680.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/title"]
+margin_right = 1520.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 1 )
+text = "BLASTO X"
+align = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_top = 486.956
+margin_right = -1227.52
+margin_bottom = -142.044
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="VBoxContainer" parent="TextureRect/MarginContainer2"]
+margin_right = 392.0
+margin_bottom = 451.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Label" parent="TextureRect/MarginContainer2/menu"]
+margin_right = 392.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.447059, 0, 1, 1 )
+text = "START GAME"
+align = 1
+
+[node name="option" type="Label" parent="TextureRect/MarginContainer2/menu"]
+margin_top = 94.0
+margin_right = 392.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.447059, 0, 1, 1 )
+text = "OPTIONS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Label" parent="TextureRect/MarginContainer2/menu"]
+margin_top = 188.0
+margin_right = 392.0
+margin_bottom = 278.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.447059, 0, 1, 1 )
+text = "EXIT"
+align = 1
+
+[node name="cursor" type="Sprite" parent="TextureRect/MarginContainer2/menu"]
+position = Vector2( -28, 40 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+flip_h = true
+script = ExtResource( 4 )
+
+[node name="mainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+autoplay = true
