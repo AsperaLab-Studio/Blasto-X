@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/video/menuBackground.ogv" type="VideoStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=4]
 [ext_resource path="res://assets/audio/main theme.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/Scripts/VideoPlayer.gd" type="Script" id=6]
+[ext_resource path="res://assets/Scripts/mainTheme.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -130,3 +131,4 @@ script = ExtResource( 4 )
 stream = ExtResource( 5 )
 volume_db = -20.0
 autoplay = true
+script = ExtResource( 7 )
