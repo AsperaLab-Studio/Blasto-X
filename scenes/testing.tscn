@@ -15,8 +15,12 @@ extents = Vector2( 5.25366, 624 )
 [node name="testing" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 256, 832 )
+position = Vector2( 254.112, 832 )
 scale = Vector2( 2.136, 2.136 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 407.616, 855.412 )
+scale = Vector2( 1.7, 1.7 )
 
 [node name="Area di gioco" type="Node" parent="."]
 
@@ -47,7 +51,3 @@ position = Vector2( 5.82843, 239.016 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete sx"]
 position = Vector2( 2.17157, 216.984 )
 shape = SubResource( 3 )
-
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1752, 872 )
-scale = Vector2( 2.12497, 2.12497 )

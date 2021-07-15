@@ -63,11 +63,13 @@ extents = Vector2( 32.0201, 54.2831 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 22.4795, 19.9641 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 position = Vector2( 102.376, 118.983 )
 scale = Vector2( 2.13561, 2.13561 )
 script = ExtResource( 5 )
-speed = 100
+speed = 500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, 11 )
@@ -79,14 +81,15 @@ animation = "attack"
 position = Vector2( 0, 10.091 )
 shape = SubResource( 9 )
 
-[node name="AttackCollision" type="Area2D" parent="."]
-position = Vector2( 62.3052, 27.163 )
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="AttackCollision" type="Area2D" parent="Pivot"]
 scale = Vector2( 1, 1 )
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCollision"]
-position = Vector2( -6.36398, -0.707108 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
+position = Vector2( 55.6253, 10.5953 )
 shape = SubResource( 10 )
 
-[connection signal="area_entered" from="AttackCollision" to="." method="_on_AttackCollision_area_entered"]
+[connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
