@@ -22,18 +22,14 @@ func _get_direction():#{
 	
 	if Input.is_action_pressed("move_right"):#{
 		player.moving = true
-		player.direction.x = 1
 	#}
 	if Input.is_action_pressed("move_left"):#{
 		player.moving = true
-		player.direction.x = -1
 	#}
 	if Input.is_action_pressed("move_up"):#{
 		player.moving = true
-		player.direction.y = -1
 	#}
 	if Input.is_action_pressed("move_down"):#{
 		player.moving = true
-		player.direction.y = 1
 	#}
 #}

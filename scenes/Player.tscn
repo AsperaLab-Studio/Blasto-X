@@ -1,11 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Player/player_tilesheet.png" type="Texture" id=1]
-[ext_resource path="res://assets/Scripts/PlayerStates/Idle.gd" type="Script" id=2]
-[ext_resource path="res://assets/Scripts/PlayerStates/Move.gd" type="Script" id=3]
-[ext_resource path="res://assets/Scripts/StateMachine.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
-[ext_resource path="res://assets/Scripts/PlayerStates/Attack.gd" type="Script" id=6]
 [ext_resource path="res://assets/Player/blasto-idle.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -83,21 +79,9 @@ animation = "attack"
 position = Vector2( 0, 10.091 )
 shape = SubResource( 9 )
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 4 )
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource( 2 )
-
-[node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource( 3 )
-
-[node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource( 6 )
-
 [node name="AttackCollision" type="Area2D" parent="."]
 position = Vector2( 62.3052, 27.163 )
+scale = Vector2( 1, 1 )
 monitoring = false
 monitorable = false
 
@@ -105,5 +89,4 @@ monitorable = false
 position = Vector2( -6.36398, -0.707108 )
 shape = SubResource( 10 )
 
-[connection signal="area_entered" from="AttackCollision" to="StateMachine/Attack" method="_on_AttackCollision_area_entered"]
-[connection signal="body_entered" from="AttackCollision" to="StateMachine/Attack" method="_on_AttackCollision_body_entered"]
+[connection signal="area_entered" from="AttackCollision" to="." method="_on_AttackCollision_area_entered"]
