@@ -19,7 +19,19 @@ position = Vector2( 254.112, 832 )
 scale = Vector2( 2.136, 2.136 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 407.616, 855.412 )
+position = Vector2( 968, 832 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 584, 376 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1456, 496 )
+scale = Vector2( 1.7, 1.7 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1072, 384 )
 scale = Vector2( 1.7, 1.7 )
 
 [node name="Area di gioco" type="Node" parent="."]

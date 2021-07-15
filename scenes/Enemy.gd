@@ -59,3 +59,8 @@ func move_towards_target():
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if(area.owner.is_in_group("player")):
 		near_player = true
+
+
+func _on_Area2D_area_exited(area: Area2D) -> void:
+	if(area.owner.is_in_group("player")):
+		near_player = false
