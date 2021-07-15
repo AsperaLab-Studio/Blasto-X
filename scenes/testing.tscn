@@ -4,18 +4,19 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 350.341, 5.64093 )
+extents = Vector2( 1038.46, 5.64093 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 350.876, 5.18362 )
+extents = Vector2( 1063.61, 5.18362 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5.25366, 223.436 )
+extents = Vector2( 5.25366, 624 )
 
 [node name="testing" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 113.162, 347.778 )
+position = Vector2( 256, 832 )
+scale = Vector2( 2.136, 2.136 )
 
 [node name="Area di gioco" type="Node" parent="."]
 
@@ -23,30 +24,30 @@ position = Vector2( 113.162, 347.778 )
 position = Vector2( 203.378, 139.241 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/soffitto"]
-position = Vector2( 152.38, -86.1689 )
+position = Vector2( 686.164, -134.115 )
 shape = SubResource( 1 )
 
 [node name="terreno" type="StaticBody2D" parent="Area di gioco"]
 position = Vector2( 201.549, 397.416 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/terreno"]
-position = Vector2( 150.845, 104.42 )
+position = Vector2( 726.451, 682.584 )
 shape = SubResource( 2 )
 
 [node name="parete dx" type="StaticBody2D" parent="Area di gioco"]
 position = Vector2( 461.134, 222.753 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete dx"]
-position = Vector2( 244.659, 55.8615 )
+position = Vector2( 1466.87, 393.247 )
 shape = SubResource( 3 )
 
 [node name="parete sx" type="StaticBody2D" parent="Area di gioco"]
 position = Vector2( 5.82843, 239.016 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete sx"]
-position = Vector2( 1.41422, 36.7696 )
+position = Vector2( 2.17157, 216.984 )
 shape = SubResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 614.646, 372.313 )
+position = Vector2( 1752, 872 )
 scale = Vector2( 2.12497, 2.12497 )

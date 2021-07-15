@@ -80,7 +80,6 @@ frames = SubResource( 8 )
 animation = "attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 10.091 )
 shape = SubResource( 9 )
 
@@ -98,7 +97,6 @@ script = ExtResource( 3 )
 script = ExtResource( 6 )
 
 [node name="AttackCollision" type="Area2D" parent="."]
-visible = false
 position = Vector2( 62.3052, 27.163 )
 monitoring = false
 monitorable = false
