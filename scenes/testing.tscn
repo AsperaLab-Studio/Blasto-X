@@ -17,15 +17,14 @@ extents = Vector2( 5.25366, 624 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 254.112, 832 )
 scale = Vector2( 2.136, 2.136 )
-moving = null
-direction = null
-current_state = null
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 968, 832 )
 scale = Vector2( 1.7, 1.7 )
 collision_layer = 4
 collision_mask = 4
+speed = 500
+moving_speed = 50
 
 [node name="Area di gioco" type="Node" parent="."]
 

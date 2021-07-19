@@ -5,12 +5,12 @@ onready var sprite: AnimatedSprite = $AnimatedSprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision 
 onready var pivot: Node2D = $Pivot
 
-enum STATE {IDLE, MOVE, ATTACK, SHOOT, WIN, LOSE}
+enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, LOSE}
 
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
 export(Vector2) var direction: = Vector2.ZERO
-export(STATE) var current_state = STATE.IDLE
+var current_state = STATE.IDLE
 
 func _ready() -> void:
 	sprite.play("idle")
@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 					pivot.scale.x = - pivot.scale.x
 			move_and_slide(direction * speed)
 			sprite.play("move")
+			
+			if !direction:
+				current_state = STATE.IDLE
 		
 	
 
@@ -56,7 +59,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_AttackCollision_area_entered(area: Area2D) -> void:
 	if area.owner.is_in_group("enemy"):
-		var enemy = area.owner as Enemy
+		var enemy = area.owner
 		enemy.hit()
 	
 
@@ -66,3 +69,6 @@ func _get_direction() -> Vector2:
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	return input_direction
 		
+
+func hit():
+	print("hit!")
