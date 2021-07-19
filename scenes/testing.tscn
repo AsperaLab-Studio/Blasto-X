@@ -17,27 +17,20 @@ extents = Vector2( 5.25366, 624 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 254.112, 832 )
 scale = Vector2( 2.136, 2.136 )
+moving = null
+direction = null
+current_state = null
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 968, 832 )
 scale = Vector2( 1.7, 1.7 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 584, 376 )
-scale = Vector2( 1.7, 1.7 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1456, 496 )
-scale = Vector2( 1.7, 1.7 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1072, 384 )
-scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
 
 [node name="Area di gioco" type="Node" parent="."]
 
 [node name="soffitto" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 203.378, 139.241 )
+position = Vector2( 299.91, 134.751 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/soffitto"]
 position = Vector2( 686.164, -134.115 )

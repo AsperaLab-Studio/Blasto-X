@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blasto-idle.png-fe730cde969bc4a38100c5bbb3c9ab2e.stex"
+path="res://.import/Senza titolo-32.png-2b98af1bae38b4a88e2a787762bcb332.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/blasto-idle.png"
-dest_files=[ "res://.import/blasto-idle.png-fe730cde969bc4a38100c5bbb3c9ab2e.stex" ]
+source_file="res://assets/img/sprites/Player/Senza titolo-32.png"
+dest_files=[ "res://.import/Senza titolo-32.png-2b98af1bae38b4a88e2a787762bcb332.stex" ]
 
 [params]
 

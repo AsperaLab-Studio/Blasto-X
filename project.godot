@@ -12,34 +12,16 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://scenes/Enemy.gd"
+"path": "res://assets/Scripts/Enemy.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://assets/Scripts/Player.gd"
-}, {
-"base": "State",
-"class": "PlayerState",
-"language": "GDScript",
-"path": "res://assets/Scripts/PlayerState.gd"
-}, {
-"base": "Node",
-"class": "State",
-"language": "GDScript",
-"path": "res://assets/Scripts/State.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://assets/Scripts/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"Player": "",
-"PlayerState": "",
-"State": "",
-"StateMachine": ""
+"Player": ""
 }
 
 [application]
