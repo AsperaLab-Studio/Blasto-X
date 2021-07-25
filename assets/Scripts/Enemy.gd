@@ -10,6 +10,7 @@ enum STATE {CHASE, ATTACK, WAIT, HIT}
 
 export(int) var speed := 500
 export(int) var moving_speed := 50
+export(int) var dps := 10
 
 var current_state = STATE.CHASE
 
@@ -35,7 +36,7 @@ func _process(delta: float) -> void:
 				attackDelayTimer.start()
 		STATE.ATTACK:
 			if near_player:
-				target.hit()
+				target.hit(dps)
 				sprite.play("attack")
 				sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
 		

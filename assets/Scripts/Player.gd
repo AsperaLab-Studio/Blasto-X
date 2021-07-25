@@ -10,11 +10,14 @@ enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, LOSE}
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
 export(Vector2) var direction: = Vector2.ZERO
+
 var current_state = STATE.IDLE
+var healthBar = null
 
 func _ready() -> void:
 	sprite.play("idle")
 	attack_collision.monitoring = false
+	healthBar = get_parent().get_node("UI").get_node("HealthDisplay")
 
 func _process(delta: float) -> void:
 	
@@ -70,5 +73,8 @@ func _get_direction() -> Vector2:
 	return input_direction
 		
 
-func hit():
+func hit(dps):
 	print("hit!")
+	var amount = 0
+	amount = dps
+	healthBar.update_healthbar(amount)
