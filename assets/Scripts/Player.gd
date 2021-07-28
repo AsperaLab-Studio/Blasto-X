@@ -74,7 +74,7 @@ func _get_direction() -> Vector2:
 		
 
 func hit(dps):
-	print("hit!")
+	print("player hit!")
 	var amount = 0
 	amount = dps
 	healthBar.update_healthbar(amount)

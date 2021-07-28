@@ -1,10 +1,11 @@
 class_name Enemy
 extends KinematicBody2D
 
-onready var sprite: AnimatedSprite = $AnimatedSprite
+onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
-onready var attackDelayTimer: Timer = $AttackDelayTimer
-onready var cooldownTimer: Timer = $CooldownTimer
+onready var attack_delay_timer: Timer = $AttackDelayTimer
+onready var cooldown_timer: Timer = $CooldownTimer
+onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 enum STATE {CHASE, ATTACK, WAIT, HIT}
 
@@ -19,31 +20,32 @@ var near_player: bool = false
 
 func _ready():
 	target = get_parent().get_node("Player")
+	anim_player.play("idle")
 
 
 func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:
 			move_and_slide(-global_position.direction_to(target.global_position) * speed)
+			anim_player.play("hit")
 		STATE.CHASE:
+			anim_player.play("move")
 			if !near_player:
 				move_towards_target()
 			else:
 				current_state = STATE.WAIT
 		STATE.WAIT:
-			if attackDelayTimer.is_stopped():
-				attackDelayTimer.wait_time = 0.5
-				attackDelayTimer.start()
+			anim_player.play("idle")
+			if attack_delay_timer.is_stopped():
+				attack_delay_timer.wait_time = 0.5
+				attack_delay_timer.start()
 		STATE.ATTACK:
 			if near_player:
-				target.hit(dps)
-				sprite.play("attack")
-				sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+				anim_player.play("attack")
 		
-	
 
 func hit() -> void:
-	print("hit!")
+	print("enemy hit!")
 	current_state = STATE.HIT
 	$Tween.interpolate_property(self, "speed",
 		500, 0, 0.3,
@@ -77,18 +79,19 @@ func move_towards_target():
 	
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	if(area.owner.is_in_group("player")):
+	if (area.owner.is_in_group("player")):
 		near_player = true
 	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
-	if(area.owner.is_in_group("player")):
+	if (area.owner.is_in_group("player")):
 		near_player = false
 		current_state = STATE.CHASE
-		attackDelayTimer.stop()
+		attack_delay_timer.stop()
 	
 
-func _on_AnimatedSprite_animation_finished():
+func attack():
+	target.hit(dps)
 	current_state = STATE.CHASE
 	
 
