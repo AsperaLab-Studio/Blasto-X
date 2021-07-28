@@ -22,7 +22,6 @@ func _ready():
 	target = get_parent().get_node("Player")
 	anim_player.play("idle")
 
-
 func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:
@@ -42,7 +41,9 @@ func _process(delta: float) -> void:
 		STATE.ATTACK:
 			if near_player:
 				anim_player.play("attack")
+			
 		
+	
 
 func hit() -> void:
 	print("enemy hit!")

@@ -2,9 +2,11 @@ class_name Player
 extends KinematicBody2D
 
 onready var sprite: Sprite = $Sprite
-onready var attack_collision: Area2D = $Pivot/AttackCollision 
+onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+onready var bullet = preload("res://scenes/Bullet.tscn")
+onready var position2d: Position2D = $Position2D
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, LOSE}
 
@@ -30,6 +32,9 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("attack"):
 				current_state = STATE.ATTACK
 				
+			if Input.is_action_just_pressed("shoot"):
+				current_state = STATE.SHOOT
+				
 			if direction:
 				current_state = STATE.MOVE
 			else:
@@ -37,7 +42,10 @@ func _process(delta: float) -> void:
 				
 		STATE.ATTACK:
 			anim_player.play("attack")
-
+			
+		STATE.SHOOT:
+			anim_player.play("shoot")
+		
 		STATE.MOVE:
 			if direction.x < 0:
 				sprite.flip_h = true
@@ -53,20 +61,27 @@ func _process(delta: float) -> void:
 			if !direction:
 				current_state = STATE.IDLE
 		
+	
 
 func attack():
 	for area in collidings_areas:
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
 			enemy.hit()
+		
+	
 
+func shoot():
+	var bullet_instance = bullet.instance()
+	owner.add_child(bullet_instance)
+	bullet_instance.global_transform = position2d.global_transform
 
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
 	return input_direction
-		
+	
 
 func hit(dps):
 	print("player hit!")
@@ -78,7 +93,10 @@ func hit(dps):
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.IDLE
-
+	
+	if anim_name == "shoot":
+		current_state = STATE.IDLE
+	
 
 func _on_AttackCollision_area_entered(area: Area2D) -> void:
 	collidings_areas.append(area)

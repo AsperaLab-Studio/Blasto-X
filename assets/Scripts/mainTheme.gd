@@ -1,11 +1,9 @@
 extends AudioStreamPlayer
 
-func _ready(): #{       
+func _ready(): 
 	set_process(true)
-#{
 
-func _process(delta):#{
-	if not is_playing():#{
+func _process(delta):
+	if not is_playing():
 		play()
-	#{
-#{
+	

@@ -13,3 +13,4 @@ func update_healthbar(amount):
 		healthbar.texture_progress = bar_yellow
 	if healthbar.value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = bar_red
+	

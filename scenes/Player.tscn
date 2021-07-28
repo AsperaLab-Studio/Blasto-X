@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/img/sprites/Player/player_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=1]
 resource_name = "attack"
 step = 0.2
 tracks/0/type = "value"
@@ -33,7 +33,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
 resource_name = "hit"
 length = 0.8
 step = 0.2
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [ 9, 4, 0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 length = 0.8
 loop = true
@@ -68,7 +68,7 @@ tracks/0/keys = {
 "values": [ 0, 23, 0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "move"
 length = 0.8
 loop = true
@@ -86,13 +86,44 @@ tracks/0/keys = {
 "values": [ 9, 10, 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="Animation" id=5]
+resource_name = "shoot"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 12, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32.0201, 54.2831 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 22.4795, 19.9641 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 32.9226, 46.3473 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -104,23 +135,28 @@ script = ExtResource( 5 )
 speed = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1.32441, 5.95985 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 3
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 12 )
-anims/hit = SubResource( 13 )
-anims/idle = SubResource( 14 )
-anims/move = SubResource( 15 )
+anims/attack = SubResource( 1 )
+anims/hit = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/move = SubResource( 4 )
+anims/shoot = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10.091 )
-shape = SubResource( 9 )
+shape = SubResource( 6 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -1.87512, 35.6272 )
+scale = Vector2( 1, 1 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -129,7 +165,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 position = Vector2( 55.6253, 10.5953 )
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2( 0, 0.662189 )
@@ -137,7 +173,7 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, 12.2508 )
-shape = SubResource( 11 )
+shape = SubResource( 8 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
