@@ -1,9 +1,10 @@
 class_name Player
 extends KinematicBody2D
 
-onready var sprite: AnimatedSprite = $AnimatedSprite
+onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision 
 onready var pivot: Node2D = $Pivot
+onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, LOSE}
 
@@ -15,7 +16,7 @@ var current_state = STATE.IDLE
 var healthBar = null
 
 func _ready() -> void:
-	sprite.play("idle")
+	anim_player.play("idle")
 	attack_collision.monitoring = false
 	healthBar = get_parent().get_node("UI").get_node("HealthDisplay")
 
@@ -31,12 +32,11 @@ func _process(delta: float) -> void:
 			if direction:
 				current_state = STATE.MOVE
 			else:
-				sprite.play("idle")
+				anim_player.play("idle")
 				
 		STATE.ATTACK:
 			attack_collision.monitoring = true
-			sprite.play("attack")
-			sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+			anim_player.play("attack")
 			
 		STATE.MOVE:
 			if direction.x < 0:
@@ -48,11 +48,14 @@ func _process(delta: float) -> void:
 				if pivot.scale.x < 0:
 					pivot.scale.x = - pivot.scale.x
 			move_and_slide(direction * speed)
-			sprite.play("move")
+			anim_player.play("move")
 			
 			if !direction:
 				current_state = STATE.IDLE
 		
+	
+
+func attack():
 	
 
 func _on_AnimatedSprite_animation_finished():
