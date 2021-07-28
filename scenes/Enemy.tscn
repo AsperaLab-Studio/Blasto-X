@@ -13,10 +13,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 13, 11, 14, 0 ]
+"values": [ 0, 1, 13, 11, 14 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -86,11 +86,11 @@ tracks/0/keys = {
 "values": [ 9, 10, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 29.3959
 height = 52.884
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 25.5
 height = 57.0
 
@@ -118,7 +118,7 @@ anims/idle = SubResource( 3 )
 anims/move = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 wait_time = 0.25
@@ -129,7 +129,7 @@ wait_time = 0.25
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -144,6 +144,7 @@ position = Vector2( 27.9307, 0 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 7 )
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="area_entered" from="Pivot/Area2D" to="." method="_on_Area2D_area_entered"]

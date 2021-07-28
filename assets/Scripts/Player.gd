@@ -15,9 +15,10 @@ export(Vector2) var direction: = Vector2.ZERO
 var current_state = STATE.IDLE
 var healthBar = null
 
+export var collidings_areas = []
+
 func _ready() -> void:
 	anim_player.play("idle")
-	attack_collision.monitoring = false
 	healthBar = get_parent().get_node("UI").get_node("HealthDisplay")
 
 func _process(delta: float) -> void:
@@ -35,9 +36,8 @@ func _process(delta: float) -> void:
 				anim_player.play("idle")
 				
 		STATE.ATTACK:
-			attack_collision.monitoring = true
 			anim_player.play("attack")
-			
+
 		STATE.MOVE:
 			if direction.x < 0:
 				sprite.flip_h = true
@@ -53,21 +53,13 @@ func _process(delta: float) -> void:
 			if !direction:
 				current_state = STATE.IDLE
 		
-	
 
 func attack():
-	
+	for area in collidings_areas:
+		if area.owner.is_in_group("enemy"):
+			var enemy = area.owner
+			enemy.hit()
 
-func _on_AnimatedSprite_animation_finished():
-	current_state = STATE.IDLE
-	attack_collision.monitoring = false
-	
-
-func _on_AttackCollision_area_entered(area: Area2D) -> void:
-	if area.owner.is_in_group("enemy"):
-		var enemy = area.owner
-		enemy.hit()
-	
 
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()
@@ -81,3 +73,16 @@ func hit(dps):
 	var amount = 0
 	amount = dps
 	healthBar.update_healthbar(amount)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "attack":
+		current_state = STATE.IDLE
+
+
+func _on_AttackCollision_area_entered(area: Area2D) -> void:
+	collidings_areas.append(area)
+
+
+func _on_AttackCollision_area_exited(area: Area2D) -> void:
+	collidings_areas.erase(area)

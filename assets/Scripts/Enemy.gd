@@ -92,8 +92,12 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 
 func attack():
 	target.hit(dps)
-	current_state = STATE.CHASE
 	
 
 func _on_Timer_timeout() -> void:
 	current_state = STATE.ATTACK
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "attack":
+		current_state = STATE.CHASE
