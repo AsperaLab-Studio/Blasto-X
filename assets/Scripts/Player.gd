@@ -6,13 +6,14 @@ onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/Bullet.tscn")
-onready var position2d: Position2D = $Position2D
+onready var position2d: Position2D = $Pivot/Position2D
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
 
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
 export(Vector2) var direction: = Vector2.ZERO
+export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
 var healthBar = null
@@ -26,6 +27,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	direction = _get_direction()
+	if direction.x:
+		orientation.x = direction.x
 	
 	match current_state:
 		STATE.IDLE:
@@ -69,15 +72,10 @@ func attack():
 			var enemy = area.owner
 			enemy.hit(1)
 			
-#			if enemy.amount == 3:
-#				if enemy.current_state == STATE.DIED:
-#					for child in enemy.get_children():
-#						child.queue_free()
-		
-	
 
 func shoot():
 	var bullet_instance = bullet.instance()
+	bullet_instance.direction = orientation
 	owner.add_child(bullet_instance)
 	bullet_instance.global_transform = position2d.global_transform
 	

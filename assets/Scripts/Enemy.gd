@@ -28,7 +28,6 @@ func _ready():
 func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:
-			move_and_slide(-global_position.direction_to(target.global_position) * speed)
 			anim_player.play("hit")
 		STATE.CHASE:
 			anim_player.play("move")
@@ -37,34 +36,33 @@ func _process(delta: float) -> void:
 			else:
 				current_state = STATE.WAIT
 		STATE.WAIT:
-			anim_player.play("idle")
-			if attack_delay_timer.is_stopped():
-				attack_delay_timer.wait_time = 0.5
-				attack_delay_timer.start()
+			if near_player:
+				anim_player.play("idle")
+				if attack_delay_timer.is_stopped():
+					attack_delay_timer.wait_time = 1
+					attack_delay_timer.start()
+			else:
+				current_state = STATE.CHASE
 		STATE.ATTACK:
 			if near_player:
 				anim_player.play("attack")
+			else:
+				current_state = STATE.CHASE
+				attack_delay_timer.stop()
 		STATE.DIED:
 			anim_player.play("died")
-		
+			
+			
+	$HealthDisplay/Label.text = STATE.keys()[current_state]
 	
 
 func hit(dps) -> void:
 	print("enemy hit!")
 	current_state = STATE.HIT
-	$Tween.interpolate_property(self, "speed",
-		500, 0, 0.3,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
 	healthBar.update_healthbar(dps)
 	amount = amount + dps
 	if amount == 3:
 		current_state = STATE.DIED
-		
-	
-
-func _on_Tween_tween_all_completed() -> void:
-	current_state = STATE.CHASE
 	
 
 func move_towards_target():
@@ -96,10 +94,10 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	if current_state == STATE.DIED:
 		pass
-	elif (area.owner.is_in_group("player")):
+	elif area.owner && area.owner.is_in_group("player"):
 		near_player = false
-		current_state = STATE.CHASE
-		attack_delay_timer.stop()
+		#current_state = STATE.CHASE
+		#attack_delay_timer.stop()
 	
 
 func attack():
@@ -112,9 +110,10 @@ func death():
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.ATTACK
-	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
+		current_state = STATE.CHASE
+	if anim_name == "hit":
 		current_state = STATE.CHASE

@@ -96,10 +96,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 3, 0 ]
+"values": [ 4, 5, 3 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -154,10 +154,11 @@ visible = false
 position = Vector2( 0, 10.091 )
 shape = SubResource( 6 )
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 58.461, -5.06458 )
-
 [node name="Pivot" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Pivot"]
+position = Vector2( 58.461, -5.06458 )
+scale = Vector2( 1, 1 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 monitorable = false
