@@ -7,7 +7,7 @@ onready var attack_delay_timer: Timer = $AttackDelayTimer
 onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 
-enum STATE {CHASE, ATTACK, WAIT, HIT}
+enum STATE {CHASE, ATTACK, WAIT, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var moving_speed := 50
@@ -17,10 +17,13 @@ var current_state = STATE.CHASE
 
 var target = null
 var near_player: bool = false
+var healthBar = null
+var amount = 0
 
 func _ready():
 	target = get_parent().get_node("Player")
 	anim_player.play("idle")
+	healthBar = get_node("HealthDisplay")
 
 func _process(delta: float) -> void:
 	match current_state:
@@ -41,17 +44,23 @@ func _process(delta: float) -> void:
 		STATE.ATTACK:
 			if near_player:
 				anim_player.play("attack")
-			
+		STATE.DIED:
+			anim_player.play("died")
 		
 	
 
-func hit() -> void:
+func hit(dps) -> void:
 	print("enemy hit!")
 	current_state = STATE.HIT
 	$Tween.interpolate_property(self, "speed",
 		500, 0, 0.3,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
+	healthBar.update_healthbar(dps)
+	amount = amount + dps
+	if amount == 3:
+		current_state = STATE.DIED
+		
 	
 
 func _on_Tween_tween_all_completed() -> void:
@@ -85,7 +94,9 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
-	if (area.owner.is_in_group("player")):
+	if current_state == STATE.DIED:
+		pass
+	elif (area.owner.is_in_group("player")):
 		near_player = false
 		current_state = STATE.CHASE
 		attack_delay_timer.stop()
@@ -95,8 +106,13 @@ func attack():
 	target.hit(dps)
 	
 
+func death():
+	queue_free()
+
 func _on_Timer_timeout() -> void:
-	current_state = STATE.ATTACK
+	if current_state == STATE.WAIT:
+		current_state = STATE.ATTACK
+	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

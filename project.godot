@@ -30,6 +30,10 @@ config/name="Mass Effect - Blasto X"
 run/main_scene="res://scenes/testing.tscn"
 config/icon="res://icon.jpg"
 
+[audio]
+
+mix_rate=48000
+
 [display]
 
 window/size/width=1920

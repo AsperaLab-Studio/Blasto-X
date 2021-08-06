@@ -60,17 +60,17 @@ position = Vector2( 2.17157, 216.984 )
 shape = SubResource( 3 )
 
 [node name="UI" type="Node2D" parent="."]
-position = Vector2( 952.604, 548.173 )
+position = Vector2( 950.88, 542.91 )
 
 [node name="HealthDisplay" type="Node2D" parent="UI"]
-position = Vector2( -650.99, -496.218 )
+position = Vector2( -654.438, -496.218 )
 script = ExtResource( 4 )
 
 [node name="HealthBar" type="TextureProgress" parent="UI/HealthDisplay"]
-margin_left = -304.818
-margin_top = -43.5484
-margin_right = -104.818
-margin_bottom = -17.5484
+margin_left = -297.921
+margin_top = -41.794
+margin_right = -97.9214
+margin_bottom = -15.794
 rect_scale = Vector2( 3.17642, 2.98953 )
 value = 100.0
 texture_progress = ExtResource( 3 )

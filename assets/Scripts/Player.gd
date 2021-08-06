@@ -8,7 +8,7 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/Bullet.tscn")
 onready var position2d: Position2D = $Position2D
 
-enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, LOSE}
+enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
 
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
@@ -67,7 +67,12 @@ func attack():
 	for area in collidings_areas:
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit()
+			enemy.hit(1)
+			
+#			if enemy.amount == 3:
+#				if enemy.current_state == STATE.DIED:
+#					for child in enemy.get_children():
+#						child.queue_free()
 		
 	
 
@@ -75,6 +80,7 @@ func shoot():
 	var bullet_instance = bullet.instance()
 	owner.add_child(bullet_instance)
 	bullet_instance.global_transform = position2d.global_transform
+	
 
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()
@@ -86,8 +92,8 @@ func _get_direction() -> Vector2:
 func hit(dps):
 	print("player hit!")
 	var amount = 0
-	amount = dps
-	healthBar.update_healthbar(amount)
+	healthBar.update_healthbar(dps)
+	
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
