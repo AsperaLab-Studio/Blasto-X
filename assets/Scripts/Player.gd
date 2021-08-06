@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 
+signal update_healthbar
+
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
@@ -16,13 +18,11 @@ export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
-var healthBar = null
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
-	healthBar = get_parent().get_node("UI").get_node("HealthDisplay")
 
 func _process(delta: float) -> void:
 	
@@ -90,8 +90,7 @@ func _get_direction() -> Vector2:
 func hit(dps):
 	print("player hit!")
 	var amount = 0
-	healthBar.update_healthbar(dps)
-	
+	emit_signal("update_healthbar", dps)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

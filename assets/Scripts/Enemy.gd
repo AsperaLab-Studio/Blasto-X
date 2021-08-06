@@ -57,7 +57,6 @@ func _process(delta: float) -> void:
 	
 
 func hit(dps) -> void:
-	print("enemy hit!")
 	current_state = STATE.HIT
 	healthBar.update_healthbar(dps)
 	amount = amount + dps

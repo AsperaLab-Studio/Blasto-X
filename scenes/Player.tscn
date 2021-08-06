@@ -123,7 +123,7 @@ extents = Vector2( 32.0201, 54.2831 )
 extents = Vector2( 22.4795, 19.9641 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 32.9226, 46.3473 )
+extents = Vector2( 25.7114, 57.8577 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -133,6 +133,18 @@ scale = Vector2( 2.13561, 2.13561 )
 script = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 216.635, 51.7654 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 379
+limit_bottom = 1020
+limit_smoothed = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4.17255, 14.4961 )
@@ -158,7 +170,6 @@ shape = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
 position = Vector2( 58.461, -5.06458 )
-scale = Vector2( 1, 1 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 monitorable = false

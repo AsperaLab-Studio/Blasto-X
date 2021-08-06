@@ -3,77 +3,86 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=3]
-[ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=4]
+[ext_resource path="res://Xbox 360 - Scott Pilgrim vs the World The Game - Level 1 - Frozen Suburbs.png" type="Texture" id=5]
+[ext_resource path="res://scenes/MarginContainer.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1038.46, 5.64093 )
+extents = Vector2( 16891.9, 120.176 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1063.61, 5.18362 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 5.25366, 624 )
+extents = Vector2( 1990.15, 120.176 )
 
 [node name="testing" type="Node2D"]
 scale = Vector2( 0.58, 0.57 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1020.87 ]
+}
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 254.112, 832 )
-scale = Vector2( 2.136, 2.136 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 968, 832 )
-scale = Vector2( 1.7, 1.7 )
-collision_layer = 4
-collision_mask = 4
-dps = 5
+[node name="UI2" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Area di gioco" type="Node2D" parent="."]
-position = Vector2( -8, 4 )
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="soffitto" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 299.91, 134.751 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/soffitto"]
-position = Vector2( 686.164, -134.115 )
-shape = SubResource( 1 )
-
-[node name="terreno" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 201.549, 397.416 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/terreno"]
-position = Vector2( 726.451, 682.584 )
-shape = SubResource( 2 )
-
-[node name="parete dx" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 461.134, 222.753 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete dx"]
-position = Vector2( 1466.87, 393.247 )
-shape = SubResource( 3 )
-
-[node name="parete sx" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 5.82843, 239.016 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete sx"]
-position = Vector2( 2.17157, 216.984 )
-shape = SubResource( 3 )
-
-[node name="UI" type="Node2D" parent="."]
-position = Vector2( 950.88, 542.91 )
-
-[node name="HealthDisplay" type="Node2D" parent="UI"]
-position = Vector2( -654.438, -496.218 )
-script = ExtResource( 4 )
-
-[node name="HealthBar" type="TextureProgress" parent="UI/HealthDisplay"]
-margin_left = -297.921
-margin_top = -41.794
-margin_right = -97.9214
-margin_bottom = -15.794
-rect_scale = Vector2( 3.17642, 2.98953 )
+[node name="HealthBar" type="TextureProgress" parent="CanvasLayer/UI2/MarginContainer"]
+margin_right = 1870.0
+margin_bottom = 1030.0
 value = 100.0
 texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 22167.6, 1299.42 )
+scale = Vector2( 4, 4 )
+z_index = -100
+texture = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 310.496, 1322.07 )
+scale = Vector2( 2.136, 2.136 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1003.8, 1328.78 )
+scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
+dps = 5
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2( 5.79929, 127.773 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2( 16670.2, 811.095 )
+shape = SubResource( 1 )
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2( 666.668, 20.7543 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2( 849.271, 783.489 )
+shape = SubResource( 2 )
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2( 0, 1099.78 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2( 16670.2, 811.095 )
+shape = SubResource( 1 )
+
+[connection signal="update_healthbar" from="Player" to="CanvasLayer/UI2/MarginContainer" method="_on_Player_update_healthbar"]
