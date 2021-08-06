@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Senza titolo-3.png-a92c156a95e18e3d305b41a8760b60d7.stex"
+path="res://.import/roguelikeCity_magenta.png-f57977d8c9527d680d047ccc03ff912c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/Senza titolo-3.png"
-dest_files=[ "res://.import/Senza titolo-3.png-a92c156a95e18e3d305b41a8760b60d7.stex" ]
+source_file="res://assets/img/sprites/roguelikeCity_magenta.png"
+dest_files=[ "res://.import/roguelikeCity_magenta.png-f57977d8c9527d680d047ccc03ff912c.stex" ]
 
 [params]
 

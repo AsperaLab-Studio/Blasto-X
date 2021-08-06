@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Senza titolo-32.png-c60923aac091bffc9574b5f2572ff836.stex"
+path="res://.import/barHorizontal_yellow.png-eddc850f67bccd1fd5ab5a9ef0e964bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/Senza titolo-32.png"
-dest_files=[ "res://.import/Senza titolo-32.png-c60923aac091bffc9574b5f2572ff836.stex" ]
+source_file="res://assets/img/barHorizontal_yellow.png"
+dest_files=[ "res://.import/barHorizontal_yellow.png-eddc850f67bccd1fd5ab5a9ef0e964bd.stex" ]
 
 [params]
 

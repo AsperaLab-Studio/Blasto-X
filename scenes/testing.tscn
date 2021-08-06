@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=3]
+[ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1038.46, 5.64093 )
@@ -12,7 +14,8 @@ extents = Vector2( 1063.61, 5.18362 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 5.25366, 624 )
 
-[node name="testing" type="Node"]
+[node name="testing" type="Node2D"]
+scale = Vector2( 0.58, 0.57 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 254.112, 832 )
@@ -21,23 +24,15 @@ scale = Vector2( 2.136, 2.136 )
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 968, 832 )
 scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
+dps = 5
 
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 584, 376 )
-scale = Vector2( 1.7, 1.7 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1456, 496 )
-scale = Vector2( 1.7, 1.7 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1072, 384 )
-scale = Vector2( 1.7, 1.7 )
-
-[node name="Area di gioco" type="Node" parent="."]
+[node name="Area di gioco" type="Node2D" parent="."]
+position = Vector2( -8, 4 )
 
 [node name="soffitto" type="StaticBody2D" parent="Area di gioco"]
-position = Vector2( 203.378, 139.241 )
+position = Vector2( 299.91, 134.751 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/soffitto"]
 position = Vector2( 686.164, -134.115 )
@@ -63,3 +58,22 @@ position = Vector2( 5.82843, 239.016 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area di gioco/parete sx"]
 position = Vector2( 2.17157, 216.984 )
 shape = SubResource( 3 )
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( 950.88, 542.91 )
+
+[node name="HealthDisplay" type="Node2D" parent="UI"]
+position = Vector2( -654.438, -496.218 )
+script = ExtResource( 4 )
+
+[node name="HealthBar" type="TextureProgress" parent="UI/HealthDisplay"]
+margin_left = -297.921
+margin_top = -41.794
+margin_right = -97.9214
+margin_bottom = -15.794
+rect_scale = Vector2( 3.17642, 2.98953 )
+value = 100.0
+texture_progress = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
