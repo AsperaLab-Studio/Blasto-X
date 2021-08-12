@@ -21,7 +21,6 @@ var healthBar = null
 var amount = 0
 
 func _ready():
-	target = get_parent().get_node("Player")
 	anim_player.play("idle")
 	healthBar = get_node("HealthDisplay")
 

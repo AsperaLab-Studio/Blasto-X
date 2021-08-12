@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=4]
 [ext_resource path="res://Xbox 360 - Scott Pilgrim vs the World The Game - Level 1 - Frozen Suburbs.png" type="Texture" id=5]
@@ -10,9 +9,12 @@
 [ext_resource path="res://scenes/SceneManager.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15748, 123.529 )
+extents = Vector2( 89.7126, 501.441 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15748, 123.529 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 1990.15, 120.176 )
 
 [node name="testing" type="Node2D"]
@@ -24,6 +26,14 @@ __meta__ = {
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource( 8 )
 
+[node name="MovingWall" type="StaticBody2D" parent="StageManager"]
+position = Vector2( 3150.5, 855.769 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall"]
+position = Vector2( 44.8276, 77.193 )
+shape = SubResource( 1 )
+
 [node name="Positions" type="Node" parent="StageManager"]
 
 [node name="1" type="Position2D" parent="StageManager/Positions"]
@@ -31,8 +41,38 @@ position = Vector2( 1.96109, 761.004 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="2" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 3171.39, 746.172 )
+position = Vector2( 3179.39, 900.172 )
 scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 4827.53, 897.175 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 8051.88, 909.162 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 9768.95, 900.172 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="EnemiesSpawn" type="Node" parent="StageManager"]
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 2274.26, 763.771 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 2670.05, 764.91 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 1635.17, 775.445 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="EnemiesContainer" type="Node" parent="StageManager"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -72,67 +112,35 @@ texture = ExtResource( 5 )
 position = Vector2( 307.268, 1483.68 )
 scale = Vector2( 2.136, 2.136 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 782.611, 1547.6 )
-scale = Vector2( 1.7, 1.7 )
-collision_layer = 4
-collision_mask = 4
-dps = 5
-
 [node name="Top" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( -12.6331, 280.945 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2( 15626.7, 813.317 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Left" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( 666.668, 20.7543 )
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
 position = Vector2( 849.271, 783.489 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Bottom" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( 0, 1099.78 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2( 14925.8, 823.639 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Extra" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( -478.701, 2574.25 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Extra"]
 position = Vector2( 0.00390625, 65.6979 )
 scale = Vector2( 1, 1.07622 )
 polygon = PoolVector2Array( 14739.3, -993.764, 14946.6, -792.797, 16933.8, -790.78, 16733.8, -996.245 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1550.63, 1466.32 )
-scale = Vector2( 1.7, 1.7 )
-collision_layer = 4
-collision_mask = 4
-dps = 5
-
-[node name="Enemy4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1197.34, 1553.85 )
-scale = Vector2( 1.7, 1.7 )
-collision_layer = 4
-collision_mask = 4
-dps = 5
-
-[node name="Enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1845.24, 1547.25 )
-scale = Vector2( 1.7, 1.7 )
-collision_layer = 4
-collision_mask = 4
-dps = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

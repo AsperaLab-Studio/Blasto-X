@@ -165,9 +165,9 @@ monitoring = false
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="Pivot"]
-visible = false
 position = Vector2( 12.3744, 0 )
 monitorable = false
 
