@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Xbox 360 - Scott Pilgrim vs the World The Game - Level 1 - Frozen Suburbs.png" type="Texture" id=5]
 [ext_resource path="res://scenes/MarginContainer.gd" type="Script" id=6]
 [ext_resource path="res://assets/audio/ost/2nd level.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/SceneManager.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15748, 123.529 )
@@ -19,6 +20,19 @@ scale = Vector2( 0.58, 0.57 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
 }
+
+[node name="StageManager" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Positions" type="Node" parent="StageManager"]
+
+[node name="1" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 1.96109, 761.004 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 3171.39, 746.172 )
+scale = Vector2( 0.58, 0.57 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
