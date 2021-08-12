@@ -1,13 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=3]
+[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=4]
 [ext_resource path="res://Xbox 360 - Scott Pilgrim vs the World The Game - Level 1 - Frozen Suburbs.png" type="Texture" id=5]
 [ext_resource path="res://scenes/MarginContainer.gd" type="Script" id=6]
+[ext_resource path="res://assets/audio/ost/2nd level.ogg" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16891.9, 120.176 )
+extents = Vector2( 15748, 123.529 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1990.15, 120.176 )
@@ -47,30 +49,32 @@ __meta__ = {
 }
 
 [node name="BG" type="Sprite" parent="."]
-position = Vector2( 22167.6, 1299.42 )
-scale = Vector2( 4, 4 )
+position = Vector2( 12715.3, 1879.1 )
+scale = Vector2( 3.90561, 3.90561 )
 z_index = -100
 texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 310.496, 1322.07 )
+position = Vector2( 307.268, 1483.68 )
 scale = Vector2( 2.136, 2.136 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1003.8, 1328.78 )
+position = Vector2( 782.611, 1547.6 )
 scale = Vector2( 1.7, 1.7 )
 collision_layer = 4
 collision_mask = 4
 dps = 5
 
 [node name="Top" type="StaticBody2D" parent="."]
-position = Vector2( 5.79929, 127.773 )
+visible = false
+position = Vector2( -12.6331, 280.945 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
-position = Vector2( 16670.2, 811.095 )
+position = Vector2( 15626.7, 813.317 )
 shape = SubResource( 1 )
 
 [node name="Left" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 666.668, 20.7543 )
 rotation = 1.5708
 
@@ -79,10 +83,46 @@ position = Vector2( 849.271, 783.489 )
 shape = SubResource( 2 )
 
 [node name="Bottom" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 0, 1099.78 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
-position = Vector2( 16670.2, 811.095 )
+position = Vector2( 14925.8, 823.639 )
 shape = SubResource( 1 )
+
+[node name="Extra" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2( -478.701, 2574.25 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Extra"]
+position = Vector2( 0.00390625, 65.6979 )
+scale = Vector2( 1, 1.07622 )
+polygon = PoolVector2Array( 14739.3, -993.764, 14946.6, -792.797, 16933.8, -790.78, 16733.8, -996.245 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1550.63, 1466.32 )
+scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
+dps = 5
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1197.34, 1553.85 )
+scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
+dps = 5
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1845.24, 1547.25 )
+scale = Vector2( 1.7, 1.7 )
+collision_layer = 4
+collision_mask = 4
+dps = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -18.909
+script = ExtResource( 4 )
 
 [connection signal="update_healthbar" from="Player" to="CanvasLayer/UI2/MarginContainer" method="_on_Player_update_healthbar"]

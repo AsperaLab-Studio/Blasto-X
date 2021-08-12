@@ -4,9 +4,9 @@
 [ext_resource path="res://assets/video/menuBackground.ogv" type="VideoStream" id=2]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/MenuCursor.gd" type="Script" id=4]
-[ext_resource path="res://assets/audio/main theme.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/Scripts/VideoPlayer.gd" type="Script" id=6]
-[ext_resource path="res://assets/Scripts/MainTheme.gd" type="Script" id=7]
+[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200

@@ -107,3 +107,11 @@ func _on_AttackCollision_area_entered(area: Area2D) -> void:
 
 func _on_AttackCollision_area_exited(area: Area2D) -> void:
 	collidings_areas.erase(area)
+
+func audioStop():
+	var audio = get_node("GunSFX")
+	audio.stop()
+
+func audioPlay():
+	var audio = get_node("GunSFX")
+	audio.play()
