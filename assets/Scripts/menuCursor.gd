@@ -25,8 +25,11 @@ func _set_selection(newIndex):
 	
 
 func _process(delta): 
-	if(Input.is_action_just_pressed("move_up")):
+	if Input.is_action_just_pressed("move_up"):
 		_set_selection(index - 1)
-	if(Input.is_action_just_pressed("move_down")):
+	if Input.is_action_just_pressed("move_down"):
 		_set_selection(index + 1)
+	if Input.is_action_just_pressed("ui_accept"):
+		if index == 0:
+			get_tree().change_scene("res://scenes/prologue.tscn")
 	

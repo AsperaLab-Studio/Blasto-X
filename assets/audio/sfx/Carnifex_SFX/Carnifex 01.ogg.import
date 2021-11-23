@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Carnifex 01.ogg-a7cdc8f3c4225af81f2b8a79b3b2f71e.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Carnifex_SFX/Carnifex 01.ogg"
+dest_files=[ "res://.import/Carnifex 01.ogg-a7cdc8f3c4225af81f2b8a79b3b2f71e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

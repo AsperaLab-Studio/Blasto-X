@@ -23,7 +23,7 @@ var amount = 0
 func _ready():
 	anim_player.play("idle")
 	healthBar = get_node("HealthDisplay")
-
+	
 func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:

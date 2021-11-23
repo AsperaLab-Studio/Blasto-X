@@ -9,6 +9,7 @@ onready var pivot: Node2D = $Pivot
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
+onready var go = get_parent().get_node("GUI/UI2/Go")
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
 
@@ -18,11 +19,14 @@ export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
+var sceneMenager = null
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
+	sceneMenager = get_parent().get_node("StageManager")
+	
 
 func _process(delta: float) -> void:
 	
@@ -103,15 +107,26 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_AttackCollision_area_entered(area: Area2D) -> void:
 	collidings_areas.append(area)
+	
 
 
 func _on_AttackCollision_area_exited(area: Area2D) -> void:
 	collidings_areas.erase(area)
+	
 
 func audioStop():
 	var audio = get_node("GunSFX")
 	audio.stop()
+	
 
 func audioPlay():
 	var audio = get_node("GunSFX")
 	audio.play()
+	
+
+func _on_AreaGo_area_entered(area: Area2D) -> void:
+	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
+		sceneMenager.current_stage = sceneMenager.current_stage + 1
+		sceneMenager._select_stage(sceneMenager.current_stage)
+		go.visible = false
+	
