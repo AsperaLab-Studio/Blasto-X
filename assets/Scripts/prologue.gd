@@ -6,4 +6,4 @@ func _ready() -> void:
 
 
 func _on_VideoPlayer_finished() -> void:
-	get_tree().change_scene("res://scenes/desert1Level.tscn")
+	get_tree().change_scene("res://scenes/LevelDesert1.tscn")

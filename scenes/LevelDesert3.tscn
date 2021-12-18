@@ -1,0 +1,346 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
+[ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/ost/1st level.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/img/background/desert/desert3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/frontground/desert/desert1.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/go.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 89.7126, 501.441 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15748, 123.529 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1990.15, 120.176 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 199, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 398, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 597, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 796, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 995, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1194, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1393, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1592, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1791, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1990, 0, 199, 114 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="testing" type="Node2D"]
+position = Vector2( -5.04538, -1.68182 )
+scale = Vector2( 0.58, 0.57 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1020.87 ]
+}
+
+[node name="StageManager" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="MovingWall" type="StaticBody2D" parent="StageManager"]
+position = Vector2( 2950.85, 1373.23 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall"]
+visible = false
+position = Vector2( 10.6917, -548.038 )
+scale = Vector2( 1, 2.75439 )
+shape = SubResource( 1 )
+
+[node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
+visible = false
+position = Vector2( -187.98, 43.5667 )
+scale = Vector2( 1, 1.03052 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall/AreaGo"]
+position = Vector2( 10.6917, -548.038 )
+scale = Vector2( 1, 2.75439 )
+shape = SubResource( 1 )
+
+[node name="Positions" type="Node" parent="StageManager"]
+
+[node name="0" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 1.96109, 761.004 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 1509.45, 857.787 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 3132.05, 784.444 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 4730.82, 776.694 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 6643.37, 774.048 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="EnemiesSpawn" type="Node" parent="StageManager"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/0"]
+position = Vector2( 942.15, 916.089 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/0"]
+position = Vector2( 1219.76, 931.372 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/0"]
+position = Vector2( 700.22, 931.665 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 1997.6, 879.93 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 2384.79, 908.976 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/1"]
+position = Vector2( 2736.71, 895.824 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/2"]
+position = Vector2( 3612.12, 906.839 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/2"]
+position = Vector2( 3989.22, 932.521 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/2"]
+position = Vector2( 4327.69, 905.914 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/3"]
+position = Vector2( 5240.09, 879.93 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/3"]
+position = Vector2( 5634.02, 932.521 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/3"]
+position = Vector2( 6053.21, 909.278 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="EnemiesContainer" type="Node" parent="StageManager"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UI2" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Go" type="Sprite" parent="GUI/UI2"]
+position = Vector2( 1620.04, 507.57 )
+scale = Vector2( 0.815703, 0.801639 )
+texture = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/UI2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer"]
+margin_right = 1870.0
+margin_bottom = 1030.0
+value = 100.0
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="border" type="Node" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="border"]
+visible = false
+position = Vector2( 131.253, 411.345 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
+position = Vector2( 15525.8, 553.516 )
+shape = SubResource( 2 )
+
+[node name="Left" type="StaticBody2D" parent="border"]
+position = Vector2( 386.667, 11.83 )
+rotation = 1.5708
+scale = Vector2( 0.57, 0.58 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
+position = Vector2( 846.639, 786.075 )
+shape = SubResource( 3 )
+
+[node name="Bottom" type="StaticBody2D" parent="border"]
+position = Vector2( 0, 626.875 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
+position = Vector2( 14914.6, 812.236 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 169.428, 1498.71 )
+scale = Vector2( 2.11631, 2.11631 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -18.909
+script = ExtResource( 2 )
+
+[node name="floor" type="Node" parent="."]
+
+[node name="desert2" type="Sprite" parent="floor"]
+position = Vector2( 1763.66, 969.826 )
+scale = Vector2( 2.61, 2.565 )
+z_index = -6
+texture = ExtResource( 8 )
+
+[node name="desert3" type="Sprite" parent="floor"]
+position = Vector2( 8561.9, 968.686 )
+scale = Vector2( 2.61, 2.565 )
+z_index = -6
+texture = ExtResource( 8 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="desert3" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 1184.99, 463.027 )
+scale = Vector2( 2.41192, 2.39514 )
+texture = ExtResource( 5 )
+
+[node name="desert5" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 588.131, 418.579 )
+scale = Vector2( 2.41192, 2.62663 )
+texture = ExtResource( 5 )
+
+[node name="obj" type="Node" parent="ParallaxBackground"]
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1305.38, 657.14 )
+scale = Vector2( 0.812395, 0.784622 )
+frames = SubResource( 15 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 525.048, 185.373 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 9
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1581.13, 260.737 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1127.23, 76.4775 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 501.324, 770.335 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1736.03, 830.948 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 959.288, 496.454 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 1
+playing = true
+
+[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
+[connection signal="update_healthbar" from="Player" to="GUI/UI2/MarginContainer" method="_on_Player_update_healthbar"]

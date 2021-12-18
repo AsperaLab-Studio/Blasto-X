@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=2]
-[ext_resource path="res://assets/img/sprites/Player/player_tilesheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/sprites/enemy/ill7thickLines (1).png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -90,14 +90,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 23, 0 ]
+"values": [ 0, 23 ]
 }
 
 [sub_resource type="Animation" id=5]
-length = 0.8
 loop = true
 step = 0.2
 tracks/0/type = "value"
@@ -107,14 +106,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.0100001, 0.29, 0.56, 0.82 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 0 ]
+"values": [ 1, 0, 2, 0 ]
 }
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 29.3959
+radius = 31.117
 height = 52.884
 
 [sub_resource type="CapsuleShape2D" id=7]
@@ -134,10 +133,10 @@ script = ExtResource( 1 )
 speed = 654
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.2981, 1.82368 )
+scale = Vector2( 0.127233, 0.127233 )
 texture = ExtResource( 3 )
-hframes = 9
-vframes = 3
-frame = 1
+hframes = 3
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
