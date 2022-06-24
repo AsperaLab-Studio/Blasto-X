@@ -3,13 +3,13 @@
 [ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/ost/1st level.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/ost/lvl 1-d start.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/img/background/desert/desert1.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
-[ext_resource path="res://assets/img/frontground/desert/desert1.png" type="Texture" id=8]
 [ext_resource path="res://assets/img/go.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/frontground/lvl desert/test1.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 501.441 )
@@ -84,7 +84,7 @@ animations = [ {
 } ]
 
 [node name="testing" type="Node2D"]
-position = Vector2( -5.04538, -1.68182 )
+position = Vector2( 32, 104 )
 scale = Vector2( 0.58, 0.57 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
@@ -104,11 +104,11 @@ scale = Vector2( 1, 2.75439 )
 shape = SubResource( 1 )
 
 [node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
-visible = false
 position = Vector2( -187.98, 43.5667 )
 scale = Vector2( 1, 1.03052 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall/AreaGo"]
+visible = false
 position = Vector2( 10.6917, -548.038 )
 scale = Vector2( 1, 2.75439 )
 shape = SubResource( 1 )
@@ -231,12 +231,12 @@ __meta__ = {
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-visible = false
 position = Vector2( 131.253, 411.345 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
-position = Vector2( 15525.8, 553.516 )
+visible = false
+position = Vector2( 15525.4, 415.184 )
 shape = SubResource( 2 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
@@ -257,8 +257,8 @@ position = Vector2( 14914.6, 812.236 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 169.428, 1498.71 )
-scale = Vector2( 2.11631, 2.11631 )
+position = Vector2( 262.069, 1277.19 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -267,121 +267,87 @@ script = ExtResource( 2 )
 
 [node name="floor" type="Node" parent="."]
 
-[node name="desert2" type="Sprite" parent="floor"]
-position = Vector2( 1763.66, 969.826 )
-scale = Vector2( 2.61, 2.565 )
-z_index = -6
-texture = ExtResource( 8 )
+[node name="test1" type="Sprite" parent="floor"]
+position = Vector2( 688, 776 )
+z_index = -22
+texture = ExtResource( 11 )
 
-[node name="desert3" type="Sprite" parent="floor"]
-position = Vector2( 8561.9, 968.686 )
-scale = Vector2( 2.61, 2.565 )
-z_index = -6
-texture = ExtResource( 8 )
+[node name="test2" type="Sprite" parent="floor"]
+position = Vector2( 2232, 776 )
+z_index = -22
+texture = ExtResource( 11 )
+
+[node name="test3" type="Sprite" parent="floor"]
+position = Vector2( 3776, 776 )
+z_index = -22
+texture = ExtResource( 11 )
+
+[node name="test4" type="Sprite" parent="floor"]
+position = Vector2( 5320, 776 )
+z_index = -22
+texture = ExtResource( 11 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="background" type="Node" parent="ParallaxBackground"]
 
 [node name="desert1" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 1326.35, 417.991 )
-scale = Vector2( 1.99156, 1.95722 )
+position = Vector2( 1288, 360 )
+scale = Vector2( 1.24164, 1.24164 )
 texture = ExtResource( 5 )
 
 [node name="desert2" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 1960.62, 532.385 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-
-[node name="desert3" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 799.605, 478.27 )
-scale = Vector2( 1.99156, 1.95722 )
-texture = ExtResource( 5 )
-
-[node name="desert4" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 809.186, 458.208 )
-scale = Vector2( 1.99156, 2.11722 )
-texture = ExtResource( 5 )
-
-[node name="desert5" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 1258.62, 927.372 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-offset = Vector2( 1120.18, -177.807 )
-
-[node name="desert6" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 5384.62, 536.385 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-
-[node name="desert7" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 7112.62, 524.385 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-
-[node name="desert8" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 8824.62, 532.385 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-
-[node name="desert9" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 10496.6, 532.385 )
-scale = Vector2( 2.15776, 2.24393 )
-texture = ExtResource( 5 )
-
-[node name="desert10" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 11192.6, 548.385 )
-scale = Vector2( 2.15776, 2.24393 )
+position = Vector2( 160, 352 )
+scale = Vector2( 1.24164, 1.24164 )
 texture = ExtResource( 5 )
 
 [node name="obj" type="Node" parent="ParallaxBackground"]
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1305.38, 657.14 )
+position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
-frames = SubResource( 15 )
-frame = 7
-playing = true
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 525.048, 185.373 )
-scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
 frame = 3
 playing = true
 
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1581.13, 260.737 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
-frame = 2
+frame = 10
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1644.18, 125.905 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 15 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 231.932, 406.657 )
+position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 501.324, 770.335 )
+position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
+frame = 7
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1736.03, 830.948 )
+position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 959.288, 496.454 )
+position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 15 )
-frame = 6
+frame = 2
 playing = true
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]

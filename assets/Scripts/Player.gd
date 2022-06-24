@@ -94,6 +94,7 @@ func _get_direction() -> Vector2:
 func hit(dps):
 	print("player hit!")
 	var amount = 0
+	anim_player.play("hit")
 	emit_signal("update_healthbar", dps)
 
 

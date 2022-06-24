@@ -1,0 +1,203 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=2]
+[ext_resource path="res://assets/img/sprites/enemy/KROGAN MOVESET v0.1.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "died"
+length = 1.2
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0100001, 0.29, 0.56, 0.82 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 2 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 29.8517, 72.5498 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32.5244, 70.3225 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 49.3949, 10 )
+
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+speed = 654
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.2981, 1.82368 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 3 )
+hframes = 3
+vframes = 4
+frame = 3
+region_rect = Rect2( 9, 14, 63, 96 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 1 )
+anims/died = SubResource( 2 )
+anims/hit = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/move = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 6 )
+
+[node name="AttackDelayTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
+shape = SubResource( 7 )
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Pivot"]
+position = Vector2( 12.3744, 0 )
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
+visible = false
+position = Vector2( 28.8216, -24.9452 )
+scale = Vector2( 0.600001, 1 )
+shape = SubResource( 8 )
+
+[node name="HealthDisplay" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="HealthBar" type="TextureProgress" parent="HealthDisplay"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 3.0
+value = 3.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HealthDisplay"]
+visible = false
+margin_left = -20.1815
+margin_top = -77.7829
+margin_right = 19.8185
+margin_bottom = -63.7829
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Pivot/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Pivot/Area2D" to="." method="_on_Area2D_area_exited"]

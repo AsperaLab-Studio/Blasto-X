@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/img/sprites/Player/blastoTest.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/sprites/enemy/ASARI MOVESET v0.2.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 2.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/audio/sfx/Carnifex_SFX/Carnifex 01.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 11, 0 ]
+"values": [ 6, 7, 8 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -52,7 +52,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "hit"
-length = 0.8
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -61,10 +60,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 9, 4, 0 ]
+"values": [ 9, 10 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -99,7 +98,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 6, 8, 7 ]
+"values": [ 4, 3, 5, 3 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -147,13 +146,13 @@ tracks/2/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 32.0201, 62.8227 )
+extents = Vector2( 41.6478, 80.0364 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 22.4795, 19.9641 )
+extents = Vector2( 39.3623, 17.6011 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 25.7114, 57.8577 )
+extents = Vector2( 31.021, 79.1654 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -177,12 +176,12 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 4.17255, 14.4961 )
-scale = Vector2( 0.209162, 0.194498 )
+position = Vector2( -47.8023, -55.5912 )
+scale = Vector2( 1.5, 1.588 )
 texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 9
+vframes = 5
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -193,27 +192,29 @@ anims/shoot = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 4.83145, 12.6925 )
+position = Vector2( -47.7312, -54.4283 )
 shape = SubResource( 6 )
 
 [node name="Pivot" type="Node2D" parent="."]
+position = Vector2( -46.7223, -73.4208 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
-position = Vector2( 58.461, -5.06458 )
+position = Vector2( -1.12889, -0.816019 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-visible = false
+position = Vector2( -0.897877, -0.350758 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-position = Vector2( 41.3879, 26.1571 )
+visible = false
+position = Vector2( 36.7991, -0.124202 )
 shape = SubResource( 7 )
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
-position = Vector2( 0, 0.662189 )
+position = Vector2( -51.5811, -72.1814 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2( 0, 12.2508 )
+visible = false
+position = Vector2( 4.46485, 18.5508 )
 shape = SubResource( 8 )
 
 [node name="GunSFX" type="AudioStreamPlayer" parent="."]
