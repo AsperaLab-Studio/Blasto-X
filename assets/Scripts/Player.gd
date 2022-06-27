@@ -53,6 +53,9 @@ func _process(delta: float) -> void:
 		STATE.ATTACK:
 			anim_player.play("attack")
 			
+		STATE.HIT:
+			anim_player.play("hit")
+			
 		STATE.SHOOT:
 			anim_player.play("shoot")
 		
@@ -98,11 +101,11 @@ func _get_direction() -> Vector2:
 	
 
 func hit(dps):
-	print("player hit!")
-	var amount = 0
-	anim_player.play("hit")
-	emit_signal("update_healthbar", dps)
-
+	if current_state != STATE.HIT:
+		print("player hit!")
+		var amount = 0
+		current_state = STATE.HIT
+		emit_signal("update_healthbar", dps)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
@@ -111,11 +114,13 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "shoot":
 		current_state = STATE.IDLE
 	
+	if anim_name == "hit":
+		current_state = STATE.IDLE
+	
 
 func _on_AttackCollision_area_entered(area: Area2D) -> void:
 	collidings_areas.append(area)
 	
-
 
 func _on_AttackCollision_area_exited(area: Area2D) -> void:
 	collidings_areas.erase(area)
