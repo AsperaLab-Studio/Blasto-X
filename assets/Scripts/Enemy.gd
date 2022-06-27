@@ -8,7 +8,7 @@ onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 
-enum STATE {CHASE, ATTACK, WAIT, HIT, DIED}
+enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var moving_speed := 50
@@ -18,6 +18,7 @@ var current_state = STATE.CHASE
 
 var target = null
 var near_player: bool = false
+var near_enemy: bool = false
 var healthBar = null
 var amount = 0
 
@@ -43,6 +44,10 @@ func _process(delta: float) -> void:
 					attack_delay_timer.start()
 			else:
 				current_state = STATE.CHASE
+		STATE.IDLE:
+			anim_player.play("idle")
+			if !near_enemy:
+				current_state = STATE.WAIT
 		STATE.ATTACK:
 			if near_player:
 				anim_player.play("attack")
@@ -90,6 +95,12 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	if (area.owner.is_in_group("player")):
 		near_player = true
 	
+	if(area.owner.is_in_group("enemy")):
+		current_state = STATE.IDLE
+		near_enemy = true
+	
+
+
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	if current_state == STATE.DIED:
@@ -98,6 +109,8 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 		near_player = false
 		#current_state = STATE.CHASE
 		#attack_delay_timer.stop()
+	if area.owner && area.owner.is_in_group("enemy"):
+		near_enemy = false
 	
 
 func attack():

@@ -159,6 +159,7 @@ extents = Vector2( 18.0893, 69.1531 )
 ]]
 position = Vector2( 102.376, 118.983 )
 scale = Vector2( 2.13561, 2.13561 )
+collision_layer = 2
 script = ExtResource( 5 )
 debug_mode = true
 

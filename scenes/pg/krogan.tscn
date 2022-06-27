@@ -128,8 +128,8 @@ extents = Vector2( 38.0066, 10 )
 "enemy",
 ]]
 z_index = -1
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 5
 script = ExtResource( 3 )
 speed = 654
 
@@ -139,7 +139,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 4
-frame = 8
+frame = 3
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -173,7 +173,6 @@ monitorable = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
-visible = false
 position = Vector2( 28.8216, -24.9452 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
