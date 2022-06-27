@@ -11,7 +11,7 @@ export(int) var current_stage := 0
 
 var positions : Array = []
 var spawnList: Array = []
-var enemy = preload("res://scenes/krogan.tscn")
+var enemy = preload("res://scenes/pg/krogan.tscn")
 
 
 func _ready() -> void:

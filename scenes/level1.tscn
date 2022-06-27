@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/ost/1st level.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Xbox 360 - Scott Pilgrim vs the World The Game - Level 1 - Frozen Suburbs.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]

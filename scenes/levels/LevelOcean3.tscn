@@ -4,12 +4,12 @@
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/ost/1st level.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/img/background/sea/sea2.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/img/background/sea/sea3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/frontground/desert/desert1.png" type="Texture" id=8]
 [ext_resource path="res://assets/img/go.png" type="Texture" id=9]
-[ext_resource path="res://assets/img/frontground/sea/863-8633714_porthole-png-removebg-preview (1).png" type="Texture" id=10]
+[ext_resource path="res://assets/img/frontground/sea/space-station-window-white-background-260nw-418630759-removebg-preview.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/sprites/obj/booble.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -221,10 +221,6 @@ scale = Vector2( 0.58, 0.57 )
 [node name="UI2" type="Control" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -2.0
-margin_top = 2.0
-margin_right = -2.0
-margin_bottom = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -257,7 +253,7 @@ __meta__ = {
 
 [node name="Top" type="StaticBody2D" parent="border"]
 visible = false
-position = Vector2( 131.253, 411.345 )
+position = Vector2( 129.253, 417.345 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
@@ -265,6 +261,7 @@ position = Vector2( 15525.8, 553.516 )
 shape = SubResource( 2 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
+visible = false
 position = Vector2( 386.667, 11.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
@@ -292,165 +289,6 @@ script = ExtResource( 2 )
 
 [node name="level" type="Node" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="level"]
-
-[node name="background" type="Node" parent="level/ParallaxBackground"]
-
-[node name="sea2" type="Sprite" parent="level/ParallaxBackground/background"]
-position = Vector2( 961.025, 469.401 )
-scale = Vector2( 2.98524, 1.44905 )
-texture = ExtResource( 5 )
-
-[node name="obj" type="Node" parent="level/ParallaxBackground"]
-
-[node name="booble" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 843.444, 359.697 )
-frames = SubResource( 19 )
-frame = 12
-playing = true
-
-[node name="booble2" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1121.44, 477.697 )
-frames = SubResource( 19 )
-frame = 12
-playing = true
-
-[node name="booble3" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 741.444, 611.697 )
-frames = SubResource( 19 )
-frame = 12
-playing = true
-
-[node name="booble4" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 165.444, 299.697 )
-frames = SubResource( 19 )
-frame = 11
-playing = true
-
-[node name="booble5" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 527.444, 147.697 )
-frames = SubResource( 19 )
-frame = 10
-playing = true
-
-[node name="booble6" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1519.44, 729.697 )
-frames = SubResource( 19 )
-frame = 10
-playing = true
-
-[node name="booble7" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 425.444, 757.697 )
-frames = SubResource( 19 )
-frame = 9
-playing = true
-
-[node name="booble8" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1641.44, 185.697 )
-frames = SubResource( 19 )
-frame = 9
-playing = true
-
-[node name="booble9" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1315.44, 165.697 )
-frames = SubResource( 19 )
-frame = 8
-playing = true
-
-[node name="booble10" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 805.444, 637.697 )
-frames = SubResource( 19 )
-frame = 7
-playing = true
-
-[node name="booble11" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 67.4436, 717.697 )
-frames = SubResource( 19 )
-frame = 7
-playing = true
-
-[node name="booble12" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1851.44, 633.697 )
-frames = SubResource( 19 )
-frame = 7
-playing = true
-
-[node name="booble13" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1473.44, 349.697 )
-frames = SubResource( 19 )
-frame = 6
-playing = true
-
-[node name="booble14" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 237.444, 585.696 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="booble15" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 401.444, 295.696 )
-frames = SubResource( 19 )
-frame = 4
-playing = true
-
-[node name="booble16" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 663.444, 469.696 )
-frames = SubResource( 19 )
-frame = 3
-playing = true
-
-[node name="booble17" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 845.444, 569.696 )
-frames = SubResource( 19 )
-frame = 3
-playing = true
-
-[node name="booble18" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 677.444, 715.696 )
-frames = SubResource( 19 )
-frame = 3
-playing = true
-
-[node name="booble19" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1277.44, 709.696 )
-frames = SubResource( 19 )
-frame = 2
-playing = true
-
-[node name="booble20" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1627.44, 721.696 )
-frames = SubResource( 19 )
-frame = 2
-playing = true
-
-[node name="booble21" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1853.44, 187.696 )
-frames = SubResource( 19 )
-frame = 1
-playing = true
-
-[node name="booble22" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 339.444, 613.696 )
-frames = SubResource( 19 )
-frame = 1
-playing = true
-
-[node name="booble23" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 551.444, 451.696 )
-frames = SubResource( 19 )
-playing = true
-
-[node name="booble24" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 259.444, 795.696 )
-frames = SubResource( 19 )
-playing = true
-
-[node name="booble25" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
-position = Vector2( 1583.44, 577.696 )
-frames = SubResource( 19 )
-frame = 14
-playing = true
-
 [node name="floor" type="Node" parent="level"]
 
 [node name="desert2" type="Sprite" parent="level/floor"]
@@ -465,112 +303,243 @@ scale = Vector2( 2.61, 2.565 )
 z_index = -6
 texture = ExtResource( 8 )
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="level"]
+
+[node name="background" type="Node" parent="level/ParallaxBackground"]
+
+[node name="sea3" type="Sprite" parent="level/ParallaxBackground/background"]
+position = Vector2( 962.702, 434.59 )
+scale = Vector2( 0.996282, 0.85153 )
+texture = ExtResource( 5 )
+
+[node name="obj" type="Node" parent="level/ParallaxBackground"]
+
+[node name="booble" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 843.444, 359.697 )
+frames = SubResource( 19 )
+frame = 9
+playing = true
+
+[node name="booble2" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1121.44, 477.697 )
+frames = SubResource( 19 )
+frame = 9
+playing = true
+
+[node name="booble3" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 741.444, 611.697 )
+frames = SubResource( 19 )
+frame = 9
+playing = true
+
+[node name="booble4" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 165.444, 299.697 )
+frames = SubResource( 19 )
+frame = 8
+playing = true
+
+[node name="booble5" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 527.444, 147.697 )
+frames = SubResource( 19 )
+frame = 7
+playing = true
+
+[node name="booble6" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1519.44, 729.697 )
+frames = SubResource( 19 )
+frame = 7
+playing = true
+
+[node name="booble7" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 425.444, 757.697 )
+frames = SubResource( 19 )
+frame = 6
+playing = true
+
+[node name="booble8" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1641.44, 185.697 )
+frames = SubResource( 19 )
+frame = 6
+playing = true
+
+[node name="booble9" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1315.44, 165.697 )
+frames = SubResource( 19 )
+frame = 5
+playing = true
+
+[node name="booble10" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 805.444, 637.697 )
+frames = SubResource( 19 )
+frame = 4
+playing = true
+
+[node name="booble11" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 67.4436, 717.697 )
+frames = SubResource( 19 )
+frame = 4
+playing = true
+
+[node name="booble12" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1851.44, 633.697 )
+frames = SubResource( 19 )
+frame = 4
+playing = true
+
+[node name="booble13" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1473.44, 349.697 )
+frames = SubResource( 19 )
+frame = 3
+playing = true
+
+[node name="booble14" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 237.444, 585.696 )
+frames = SubResource( 19 )
+frame = 2
+playing = true
+
+[node name="booble15" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 401.444, 295.696 )
+frames = SubResource( 19 )
+frame = 1
+playing = true
+
+[node name="booble16" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 663.444, 469.696 )
+frames = SubResource( 19 )
+playing = true
+
+[node name="booble17" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 845.444, 569.696 )
+frames = SubResource( 19 )
+playing = true
+
+[node name="booble18" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 677.444, 715.696 )
+frames = SubResource( 19 )
+playing = true
+
+[node name="booble19" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1277.44, 709.696 )
+frames = SubResource( 19 )
+frame = 14
+playing = true
+
+[node name="booble20" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1627.44, 721.696 )
+frames = SubResource( 19 )
+frame = 14
+playing = true
+
+[node name="booble21" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1853.44, 187.696 )
+frames = SubResource( 19 )
+frame = 13
+playing = true
+
+[node name="booble22" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 339.444, 613.696 )
+frames = SubResource( 19 )
+frame = 13
+playing = true
+
+[node name="booble23" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 551.444, 451.696 )
+frames = SubResource( 19 )
+frame = 12
+playing = true
+
+[node name="booble24" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 259.444, 795.696 )
+frames = SubResource( 19 )
+frame = 12
+playing = true
+
+[node name="booble25" type="AnimatedSprite" parent="level/ParallaxBackground/obj"]
+position = Vector2( 1583.44, 577.696 )
+frames = SubResource( 19 )
+frame = 11
+playing = true
+
 [node name="background" type="Node" parent="level"]
 
-[node name="863-8633714_porthole-png-removebg-preview (1)" type="Sprite" parent="level/background"]
-position = Vector2( 872.944, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview" type="Sprite" parent="level/background"]
+position = Vector2( 458.168, 716.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( -388.274, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)2" type="Sprite" parent="level/background"]
-position = Vector2( 872.944, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview2" type="Sprite" parent="level/background"]
+position = Vector2( 1374.17, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 236.901, -88.4551 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)3" type="Sprite" parent="level/background"]
-position = Vector2( 872.944, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview3" type="Sprite" parent="level/background"]
+position = Vector2( 2284.17, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 862.076, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)4" type="Sprite" parent="level/background"]
-position = Vector2( 3264.45, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview4" type="Sprite" parent="level/background"]
+position = Vector2( 3202.86, 716.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( -388.274, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)5" type="Sprite" parent="level/background"]
-position = Vector2( 3264.45, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview5" type="Sprite" parent="level/background"]
+position = Vector2( 4118.86, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 236.901, -88.4551 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)6" type="Sprite" parent="level/background"]
-position = Vector2( 3264.45, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview6" type="Sprite" parent="level/background"]
+position = Vector2( 5028.86, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 862.076, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)7" type="Sprite" parent="level/background"]
-position = Vector2( 5645.87, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview7" type="Sprite" parent="level/background"]
+position = Vector2( 5946.43, 716.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( -388.274, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)8" type="Sprite" parent="level/background"]
-position = Vector2( 5645.87, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview8" type="Sprite" parent="level/background"]
+position = Vector2( 6862.44, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 236.901, -88.4551 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)9" type="Sprite" parent="level/background"]
-position = Vector2( 5645.87, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview9" type="Sprite" parent="level/background"]
+position = Vector2( 7772.44, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 862.076, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)10" type="Sprite" parent="level/background"]
-position = Vector2( 8044.11, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview10" type="Sprite" parent="level/background"]
+position = Vector2( 8692.84, 716.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( -388.274, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)11" type="Sprite" parent="level/background"]
-position = Vector2( 8044.11, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview11" type="Sprite" parent="level/background"]
+position = Vector2( 9608.84, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 236.901, -88.4551 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)12" type="Sprite" parent="level/background"]
-position = Vector2( 8044.11, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview12" type="Sprite" parent="level/background"]
+position = Vector2( 10518.8, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( 862.076, -88.4559 )
 
-[node name="863-8633714_porthole-png-removebg-preview (1)13" type="Sprite" parent="level/background"]
-position = Vector2( 10415.4, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
+[node name="space-station-window-white-background-260nw-418630759-removebg-preview13" type="Sprite" parent="level/background"]
+position = Vector2( 11429.6, 718.449 )
+scale = Vector2( 1.85554, 1.70153 )
 z_index = -10
 texture = ExtResource( 10 )
-offset = Vector2( -388.274, -88.4559 )
-
-[node name="863-8633714_porthole-png-removebg-preview (1)14" type="Sprite" parent="level/background"]
-position = Vector2( 10415.4, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
-z_index = -10
-texture = ExtResource( 10 )
-offset = Vector2( 236.901, -88.4551 )
-
-[node name="863-8633714_porthole-png-removebg-preview (1)15" type="Sprite" parent="level/background"]
-position = Vector2( 10415.4, 795.214 )
-scale = Vector2( 1.28284, 1.26072 )
-z_index = -10
-texture = ExtResource( 10 )
-offset = Vector2( 862.076, -88.4559 )
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
 [connection signal="update_healthbar" from="Player" to="GUI/UI2/MarginContainer" method="_on_Player_update_healthbar"]
