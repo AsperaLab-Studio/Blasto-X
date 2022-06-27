@@ -173,6 +173,7 @@ monitorable = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
+visible = false
 position = Vector2( 28.8216, -24.9452 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )

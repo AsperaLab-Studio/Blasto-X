@@ -1,5 +1,9 @@
 extends Node
 
+export var increment = 1566
+export var y = 768
+export var n_positions = 5
+export(Array, PackedScene) var enemy_types
 
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
@@ -11,13 +15,13 @@ export(int) var current_stage := 0
 
 var positions : Array = []
 var spawnList: Array = []
-var enemy = preload("res://scenes/pg/krogan.tscn")
-
 
 func _ready() -> void:
 	positions = $Positions.get_children()
 	go.visible = false
 	_select_stage(current_stage)
+	
+	randomize()
 	
 
 func _process(delta: float) -> void:
@@ -36,7 +40,9 @@ func _select_stage(number):
 	spawnList = $EnemiesSpawn.get_node(enemyNumber).get_children()
 	
 	for spawn in spawnList:
-		var enemy_instance = enemy.instance()
+		var rand_index:int = randi() % enemy_types.size()
+		
+		var enemy_instance = enemy_types[rand_index].instance()
 		$EnemiesContainer.add_child(enemy_instance)
 		enemy_instance.global_position = (spawn as Position2D).global_position
 		enemy_instance.target = player

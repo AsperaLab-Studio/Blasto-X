@@ -59,6 +59,7 @@ func _process(delta: float) -> void:
 			anim_player.play("died")
 			
 			
+			
 	$HealthDisplay/Label.text = STATE.keys()[current_state]
 	
 

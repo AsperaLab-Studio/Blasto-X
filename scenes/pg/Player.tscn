@@ -157,7 +157,7 @@ extents = Vector2( 18.0893, 69.1531 )
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-position = Vector2( 102.376, 118.983 )
+position = Vector2( 101.987, 159.735 )
 scale = Vector2( 2.13561, 2.13561 )
 collision_layer = 2
 script = ExtResource( 5 )
@@ -183,7 +183,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 4
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
