@@ -6,6 +6,7 @@ onready var pivot: Node2D = $Pivot
 onready var attack_delay_timer: Timer = $AttackDelayTimer
 onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
+onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 
 enum STATE {CHASE, ATTACK, WAIT, HIT, DIED}
 
@@ -49,6 +50,7 @@ func _process(delta: float) -> void:
 				current_state = STATE.CHASE
 				attack_delay_timer.stop()
 		STATE.DIED:
+			collision_shape.disabled = true
 			anim_player.play("died")
 			
 			

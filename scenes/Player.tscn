@@ -160,6 +160,7 @@ extents = Vector2( 31.021, 79.1654 )
 position = Vector2( 102.376, 118.983 )
 scale = Vector2( 2.13561, 2.13561 )
 script = ExtResource( 5 )
+debug_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 216.635, 51.7654 )
@@ -181,7 +182,7 @@ scale = Vector2( 1.5, 1.588 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 5
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -223,6 +224,17 @@ stream = ExtResource( 4 )
 [node name="PunchSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -6.0
+
+[node name="StateLabel" type="Label" parent="."]
+margin_left = -64.6671
+margin_top = -154.607
+margin_right = -24.6671
+margin_bottom = -140.607
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]

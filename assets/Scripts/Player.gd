@@ -10,6 +10,9 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
 onready var go = get_parent().get_node("GUI/UI2/Go")
+onready var state_label = $StateLabel
+
+export var debug_mode : bool
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
 
@@ -67,6 +70,9 @@ func _process(delta: float) -> void:
 			
 			if !direction:
 				current_state = STATE.IDLE
+			
+	if debug_mode:
+		state_label.text = STATE.keys()[current_state]
 		
 	
 
