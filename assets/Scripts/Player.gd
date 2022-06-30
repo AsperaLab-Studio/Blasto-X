@@ -2,7 +2,9 @@ class_name Player
 extends KinematicBody2D
 
 signal update_healthbar
+signal death
 
+onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
@@ -50,6 +52,7 @@ func _process(delta: float) -> void:
 			else:
 				anim_player.play("idle")
 				
+			
 		STATE.ATTACK:
 			anim_player.play("attack")
 			
@@ -58,7 +61,7 @@ func _process(delta: float) -> void:
 			
 		STATE.SHOOT:
 			anim_player.play("shoot")
-		
+			
 		STATE.MOVE:
 			if direction.x < 0:
 				sprite.flip_h = true
@@ -74,8 +77,13 @@ func _process(delta: float) -> void:
 			if !direction:
 				current_state = STATE.IDLE
 			
+		STATE.DIED:
+			collision_shape.disabled = true
+			anim_player.play("died")
+			
+		
 	if debug_mode:
-		state_label.text = STATE.keys()[current_state]
+		state_label.text = str(global_position.x)
 		
 	
 
@@ -85,12 +93,23 @@ func attack():
 			var enemy = area.owner
 			enemy.hit(1)
 			
+		
+	
 
 func shoot():
 	var bullet_instance = bullet.instance()
 	bullet_instance.direction = orientation
 	owner.add_child(bullet_instance)
 	bullet_instance.global_transform = position2d.global_transform
+	
+
+func pause():
+	anim_player.stop()
+	set_process(false)
+	
+
+func death():
+	emit_signal("death")
 	
 
 func _get_direction() -> Vector2:
@@ -102,10 +121,10 @@ func _get_direction() -> Vector2:
 
 func hit(dps):
 	if current_state != STATE.HIT:
-		print("player hit!")
 		var amount = 0
 		current_state = STATE.HIT
 		emit_signal("update_healthbar", dps)
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
@@ -137,8 +156,17 @@ func audioPlay():
 	
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
+	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneMenager.spawned == true:
+		sceneMenager.spawned = false
+		
+	
 	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
 		sceneMenager.current_stage = sceneMenager.current_stage + 1
 		sceneMenager._select_stage(sceneMenager.current_stage)
 		go.visible = false
+		
 	
+
+func _on_HealthBar_value_changed(value: float) -> void:
+	if value == 0:
+		current_state = STATE.DIED

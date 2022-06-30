@@ -126,6 +126,7 @@ extents = Vector2( 38.0066, 10 )
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "enemy",
+"pausable",
 ]]
 z_index = -1
 collision_layer = 4

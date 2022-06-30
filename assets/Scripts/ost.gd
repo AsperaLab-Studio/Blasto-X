@@ -10,3 +10,8 @@ func _process(delta):
 		stream = ost
 		play()
 	
+
+func pause():
+	set_process(false)
+	stop()
+	

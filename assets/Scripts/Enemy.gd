@@ -101,7 +101,10 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 		near_enemy = true
 	
 
-
+func pause():
+	anim_player.stop()
+	set_process(false)
+	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	if current_state == STATE.DIED:

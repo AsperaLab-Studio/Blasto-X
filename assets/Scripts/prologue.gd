@@ -3,10 +3,12 @@ extends VideoPlayer
 var pid = null;
 
 func _ready(): #{
-	var videopath = "res://assets/video/Blasto_3.mp4"
-	pid = OS.execute("res://assets/Scripts/ffplay",["-autoexit", "-exitonkeydown", "-exitonmousedown", "-fs", videopath ],true); 
 	pass
 #}
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("skip"):
+		get_tree().change_scene("res://scenes/levels/LevelDesert1.tscn")
+
 func _on_VideoPlayer_finished() -> void:
-	get_tree().change_scene("res://scenes/LevelDesert1.tscn")
+	get_tree().change_scene("res://scenes/levels/LevelDesert1.tscn")
