@@ -24,13 +24,11 @@ func _ready() -> void:
 	
 	randomize()
 	
-	#player.connect("death", self, "_on_Player_death")
-	
 
 func _process(delta: float) -> void:
-	
 	if player.global_position.x > wall.global_position.x - 750 && spawned == false:
 		_enemy_spawn(current_stage)
+		
 	
 	if $EnemiesContainer.get_child_count() == 0 && spawned == true:
 		go.visible = true
@@ -41,8 +39,8 @@ func _process(delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept"):
-		get_tree().paused = true
 		get_tree().change_scene("res://scenes/levels/LevelDesert1.tscn")
+		
 	
 
 func _select_stage(number):
