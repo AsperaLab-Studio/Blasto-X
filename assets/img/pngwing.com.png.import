@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/KROGAN MOVESET v0.1.png-8c44e22fc174422358df3b8f48b494be.stex"
+path="res://.import/pngwing.com.png-d32a82c9f310f5e41a1c7110137fb06d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/enemy/KROGAN MOVESET v0.1.png"
-dest_files=[ "res://.import/KROGAN MOVESET v0.1.png-8c44e22fc174422358df3b8f48b494be.stex" ]
+source_file="res://assets/img/pngwing.com.png"
+dest_files=[ "res://.import/pngwing.com.png-d32a82c9f310f5e41a1c7110137fb06d.stex" ]
 
 [params]
 

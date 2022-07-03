@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/img/sprites/enemy/KROGAN MOVESET v0.1.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/sprites/enemy/Krogan spritesheet v1.0.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 2.ogg" type="AudioStream" id=4]
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 9, 10 ]
+"values": [ 12, 13 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -155,8 +155,8 @@ position = Vector2( 0.2981, 1.82368 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 1
+vframes = 5
+frame = 12
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

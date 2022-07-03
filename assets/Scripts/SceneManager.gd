@@ -7,12 +7,14 @@ export(Array, PackedScene) var enemy_types
 
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
-onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")
 onready var AreaGo: Area2D = $MovingWall/AreaGo
 onready var player = get_parent().get_node("Player")
 onready var go = get_parent().get_node("GUI/UI2/Go")
+onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")
+onready var win = get_parent().get_node("GUI/UI2/WIN")
 
 export(int) var current_stage := 0
+export var next_stage = ""
 
 var spawned = false
 var positions : Array = []
@@ -34,20 +36,37 @@ func _process(delta: float) -> void:
 		go.visible = true
 		
 	
+	if win.visible == true:
+		go.visible = false
+	
 	if player.collision_shape.disabled == true:
 		game_over.visible = true
 		
 	
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
 		get_tree().change_scene("res://scenes/levels/LevelDesert1.tscn")
+		
+	
+	if Input.is_action_pressed("ui_accept") && win.visible == true:
+		next_stage = "res://scenes/levels/" + next_stage + ".tscn"
+		get_tree().change_scene(next_stage)
 		
 	
 
 func _select_stage(number):
-	#camera.limit_left = (positions[number] as Position2D).global_position.x
-	camera.limit_right = (positions[number + 1] as Position2D).global_position.x
-	
-	wall.global_position = (positions[number + 1] as Position2D).global_position
+	if positions.size() - 1 == number + 1:
+		win.visible = true
+		
+		var pausable_members = get_tree().get_nodes_in_group("pausable")
+		for member in pausable_members:
+			member.pause()
+			
+		
+	else:
+		camera.limit_right = (positions[number + 1] as Position2D).global_position.x
+		
+		wall.global_position = (positions[number + 1] as Position2D).global_position
+		
 	
 
 func _enemy_spawn(number):
@@ -69,10 +88,7 @@ func _enemy_spawn(number):
 func _on_Player_death() -> void:
 	var pausable_members = get_tree().get_nodes_in_group("pausable")
 	
-	print(pausable_members.size())
-	
 	for member in pausable_members:
-		print(member.name)
 		member.pause()
 		
 	
