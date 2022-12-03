@@ -24,13 +24,13 @@ export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
-var sceneMenager = null
+var sceneManager = null
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
-	sceneMenager = get_parent().get_node("StageManager")
+	sceneManager = get_parent().get_node("StageManager")
 	
 
 func _process(delta: float) -> void:
@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 				
 			if direction:
 				current_state = STATE.MOVE
+				
 			else:
 				anim_player.play("idle")
 				
@@ -67,21 +68,26 @@ func _process(delta: float) -> void:
 				sprite.flip_h = true
 				if pivot.scale.x > 0:
 					pivot.scale.x = - pivot.scale.x
+				
 			elif direction.x > 0:
 				sprite.flip_h = false
 				if pivot.scale.x < 0:
 					pivot.scale.x = - pivot.scale.x
+				
+			
 			move_and_slide(direction * speed)
 			anim_player.play("move")
 			
 			if !direction:
 				current_state = STATE.IDLE
+				
 			
 		STATE.DIED:
 			collision_shape.disabled = true
 			anim_player.play("died")
 			
 		
+	
 	if debug_mode:
 		state_label.text = str(global_position.x)
 		
@@ -120,6 +126,9 @@ func _get_direction() -> Vector2:
 	
 
 func hit(dps):
+	if(sceneManager.points > 0):
+		sceneManager.points = sceneManager.points - 20
+	sceneManager.hit += 1
 	if current_state != STATE.HIT:
 		var amount = 0
 		current_state = STATE.HIT
@@ -156,13 +165,13 @@ func audioPlay():
 	
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
-	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneMenager.spawned == true:
-		sceneMenager.spawned = false
+	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneManager.spawned == true:
+		sceneManager.spawned = false
 		
 	
 	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
-		sceneMenager.current_stage = sceneMenager.current_stage + 1
-		sceneMenager._select_stage(sceneMenager.current_stage)
+		sceneManager.current_stage = sceneManager.current_stage + 1
+		sceneManager._select_stage(sceneManager.current_stage)
 		go.visible = false
 		
 	

@@ -13,6 +13,7 @@ enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 export(int) var speed := 500
 export(int) var moving_speed := 50
 export(int) var dps := 10
+export(int) var HP := 5
 
 var current_state = STATE.CHASE
 
@@ -22,10 +23,15 @@ var near_enemy: bool = false
 var healthBar = null
 var amount = 0
 
+var sceneManager = null
+
 func _ready():
 	anim_player.play("idle")
 	healthBar = get_node("HealthDisplay")
 	
+	sceneManager = get_parent().get_parent()
+	
+
 func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:
@@ -58,8 +64,8 @@ func _process(delta: float) -> void:
 			collision_shape.disabled = true
 			anim_player.play("died")
 			
-			
-			
+		
+	
 	$HealthDisplay/Label.text = STATE.keys()[current_state]
 	
 
@@ -67,7 +73,7 @@ func hit(dps) -> void:
 	current_state = STATE.HIT
 	healthBar.update_healthbar(dps)
 	amount = amount + dps
-	if amount == 3:
+	if amount == HP:
 		current_state = STATE.DIED
 	
 
@@ -122,6 +128,9 @@ func attack():
 	
 
 func death():
+	sceneManager.points = sceneManager.points + 100
+	sceneManager.kill = sceneManager.kill + 1
+	
 	queue_free()
 
 func _on_Timer_timeout() -> void:

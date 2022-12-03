@@ -13,6 +13,17 @@ onready var go = get_parent().get_node("GUI/UI2/Go")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI2/WIN")
 
+onready var TotalPoints = get_parent().get_node("GUI/UI2/SCORE/TotalPoints")
+onready var TotalPoints2 = get_parent().get_node("GUI/UI2/SCORE/TotalPoints2")
+onready var showedPoints = get_parent().get_node("GUI/UI2/SCORE/ShowedPoints")
+onready var Hit = get_parent().get_node("GUI/UI2/SCORE/Hit")
+onready var Hit2 = get_parent().get_node("GUI/UI2/SCORE/Hit2")
+onready var Kill = get_parent().get_node("GUI/UI2/SCORE/Kill")
+onready var Kill2 = get_parent().get_node("GUI/UI2/SCORE/Kill2")
+onready var points = 0
+onready var hit = 0
+onready var kill = 0
+
 export(int) var current_stage := 0
 export var next_stage = ""
 
@@ -28,6 +39,11 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
+	TotalPoints.text = str(points)
+	showedPoints.text = str(points)
+	Kill.text = str(kill)
+	Hit.text = str(hit)
+	
 	if player.global_position.x > wall.global_position.x - 750 && spawned == false:
 		_enemy_spawn(current_stage)
 		
@@ -40,6 +56,14 @@ func _process(delta: float) -> void:
 		go.visible = false
 	
 	if player.collision_shape.disabled == true:
+		TotalPoints.visible = true
+		TotalPoints2.visible = true
+		showedPoints.visible = false
+		Hit2.visible = true
+		Kill2.visible = true
+		Hit.visible = true
+		Kill.visible = true		
+		
 		game_over.visible = true
 		
 	
@@ -55,6 +79,14 @@ func _process(delta: float) -> void:
 
 func _select_stage(number):
 	if positions.size() - 1 == number + 1:
+		TotalPoints.visible = true
+		TotalPoints2.visible = true
+		showedPoints.visible = false
+		Hit2.visible = true
+		Kill2.visible = true
+		Hit.visible = true
+		Kill.visible = true		
+		
 		win.visible = true
 		
 		var pausable_members = get_tree().get_nodes_in_group("pausable")
