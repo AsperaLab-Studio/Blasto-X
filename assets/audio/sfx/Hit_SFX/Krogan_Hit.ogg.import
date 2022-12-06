@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Krogan_Hit.ogg-2b4d46b097da60845bc4be0aff566560.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Hit_SFX/Krogan_Hit.ogg"
+dest_files=[ "res://.import/Krogan_Hit.ogg-2b4d46b097da60845bc4be0aff566560.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

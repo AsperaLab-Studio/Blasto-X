@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Metal 1.wav-2beb01a8f4722d6e5616f16472356266.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Punches_SFX/Metal 1.wav"
+dest_files=[ "res://.import/Metal 1.wav-2beb01a8f4722d6e5616f16472356266.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

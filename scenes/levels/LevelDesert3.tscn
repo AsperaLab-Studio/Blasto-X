@@ -474,7 +474,7 @@ volume_db = -18.909
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -1827, 531 )
+position = Vector2( -1821, 546 )
 z_index = -1
 script = ExtResource( 11 )
 n_positions = 6

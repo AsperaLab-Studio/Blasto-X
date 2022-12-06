@@ -10,6 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.6
+loop = true
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -164,15 +165,12 @@ tracks/0/keys = {
 extents = Vector2( 29.8517, 80 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 16, 80 )
+extents = Vector2( 16, 77 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.0066, 10 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
-"enemy",
-"pausable",
-]]
+[node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
 collision_layer = 4
 collision_mask = 5
@@ -187,7 +185,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 1
+frame = 6
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -211,14 +209,15 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 visible = false
+position = Vector2( 0, 3 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="Pivot"]
 position = Vector2( 12.3744, 0 )
-monitorable = false
 collision_layer = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
 visible = false
@@ -240,14 +239,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="HealthDisplay"]
-visible = false
 margin_left = -20.1815
 margin_top = -77.7829
 margin_right = 19.8185
 margin_bottom = -63.7829
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]

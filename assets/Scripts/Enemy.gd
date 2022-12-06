@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 				attack_delay_timer.stop()
 		STATE.DIED:
 			collision_shape.disabled = true
+			
 			anim_player.play("died")
 			
 		

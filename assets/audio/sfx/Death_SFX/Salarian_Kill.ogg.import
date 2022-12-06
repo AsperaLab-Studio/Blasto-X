@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Salarian_Kill.ogg-d924bafde304771c5937f9bd1ad2f345.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Death_SFX/Salarian_Kill.ogg"
+dest_files=[ "res://.import/Salarian_Kill.ogg-d924bafde304771c5937f9bd1ad2f345.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
