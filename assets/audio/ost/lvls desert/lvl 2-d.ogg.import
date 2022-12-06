@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/lvl 2-d.ogg-3b2c9dd93f81c50b9565f7b57a889aa0.oggstr"
+path="res://.import/lvl 2-d.ogg-81bae165e503b820f353fe407164e133.oggstr"
 
 [deps]
 
-source_file="res://assets/audio/ost/lvl 2-d.ogg"
-dest_files=[ "res://.import/lvl 2-d.ogg-3b2c9dd93f81c50b9565f7b57a889aa0.oggstr" ]
+source_file="res://assets/audio/ost/lvls desert/lvl 2-d.ogg"
+dest_files=[ "res://.import/lvl 2-d.ogg-81bae165e503b820f353fe407164e133.oggstr" ]
 
 [params]
 
