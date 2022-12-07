@@ -18,29 +18,29 @@
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/img/frontground/obj/LV 1-D T-OBJ.png" type="Texture" id=21]
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 501.441 )
 
-[sub_resource type="DynamicFontData" id=19]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=3]
 size = 130
 outline_size = 2
-font_data = SubResource( 19 )
+font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=4]
 size = 100
 outline_size = 2
-font_data = SubResource( 19 )
+font_data = SubResource( 2 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 15748, 123.529 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1990.15, 120.176 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 199, 114 )
@@ -95,15 +95,15 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
-[sub_resource type="SpriteFrames" id=25]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 24 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
 
-[sub_resource type="GDScript" id=26]
+[sub_resource type="GDScript" id=19]
 
 [node name="testing" type="Node2D"]
 position = Vector2( 64, -456 )
@@ -115,7 +115,7 @@ __meta__ = {
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
 enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
-next_stage = "LevelDesert2"
+next_stage = "LevelOcean2"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
@@ -125,7 +125,7 @@ scale = Vector2( 0.58, 0.57 )
 visible = false
 position = Vector2( 10.6917, -548.038 )
 scale = Vector2( 1, 2.75439 )
-shape = SubResource( 18 )
+shape = SubResource( 1 )
 
 [node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
 position = Vector2( -187.98, 43.5667 )
@@ -135,7 +135,7 @@ scale = Vector2( 1, 1.03052 )
 visible = false
 position = Vector2( 10.6917, -548.038 )
 scale = Vector2( 1, 2.75439 )
-shape = SubResource( 18 )
+shape = SubResource( 1 )
 
 [node name="Positions" type="Node" parent="StageManager"]
 
@@ -359,7 +359,7 @@ margin_left = 939.303
 margin_top = 913.0
 margin_right = 939.303
 margin_bottom = 1030.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 align = 1
 
@@ -369,7 +369,7 @@ margin_left = 643.0
 margin_top = 932.081
 margin_right = 929.0
 margin_bottom = 1022.08
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "SCORE ....."
 align = 1
@@ -379,7 +379,7 @@ margin_left = 1715.0
 margin_top = 7.0
 margin_right = 1715.0
 margin_bottom = 124.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 align = 1
 __meta__ = {
@@ -392,7 +392,7 @@ margin_left = 1107.0
 margin_top = 726.0
 margin_right = 1107.0
 margin_bottom = 843.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 align = 1
 __meta__ = {
@@ -405,7 +405,7 @@ margin_left = 651.0
 margin_top = 753.081
 margin_right = 1095.0
 margin_bottom = 843.081
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "HIT rECEIVED ....."
 align = 1
@@ -419,7 +419,7 @@ margin_left = 1211.0
 margin_top = 830.0
 margin_right = 1211.0
 margin_bottom = 947.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 align = 1
 __meta__ = {
@@ -432,7 +432,7 @@ margin_left = 651.0
 margin_top = 841.081
 margin_right = 1196.0
 margin_bottom = 931.081
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "ENEMIES KILLED ....."
 align = 1
@@ -446,7 +446,7 @@ scale = Vector2( 0.58, 0.57 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
 visible = false
 position = Vector2( 15525.4, 415.184 )
-shape = SubResource( 22 )
+shape = SubResource( 5 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
 visible = false
@@ -456,7 +456,7 @@ scale = Vector2( 0.57, 0.58 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
 position = Vector2( 870.27, 780.269 )
-shape = SubResource( 23 )
+shape = SubResource( 6 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
 position = Vector2( 0, 626.875 )
@@ -464,7 +464,7 @@ scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
 position = Vector2( 14914.6, 812.236 )
-shape = SubResource( 22 )
+shape = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 64, 1312 )
@@ -505,49 +505,50 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
-frames = SubResource( 25 )
-frame = 5
+frames = SubResource( 18 )
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
-frame = 1
+frames = SubResource( 18 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
+frames = SubResource( 18 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
-frame = 2
+frames = SubResource( 18 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 552, 528 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
-frame = 9
+frames = SubResource( 18 )
+frame = 10
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
-frame = 2
+frames = SubResource( 18 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 25 )
-frame = 4
+frames = SubResource( 18 )
+frame = 5
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -561,7 +562,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
 position = Vector2( 720, 824 )
@@ -570,7 +571,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
 position = Vector2( 8064, 837 )
@@ -579,7 +580,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
 position = Vector2( 8576, 837 )
@@ -588,7 +589,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
 position = Vector2( 1616, 824 )
@@ -597,7 +598,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
 position = Vector2( 2416, 824 )
@@ -606,7 +607,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/up"]
 position = Vector2( 3568, 824 )
@@ -615,7 +616,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/up"]
 position = Vector2( 4376, 829 )
@@ -624,7 +625,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/up"]
 position = Vector2( 5272, 829 )
@@ -633,7 +634,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/up"]
 position = Vector2( 6072, 829 )
@@ -642,7 +643,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/up"]
 position = Vector2( 7224, 829 )
@@ -651,7 +652,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="down" type="Node" parent="obj"]
 
@@ -662,7 +663,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/down"]
 position = Vector2( 416, 976 )
@@ -671,7 +672,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
 position = Vector2( 1056, 976 )
@@ -680,7 +681,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
 position = Vector2( 1168, 976 )
@@ -689,7 +690,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
 position = Vector2( 2144, 976 )
@@ -698,7 +699,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/down"]
 position = Vector2( 3160, 976 )
@@ -707,7 +708,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/down"]
 position = Vector2( 3952, 981 )
@@ -716,7 +717,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/down"]
 position = Vector2( 4312, 981 )
@@ -725,7 +726,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/down"]
 position = Vector2( 4952, 981 )
@@ -734,7 +735,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/down"]
 position = Vector2( 5064, 981 )
@@ -743,7 +744,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/down"]
 position = Vector2( 6040, 981 )
@@ -752,7 +753,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ13" type="Sprite" parent="obj/down"]
 position = Vector2( 7680, 973 )
@@ -761,7 +762,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ14" type="Sprite" parent="obj/down"]
 position = Vector2( 8288, 968 )
@@ -770,7 +771,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/down"]
 position = Vector2( 7056, 981 )
@@ -779,7 +780,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 26 )
+script = SubResource( 19 )
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI2/MarginContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]

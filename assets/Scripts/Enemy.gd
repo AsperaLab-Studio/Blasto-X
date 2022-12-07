@@ -7,6 +7,7 @@ onready var attack_delay_timer: Timer = $AttackDelayTimer
 onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
+onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 
 enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 
@@ -62,8 +63,16 @@ func _process(delta: float) -> void:
 				attack_delay_timer.stop()
 		STATE.DIED:
 			collision_shape.disabled = true
+			collision_shape_body.disabled = true
 			
 			anim_player.play("died")
+			
+			var x = global_position.x - target.global_position.x
+			var direction = Vector2(x, 0)
+			var speed = 1000
+			move_and_slide(direction.normalized() * speed)
+			
+			
 			
 		
 	
@@ -74,8 +83,6 @@ func hit(dps) -> void:
 	current_state = STATE.HIT
 	healthBar.update_healthbar(dps)
 	amount = amount + dps
-	if amount == HP:
-		current_state = STATE.DIED
 	
 
 func move_towards_target():
@@ -143,4 +150,9 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
-		current_state = STATE.CHASE
+		if amount >= HP:
+			current_state = STATE.DIED
+		else:
+			current_state = STATE.CHASE
+		
+	
