@@ -13,6 +13,7 @@ onready var collition_area2d : CollisionShape2D = $Pivot/Area2D/CollisionShape2D
 enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
+export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var dps := 10
 export(int) var HP := 5
@@ -57,11 +58,11 @@ func _process(delta: float) -> void:
 			if !near_enemy:
 				current_state = STATE.WAIT
 		STATE.ATTACK:
-			if near_player:
-				anim_player.play("attack")
-			else:
-				current_state = STATE.CHASE
-				attack_delay_timer.stop()
+				if near_player && !target.invincible:
+					anim_player.play("attack")
+				else:
+					current_state = STATE.WAIT
+					attack_delay_timer.stop()
 		STATE.DIED:
 			collision_shape_body.disabled = true
 			collision_shape.disabled = true
@@ -71,9 +72,8 @@ func _process(delta: float) -> void:
 			anim_player.play("died")
 			
 			var direction = Vector2((global_position.x - target.global_position.x), 0).normalized()
-			var speed = 200
 			
-			move_and_slide(direction * speed)
+			move_and_slide(direction * death_speed)
 			
 		
 	
@@ -81,9 +81,12 @@ func _process(delta: float) -> void:
 	
 
 func hit(dps) -> void:
-	current_state = STATE.HIT
 	healthBar.update_healthbar(dps)
 	amount = amount + dps
+	if amount >= HP:
+		current_state = STATE.DIED
+	else:
+		current_state = STATE.HIT
 	
 
 func move_towards_target():
@@ -151,9 +154,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
-		if amount >= HP:
-			current_state = STATE.DIED
-		else:
-			current_state = STATE.CHASE
+		current_state = STATE.CHASE
 		
 	

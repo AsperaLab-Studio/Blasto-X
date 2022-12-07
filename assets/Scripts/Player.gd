@@ -13,6 +13,8 @@ onready var bullet = preload("res://scenes/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
 onready var go = get_parent().get_node("GUI/UI2/Go")
 onready var state_label = $StateLabel
+onready var invincibility_timer = $InvincibilityTimer
+onready var invincible = false
 
 export var debug_mode : bool
 
@@ -56,13 +58,10 @@ func _process(delta: float) -> void:
 			
 		STATE.ATTACK:
 			anim_player.play("attack")
-			
 		STATE.HIT:
 			anim_player.play("hit")
-			
 		STATE.SHOOT:
 			anim_player.play("shoot")
-			
 		STATE.MOVE:
 			if direction.x < 0:
 				sprite.flip_h = true
@@ -74,7 +73,6 @@ func _process(delta: float) -> void:
 				if pivot.scale.x < 0:
 					pivot.scale.x = - pivot.scale.x
 				
-			
 			move_and_slide(direction * speed)
 			anim_player.play("move")
 			
@@ -126,13 +124,15 @@ func _get_direction() -> Vector2:
 	
 
 func hit(dps):
-	if(sceneManager.points > 0):
-		sceneManager.points = sceneManager.points - 20
-	sceneManager.hit += 1
-	if current_state != STATE.HIT:
-		var amount = 0
-		current_state = STATE.HIT
-		emit_signal("update_healthbar", dps)
+	if invincible == false:
+		if sceneManager.points > 0:
+			sceneManager.points = sceneManager.points - 20
+		sceneManager.hit += 1
+		if current_state != STATE.HIT:
+			var amount = 0
+			current_state = STATE.HIT
+			emit_signal("update_healthbar", dps)
+		
 	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -179,3 +179,15 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 func _on_HealthBar_value_changed(value: float) -> void:
 	if value == 0:
 		current_state = STATE.DIED
+	
+
+func _on_InvincibilityTimer_timeout() -> void:
+	invincible = false
+	
+
+
+func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
+	if anim_name == "hit":
+		invincibility_timer.start(1)
+		invincible = true
+	

@@ -140,7 +140,10 @@ extents = Vector2( 11.5, 72 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.0066, 10 )
 
-[node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemy",
+"pausable",
+]]
 z_index = -1
 collision_layer = 4
 collision_mask = 5
@@ -187,8 +190,8 @@ shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="Pivot"]
 position = Vector2( 12.3744, 0 )
-collision_layer = 2
 monitorable = false
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
 visible = false
