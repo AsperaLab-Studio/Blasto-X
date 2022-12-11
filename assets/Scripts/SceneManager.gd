@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 	
 
 func _select_stage(number):
-	if positions.size() - 1 == number + 1: 
+	if positions.size() - 1 == number: 
 		TotalPoints.visible = true
 		TotalPoints2.visible = true
 		showedPoints.visible = false

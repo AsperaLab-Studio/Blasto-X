@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://assets/img/sprites/Player/Cerulean Star.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/sprites/Player/Blasto.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/audio/sfx/Carnifex_SFX/Carnifex 01.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.100157, 0.202038 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8 ]
+"values": [ 0, 1, 2 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -64,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.428672, 0.890033 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14 ]
+"values": [ 15, 16, 17 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 9, 10 ]
+"values": [ 12, 13 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 6, 7 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 3, 5, 3 ]
+"values": [ 9, 10, 11, 10 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -142,7 +142,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 3 ]
+"values": [ 3, 4, 5 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -174,19 +174,19 @@ tracks/2/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 41.6478, 69.6069 )
+extents = Vector2( 44.1051, 88.9644 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 34.774, 17.6011 )
+extents = Vector2( 62.0006, 11.344 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 18.0893, 69.1531 )
+extents = Vector2( 36.5503, 91.1653 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "pausable",
 "player",
 ]]
-position = Vector2( 101.987, 159.735 )
+position = Vector2( 107.98, 153.742 )
 scale = Vector2( 2.13561, 2.13561 )
 collision_layer = 2
 script = ExtResource( 5 )
@@ -211,8 +211,8 @@ position = Vector2( -47.8023, -55.5912 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
-vframes = 5
-frame = 9
+vframes = 6
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -226,14 +226,14 @@ anims/shoot = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( -47.7312, -54.4283 )
+position = Vector2( -59.6581, -53.0251 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( -46.7223, -73.4208 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
-position = Vector2( -1.12889, -0.816019 )
+position = Vector2( 52.268, 25.0481 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 position = Vector2( -0.897877, -0.350758 )
@@ -241,7 +241,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false
-position = Vector2( 36.7991, -0.124202 )
+position = Vector2( 49.314, 14.0593 )
 shape = SubResource( 8 )
 
 [node name="HitBox" type="Area2D" parent="."]

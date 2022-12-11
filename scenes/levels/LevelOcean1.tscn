@@ -475,7 +475,7 @@ speed = 200
 "pausable",
 ]]
 stream = ExtResource( 3 )
-volume_db = -18.909
+volume_db = 1.0
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
@@ -506,49 +506,49 @@ texture = ExtResource( 2 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 18 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 552, 528 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 10
+frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 5
+frame = 7
 playing = true
 
 [node name="obj" type="Node" parent="."]

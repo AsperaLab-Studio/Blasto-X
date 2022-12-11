@@ -348,7 +348,7 @@ __meta__ = {
 margin_right = 1870.0
 margin_bottom = 1030.0
 max_value = 200.0
-value = 200.0
+value = 100.0
 texture_progress = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -480,7 +480,7 @@ script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
 position = Vector2( -1840, 512 )
-z_index = -1
+z_index = -2
 script = ExtResource( 11 )
 n_positions = 6
 scenes = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ) ]
@@ -517,49 +517,48 @@ texture = ExtResource( 3 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 18 )
-frame = 8
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 4
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 5
+frame = 9
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 5
+frame = 9
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 7
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -568,7 +567,7 @@ playing = true
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/up"]
 position = Vector2( 208, 824 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -577,7 +576,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
 position = Vector2( 720, 824 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -586,7 +585,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
 position = Vector2( 8064, 837 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -595,7 +594,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
 position = Vector2( 8576, 837 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -604,7 +603,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
 position = Vector2( 1616, 824 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -613,7 +612,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
 position = Vector2( 2416, 824 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -622,7 +621,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/up"]
 position = Vector2( 3568, 824 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -631,7 +630,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/up"]
 position = Vector2( 4376, 829 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -640,7 +639,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/up"]
 position = Vector2( 5272, 829 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -649,7 +648,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/up"]
 position = Vector2( 6072, 829 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -658,7 +657,7 @@ script = SubResource( 19 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/up"]
 position = Vector2( 7224, 829 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
