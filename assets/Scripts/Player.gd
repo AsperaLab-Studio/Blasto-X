@@ -185,7 +185,6 @@ func _on_InvincibilityTimer_timeout() -> void:
 	invincible = false
 	
 
-
 func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 	if anim_name == "hit":
 		invincibility_timer.start(1)

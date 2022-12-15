@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/video/menuBackground.ogv" type="VideoStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Scripts/VideoPlayer.gd" type="Script" id=6]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=7]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=8]
+[ext_resource path="res://scenes/MainMenu.tres" type="StyleBox" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 650
@@ -27,6 +28,13 @@ font_path = "res://assets/fonts/Quickzag-rOzO.otf"
 size = 100
 outline_size = 4
 font_data = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0.72549, 0.164706, 1 )
+border_width_top = 18
+border_width_bottom = 23
+border_color = Color( 0.839216, 0, 1, 1 )
+shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -163,12 +171,74 @@ script = ExtResource( 4 )
 
 [node name="mainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -20.0
 autoplay = true
+bus = "Music"
 script = ExtResource( 7 )
 
-[node name="FG_mq8WXoAQbvnR" type="Sprite" parent="."]
+[node name="background" type="Sprite" parent="."]
 position = Vector2( 970.519, 539.208 )
 scale = Vector2( 1.20464, 1.20464 )
 z_index = -1
 texture = ExtResource( 8 )
+
+[node name="MusicSlider" type="HSlider" parent="."]
+margin_left = 21.1893
+margin_top = 943.512
+margin_right = 799.741
+margin_bottom = 1066.51
+custom_icons/tick = ExtResource( 3 )
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 5 )
+min_value = -70.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXSlider" type="HSlider" parent="."]
+margin_left = 1192.97
+margin_top = 943.512
+margin_right = 1924.97
+margin_bottom = 1066.51
+custom_icons/tick = ExtResource( 3 )
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = ExtResource( 9 )
+min_value = -70.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="music" type="Label" parent="."]
+visible = false
+margin_left = 46.5518
+margin_top = 886.051
+margin_right = 206.552
+margin_bottom = 976.051
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+text = "MUSIC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfx" type="Label" parent="."]
+visible = false
+margin_left = 1169.66
+margin_top = 886.051
+margin_right = 1376.66
+margin_bottom = 976.051
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+text = "EFFECTS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="MusicSlider" to="MenuPlayer" method="_on_VolumeSlider_value_changed"]
+[connection signal="value_changed" from="SFXSlider" to="MenuPlayer" method="_on_SFXSlider_value_changed"]

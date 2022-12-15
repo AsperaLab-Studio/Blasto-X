@@ -475,7 +475,7 @@ speed = 200
 "pausable",
 ]]
 stream = ExtResource( 2 )
-volume_db = -18.909
+bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
