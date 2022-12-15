@@ -18,6 +18,7 @@ position = Vector2( 13.4543, 6.72717 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -15.128
+bus = "Music"
 script = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
@@ -49,14 +50,14 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="Control/MarginContainer"]
-margin_right = 314.0
+margin_right = 293.0
 margin_bottom = 45.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
-margin_right = 314.0
+margin_right = 293.0
 margin_bottom = 45.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )
