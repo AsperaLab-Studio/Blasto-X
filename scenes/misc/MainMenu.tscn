@@ -1,35 +1,26 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/video/menuBackground.ogv" type="VideoStream" id=2]
-[ext_resource path="res://assets/img/cursor.png" type="Texture" id=3]
-[ext_resource path="res://assets/Scripts/MenuCursor.gd" type="Script" id=4]
-[ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/Scripts/VideoPlayer.gd" type="Script" id=6]
-[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=7]
-[ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=8]
-[ext_resource path="res://scenes/MainMenu.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Scripts/MenuCursor.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/img/cursor.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
+[ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 650
 outline_size = 5
-font_data = ExtResource( 1 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 250
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://assets/fonts/Quickzag-rOzO.otf"
-
-[sub_resource type="DynamicFont" id=4]
-size = 100
-outline_size = 4
-font_data = SubResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0.72549, 0.164706, 1 )
 border_width_top = 18
 border_width_bottom = 23
@@ -39,17 +30,6 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MenuPlayer" type="VideoPlayer" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-stream = ExtResource( 2 )
-autoplay = true
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,6 +53,7 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+visible = false
 margin_right = 1527.0
 margin_bottom = 1139.0
 __meta__ = {
@@ -80,6 +61,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TextureRect/MarginContainer/title"]
+visible = false
 margin_right = 1527.0
 margin_bottom = 585.0
 custom_fonts/font = SubResource( 1 )
@@ -99,6 +81,7 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer3"]
+visible = false
 margin_right = 1527.0
 margin_bottom = 982.0
 __meta__ = {
@@ -106,6 +89,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TextureRect/MarginContainer3/title"]
+visible = false
 margin_right = 1527.0
 margin_bottom = 225.0
 custom_fonts/font = SubResource( 2 )
@@ -118,34 +102,34 @@ anchor_left = 0.05
 anchor_top = 0.061
 anchor_right = 1.042
 anchor_bottom = 1.0
-margin_left = 653.0
-margin_top = 573.999
-margin_right = -865.0
-margin_bottom = -228.001
+margin_left = 672.0
+margin_top = 459.72
+margin_right = -846.0
+margin_bottom = -202.4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="menu" type="VBoxContainer" parent="TextureRect/MarginContainer2"]
 margin_right = 386.0
-margin_bottom = 278.0
+margin_bottom = 352.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="start" type="Label" parent="TextureRect/MarginContainer2/menu"]
 margin_right = 386.0
-margin_bottom = 90.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "START GAME"
 align = 1
 
 [node name="option" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_top = 94.0
+margin_top = 89.0
 margin_right = 386.0
-margin_bottom = 184.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 174.0
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 text = "OPTIONS"
 align = 1
@@ -153,44 +137,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="exit" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_top = 188.0
+[node name="credits" type="Label" parent="TextureRect/MarginContainer2/menu"]
+margin_top = 178.0
 margin_right = 386.0
-margin_bottom = 278.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 263.0
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+text = "CREDITS"
+align = 1
+
+[node name="exit" type="Label" parent="TextureRect/MarginContainer2/menu"]
+margin_top = 267.0
+margin_right = 386.0
+margin_bottom = 352.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 text = "EXIT"
 align = 1
 
 [node name="cursor" type="Sprite" parent="TextureRect/MarginContainer2/menu"]
 position = Vector2( -36.9899, 37.0034 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 flip_h = true
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 
 [node name="mainTheme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 3 )
 autoplay = true
 bus = "Music"
-script = ExtResource( 7 )
+script = ExtResource( 2 )
 
 [node name="background" type="Sprite" parent="."]
 position = Vector2( 970.519, 539.208 )
 scale = Vector2( 1.20464, 1.20464 )
 z_index = -1
-texture = ExtResource( 8 )
+texture = ExtResource( 5 )
 
 [node name="MusicSlider" type="HSlider" parent="."]
 margin_left = 21.1893
 margin_top = 943.512
 margin_right = 799.741
 margin_bottom = 1066.51
-custom_icons/tick = ExtResource( 3 )
-custom_icons/grabber_disabled = ExtResource( 3 )
-custom_icons/grabber_highlight = ExtResource( 3 )
-custom_icons/grabber = ExtResource( 3 )
-custom_styles/slider = SubResource( 5 )
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 3 )
 min_value = -70.0
 max_value = 0.0
 __meta__ = {
@@ -198,15 +191,15 @@ __meta__ = {
 }
 
 [node name="SFXSlider" type="HSlider" parent="."]
-margin_left = 1192.97
+margin_left = 1177.31
 margin_top = 943.512
-margin_right = 1924.97
+margin_right = 1909.31
 margin_bottom = 1066.51
-custom_icons/tick = ExtResource( 3 )
-custom_icons/grabber_disabled = ExtResource( 3 )
-custom_icons/grabber_highlight = ExtResource( 3 )
-custom_icons/grabber = ExtResource( 3 )
-custom_styles/slider = ExtResource( 9 )
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = ExtResource( 7 )
 min_value = -70.0
 max_value = 0.0
 __meta__ = {
@@ -214,12 +207,11 @@ __meta__ = {
 }
 
 [node name="music" type="Label" parent="."]
-visible = false
-margin_left = 46.5518
+margin_left = 21.1893
 margin_top = 886.051
-margin_right = 206.552
+margin_right = 181.189
 margin_bottom = 976.051
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "MUSIC"
 __meta__ = {
@@ -227,12 +219,11 @@ __meta__ = {
 }
 
 [node name="sfx" type="Label" parent="."]
-visible = false
-margin_left = 1169.66
+margin_left = 1177.31
 margin_top = 886.051
-margin_right = 1376.66
+margin_right = 1384.31
 margin_bottom = 976.051
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 text = "EFFECTS"
 align = 1
@@ -240,5 +231,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="value_changed" from="MusicSlider" to="MenuPlayer" method="_on_VolumeSlider_value_changed"]
-[connection signal="value_changed" from="SFXSlider" to="MenuPlayer" method="_on_SFXSlider_value_changed"]
+[node name="checkFullscreen" type="CheckBox" parent="."]
+margin_left = 20.7684
+margin_top = 11.8921
+margin_right = 278.768
+margin_bottom = 108.892
+mouse_filter = 1
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
+text = "FullScreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="MusicSlider" to="TextureRect/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="SFXSlider" to="TextureRect/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
+[connection signal="toggled" from="checkFullscreen" to="TextureRect/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]

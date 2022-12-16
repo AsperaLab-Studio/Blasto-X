@@ -6,6 +6,7 @@ onready var musicLabel: Label = get_parent().get_parent().get_parent().get_paren
 onready var sfxLabel: Label = get_parent().get_parent().get_parent().get_parent().get_node("sfx")
 onready var musicSlider: HSlider = get_parent().get_parent().get_parent().get_parent().get_node("MusicSlider")
 onready var sfxSlider: HSlider = get_parent().get_parent().get_parent().get_parent().get_node("SFXSlider")
+onready var fullscreen: CheckBox = get_parent().get_parent().get_parent().get_parent().get_node("checkFullscreen")
 
 func _ready():
 	for node in get_parent().get_children():
@@ -35,16 +36,22 @@ func _process(delta):
 			sfxLabel.visible = false
 			musicSlider.visible = false
 			sfxSlider.visible = false
+			
+			fullscreen.visible = false
 		1:
 			musicLabel.visible = true
 			sfxLabel.visible = true
 			musicSlider.visible = true
 			sfxSlider.visible = true
+			
+			fullscreen.visible = true
 		2:
 			musicLabel.visible = false
 			sfxLabel.visible = false
 			musicSlider.visible = false
 			sfxSlider.visible = false
+			
+			fullscreen.visible = false
 		
 	
 	if Input.is_action_just_pressed("move_up"):
@@ -53,9 +60,23 @@ func _process(delta):
 		_set_selection(index + 1)
 	if Input.is_action_just_pressed("ui_accept"):
 		if index == 0:
-			get_tree().change_scene("res://scenes/prologue.tscn")
-			
+			get_tree().change_scene("res://scenes/misc/prologue.tscn")
+		
 		if index == 2:
+			get_tree().change_scene("res://scenes/misc/credits.tscn")
+			
+		if index == 3:
 			get_tree().quit()
 		
 	
+
+
+func _on_SFXSlider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value);
+
+func _on_MusicSlider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value);
+
+
+func _on_checkFullscreen_toggled(button_pressed: bool) -> void:
+	OS.window_fullscreen = !OS.window_fullscreen
