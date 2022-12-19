@@ -39,9 +39,7 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 17.0
 
 [node name="MenuPlayer" type="VideoPlayer" parent="."]
 visible = false
@@ -73,7 +71,7 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer"]
-margin_right = 1527.0
+margin_right = 1544.0
 margin_bottom = 1139.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,8 +80,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="TextureRect/MarginContainer/title"]
 margin_right = 1527.0
 margin_bottom = 585.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "X"
 align = 1
 
@@ -99,7 +97,7 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer3"]
-margin_right = 1527.0
+margin_right = 1544.0
 margin_bottom = 982.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -108,8 +106,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="TextureRect/MarginContainer3/title"]
 margin_right = 1527.0
 margin_bottom = 225.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.415686, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "BLASTO"
 align = 1
 
@@ -127,26 +125,26 @@ __meta__ = {
 }
 
 [node name="menu" type="VBoxContainer" parent="TextureRect/MarginContainer2"]
-margin_right = 386.0
+margin_right = 403.0
 margin_bottom = 278.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="start" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_right = 386.0
+margin_right = 403.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "START GAME"
 align = 1
 
 [node name="option" type="Label" parent="TextureRect/MarginContainer2/menu"]
 margin_top = 94.0
-margin_right = 386.0
+margin_right = 403.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "OPTIONS"
 align = 1
 __meta__ = {
@@ -155,10 +153,10 @@ __meta__ = {
 
 [node name="exit" type="Label" parent="TextureRect/MarginContainer2/menu"]
 margin_top = 188.0
-margin_right = 386.0
+margin_right = 403.0
 margin_bottom = 278.0
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "EXIT"
 align = 1
 
@@ -198,10 +196,10 @@ __meta__ = {
 }
 
 [node name="SFXSlider" type="HSlider" parent="."]
-margin_left = 1192.97
-margin_top = 943.512
-margin_right = 1924.97
-margin_bottom = 1066.51
+margin_left = 1165.0
+margin_top = 946.0
+margin_right = 1897.0
+margin_bottom = 1069.0
 custom_icons/tick = ExtResource( 3 )
 custom_icons/grabber_disabled = ExtResource( 3 )
 custom_icons/grabber_highlight = ExtResource( 3 )
@@ -209,9 +207,6 @@ custom_icons/grabber = ExtResource( 3 )
 custom_styles/slider = ExtResource( 9 )
 min_value = -70.0
 max_value = 0.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="music" type="Label" parent="."]
 visible = false
@@ -219,8 +214,8 @@ margin_left = 46.5518
 margin_top = 886.051
 margin_right = 206.552
 margin_bottom = 976.051
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "MUSIC"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,8 +227,8 @@ margin_left = 1169.66
 margin_top = 886.051
 margin_right = 1376.66
 margin_bottom = 976.051
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "EFFECTS"
 align = 1
 __meta__ = {
