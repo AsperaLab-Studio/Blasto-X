@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/video/ASPERA_LAB_STUDIOS.ogv" type="VideoStream" id=1]
-[ext_resource path="res://assets/Scripts/intro sh.gd" type="Script" id=2]
+[ext_resource path="res://assets/Scripts/intro sh.gd" type="Script" id=1]
+[ext_resource path="res://assets/video/ASPERA_LAB_STUDIOS.ogv" type="VideoStream" id=2]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 13.4543, 6.72717 )
@@ -18,8 +18,8 @@ margin_left = -13.3303
 margin_top = -8.00006
 margin_right = 1914.67
 margin_bottom = 1089.0
-stream = ExtResource( 1 )
+stream = ExtResource( 2 )
 autoplay = true
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [connection signal="finished" from="Control/VideoPlayer" to="Control/VideoPlayer" method="_on_VideoPlayer_finished"]
