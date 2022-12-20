@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pxArt.png-1f77a628a655777e97fbbf290c6f3d3b.stex"
+path="res://.import/lavorazioni v2.png-9e5c95203953eed9061ced1139fb4fa2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pxArt.png"
-dest_files=[ "res://.import/pxArt.png-1f77a628a655777e97fbbf290c6f3d3b.stex" ]
+source_file="res://assets/img/frontground/lvl desert/tileset/lv3-d/lavorazioni v2.png"
+dest_files=[ "res://.import/lavorazioni v2.png-9e5c95203953eed9061ced1139fb4fa2.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
