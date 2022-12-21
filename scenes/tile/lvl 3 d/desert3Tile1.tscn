@@ -66,37 +66,37 @@ hframes = 7
 frame = 4
 
 [node name="LV1-D T-STR7" type="Sprite" parent="."]
-position = Vector2( 856.476, -192.661 )
+position = Vector2( 847.476, -192.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 5
 
 [node name="LV1-D T-STR8" type="Sprite" parent="."]
-position = Vector2( 1193.48, -192.661 )
+position = Vector2( 1189.48, -192.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 6
 
 [node name="LV1-D T-STR9" type="Sprite" parent="."]
-position = Vector2( 1534.48, -192.661 )
+position = Vector2( 1530.48, -195.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 2
 
 [node name="LV1-D T-STR10" type="Sprite" parent="."]
-position = Vector2( 1875.48, -192.661 )
+position = Vector2( 1869.48, -195.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 5
 
 [node name="LV1-D T-STR11" type="Sprite" parent="."]
-position = Vector2( 2216.48, -192.661 )
+position = Vector2( 2211.48, -195.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 6
 
 [node name="LV1-D T-STR14" type="Sprite" parent="."]
-position = Vector2( 2557.48, -192.661 )
+position = Vector2( 2552.48, -195.661 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 1
