@@ -30,9 +30,6 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -64,8 +61,8 @@ __meta__ = {
 visible = false
 margin_right = 1527.0
 margin_bottom = 585.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "X"
 align = 1
 
@@ -92,8 +89,8 @@ __meta__ = {
 visible = false
 margin_right = 1527.0
 margin_bottom = 225.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.415686, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "BLASTO"
 align = 1
 
@@ -120,8 +117,8 @@ __meta__ = {
 [node name="start" type="Label" parent="TextureRect/MarginContainer2/menu"]
 margin_right = 386.0
 margin_bottom = 85.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "START GAME"
 align = 1
 
@@ -129,8 +126,8 @@ align = 1
 margin_top = 89.0
 margin_right = 386.0
 margin_bottom = 174.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "OPTIONS"
 align = 1
 __meta__ = {
@@ -141,8 +138,8 @@ __meta__ = {
 margin_top = 178.0
 margin_right = 386.0
 margin_bottom = 263.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "CREDITS"
 align = 1
 
@@ -150,8 +147,8 @@ align = 1
 margin_top = 267.0
 margin_right = 386.0
 margin_bottom = 352.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "EXIT"
 align = 1
 
@@ -186,6 +183,7 @@ custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = SubResource( 3 )
 min_value = -70.0
 max_value = 0.0
+value = -17.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -202,17 +200,15 @@ custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = ExtResource( 7 )
 min_value = -70.0
 max_value = 0.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+value = -8.0
 
 [node name="music" type="Label" parent="."]
 margin_left = 21.1893
 margin_top = 886.051
 margin_right = 181.189
 margin_bottom = 976.051
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "MUSIC"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -223,8 +219,8 @@ margin_left = 1177.31
 margin_top = 886.051
 margin_right = 1384.31
 margin_bottom = 976.051
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "EFFECTS"
 align = 1
 __meta__ = {
@@ -237,12 +233,12 @@ margin_top = 11.8921
 margin_right = 278.768
 margin_bottom = 108.892
 mouse_filter = 1
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "FullScreen"
 __meta__ = {
 "_edit_use_anchors_": false
