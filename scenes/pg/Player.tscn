@@ -244,10 +244,10 @@ visible = false
 position = Vector2( 49.314, 14.0593 )
 shape = SubResource( 8 )
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="PlayerHitBox" type="Area2D" parent="."]
 position = Vector2( -51.5811, -72.1814 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 visible = false
 position = Vector2( -2.62695, 18.5508 )
 shape = SubResource( 9 )

@@ -8,7 +8,7 @@ onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
-onready var collition_area2d : CollisionShape2D = $Pivot/Area2D/CollisionShape2D
+onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 
 enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 

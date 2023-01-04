@@ -188,12 +188,12 @@ shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Pivot"]
+[node name="AttackCollision" type="Area2D" parent="Pivot"]
 position = Vector2( 12.3744, 0 )
 monitorable = false
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false
 position = Vector2( 28.8216, -24.9452 )
 scale = Vector2( 0.600001, 1 )
@@ -225,5 +225,5 @@ bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
-[connection signal="area_entered" from="Pivot/Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Pivot/Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_exited"]

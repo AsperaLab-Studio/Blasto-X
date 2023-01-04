@@ -4,7 +4,7 @@ extends KinematicBody2D
 signal update_healthbar
 signal death
 
-onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
+onready var collision_shape : CollisionShape2D = $PlayerHitBox/CollisionShape2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
@@ -165,14 +165,15 @@ func audioPlay():
 	
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
-	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneManager.spawned == true:
-		sceneManager.spawned = false
+	if area.name == "PlayerHitBox":
+		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneManager.spawned == true:
+			sceneManager.spawned = false
+			
 		
-	
-	if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
-		sceneManager.current_stage = sceneManager.current_stage + 1
-		sceneManager._select_stage(sceneManager.current_stage)
-		go.visible = false
+		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
+			sceneManager.current_stage = sceneManager.current_stage + 1
+			sceneManager._select_stage(sceneManager.current_stage)
+			go.visible = false
 		
 	
 
