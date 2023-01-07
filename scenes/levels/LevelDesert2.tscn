@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
-[ext_resource path="res://scenes/tile/lvl 2 d/desert1Tile1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/tile/lvl 2 d/desert2Tile1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/img/pngwing.com.png" type="Texture" id=16]
 [ext_resource path="res://scenes/pg/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
@@ -475,14 +475,15 @@ bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -1840, 512 )
+position = Vector2( -2056.11, 500.014 )
 z_index = -2
 script = ExtResource( 11 )
+increment = 1848
 n_positions = 6
 scenes = [ ExtResource( 12 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
-position = Vector2( 8872, 1192 )
+position = Vector2( 8955.9, 1084.12 )
 scale = Vector2( 0.995586, 0.97842 )
 z_index = 5
 texture = ExtResource( 18 )
@@ -507,49 +508,49 @@ texture = ExtResource( 3 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 18 )
-frame = 6
+frame = 10
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 10
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 5
+frame = 9
 playing = true
 
 [node name="obj" type="Node" parent="."]

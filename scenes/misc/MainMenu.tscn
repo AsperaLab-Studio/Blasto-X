@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Scripts/MenuCursor.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=4]
