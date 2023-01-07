@@ -174,6 +174,7 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 			sceneManager.current_stage = sceneManager.current_stage + 1
 			sceneManager._select_stage(sceneManager.current_stage)
 			go.visible = false
+			
 		
 	
 

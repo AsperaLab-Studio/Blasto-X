@@ -10,17 +10,18 @@ position = Vector2( 64, -32 )
 position = Vector2( 216, 120 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 1
 
 [node name="LV1-D T-STR2" type="Sprite" parent="."]
 position = Vector2( 608, 120 )
 texture = ExtResource( 2 )
 hframes = 3
-frame = 2
 
 [node name="LV1-D T-STR3" type="Sprite" parent="."]
 position = Vector2( 1000, 120 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 2
 
 [node name="LV1-D T-STR4" type="Sprite" parent="."]
 position = Vector2( 1392, 120 )
@@ -38,18 +39,17 @@ frame = 2
 position = Vector2( 127, -140 )
 texture = ExtResource( 1 )
 hframes = 3
+frame = 1
 
 [node name="tileset 2d walls2" type="Sprite" parent="."]
 position = Vector2( 523, -140 )
 texture = ExtResource( 1 )
 hframes = 3
-frame = 2
 
 [node name="tileset 2d walls3" type="Sprite" parent="."]
 position = Vector2( 911, -140 )
 texture = ExtResource( 1 )
 hframes = 3
-frame = 1
 
 [node name="tileset 2d walls4" type="Sprite" parent="."]
 position = Vector2( 1299, -140 )
@@ -60,4 +60,4 @@ hframes = 3
 position = Vector2( 1692, -140 )
 texture = ExtResource( 1 )
 hframes = 3
-frame = 1
+frame = 2
