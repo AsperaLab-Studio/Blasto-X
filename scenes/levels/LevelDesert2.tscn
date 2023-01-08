@@ -111,7 +111,7 @@ animations = [ {
 [sub_resource type="GDScript" id=20]
 
 [node name="testing" type="Node2D"]
-position = Vector2( 64, -456 )
+position = Vector2( 0, -451.071 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
 }
@@ -479,9 +479,14 @@ script = ExtResource( 8 )
 position = Vector2( -2056.11, 500.014 )
 z_index = -2
 script = ExtResource( 11 )
-increment = 1952
-n_positions = 6
-scenes = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ) ]
+increment = 1954
+scenes = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ]
+
+[node name="desert1 door2" type="Sprite" parent="."]
+position = Vector2( 9264.88, 1184.39 )
+scale = Vector2( 0.995586, 1.09842 )
+z_index = 5
+texture = ExtResource( 18 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -517,47 +522,48 @@ texture = ExtResource( 3 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
