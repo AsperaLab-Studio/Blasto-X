@@ -341,8 +341,8 @@ __meta__ = {
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer"]
 margin_right = 1870.0
 margin_bottom = 1030.0
-max_value = 200.0
-value = 200.0
+max_value = 2000.0
+value = 2000.0
 texture_progress = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -356,8 +356,8 @@ margin_left = 939.303
 margin_top = 913.0
 margin_right = 939.303
 margin_bottom = 1030.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 
 [node name="TotalPoints2" type="Label" parent="GUI/UI2/SCORE"]
@@ -366,8 +366,8 @@ margin_left = 643.0
 margin_top = 932.081
 margin_right = 929.0
 margin_bottom = 1022.08
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "SCORE ....."
 align = 1
 
@@ -376,8 +376,8 @@ margin_left = 1715.0
 margin_top = 7.0
 margin_right = 1715.0
 margin_bottom = 124.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 
 [node name="Hit" type="Label" parent="GUI/UI2/SCORE"]
@@ -386,8 +386,8 @@ margin_left = 1107.0
 margin_top = 726.0
 margin_right = 1107.0
 margin_bottom = 843.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -399,8 +399,8 @@ margin_left = 651.0
 margin_top = 753.081
 margin_right = 1095.0
 margin_bottom = 843.081
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "HIT rECEIVED ....."
 align = 1
 __meta__ = {
@@ -413,8 +413,8 @@ margin_left = 1211.0
 margin_top = 830.0
 margin_right = 1211.0
 margin_bottom = 947.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -426,8 +426,8 @@ margin_left = 651.0
 margin_top = 841.081
 margin_right = 1196.0
 margin_bottom = 931.081
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "ENEMIES KILLED ....."
 align = 1
 
@@ -463,9 +463,7 @@ position = Vector2( 64, 1312 )
 scale = Vector2( 1, 1 )
 speed = 200
 
-[node name="ost" type="AudioStreamPlayer" parent="." groups=[
-"pausable",
-]]
+[node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 stream = ExtResource( 2 )
 bus = "Music"
 script = ExtResource( 8 )
@@ -522,48 +520,48 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 18 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 8
+frame = 7
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 7
+frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 9
+frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 9
+frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
+frame = 10
 playing = true
 
 [node name="obj" type="Node" parent="."]

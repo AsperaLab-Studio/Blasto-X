@@ -7,9 +7,8 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
-length = 0.5
+length = 0.7
 loop = true
-step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -17,7 +16,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.100157, 0.204389 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 7, 8 ]
@@ -29,7 +28,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.214577 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -48,7 +47,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 4 )
 } ],
-"times": PoolRealArray( 0.208465 )
+"times": PoolRealArray( 0.4 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -84,7 +83,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 length = 0.5
-step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -92,7 +90,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 9, 10 ]
@@ -116,8 +114,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+length = 1.1
 loop = true
-step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -125,10 +123,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0100001, 0.29, 0.56, 0.822848 ),
+"times": PoolRealArray( 0.0100001, 0.3, 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 3, 5 ]
+"values": [ 3, 4, 3, 4 ]
 }
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -140,16 +138,13 @@ extents = Vector2( 11.5, 72 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.0066, 10 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
-"enemy",
-"pausable",
-]]
+[node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )
 speed = 654
-moving_speed = 100
+moving_speed = 150
 dps = 20
 HP = 3
 
@@ -159,7 +154,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 6
+frame = 9
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -190,8 +185,8 @@ shape = SubResource( 7 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 position = Vector2( 12.3744, 0 )
-monitorable = false
 collision_layer = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false

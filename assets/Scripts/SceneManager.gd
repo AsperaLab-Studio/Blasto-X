@@ -75,6 +75,8 @@ func _process(delta: float) -> void:
 		next_stage = "res://scenes/levels/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		
+	if Input.is_action_pressed("menu"):
+		get_tree().change_scene("res://scenes/misc/MainMenu.tscn")
 	
 
 func _select_stage(number):
