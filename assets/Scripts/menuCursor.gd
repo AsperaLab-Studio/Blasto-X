@@ -1,7 +1,11 @@
 extends Sprite
 
+export var firstTab = ""
+export var thirdTab = ""
+
 var positions = []
 var index = 0
+
 onready var musicLabel: Label = get_parent().get_parent().get_parent().get_parent().get_node("music")
 onready var sfxLabel: Label = get_parent().get_parent().get_parent().get_parent().get_node("sfx")
 onready var musicSlider: HSlider = get_parent().get_parent().get_parent().get_parent().get_node("MusicSlider")
@@ -30,43 +34,72 @@ func _set_selection(newIndex):
 	
 
 func _process(delta): 
-	match(index):
-		0:
-			musicLabel.visible = false
-			sfxLabel.visible = false
-			musicSlider.visible = false
-			sfxSlider.visible = false
+	if (firstTab != ""):
+		match(index):
+			0:
+				musicLabel.visible = false
+				sfxLabel.visible = false
+				musicSlider.visible = false
+				sfxSlider.visible = false
+				
+				fullscreen.visible = false
+			1:
+				musicLabel.visible = true
+				sfxLabel.visible = true
+				musicSlider.visible = true
+				sfxSlider.visible = true
+				
+				fullscreen.visible = true
+			2:
+				musicLabel.visible = false
+				sfxLabel.visible = false
+				musicSlider.visible = false
+				sfxSlider.visible = false
+				
+				fullscreen.visible = false
 			
-			fullscreen.visible = false
-		1:
-			musicLabel.visible = true
-			sfxLabel.visible = true
-			musicSlider.visible = true
-			sfxSlider.visible = true
+	else:
+		match(index):
+			0:
+				musicLabel.visible = true
+				sfxLabel.visible = true
+				musicSlider.visible = true
+				sfxSlider.visible = true
+				
+				fullscreen.visible = true
+			1:
+				musicLabel.visible = false
+				sfxLabel.visible = false
+				musicSlider.visible = false
+				sfxSlider.visible = false
+				
+				fullscreen.visible = false
 			
-			fullscreen.visible = true
-		2:
-			musicLabel.visible = false
-			sfxLabel.visible = false
-			musicSlider.visible = false
-			sfxSlider.visible = false
-			
-			fullscreen.visible = false
-		
 	
-	if Input.is_action_just_pressed("move_up"):
-		_set_selection(index - 1)
-	if Input.is_action_just_pressed("move_down"):
-		_set_selection(index + 1)
-	if Input.is_action_just_pressed("ui_accept"):
-		if index == 0:
-			get_tree().change_scene("res://scenes/misc/prologue.tscn")
+	if get_parent().get_parent().get_parent().get_parent().visible == true:
+		if Input.is_action_just_pressed("move_up"):
+			_set_selection(index - 1)
+		if Input.is_action_just_pressed("move_down"):
+			_set_selection(index + 1)
 		
-		if index == 2:
-			get_tree().change_scene("res://scenes/misc/credits.tscn")
+	if Input.is_action_just_pressed("ui_accept"):
+		if (firstTab != ""):
+			if index == 0:
+				get_tree().change_scene("res://scenes/" + firstTab + ".tscn")
 			
-		if index == 3:
-			get_tree().quit()
+			if index == 2:
+				get_tree().change_scene("res://scenes/" + thirdTab + ".tscn")
+			
+			if index == 3:
+				get_tree().quit()
+			
+		else:
+			if index == 1:
+				get_tree().change_scene("res://scenes/" + thirdTab + ".tscn")
+			
+			if index == 2:
+				get_tree().quit()
+			
 		
 	
 
@@ -76,7 +109,6 @@ func _on_SFXSlider_value_changed(value: float) -> void:
 
 func _on_MusicSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value);
-
 
 func _on_checkFullscreen_toggled(button_pressed: bool) -> void:
 	OS.window_fullscreen = !OS.window_fullscreen

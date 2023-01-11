@@ -27,6 +27,7 @@ export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
 var sceneManager = null
+var paused = false
 
 export var collidings_areas = []
 
@@ -36,59 +37,62 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	
-	direction = _get_direction()
-	if direction.x:
-		orientation.x = direction.x
-	
-	match current_state:
-		STATE.IDLE:
-			if Input.is_action_just_pressed("attack"):
-				current_state = STATE.ATTACK
+	if(!paused):
+		direction = _get_direction()
+		if direction.x:
+			orientation.x = direction.x
+		
+		match current_state:
+			STATE.IDLE:
+				if Input.is_action_just_pressed("attack"):
+					current_state = STATE.ATTACK
+					
+				if Input.is_action_just_pressed("shoot"):
+					current_state = STATE.SHOOT
+					
+				if direction:
+					current_state = STATE.MOVE
+					
+				else:
+					anim_player.play("idle")
+					
 				
-			if Input.is_action_just_pressed("shoot"):
-				current_state = STATE.SHOOT
+			STATE.ATTACK:
+				anim_player.play("attack")
+			STATE.HIT:
+				anim_player.play("hit")
+			STATE.SHOOT:
+				anim_player.play("shoot")
+			STATE.MOVE:
+				if direction.x < 0:
+					sprite.flip_h = true
+					if pivot.scale.x > 0:
+						pivot.scale.x = - pivot.scale.x
+					
+				elif direction.x > 0:
+					sprite.flip_h = false
+					if pivot.scale.x < 0:
+						pivot.scale.x = - pivot.scale.x
+					
+				move_and_slide(direction * speed)
+				anim_player.play("move")
 				
-			if direction:
-				current_state = STATE.MOVE
+				if !direction:
+					current_state = STATE.IDLE
+					
 				
-			else:
-				anim_player.play("idle")
+			STATE.DIED:
+				collision_shape.disabled = true
+				anim_player.play("died")
 				
-			
-		STATE.ATTACK:
-			anim_player.play("attack")
-		STATE.HIT:
-			anim_player.play("hit")
-		STATE.SHOOT:
-			anim_player.play("shoot")
-		STATE.MOVE:
-			if direction.x < 0:
-				sprite.flip_h = true
-				if pivot.scale.x > 0:
-					pivot.scale.x = - pivot.scale.x
-				
-			elif direction.x > 0:
-				sprite.flip_h = false
-				if pivot.scale.x < 0:
-					pivot.scale.x = - pivot.scale.x
-				
-			move_and_slide(direction * speed)
-			anim_player.play("move")
-			
-			if !direction:
-				current_state = STATE.IDLE
-				
-			
-		STATE.DIED:
-			collision_shape.disabled = true
-			anim_player.play("died")
 			
 		
-	
-	if debug_mode:
-		state_label.text = str(global_position.x)
+		if debug_mode:
+			state_label.text = str(global_position.x)
+			
 		
+	else:
+		anim_player.stop()
 	
 
 func attack():

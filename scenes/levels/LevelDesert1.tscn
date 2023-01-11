@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
+[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=12]
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile4.tscn" type="PackedScene" id=15]
@@ -20,9 +21,19 @@
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV 1-D T-OBJ.png" type="Texture" id=21]
+[ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
+[ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
+[ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0, 0.72549, 0.164706, 1 )
+border_width_top = 18
+border_width_bottom = 23
+border_color = Color( 0.839216, 0, 1, 1 )
+shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
@@ -109,7 +120,7 @@ animations = [ {
 [sub_resource type="GDScript" id=19]
 
 [node name="testing" type="Node2D"]
-position = Vector2( 64, -456 )
+position = Vector2( 63, -456 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
 }
@@ -300,12 +311,145 @@ scale = Vector2( 0.58, 0.57 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="UI2" type="Control" parent="GUI"]
-anchor_right = 1.0
+[node name="menu" type="Control" parent="GUI"]
+visible = false
+margin_left = -5.0
+margin_top = -112.0
+margin_right = 35.0
+margin_bottom = -72.0
+rect_pivot_offset = Vector2( -859, 1292 )
+
+[node name="Control" type="Control" parent="GUI/menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/menu/Control"]
+anchor_left = 0.05
+anchor_top = 0.061
+anchor_right = 1.042
 anchor_bottom = 1.0
+margin_left = 672.0
+margin_top = 459.72
+margin_right = 1099.32
+margin_bottom = 774.16
+
+[node name="menu" type="VBoxContainer" parent="GUI/menu/Control/MarginContainer2"]
+margin_right = 467.0
+margin_bottom = 351.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="option" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_right = 467.0
+margin_bottom = 85.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "OPTIONS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mainMenu" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_top = 89.0
+margin_right = 467.0
+margin_bottom = 174.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EXIT TO MAIN MENU"
+align = 1
+
+[node name="exit" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_top = 178.0
+margin_right = 467.0
+margin_bottom = 263.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EXIT"
+align = 1
+
+[node name="cursor" type="Sprite" parent="GUI/menu/Control/MarginContainer2/menu"]
+position = Vector2( -36.9899, 37.0034 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 22 )
+flip_h = true
+script = ExtResource( 12 )
+thirdTab = "misc/MainMenu"
+
+[node name="MusicSlider" type="HSlider" parent="GUI/menu"]
+margin_left = 21.1893
+margin_top = 943.512
+margin_right = 799.741
+margin_bottom = 1066.51
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = SubResource( 20 )
+min_value = -70.0
+max_value = 0.0
+value = -17.0
+
+[node name="SFXSlider" type="HSlider" parent="GUI/menu"]
+margin_left = 1177.31
+margin_top = 943.512
+margin_right = 1909.31
+margin_bottom = 1066.51
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = ExtResource( 23 )
+min_value = -70.0
+max_value = 0.0
+value = -8.0
+
+[node name="music" type="Label" parent="GUI/menu"]
+margin_left = 21.1893
+margin_top = 886.051
+margin_right = 181.189
+margin_bottom = 976.051
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "MUSIC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfx" type="Label" parent="GUI/menu"]
+margin_left = 1177.31
+margin_top = 886.051
+margin_right = 1384.31
+margin_bottom = 976.051
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EFFECTS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="checkFullscreen" type="CheckBox" parent="GUI/menu"]
+margin_left = 20.7684
+margin_top = 11.8921
+margin_right = 278.768
+margin_bottom = 108.892
+mouse_filter = 1
+custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "FullScreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI2" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="GAME OVER" type="Sprite" parent="GUI/UI2"]
 visible = false
@@ -520,48 +664,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 18 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 6
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 18 )
-frame = 10
+frame = 7
 playing = true
 
 [node name="obj" type="Node" parent="."]
