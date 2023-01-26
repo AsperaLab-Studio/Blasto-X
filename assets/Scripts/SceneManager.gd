@@ -10,6 +10,7 @@ export var next_stage = ""
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
 onready var AreaGo: Area2D = $MovingWall/AreaGo
+onready var sound = get_parent().get_node("ost")
 onready var player = get_parent().get_node("Player")
 onready var go = get_parent().get_node("GUI/UI2/Go")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")

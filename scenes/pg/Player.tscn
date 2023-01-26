@@ -182,7 +182,10 @@ extents = Vector2( 67.384, 11.344 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 36.5503, 91.1653 )
 
-[node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
+[node name="Player" type="KinematicBody2D" groups=[
+"pausable",
+"player",
+]]
 position = Vector2( 107.98, 153.742 )
 scale = Vector2( 2.13561, 2.13561 )
 collision_layer = 2
@@ -209,7 +212,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 6
-frame = 2
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -239,7 +242,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false
 position = Vector2( 54.6974, 14.0593 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
