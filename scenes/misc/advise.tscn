@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Scripts/intro sh.gd" type="Script" id=1]
-[ext_resource path="res://assets/video/ASPERA_LAB_STUDIOS.ogv" type="VideoStream" id=2]
+[ext_resource path="res://assets/video/Untitled-video.ogv" type="VideoStream" id=2]
+[ext_resource path="res://assets/img/Black.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 13.4543, 6.72717 )
@@ -24,6 +25,11 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-nextScene = "advise"
+nextScene = "MainMenu"
+
+[node name="Black" type="Sprite" parent="."]
+position = Vector2( 1700.03, 941.918 )
+scale = Vector2( 0.823481, 0.550081 )
+texture = ExtResource( 3 )
 
 [connection signal="finished" from="Control/VideoPlayer" to="Control/VideoPlayer" method="_on_VideoPlayer_finished"]
