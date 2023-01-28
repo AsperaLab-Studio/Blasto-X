@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LV 2d Floor .png-188073d017b48ac30515e44496a41338.stex"
+path="res://.import/LV1-D Back.png-bf569592ce7429d75bd53871badcc1ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/frontground/lvl desert/tileset/lv2-d/LV 2d Floor .png"
-dest_files=[ "res://.import/LV 2d Floor .png-188073d017b48ac30515e44496a41338.stex" ]
+source_file="res://assets/img/frontground/lvl desert/tileset/lv1-d/LV1-D Back.png"
+dest_files=[ "res://.import/LV1-D Back.png-bf569592ce7429d75bd53871badcc1ce.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

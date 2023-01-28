@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/background/desert/desert1.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/GAME OVER.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
@@ -20,7 +20,7 @@
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
-[ext_resource path="res://assets/img/frontground/obj/LV 1-D T-OBJ.png" type="Texture" id=21]
+[ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
 [ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
 [ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]

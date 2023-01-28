@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv2-d/tileset pareti livelli 2d completo.png" type="Texture" id=1]
-[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv2-d/LV 2d Floor .png" type="Texture" id=2]
+[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv2-d/LV2-D Fore.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv2-d/LV2-D Back.png" type="Texture" id=2]
 [ext_resource path="res://pxArt.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]

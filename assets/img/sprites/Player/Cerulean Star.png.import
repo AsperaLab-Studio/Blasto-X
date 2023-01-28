@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cerulean Star.png-24d3117b38ad7cc5d0ed6d8888130815.stex"
+path="res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/Player/Cerulean Star.png"
-dest_files=[ "res://.import/Cerulean Star.png-24d3117b38ad7cc5d0ed6d8888130815.stex" ]
+source_file="res://assets/img/sprites/Player/cerulean Star.png"
+dest_files=[ "res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex" ]
 
 [params]
 

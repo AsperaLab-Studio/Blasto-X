@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset pareti livelli 2d completo.png-d413d9485616565d8f33e25a31ef352f.stex"
+path="res://.import/LV1-D Fore.png-2e0a5523d56972862bdfb53a4e347588.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/frontground/lvl desert/tileset/lv2-d/tileset pareti livelli 2d completo.png"
-dest_files=[ "res://.import/tileset pareti livelli 2d completo.png-d413d9485616565d8f33e25a31ef352f.stex" ]
+source_file="res://assets/img/frontground/lvl desert/tileset/lv1-d/LV1-D Fore.png"
+dest_files=[ "res://.import/LV1-D Fore.png-2e0a5523d56972862bdfb53a4e347588.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LV 1-D T-OBJ.png-5e89a544afc73f70ad1e42a8648404e5.stex"
+path="res://.import/LV3-D Back test.png-47277136d12c21e9ff5dfda0041970e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/frontground/obj/LV 1-D T-OBJ.png"
-dest_files=[ "res://.import/LV 1-D T-OBJ.png-5e89a544afc73f70ad1e42a8648404e5.stex" ]
+source_file="res://assets/img/frontground/lvl desert/tileset/lv3-d/LV3-D Back test.png"
+dest_files=[ "res://.import/LV3-D Back test.png-47277136d12c21e9ff5dfda0041970e4.stex" ]
 
 [params]
 
