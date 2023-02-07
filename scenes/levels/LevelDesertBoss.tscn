@@ -1,0 +1,667 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
+[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/GAME OVER.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/go.png" type="Texture" id=5]
+[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
+[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
+[ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
+[ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
+[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=12]
+[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/img/pngwing.com.png" type="Texture" id=16]
+[ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
+[ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://pxArt.png" type="Texture" id=20]
+[ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
+[ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
+[ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
+[ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/Quickzag-rOzO.otf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 130
+outline_size = 2
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
+outline_size = 2
+font_data = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0.72549, 0.164706, 1 )
+border_width_top = 18
+border_width_bottom = 23
+border_color = Color( 0.839216, 0, 1, 1 )
+shadow_color = Color( 1, 0.6, 0.6, 0.6 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 15748, 123.529 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1990.15, 120.176 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 199, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 398, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 597, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 796, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 995, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1194, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1393, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1592, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1791, 0, 199, 114 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1990, 0, 199, 114 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="GDScript" id=20]
+
+[node name="testing" type="Node2D"]
+position = Vector2( 63, -456 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1020.87 ]
+}
+
+[node name="StageManager" type="Node2D" parent="."]
+position = Vector2( -680, -496 )
+
+[node name="EnemiesContainer" type="Node" parent="StageManager"]
+
+[node name="Enemy" parent="StageManager/EnemiesContainer" instance=ExtResource( 19 )]
+position = Vector2( 1308, 863 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UI2" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GAME OVER" type="Sprite" parent="GUI/UI2"]
+visible = false
+position = Vector2( 862, 453 )
+scale = Vector2( 0.84, 0.84 )
+z_index = 7
+texture = ExtResource( 4 )
+
+[node name="Go" type="Sprite" parent="GUI/UI2"]
+visible = false
+position = Vector2( 1480, 512 )
+scale = Vector2( 0.815703, 0.801639 )
+texture = ExtResource( 5 )
+
+[node name="WIN" type="Sprite" parent="GUI/UI2"]
+visible = false
+position = Vector2( 911.697, 483.081 )
+scale = Vector2( 1.16068, 1.16068 )
+texture = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/UI2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = -18.0
+margin_bottom = -26.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer"]
+margin_right = 1870.0
+margin_bottom = 1030.0
+max_value = 2000.0
+value = 2000.0
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SCORE" type="Node" parent="GUI/UI2"]
+
+[node name="TotalPoints" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 939.303
+margin_top = 913.0
+margin_right = 939.303
+margin_bottom = 1030.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+
+[node name="TotalPoints2" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 643.0
+margin_top = 932.081
+margin_right = 929.0
+margin_bottom = 1022.08
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "SCORE ....."
+align = 1
+
+[node name="ShowedPoints" type="Label" parent="GUI/UI2/SCORE"]
+margin_left = 1715.0
+margin_top = 7.0
+margin_right = 1715.0
+margin_bottom = 124.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+
+[node name="Hit" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 1107.0
+margin_top = 726.0
+margin_right = 1107.0
+margin_bottom = 843.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hit2" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 651.0
+margin_top = 753.081
+margin_right = 1095.0
+margin_bottom = 843.081
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "HIT rECEIVED ....."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kill" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 1211.0
+margin_top = 830.0
+margin_right = 1211.0
+margin_bottom = 947.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kill2" type="Label" parent="GUI/UI2/SCORE"]
+visible = false
+margin_left = 651.0
+margin_top = 841.081
+margin_right = 1196.0
+margin_bottom = 931.081
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ENEMIES KILLED ....."
+align = 1
+
+[node name="menu" type="Control" parent="GUI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -727.819, 536.729 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="GUI/menu"]
+margin_left = 63.0
+margin_top = -456.0
+margin_right = 103.0
+margin_bottom = -416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/menu/Control"]
+anchor_left = 0.05
+anchor_top = 0.061
+anchor_right = 1.042
+anchor_bottom = 1.0
+margin_left = 672.0
+margin_top = 850.295
+margin_right = 1105.32
+margin_bottom = 1164.74
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="VBoxContainer" parent="GUI/menu/Control/MarginContainer2"]
+margin_right = 473.0
+margin_bottom = 352.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="option" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_right = 473.0
+margin_bottom = 85.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "OPTIONS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mainMenu" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_top = 89.0
+margin_right = 473.0
+margin_bottom = 174.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EXIT TO MAIN MENU"
+align = 1
+
+[node name="exit" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
+margin_top = 178.0
+margin_right = 473.0
+margin_bottom = 263.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EXIT"
+align = 1
+
+[node name="cursor" type="Sprite" parent="GUI/menu/Control/MarginContainer2/menu"]
+position = Vector2( -36.9899, 37.0034 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 22 )
+flip_h = true
+script = ExtResource( 12 )
+thirdTab = "misc/MainMenu"
+
+[node name="MusicSlider" type="HSlider" parent="GUI/menu"]
+margin_left = 21.1893
+margin_top = 850.278
+margin_right = 799.741
+margin_bottom = 973.276
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = SubResource( 5 )
+min_value = -70.0
+max_value = 0.0
+value = -17.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXSlider" type="HSlider" parent="GUI/menu"]
+margin_left = 1177.31
+margin_top = 847.758
+margin_right = 1909.31
+margin_bottom = 970.756
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = ExtResource( 23 )
+min_value = -70.0
+max_value = 0.0
+value = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="music" type="Label" parent="GUI/menu"]
+margin_left = 21.1893
+margin_top = 792.817
+margin_right = 181.189
+margin_bottom = 882.817
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "MUSIC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sfx" type="Label" parent="GUI/menu"]
+margin_left = 1177.31
+margin_top = 790.297
+margin_right = 1384.31
+margin_bottom = 880.297
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EFFECTS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="checkFullscreen" type="CheckBox" parent="GUI/menu"]
+margin_left = 20.7684
+margin_top = 74.8882
+margin_right = 278.768
+margin_bottom = 171.888
+mouse_filter = 1
+custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "FullScreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="border" type="Node" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="border"]
+position = Vector2( 131.253, 411.345 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
+position = Vector2( 15525.4, 415.184 )
+shape = SubResource( 6 )
+
+[node name="Left" type="StaticBody2D" parent="border"]
+position = Vector2( 386.667, 11.83 )
+rotation = 1.5708
+scale = Vector2( 0.57, 0.58 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
+position = Vector2( 870.27, 780.269 )
+shape = SubResource( 7 )
+
+[node name="Right" type="StaticBody2D" parent="border"]
+position = Vector2( 1963, 11.83 )
+rotation = 1.5708
+scale = Vector2( 0.57, 0.58 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Right"]
+position = Vector2( 870.27, 780.269 )
+shape = SubResource( 7 )
+
+[node name="Bottom" type="StaticBody2D" parent="border"]
+position = Vector2( 0, 626.875 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
+position = Vector2( 14914.6, 812.236 )
+shape = SubResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64, 1312 )
+scale = Vector2( 1, 1 )
+speed = 200
+
+[node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
+stream = ExtResource( 2 )
+bus = "Music"
+script = ExtResource( 8 )
+
+[node name="floor" type="Node2D" parent="."]
+position = Vector2( -2981.75, 542 )
+z_index = -2
+script = ExtResource( 11 )
+increment = 2720
+n_positions = 1
+scenes = [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ) ]
+
+[node name="desert1 door" type="Sprite" parent="."]
+position = Vector2( 8872, 1192 )
+scale = Vector2( 0.995586, 0.97842 )
+z_index = 5
+texture = ExtResource( 18 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="background" type="Node" parent="ParallaxBackground"]
+
+[node name="desert1" type="Sprite" parent="ParallaxBackground/background"]
+position = Vector2( 1288, 360 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 3 )
+
+[node name="desert2" type="Sprite" parent="ParallaxBackground/background"]
+position = Vector2( 120, 352 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 3 )
+
+[node name="background2" type="Node" parent="ParallaxBackground"]
+
+[node name="pxArt" type="Sprite" parent="ParallaxBackground/background2"]
+visible = false
+position = Vector2( 368, 352 )
+scale = Vector2( 0.726563, 0.726563 )
+texture = ExtResource( 20 )
+
+[node name="pxArt2" type="Sprite" parent="ParallaxBackground/background2"]
+visible = false
+position = Vector2( 1104, 352 )
+scale = Vector2( 0.726563, 0.796875 )
+texture = ExtResource( 20 )
+
+[node name="pxArt3" type="Sprite" parent="ParallaxBackground/background2"]
+visible = false
+position = Vector2( 1848, 348 )
+scale = Vector2( 0.726563, 0.820313 )
+texture = ExtResource( 20 )
+flip_h = true
+
+[node name="obj" type="Node" parent="ParallaxBackground"]
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1368.43, 522.308 )
+scale = Vector2( 0.812395, 0.784622 )
+frames = SubResource( 19 )
+frame = 4
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 588.103, 50.5414 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1644.18, 125.905 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+frame = 10
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 294.987, 271.825 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 564.379, 635.503 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1799.08, 696.116 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1022.34, 361.622 )
+scale = Vector2( 0.901329, 0.885789 )
+frames = SubResource( 19 )
+frame = 3
+playing = true
+
+[node name="obj" type="Node" parent="."]
+
+[node name="up" type="Node" parent="obj"]
+
+[node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/up"]
+position = Vector2( 208, 824 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 1
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
+position = Vector2( 720, 824 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 12
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
+position = Vector2( 8064, 835 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 1
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
+position = Vector2( 8576, 837 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 12
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
+position = Vector2( 1616, 824 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 8
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
+position = Vector2( 2416, 824 )
+z_index = -2
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 10
+script = SubResource( 20 )
+
+[node name="down" type="Node" parent="obj"]
+
+[node name="LV 1-D T-OBJ" type="Sprite" parent="obj/down"]
+position = Vector2( 56, 976 )
+z_index = 3
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 11
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/down"]
+position = Vector2( 416, 976 )
+z_index = 3
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
+position = Vector2( 1056, 976 )
+z_index = 3
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 3
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
+position = Vector2( 1168, 976 )
+z_index = 3
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 4
+script = SubResource( 20 )
+
+[node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
+position = Vector2( 2144, 976 )
+z_index = 3
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 2
+script = SubResource( 20 )
+
+[connection signal="value_changed" from="GUI/UI2/MarginContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/menu/MusicSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="GUI/menu/SFXSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
+[connection signal="toggled" from="GUI/menu/checkFullscreen" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]
+[connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
+[connection signal="update_healthbar" from="Player" to="GUI/UI2/MarginContainer" method="_on_Player_update_healthbar"]
