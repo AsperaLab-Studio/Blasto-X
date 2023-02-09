@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Desert1.png-ddad582a0c2e390840f1dc515f339cdf.stex"
+path="res://.import/desert1.png-69890dff73b5d47e6174e75be1239fe8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/background/desert/Desert1.png"
-dest_files=[ "res://.import/Desert1.png-ddad582a0c2e390840f1dc515f339cdf.stex" ]
+source_file="res://assets/img/background/desert/desert1.png"
+dest_files=[ "res://.import/desert1.png-69890dff73b5d47e6174e75be1239fe8.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
