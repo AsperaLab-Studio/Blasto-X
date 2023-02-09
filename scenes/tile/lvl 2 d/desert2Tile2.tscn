@@ -14,56 +14,56 @@ scale = Vector2( 3.40444, 1.38482 )
 texture = ExtResource( 3 )
 
 [node name="LV1-D T-STR" type="Sprite" parent="."]
-position = Vector2( 216.331, 102.895 )
+position = Vector2( 216.025, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
 
 [node name="LV1-D T-STR2" type="Sprite" parent="."]
-position = Vector2( 608.404, 102.895 )
+position = Vector2( 608.025, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 2
 
 [node name="LV1-D T-STR3" type="Sprite" parent="."]
-position = Vector2( 1000.32, 102.895 )
+position = Vector2( 1000.03, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
 
 [node name="LV1-D T-STR4" type="Sprite" parent="."]
-position = Vector2( 1392.18, 102.895 )
+position = Vector2( 1392.03, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 2
 
 [node name="LV1-D T-STR5" type="Sprite" parent="."]
-position = Vector2( 1779.14, 102.942 )
+position = Vector2( 1779.03, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
 
 [node name="tileset 2d walls2" type="Sprite" parent="."]
-position = Vector2( 128.07, -167.917 )
+position = Vector2( 128.025, -167.918 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 2
+frame = 3
 
 [node name="tileset 2d walls3" type="Sprite" parent="."]
-position = Vector2( 519.072, -167.917 )
+position = Vector2( 519.025, -167.918 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 1
 
 [node name="tileset 2d walls4" type="Sprite" parent="."]
-position = Vector2( 910.035, -167.917 )
+position = Vector2( 910.025, -167.918 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 3
 
 [node name="tileset 2d walls5" type="Sprite" parent="."]
-position = Vector2( 1301.04, -167.915 )
+position = Vector2( 1301.03, -167.918 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 1
 
 [node name="tileset 2d walls6" type="Sprite" parent="."]
-position = Vector2( 1691.99, -167.915 )
+position = Vector2( 1692.03, -167.918 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 2
+frame = 3
