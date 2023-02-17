@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://assets/Scripts/Enemy.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "KroganBoss",
+"language": "GDScript",
+"path": "res://assets/Scripts/kroganBoss.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://assets/Scripts/Player.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
+"KroganBoss": "",
 "Player": ""
 }
 
