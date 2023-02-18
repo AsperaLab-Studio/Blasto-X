@@ -1,7 +1,7 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ost/The Jaw soundtrack.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/GAME OVER.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/go.png" type="Texture" id=5]
@@ -9,14 +9,16 @@
 [ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
+[ext_resource path="res://scenes/pg/kroganBoss.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=12]
-[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/img/barHorizontal_orange.png" type="Texture" id=13]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/img/pngwing.com.png" type="Texture" id=16]
+[ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/Scripts/BossSceneManager.gd" type="Script" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
@@ -111,11 +113,13 @@ __meta__ = {
 
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
+script = ExtResource( 19 )
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
-[node name="Enemy" parent="StageManager/EnemiesContainer" instance=ExtResource( 19 )]
-position = Vector2( 1308, 863 )
+[node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
+position = Vector2( 755.132, 845.216 )
+HP = 30
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -150,19 +154,31 @@ margin_top = 24.0
 margin_right = -18.0
 margin_bottom = -26.0
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer"]
 margin_right = 1870.0
 margin_bottom = 1030.0
-max_value = 2000.0
-value = 2000.0
+value = 100.0
 texture_progress = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginContainer2" type="Node2D" parent="GUI/UI2"]
+position = Vector2( 1645.14, 1000.87 )
+script = ExtResource( 17 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer2"]
+anchor_right = 0.139
+margin_left = -1462.59
+margin_top = 1.7627
+margin_right = -655.593
+margin_bottom = 85.7627
+rect_scale = Vector2( 1.97409, 0.377509 )
+max_value = 30.0
+value = 30.0
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
 
 [node name="SCORE" type="Node" parent="GUI/UI2"]
 
@@ -423,7 +439,7 @@ rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Right"]
-position = Vector2( 870.27, 780.269 )
+position = Vector2( 870.135, 1606.41 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
@@ -435,9 +451,10 @@ position = Vector2( 14914.6, 812.236 )
 shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 64, 1312 )
+position = Vector2( 133.4, 1388.85 )
 scale = Vector2( 1, 1 )
 speed = 200
+boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 stream = ExtResource( 2 )
@@ -445,14 +462,15 @@ bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -2981.75, 542 )
+position = Vector2( -3186.7, 542 )
 z_index = -2
 script = ExtResource( 11 )
 increment = 2720
 n_positions = 1
-scenes = [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ) ]
+scenes = [ ExtResource( 15 ), ExtResource( 14 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
+visible = false
 position = Vector2( 8872, 1192 )
 scale = Vector2( 0.995586, 0.97842 )
 z_index = 5
@@ -499,48 +517,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 5
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 9
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -548,6 +567,7 @@ playing = true
 [node name="up" type="Node" parent="obj"]
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 208, 824 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -557,6 +577,7 @@ frame = 1
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 720, 824 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -566,6 +587,7 @@ frame = 12
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 8064, 835 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -575,6 +597,7 @@ frame = 1
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 8576, 837 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -584,6 +607,7 @@ frame = 12
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 1616, 824 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -593,6 +617,7 @@ frame = 8
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
+visible = false
 position = Vector2( 2416, 824 )
 z_index = -2
 texture = ExtResource( 21 )
@@ -604,6 +629,7 @@ script = SubResource( 20 )
 [node name="down" type="Node" parent="obj"]
 
 [node name="LV 1-D T-OBJ" type="Sprite" parent="obj/down"]
+visible = false
 position = Vector2( 56, 976 )
 z_index = 3
 texture = ExtResource( 21 )
@@ -613,6 +639,7 @@ frame = 11
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/down"]
+visible = false
 position = Vector2( 416, 976 )
 z_index = 3
 texture = ExtResource( 21 )
@@ -622,6 +649,7 @@ frame = 9
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
+visible = false
 position = Vector2( 1056, 976 )
 z_index = 3
 texture = ExtResource( 21 )
@@ -631,6 +659,7 @@ frame = 3
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
+visible = false
 position = Vector2( 1168, 976 )
 z_index = 3
 texture = ExtResource( 21 )
@@ -640,6 +669,7 @@ frame = 4
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
+visible = false
 position = Vector2( 2144, 976 )
 z_index = 3
 texture = ExtResource( 21 )
@@ -649,6 +679,7 @@ frame = 2
 script = SubResource( 20 )
 
 [connection signal="value_changed" from="GUI/UI2/MarginContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI2/MarginContainer2/HealthBar" to="StageManager/EnemiesContainer/KroganBoss" method="_on_BossHealth_value_changed"]
 [connection signal="value_changed" from="GUI/menu/MusicSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="GUI/menu/SFXSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
 [connection signal="toggled" from="GUI/menu/checkFullscreen" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]

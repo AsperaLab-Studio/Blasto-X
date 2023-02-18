@@ -182,10 +182,7 @@ extents = Vector2( 67.384, 11.344 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 36.5503, 91.1653 )
 
-[node name="Player" type="KinematicBody2D" groups=[
-"pausable",
-"player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
 position = Vector2( 107.98, 153.742 )
 scale = Vector2( 2.13561, 2.13561 )
 collision_layer = 2
@@ -193,7 +190,7 @@ script = ExtResource( 5 )
 debug_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 216.635, 51.7654 )
+position = Vector2( 160.175, 173.465 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
@@ -207,7 +204,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -47.8023, -55.5912 )
+position = Vector2( -49.6753, -67.7202 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3

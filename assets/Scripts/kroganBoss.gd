@@ -9,7 +9,8 @@ onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
-
+onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
+onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
 enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
@@ -31,8 +32,9 @@ var sceneManager = null
 
 func _ready():
 	anim_player.play("idle")
-	healthBar = get_node("HealthDisplay")
+	healthBar = UIHealthBar
 	
+	target = player
 	sceneManager = get_parent().get_parent()
 	
 
@@ -143,15 +145,12 @@ func attack():
 	
 
 func death():
-	sceneManager.points = sceneManager.points + 100
-	sceneManager.kill = sceneManager.kill + 1
-	
 	queue_free()
 
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.ATTACK
-
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
@@ -160,3 +159,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		current_state = STATE.CHASE
 		
 	
+
+
+func _on_HealthBar_value_changed(value):
+	pass # Replace with function body.
+
+
+func _on_BossHealth_value_changed(value):
+	pass # Replace with function body.

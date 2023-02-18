@@ -5,6 +5,7 @@ signal update_healthbar
 signal death
 
 onready var collision_shape : CollisionShape2D = $PlayerHitBox/CollisionShape2D
+onready var camera: Camera2D = $Camera2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
@@ -22,18 +23,32 @@ enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
 
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
+export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
+var timer = Timer.new()
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
 	sceneManager = get_parent().get_node("StageManager")
+	timer.connect("timeout",self,"do_this")
+	timer.wait_time = 3
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	
+
+func do_this():
+	if boss == false:
+		camera.smoothing_speed = 5
+	else:
+		camera.smoothing_speed = 0
 	
 
 func _process(delta: float) -> void:
@@ -129,9 +144,10 @@ func _get_direction() -> Vector2:
 
 func hit(dps):
 	if invincible == false:
-		if sceneManager.points > 0:
-			sceneManager.points = sceneManager.points - 20
-		sceneManager.hit += 1
+		if boss:
+			if sceneManager.points > 0:
+				sceneManager.points -= 20
+			sceneManager.hit += 1
 		if current_state != STATE.HIT:
 			var amount = 0
 			current_state = STATE.HIT
