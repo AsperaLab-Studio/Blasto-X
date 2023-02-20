@@ -59,11 +59,6 @@ func do_this():
 		timer.disconnect("timeout", self, "do_this")
 	
 
-func set_state_idle():
-	camera.smoothing_speed = 0
-	current_state = STATE.IDLE
-	
-
 func _process(delta: float) -> void:
 	if(!paused):
 		direction = _get_direction()
@@ -78,9 +73,6 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_pressed("shoot"):
 					current_state = STATE.SHOOT
 					
-				if Input.is_action_just_pressed("shake"):
-					current_state = STATE.SHAKE
-					
 				if direction:
 					current_state = STATE.MOVE
 					
@@ -94,11 +86,6 @@ func _process(delta: float) -> void:
 				anim_player.play("hit")
 			STATE.SHOOT:
 				anim_player.play("shoot")
-			STATE.SHAKE:
-				camera.smoothing_speed = 5
-				timerShake.wait_time = 3
-				timerShake.one_shot = true
-				timerShake.start()
 			STATE.MOVE:
 				if direction.x < 0:
 					sprite.flip_h = true
@@ -234,5 +221,3 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 		invincible = true
 	
 
-func _on_TimerShake_timeout():
-	set_state_idle()

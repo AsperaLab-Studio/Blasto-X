@@ -4,26 +4,30 @@ extends KinematicBody2D
 onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
 onready var attack_delay_timer: Timer = $AttackDelayTimer
-onready var cooldown_timer: Timer = $CooldownTimer
+onready var cooldown_timer: Timer = $CooldownShakeTimer
+onready var timerShake: Timer = $TimerShake
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
-enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, SHAKE, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var dps := 10
 export(int) var HP := 5
+export(float) var ShakeDuration := 5
+export(float) var ShakeDeelay := 5
 
 var current_state = STATE.CHASE
 
 var target = null
 var near_player: bool = false
 var near_enemy: bool = false
+var shakeFree: bool = false
 var healthBar = null
 var amount = 0
 var paused = false
@@ -36,9 +40,15 @@ func _ready():
 	
 	target = player
 	sceneManager = get_parent().get_parent()
+	cooldown_timer.wait_time = ShakeDeelay
+	cooldown_timer.one_shot = true
+	cooldown_timer.start()
 	
 
 func _process(delta: float) -> void:
+	if shakeFree:
+		current_state = STATE.SHAKE
+	
 	if(!paused):
 		match current_state:
 			STATE.HIT:
@@ -67,6 +77,19 @@ func _process(delta: float) -> void:
 					else:
 						current_state = STATE.WAIT
 						attack_delay_timer.stop()
+			STATE.SHAKE:
+				if timerShake.is_stopped() && shakeFree:
+					shakeFree = false
+					player.camera.smoothing_speed = 5
+					player.camera.shaked = true
+					timerShake.wait_time = ShakeDuration
+					timerShake.one_shot = true
+					player.paused = true
+					timerShake.start()
+					cooldown_timer.wait_time = ShakeDeelay
+					cooldown_timer.one_shot = true
+					cooldown_timer.start()
+					current_state = STATE.IDLE
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -92,6 +115,12 @@ func hit(dps) -> void:
 		current_state = STATE.DIED
 	else:
 		current_state = STATE.HIT
+	
+
+func set_state_idle():
+	player.camera.smoothing_speed = 0
+	player.camera.shaked = false
+	player.paused = false
 	
 
 func move_towards_target():
@@ -146,6 +175,7 @@ func attack():
 
 func death():
 	queue_free()
+	
 
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
@@ -160,10 +190,9 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		
 	
 
+func _on_TimerShake_timeout():
+	set_state_idle()
 
-func _on_HealthBar_value_changed(value):
-	pass # Replace with function body.
 
-
-func _on_BossHealth_value_changed(value):
-	pass # Replace with function body.
+func _on_CooldownTimer_timeout():
+	shakeFree = true

@@ -198,7 +198,9 @@ shape = SubResource( 6 )
 [node name="AttackDelayTimer" type="Timer" parent="."]
 wait_time = 0.25
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownShakeTimer" type="Timer" parent="."]
+
+[node name="TimerShake" type="Timer" parent="."]
 
 [node name="HitBox" type="Area2D" parent="."]
 monitoring = false
@@ -242,5 +244,7 @@ bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="CooldownShakeTimer" to="." method="_on_CooldownTimer_timeout"]
+[connection signal="timeout" from="TimerShake" to="." method="_on_TimerShake_timeout"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_exited"]
