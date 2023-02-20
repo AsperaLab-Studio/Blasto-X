@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/img/sprites/Player/Blasto.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/CameraShake.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/sfx/Carnifex_SFX/Carnifex 01.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=5]
 
@@ -199,6 +200,7 @@ limit_bottom = 1020
 limit_smoothed = true
 drag_margin_h_enabled = true
 smoothing_enabled = true
+script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -269,8 +271,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TimerShake" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_exited"]
+[connection signal="timeout" from="TimerShake" to="." method="_on_TimerShake_timeout"]

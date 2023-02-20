@@ -16,29 +16,35 @@ onready var go = get_parent().get_node("GUI/UI2/Go")
 onready var state_label = $StateLabel
 onready var invincibility_timer = $InvincibilityTimer
 onready var invincible = false
+onready var timerShake: Timer = $TimerShake
 
 export var debug_mode : bool
 
-enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, WIN, DIED}
+enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(int) var speed: int = 300
 export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
+export var randomShackeStrenght: float = 30.0
+export var shakeDecayRate: float = 5.0
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
 var timer = Timer.new()
+var shakeStrenght: float = 0.0
+var defaultOffset
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
 	sceneManager = get_parent().get_node("StageManager")
+	defaultOffset = camera.offset
 	timer.connect("timeout",self,"do_this")
-	timer.wait_time = 3
+	timer.wait_time = 1
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
@@ -47,8 +53,15 @@ func _ready() -> void:
 func do_this():
 	if boss == false:
 		camera.smoothing_speed = 5
+		timer.disconnect("timeout", self, "do_this")
 	else:
 		camera.smoothing_speed = 0
+		timer.disconnect("timeout", self, "do_this")
+	
+
+func set_state_idle():
+	camera.smoothing_speed = 0
+	current_state = STATE.IDLE
 	
 
 func _process(delta: float) -> void:
@@ -65,6 +78,9 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_pressed("shoot"):
 					current_state = STATE.SHOOT
 					
+				if Input.is_action_just_pressed("shake"):
+					current_state = STATE.SHAKE
+					
 				if direction:
 					current_state = STATE.MOVE
 					
@@ -78,6 +94,11 @@ func _process(delta: float) -> void:
 				anim_player.play("hit")
 			STATE.SHOOT:
 				anim_player.play("shoot")
+			STATE.SHAKE:
+				camera.smoothing_speed = 5
+				timerShake.wait_time = 3
+				timerShake.one_shot = true
+				timerShake.start()
 			STATE.MOVE:
 				if direction.x < 0:
 					sprite.flip_h = true
@@ -144,7 +165,7 @@ func _get_direction() -> Vector2:
 
 func hit(dps):
 	if invincible == false:
-		if boss:
+		if !boss:
 			if sceneManager.points > 0:
 				sceneManager.points -= 20
 			sceneManager.hit += 1
@@ -212,3 +233,6 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 		invincibility_timer.start(1)
 		invincible = true
 	
+
+func _on_TimerShake_timeout():
+	set_state_idle()
