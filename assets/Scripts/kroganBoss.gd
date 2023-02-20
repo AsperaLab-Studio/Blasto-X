@@ -79,16 +79,7 @@ func _process(delta: float) -> void:
 						attack_delay_timer.stop()
 			STATE.SHAKE:
 				if timerShake.is_stopped() && shakeFree:
-					shakeFree = false
-					player.camera.smoothing_speed = 5
-					player.camera.shaked = true
-					timerShake.wait_time = ShakeDuration
-					timerShake.one_shot = true
-					player.paused = true
-					timerShake.start()
-					cooldown_timer.wait_time = ShakeDeelay
-					cooldown_timer.one_shot = true
-					cooldown_timer.start()
+					anim_player.play("shake")
 					current_state = STATE.IDLE
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -107,6 +98,10 @@ func _process(delta: float) -> void:
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
+	
+
+func nothing ():
+	pass
 
 func hit(dps) -> void:
 	healthBar.update_healthbar(dps)
@@ -116,6 +111,18 @@ func hit(dps) -> void:
 	else:
 		current_state = STATE.HIT
 	
+
+func shake(): 
+	shakeFree = false
+	player.camera.smoothing_speed = 5
+	player.camera.shaked = true
+	timerShake.wait_time = ShakeDuration
+	timerShake.one_shot = true
+	player.paused = true
+	timerShake.start()
+	cooldown_timer.wait_time = ShakeDeelay
+	cooldown_timer.one_shot = true
+	cooldown_timer.start()
 
 func set_state_idle():
 	player.camera.smoothing_speed = 0

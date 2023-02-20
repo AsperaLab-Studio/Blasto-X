@@ -127,6 +127,9 @@ func attack():
 		
 	
 
+func nothing():
+	pass
+
 func shoot():
 	var bullet_instance = bullet.instance()
 	bullet_instance.direction = orientation
