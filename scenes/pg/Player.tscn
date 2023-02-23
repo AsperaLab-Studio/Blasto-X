@@ -177,14 +177,14 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 )
 }
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 44.1051, 88.9644 )
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 14.1228
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 67.384, 11.344 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 36.5503, 91.1653 )
+extents = Vector2( 36.5503, 20.0465 )
 
 [node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
 position = Vector2( 107.98, 153.742 )
@@ -226,14 +226,14 @@ anims/shoot = SubResource( 6 )
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -59.6581, -53.0251 )
-shape = SubResource( 7 )
+position = Vector2( -54.3141, -68.2072 )
+shape = SubResource( 10 )
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2( -46.7223, -73.4208 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
+visible = false
 position = Vector2( 52.268, 25.0481 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
@@ -250,7 +250,7 @@ position = Vector2( -51.5811, -72.1814 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 visible = false
-position = Vector2( -2.62695, 18.5508 )
+position = Vector2( -2.62695, 3.76324 )
 shape = SubResource( 9 )
 
 [node name="GunSFX" type="AudioStreamPlayer" parent="."]

@@ -161,11 +161,10 @@ tracks/0/keys = {
 "values": [ 1, 0, 1, 2 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 29.8517, 80 )
+[sub_resource type="CapsuleShape2D" id=9]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 16, 77 )
+extents = Vector2( 28.0633, 11.359 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.0066, 10 )
@@ -197,8 +196,8 @@ anims/idle = SubResource( 4 )
 anims/move = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 6 )
+position = Vector2( -0.333368, -3.26604 )
+shape = SubResource( 9 )
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 wait_time = 0.25
@@ -210,7 +209,7 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 visible = false
-position = Vector2( 0, 3 )
+position = Vector2( -0.591003, -3.38696 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]

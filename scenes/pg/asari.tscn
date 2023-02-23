@@ -129,11 +129,10 @@ tracks/0/keys = {
 "values": [ 3, 4, 3, 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 29.8517, 80 )
+[sub_resource type="CapsuleShape2D" id=9]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 11.5, 72 )
+extents = Vector2( 11.5, 10.3298 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.0066, 10 )
@@ -154,7 +153,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 9
+frame = 4
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -165,8 +164,8 @@ anims/idle = SubResource( 4 )
 anims/move = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 6 )
+position = Vector2( -1.38107, -9.93107 )
+shape = SubResource( 9 )
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 wait_time = 0.25
@@ -178,7 +177,7 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 visible = false
-position = Vector2( 0.5, 2 )
+position = Vector2( -1.88378, -10.0635 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
