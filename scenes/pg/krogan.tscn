@@ -161,13 +161,14 @@ tracks/0/keys = {
 "values": [ 1, 0, 1, 2 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 16.875, 10 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 28.0633, 11.359 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 38.0066, 10 )
+extents = Vector2( 47.1762, 10 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
@@ -180,12 +181,10 @@ dps = 30
 HP = 4
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.2981, 1.82368 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 6
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -196,7 +195,8 @@ anims/idle = SubResource( 4 )
 anims/move = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.333368, -3.26604 )
+visible = false
+position = Vector2( -0.125, 0 )
 shape = SubResource( 9 )
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
@@ -209,19 +209,17 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 visible = false
-position = Vector2( -0.591003, -3.38696 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 12.3744, 0 )
 collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false
-position = Vector2( 28.8216, -24.9452 )
+position = Vector2( 36.0051, -24.9452 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
