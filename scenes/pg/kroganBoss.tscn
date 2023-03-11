@@ -2,9 +2,9 @@
 
 [ext_resource path="res://assets/img/sprites/enemy/the jaw spritesheet test.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/kroganBoss.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/sfx/Hit_SFX/Krogan_Hit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Krogan_SFX/Krogan_Hit.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 3.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/Death_SFX/Krogan_Kill.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Krogan_SFX/Krogan_Kill.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"

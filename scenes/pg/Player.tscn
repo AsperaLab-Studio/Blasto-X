@@ -84,6 +84,16 @@ tracks/1/keys = {
 "method": "death"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PunchSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.5
@@ -99,6 +109,16 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 12, 13 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("PunchSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
 }
 
 [sub_resource type="Animation" id=4]

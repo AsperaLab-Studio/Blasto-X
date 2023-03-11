@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/img/sprites/enemy/ASARI MOVESET v0.2.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 2.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Asari_SFX/Asari_Pain.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/Asari_SFX/Asari_Death.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -80,6 +82,20 @@ tracks/1/keys = {
 "method": "death"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PunchSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.5
@@ -94,6 +110,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 9, 10 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("PunchSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -215,7 +245,7 @@ margin_right = 19.8185
 margin_bottom = -63.7829
 
 [node name="PunchSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
