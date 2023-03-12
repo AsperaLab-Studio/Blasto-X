@@ -6,6 +6,7 @@ export var n_positions = 5
 export(Array, PackedScene) var enemy_types
 export(int) var current_stage := 0
 export var next_stage = ""
+export var totalFightPhases = 2
 
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
@@ -27,6 +28,7 @@ onready var Kill2 = get_parent().get_node("GUI/UI2/SCORE/Kill2")
 onready var points = 0
 onready var hit = 0
 onready var kill = 0
+onready var ActualFightPhase = 0
 
 var spawned = false
 var positions : Array = []
@@ -46,12 +48,18 @@ func _process(delta: float) -> void:
 	Kill.text = str(kill)
 	Hit.text = str(hit)
 	
-	if player.global_position.x > wall.global_position.x - 750 && spawned == false:
-		_enemy_spawn(current_stage)
+	if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
+		_enemy_spawn(current_stage, ActualFightPhase)
 		
 	
-	if $EnemiesContainer.get_child_count() == 0 && spawned == true:
+	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase == totalFightPhases - 1:
 		go.visible = true
+		spawned = true
+		
+	
+	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase < totalFightPhases - 1:
+		spawned = false
+		ActualFightPhase = ActualFightPhase + 1
 		
 	
 	if win.visible == true:
@@ -120,11 +128,12 @@ func _select_stage(number):
 		
 	
 
-func _enemy_spawn(number):
+func _enemy_spawn(number, ActualFightPhase):
 	spawned = true
 	var enemyNumber = NodePath((number) as String)
+	var phase =  NodePath((ActualFightPhase) as String)
 	
-	spawnList = $EnemiesSpawn.get_node(enemyNumber).get_children()
+	spawnList = $EnemiesSpawn.get_node(enemyNumber).get_node(phase).get_children()
 	
 	for spawn in spawnList:
 		var rand_index:int = randi() % enemy_types.size()

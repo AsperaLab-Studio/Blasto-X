@@ -197,13 +197,12 @@ func audioPlay():
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
 	if area.name == "PlayerHitBox":
-		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneManager.spawned == true:
-			sceneManager.spawned = false
-			
-		
-		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
+		if (get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 
+		&& sceneManager.ActualFightPhase == sceneManager.totalFightPhases - 1):
 			sceneManager.current_stage = sceneManager.current_stage + 1
 			sceneManager._select_stage(sceneManager.current_stage)
+			sceneManager.spawned = false
+			sceneManager.ActualFightPhase = 0
 			go.visible = false
 			
 		

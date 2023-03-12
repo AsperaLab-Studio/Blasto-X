@@ -203,8 +203,8 @@ extents = Vector2( 23.4281, 16.1438 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 59.9552, 6.82137 )
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 28.2445, 16.8508 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 23.0613, 21.8633 )
 
 [node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
 scale = Vector2( 2.13561, 2.13561 )
@@ -267,8 +267,8 @@ shape = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 visible = false
-position = Vector2( -2.07273, 0.145361 )
-shape = SubResource( 9 )
+position = Vector2( -5.97019, -0.772968 )
+shape = SubResource( 11 )
 
 [node name="GunSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
