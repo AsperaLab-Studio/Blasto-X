@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 2-d.ogg" type="AudioStream" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
 [ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
 [ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/img/frontground/obj/LV2-D OBJ.png" type="Texture" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -55,46 +56,57 @@ extents = Vector2( 15744.5, 274.576 )
 extents = Vector2( 1990.15, 120.176 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 199, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 398, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 597, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 796, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 995, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=14]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1194, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1393, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1592, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=17]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1791, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=18]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
@@ -792,48 +804,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 5
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 9
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -849,13 +862,19 @@ vframes = 5
 frame = 1
 script = SubResource( 20 )
 
+[node name="LV2-D OBJ" type="Sprite" parent="obj/up"]
+position = Vector2( 617, 818 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 3
+
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
 position = Vector2( 720, 824 )
 z_index = -2
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
-frame = 12
 script = SubResource( 20 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
@@ -939,7 +958,48 @@ vframes = 5
 frame = 11
 script = SubResource( 20 )
 
+[node name="LV2-D OBJ2" type="Sprite" parent="obj/up"]
+position = Vector2( 1320, 795 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+
+[node name="LV2-D OBJ3" type="Sprite" parent="obj/up"]
+position = Vector2( 3149, 807 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 2
+
+[node name="LV2-D OBJ4" type="Sprite" parent="obj/up"]
+position = Vector2( 4792, 804 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 1
+
+[node name="LV2-D OBJ5" type="Sprite" parent="obj/up"]
+position = Vector2( 5724, 796 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 3
+
+[node name="LV2-D OBJ6" type="Sprite" parent="obj/up"]
+position = Vector2( 7528, 806 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 2
+
 [node name="down" type="Node" parent="obj"]
+
+[node name="LV2-D OBJ7" type="Sprite" parent="obj/down"]
+position = Vector2( 723, 931 )
+scale = Vector2( 1.88333, 1.88333 )
+texture = ExtResource( 25 )
+hframes = 5
+frame = 4
 
 [node name="LV 1-D T-OBJ" type="Sprite" parent="obj/down"]
 position = Vector2( 56, 976 )
@@ -1066,6 +1126,10 @@ hframes = 3
 vframes = 5
 frame = 12
 script = SubResource( 20 )
+
+[node name="Enemy" parent="." instance=ExtResource( 17 )]
+position = Vector2( 498, 1255 )
+z_index = 2
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI2/MarginContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]

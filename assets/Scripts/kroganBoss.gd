@@ -4,30 +4,35 @@ extends KinematicBody2D
 onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
 onready var attack_delay_timer: Timer = $AttackDelayTimer
-onready var cooldown_timer: Timer = $CooldownShakeTimer
+onready var cooldownShake_timer: Timer = $CooldownShakeTimer
 onready var timerShake: Timer = $TimerShake
+onready var cooldownCharge_timer: Timer = $CooldownChargeTimer
+onready var timerCharge: Timer = $TimerCharge
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
-enum STATE {CHASE, ATTACK, SHAKE, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, SHAKE, CHARGE, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var dps := 10
+export(int) var dpsCharge := 20
 export(int) var HP := 5
 export(float) var ShakeDuration := 5
 export(float) var ShakeDeelay := 5
+export(float) var ChargeDeelay := 5
 
 var current_state = STATE.CHASE
 
-var target = null
+var targetPositionStamp = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
 var shakeFree: bool = false
+var chargeFree: bool = false
 var healthBar = null
 var amount = 0
 var paused = false
@@ -38,16 +43,20 @@ func _ready():
 	anim_player.play("idle")
 	healthBar = UIHealthBar
 	
-	target = player
 	sceneManager = get_parent().get_parent()
-	cooldown_timer.wait_time = ShakeDeelay
-	cooldown_timer.one_shot = true
-	cooldown_timer.start()
+	cooldownShake_timer.wait_time = ShakeDeelay
+	cooldownShake_timer.one_shot = true
+	cooldownShake_timer.start()
+	cooldownCharge_timer.wait_time = ChargeDeelay
+	cooldownCharge_timer.one_shot = true
+	cooldownCharge_timer.start()
 	
 
 func _process(delta: float) -> void:
-	if shakeFree:
-		current_state = STATE.SHAKE
+	#if shakeFree:
+		#current_state = STATE.SHAKE
+	if chargeFree:
+		current_state = STATE.CHARGE
 	
 	if(!paused):
 		match current_state:
@@ -56,7 +65,7 @@ func _process(delta: float) -> void:
 			STATE.CHASE:
 				anim_player.play("move")
 				if !near_player:
-					move_towards_target()
+					move_towards(player.global_position)
 				else:
 					current_state = STATE.WAIT
 			STATE.WAIT:
@@ -72,7 +81,7 @@ func _process(delta: float) -> void:
 				if !near_enemy:
 					current_state = STATE.WAIT
 			STATE.ATTACK:
-					if near_player && !target.invincible:
+					if near_player && !player.invincible:
 						anim_player.play("attack")
 					else:
 						current_state = STATE.WAIT
@@ -81,6 +90,10 @@ func _process(delta: float) -> void:
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
 					current_state = STATE.IDLE
+			STATE.CHARGE:
+				if timerCharge.is_stopped() && chargeFree:
+					anim_player.play("ChargeStart")
+					move_towards(targetPositionStamp)
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -89,7 +102,7 @@ func _process(delta: float) -> void:
 				
 				anim_player.play("died")
 				
-				var direction = Vector2((global_position.x - target.global_position.x), 0).normalized()
+				var direction = Vector2((global_position.x - player.global_position.x), 0).normalized()
 				
 				move_and_slide(direction * death_speed)
 				
@@ -120,9 +133,9 @@ func shake():
 	timerShake.one_shot = true
 	player.paused = true
 	timerShake.start()
-	cooldown_timer.wait_time = ShakeDeelay
-	cooldown_timer.one_shot = true
-	cooldown_timer.start()
+	cooldownShake_timer.wait_time = ShakeDeelay
+	cooldownShake_timer.one_shot = true
+	cooldownShake_timer.start()
 
 func set_state_idle():
 	player.camera.smoothing_speed = 0
@@ -130,14 +143,20 @@ func set_state_idle():
 	player.paused = false
 	
 
-func move_towards_target():
+func ChargeStart():
+	targetPositionStamp.x = player.global_position.x
+	targetPositionStamp.y = player.global_position.y
+	anim_player.play("ChargeMid")
+	
+
+func move_towards(target: Vector2):
 	if target:
-		if global_position.y > target.global_position.y:
+		if global_position.y > target.y:
 			z_index = 0
 		else:
 			z_index = -1
 			
-		var velocity = global_position.direction_to(target.global_position)
+		var velocity = global_position.direction_to(target)
 		
 		if velocity.x < 0:
 			sprite.flip_h = true
@@ -152,12 +171,17 @@ func move_towards_target():
 	
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	if (area.owner.is_in_group("player")):
-		near_player = true
-	
-	if(area.owner.is_in_group("enemy")):
-		current_state = STATE.IDLE
-		near_enemy = true
+	if current_state == STATE.CHARGE:
+		anim_player.play("ChargeEnd")
+		if (area.owner.is_in_group("player")):
+			player.hit(dpsCharge)
+	else:
+		if (area.owner.is_in_group("player")):
+			near_player = true
+		
+		if(area.owner.is_in_group("enemy")):
+			current_state = STATE.IDLE
+			near_enemy = true
 	
 
 func pause():
@@ -177,7 +201,7 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 	
 
 func attack():
-	target.hit(dps)
+	player.hit(dps)
 	
 
 func death():
@@ -200,6 +224,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func _on_TimerShake_timeout():
 	set_state_idle()
 
+func _on_TimerCharge_timeout():
+	set_state_idle()
 
-func _on_CooldownTimer_timeout():
+func _on_CooldownShakeTimer_timeout():
 	shakeFree = true
+
+func _on_CooldownChargeTimer_timeout():
+	chargeFree = true
