@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv2-d/LV2-D Back.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv3-d/LV3-D Fore.png" type="Texture" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
-[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv3-d/lavorazioni v5.png" type="Texture" id=3]
-[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv1-d/LV1-D Fore.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/frontground/lvl desert/tileset/lv3-d/LV3-D Back.png" type="Texture" id=3]
 
 [node name="node" type="Node2D"]
 position = Vector2( -2.47624, 8.66089 )
@@ -13,118 +12,103 @@ visible = false
 position = Vector2( 326.476, -308.661 )
 texture = ExtResource( 2 )
 
-[node name="LavorazioniV5" type="Sprite" parent="."]
+[node name="LV3-D Back" type="Sprite" parent="."]
 position = Vector2( 173.476, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 4
 
-[node name="LavorazioniV6" type="Sprite" parent="."]
+[node name="LV3-D Back2" type="Sprite" parent="."]
 position = Vector2( 514.476, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 1
 
-[node name="LavorazioniV7" type="Sprite" parent="."]
+[node name="LV3-D Back3" type="Sprite" parent="."]
 position = Vector2( 855.476, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 5
 
-[node name="LavorazioniV8" type="Sprite" parent="."]
+[node name="LV3-D Back4" type="Sprite" parent="."]
 position = Vector2( 1196.48, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 6
 
-[node name="LavorazioniV9" type="Sprite" parent="."]
+[node name="LV3-D Back5" type="Sprite" parent="."]
 position = Vector2( 1537.48, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 4
 
-[node name="LavorazioniV10" type="Sprite" parent="."]
+[node name="LV3-D Back6" type="Sprite" parent="."]
 position = Vector2( 1878.48, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 4
 
-[node name="LavorazioniV11" type="Sprite" parent="."]
+[node name="LV3-D Back7" type="Sprite" parent="."]
 position = Vector2( 2219.48, -192.661 )
 texture = ExtResource( 3 )
 hframes = 7
 frame = 1
 
-[node name="Lv2-DBack" type="Sprite" parent="."]
-position = Vector2( -209.524, 63.3391 )
-texture = ExtResource( 1 )
-offset = Vector2( 496, 16 )
-hframes = 3
-
-[node name="Lv2-DBack2" type="Sprite" parent="."]
-position = Vector2( 678.476, 79.3391 )
+[node name="Lv3-DFore" type="Sprite" parent="."]
+position = Vector2( 260.476, 79.3391 )
 texture = ExtResource( 1 )
 hframes = 3
+frame = 1
 
-[node name="Lv2-DBack3" type="Sprite" parent="."]
-position = Vector2( 1070.48, 79.3391 )
+[node name="Lv3-DFore2" type="Sprite" parent="."]
+position = Vector2( 601.476, 79.3391 )
 texture = ExtResource( 1 )
 hframes = 3
 
-[node name="Lv2-DBack4" type="Sprite" parent="."]
-position = Vector2( 1462.48, 79.3391 )
+[node name="Lv3-DFore3" type="Sprite" parent="."]
+position = Vector2( 942.476, 79.3391 )
 texture = ExtResource( 1 )
 hframes = 3
 
-[node name="Lv2-DBack5" type="Sprite" parent="."]
-position = Vector2( 1854.48, 79.3391 )
+[node name="Lv3-DFore4" type="Sprite" parent="."]
+position = Vector2( 1283.48, 79.3391 )
 texture = ExtResource( 1 )
 hframes = 3
 
-[node name="Lv2-DBack6" type="Sprite" parent="."]
-position = Vector2( 2246.48, 79.3391 )
-scale = Vector2( 1.325, 1 )
+[node name="Lv3-DFore5" type="Sprite" parent="."]
+position = Vector2( 942.476, 79.3391 )
 texture = ExtResource( 1 )
 hframes = 3
-
-[node name="LV1-D T-STR" type="Sprite" parent="."]
-position = Vector2( 286.476, 78.3391 )
-texture = ExtResource( 4 )
-hframes = 3
-vframes = 4
-
-[node name="LV1-D T-STR2" type="Sprite" parent="."]
-position = Vector2( 678.476, 78.3391 )
-texture = ExtResource( 4 )
-hframes = 3
-vframes = 4
 frame = 2
 
-[node name="LV1-D T-STR3" type="Sprite" parent="."]
-position = Vector2( 1070.48, 78.3391 )
-texture = ExtResource( 4 )
+[node name="Lv3-DFore6" type="Sprite" parent="."]
+position = Vector2( 1283.48, 79.3391 )
+texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 6
+frame = 2
 
-[node name="LV1-D T-STR4" type="Sprite" parent="."]
-position = Vector2( 1462.48, 78.3391 )
-texture = ExtResource( 4 )
+[node name="Lv3-DFore7" type="Sprite" parent="."]
+position = Vector2( 1624.48, 79.3391 )
+texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 8
+frame = 1
 
-[node name="LV1-D T-STR5" type="Sprite" parent="."]
-position = Vector2( 1854.48, 78.3391 )
-texture = ExtResource( 4 )
+[node name="Lv3-DFore8" type="Sprite" parent="."]
+position = Vector2( 1965.48, 79.3391 )
+texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 9
 
-[node name="LV1-D T-STR6" type="Sprite" parent="."]
-position = Vector2( 2272.52, 78.3391 )
-scale = Vector2( 1.084, 1 )
-texture = ExtResource( 4 )
+[node name="Lv3-DFore9" type="Sprite" parent="."]
+position = Vector2( 2306.48, 79.3391 )
+texture = ExtResource( 1 )
 hframes = 3
-vframes = 4
-frame = 9
+
+[node name="Lv3-DFore10" type="Sprite" parent="."]
+position = Vector2( 1965.48, 79.3391 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Lv3-DFore11" type="Sprite" parent="."]
+position = Vector2( 2306.48, 79.3391 )
+texture = ExtResource( 1 )
+hframes = 3

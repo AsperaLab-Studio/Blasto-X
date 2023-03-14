@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Blasto_Morte.mp3-6dd119823b1d546a5a90dd841e4bb95a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Blasto_SFX/Blasto_Morte.mp3"
+dest_files=[ "res://.import/Blasto_Morte.mp3-6dd119823b1d546a5a90dd841e4bb95a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

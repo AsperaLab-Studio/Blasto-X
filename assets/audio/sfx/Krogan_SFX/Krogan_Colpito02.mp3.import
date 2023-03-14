@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Krogan_Colpito02.mp3-2253885f4eee0b548130feb30c474895.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Krogan_SFX/Krogan_Colpito02.mp3"
+dest_files=[ "res://.import/Krogan_Colpito02.mp3-2253885f4eee0b548130feb30c474895.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
