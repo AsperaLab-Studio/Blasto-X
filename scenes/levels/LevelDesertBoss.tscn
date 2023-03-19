@@ -23,7 +23,7 @@
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
 [ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
-[ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
@@ -419,11 +419,11 @@ __meta__ = {
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 131.253, 411.345 )
+position = Vector2( 97.8048, 686.337 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
-position = Vector2( 15525.4, 415.184 )
+position = Vector2( 15457, 22.5112 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
@@ -445,15 +445,15 @@ position = Vector2( 870.135, 1606.41 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 626.875 )
+position = Vector2( 176.394, 1013.14 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
-position = Vector2( 14914.6, 812.236 )
+position = Vector2( 15010.4, 4.61121 )
 shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 138.44, 1391.37 )
+position = Vector2( 44.6979, 1243.82 )
 scale = Vector2( 1, 1 )
 speed = 200
 boss = true
@@ -521,48 +521,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 7
+frame = 2
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 10
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 10
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]

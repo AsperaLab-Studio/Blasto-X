@@ -22,7 +22,7 @@
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
 [ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
-[ext_resource path="res://scenes/misc/MainMenuFont.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -127,17 +127,15 @@ position = Vector2( 8936, 1272 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall"]
-visible = false
 position = Vector2( 0.000293732, 56.1404 )
 scale = Vector2( 1, 2.75439 )
 shape = SubResource( 1 )
 
 [node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
-position = Vector2( 6.11163, 54.9276 )
+position = Vector2( -17.1374, 54.9276 )
 scale = Vector2( 1, 1.03052 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall/AreaGo"]
-visible = false
 position = Vector2( -5.23311, -4.12054 )
 scale = Vector2( 1, 2.75439 )
 shape = SubResource( 1 )
@@ -706,11 +704,10 @@ __meta__ = {
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 131.253, 411.345 )
+position = Vector2( 121.151, 320.426 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
-visible = false
 position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
@@ -728,12 +725,11 @@ position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
-visible = false
 position = Vector2( 7826.08, 843.656 )
 shape = SubResource( 22 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 126.273, 1329.89 )
+position = Vector2( 134.051, 1233.02 )
 scale = Vector2( 1, 1 )
 speed = 200
 
@@ -794,49 +790,48 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 6
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
