@@ -21,9 +21,6 @@ margin_bottom = 1089.0
 stream = ExtResource( 2 )
 autoplay = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 nextScene = "advise"
 
 [connection signal="finished" from="Control/VideoPlayer" to="Control/VideoPlayer" method="_on_VideoPlayer_finished"]
