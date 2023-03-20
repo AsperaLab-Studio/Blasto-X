@@ -10,8 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.6
-loop = true
-step = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -31,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.35 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -164,7 +163,7 @@ tracks/0/keys = {
 extents = Vector2( 16.875, 10 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 17.0089, 21.8633 )
+extents = Vector2( 8.4275, 21.8633 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.7757, 10 )
@@ -205,11 +204,10 @@ wait_time = 0.25
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2( -9, -1 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2( 0.153896, -0.772968 )
 shape = SubResource( 10 )
 
 [node name="Pivot" type="Node2D" parent="."]

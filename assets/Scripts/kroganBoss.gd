@@ -14,11 +14,12 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
-enum STATE {CHASE, ATTACK, SHAKE, CHARGE_ENTRY, CHARGE_GO, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, SHAKE, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
+export(int) var charge_speed := 100
 export(int) var dps := 10
 export(int) var dpsCharge := 20
 export(int) var HP := 5
@@ -36,6 +37,7 @@ var chargeFree: bool = false
 var healthBar = null
 var amount = 0
 var paused = false
+var areaCollided = null
 
 var sceneManager = null
 
@@ -54,7 +56,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if chargeFree:
-		current_state = STATE.CHARGE_ENTRY
+		current_state = STATE.CHARGE_START
 	elif shakeFree:
 		current_state = STATE.SHAKE
 	
@@ -65,7 +67,7 @@ func _process(delta: float) -> void:
 			STATE.CHASE:
 				anim_player.play("move")
 				if !near_player:
-					move_towards(player.global_position)
+					move_towards(player.global_position, moving_speed)
 				else:
 					current_state = STATE.WAIT
 			STATE.WAIT:
@@ -83,19 +85,29 @@ func _process(delta: float) -> void:
 			STATE.ATTACK:
 					if near_player && !player.invincible:
 						anim_player.play("attack")
-					else:
+					elif anim_player.current_animation != "attack":
 						current_state = STATE.WAIT
 						attack_delay_timer.stop()
 			STATE.SHAKE:
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
 					current_state = STATE.IDLE
-			STATE.CHARGE_ENTRY:
+			STATE.CHARGE_START:
 				if timerCharge.is_stopped() && chargeFree:
 					anim_player.play("ChargeStart")
-			STATE.CHARGE_GO:
-				anim_player.play("ChargeMid")
-				move_towards(targetPositionStamp)
+			STATE.CHARGE_MID:
+				if anim_player.current_animation != "ChargeMid":
+					anim_player.play("ChargeMid")
+				move_towards(targetPositionStamp, charge_speed)
+			STATE.CHARGE_END:
+				if (areaCollided.owner.is_in_group("player")):
+					player.hit(dpsCharge)
+				if anim_player.current_animation != "ChargeEnd":
+					current_state == STATE.WAIT
+					areaCollided = null
+					cooldownCharge_timer.wait_time = ChargeDeelay
+					cooldownCharge_timer.one_shot = true
+					cooldownCharge_timer.start()
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -114,9 +126,6 @@ func _process(delta: float) -> void:
 	else:
 		anim_player.stop()
 	
-
-func nothing ():
-	pass
 
 func hit(dps) -> void:
 	healthBar.update_healthbar(dps)
@@ -146,12 +155,13 @@ func set_state_idle():
 	
 
 func ChargeStart():
-	current_state = STATE.CHARGE_GO
+	chargeFree = false
+	current_state = STATE.CHARGE_MID
 	targetPositionStamp.x = player.global_position.x
 	targetPositionStamp.y = player.global_position.y
 	
 
-func move_towards(target: Vector2):
+func move_towards(target: Vector2, speed):
 	if target:
 		if global_position.y > target.y:
 			z_index = 0
@@ -169,37 +179,7 @@ func move_towards(target: Vector2):
 			if pivot.scale.x < 0:
 				pivot.scale.x = - pivot.scale.x
 				
-		move_and_slide(velocity * moving_speed)
-	
-
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	if current_state == STATE.CHARGE:
-		anim_player.play("ChargeEnd")
-		if (area.owner.is_in_group("player")):
-			player.hit(dpsCharge)
-	else:
-		if (area.owner.is_in_group("player")):
-			near_player = true
-		
-		if(area.owner.is_in_group("enemy")):
-			current_state = STATE.IDLE
-			near_enemy = true
-	
-
-func pause():
-	anim_player.stop()
-	set_process(false)
-	
-
-func _on_Area2D_area_exited(area: Area2D) -> void:
-	if current_state == STATE.DIED:
-		pass
-	elif area.owner && area.owner.is_in_group("player"):
-		near_player = false
-		#current_state = STATE.CHASE
-		#attack_delay_timer.stop()
-	if area.owner && area.owner.is_in_group("enemy"):
-		near_enemy = false
+		move_and_slide(velocity * speed)
 	
 
 func attack():
@@ -210,6 +190,40 @@ func death():
 	queue_free()
 	
 
+func pause():
+	anim_player.stop()
+	set_process(false)
+	
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	if current_state == STATE.CHARGE_MID:
+		current_state == STATE.CHARGE_END
+		anim_player.play("ChargeEnd")
+		areaCollided = area
+		
+	else:
+		if (area.owner.is_in_group("player")):
+			near_player = true
+		
+		if(area.owner.is_in_group("enemy")):
+			current_state = STATE.IDLE
+			near_enemy = true
+			
+		
+	
+
+func _on_Area2D_area_exited(area: Area2D) -> void:
+	if current_state != STATE.CHARGE_MID:
+		if current_state == STATE.DIED:
+			pass
+		elif area.owner && area.owner.is_in_group("player"):
+			near_player = false
+			#current_state = STATE.CHASE
+			#attack_delay_timer.stop()
+		if area.owner && area.owner.is_in_group("enemy"):
+			near_enemy = false
+		
+	
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.ATTACK
@@ -227,7 +241,7 @@ func _on_TimerShake_timeout():
 	set_state_idle()
 
 func _on_TimerCharge_timeout():
-	set_state_idle()
+	pass
 
 func _on_CooldownShakeTimer_timeout():
 	shakeFree = true

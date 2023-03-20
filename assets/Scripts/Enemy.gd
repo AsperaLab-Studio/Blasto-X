@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 			STATE.ATTACK:
 					if near_player && !target.invincible:
 						anim_player.play("attack")
-					else:
+					elif anim_player.current_animation != "attack":
 						current_state = STATE.WAIT
 						attack_delay_timer.stop()
 			STATE.DIED:
@@ -147,6 +147,7 @@ func death():
 	sceneManager.kill = sceneManager.kill + 1
 	
 	queue_free()
+	
 
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:

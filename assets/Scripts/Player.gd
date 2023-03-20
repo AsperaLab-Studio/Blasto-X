@@ -4,7 +4,7 @@ extends KinematicBody2D
 signal update_healthbar
 signal death
 
-onready var collision_shape : CollisionShape2D = $PlayerHitBox/CollisionShape2D
+onready var collision_shape : CollisionShape2D = $Pivot/PlayerHitBox/CollisionShape2D
 onready var camera: Camera2D = $Camera2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision

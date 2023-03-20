@@ -10,7 +10,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.7
-loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -30,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.35 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -49,7 +49,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 4 )
 } ],
-"times": PoolRealArray( 0.5 )
+"times": PoolRealArray( 0.4 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -162,10 +162,10 @@ tracks/0/keys = {
 extents = Vector2( 10.8067, 13.1889 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 11.5, 21.8633 )
+extents = Vector2( 5.75, 21.8633 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 54.2082, 10 )
+extents = Vector2( 49.4518, 10 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
@@ -202,11 +202,10 @@ wait_time = 0.25
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2( -6, 0 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2( 0, -0.772968 )
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -217,7 +216,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
 visible = false
-position = Vector2( 45.1827, -25.0441 )
+position = Vector2( 42.3289, -25.0441 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
