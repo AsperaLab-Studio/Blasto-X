@@ -14,7 +14,7 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
-enum STATE {CHASE, ATTACK, SHAKE, CHARGE, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, SHAKE, CHARGE_ENTRY, CHARGE_GO, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
 export(int) var death_speed := 150
@@ -53,10 +53,10 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	#if shakeFree:
-		#current_state = STATE.SHAKE
 	if chargeFree:
-		current_state = STATE.CHARGE
+		current_state = STATE.CHARGE_ENTRY
+	elif shakeFree:
+		current_state = STATE.SHAKE
 	
 	if(!paused):
 		match current_state:
@@ -90,10 +90,12 @@ func _process(delta: float) -> void:
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
 					current_state = STATE.IDLE
-			STATE.CHARGE:
+			STATE.CHARGE_ENTRY:
 				if timerCharge.is_stopped() && chargeFree:
 					anim_player.play("ChargeStart")
-					move_towards(targetPositionStamp)
+			STATE.CHARGE_GO:
+				anim_player.play("ChargeMid")
+				move_towards(targetPositionStamp)
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -144,9 +146,9 @@ func set_state_idle():
 	
 
 func ChargeStart():
+	current_state = STATE.CHARGE_GO
 	targetPositionStamp.x = player.global_position.x
 	targetPositionStamp.y = player.global_position.y
-	anim_player.play("ChargeMid")
 	
 
 func move_towards(target: Vector2):
