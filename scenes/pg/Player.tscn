@@ -255,9 +255,7 @@ anims/shoot = SubResource( 6 )
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -7.02375, 0.46825 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 10 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -268,22 +266,17 @@ position = Vector2( 52.268, 25.0481 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 position = Vector2( 0, -5.96046e-08 )
-scale = Vector2( 1, 1 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-visible = false
 position = Vector2( 59.8836, -5.09534 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]
 position = Vector2( -18.3046, 0.0554073 )
-scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/PlayerHitBox"]
 position = Vector2( 0, -0.773 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 11 )
 
 [node name="GunSFX" type="AudioStreamPlayer" parent="."]

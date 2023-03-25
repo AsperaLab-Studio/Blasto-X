@@ -55,10 +55,10 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	if chargeFree:
-		current_state = STATE.CHARGE_START
-	elif shakeFree:
+	if shakeFree:
 		current_state = STATE.SHAKE
+	elif chargeFree && current_state != STATE.SHAKE:
+		current_state = STATE.CHARGE_START
 	
 	if(!paused):
 		match current_state:
@@ -100,10 +100,11 @@ func _process(delta: float) -> void:
 					anim_player.play("ChargeMid")
 				move_towards(targetPositionStamp, charge_speed)
 			STATE.CHARGE_END:
-				if (areaCollided.owner.is_in_group("player")):
-					player.hit(dpsCharge)
+				if (areaCollided != null):
+					if (areaCollided.owner.is_in_group("player")):
+						player.hit(dpsCharge)
 				if anim_player.current_animation != "ChargeEnd":
-					current_state == STATE.WAIT
+					current_state = STATE.WAIT
 					areaCollided = null
 					cooldownCharge_timer.wait_time = ChargeDeelay
 					cooldownCharge_timer.one_shot = true
@@ -161,6 +162,9 @@ func ChargeStart():
 	targetPositionStamp.y = player.global_position.y
 	
 
+func ChargeEnd():
+	pass
+
 func move_towards(target: Vector2, speed):
 	if target:
 		if global_position.y > target.y:
@@ -197,10 +201,10 @@ func pause():
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if current_state == STATE.CHARGE_MID:
-		current_state == STATE.CHARGE_END
-		anim_player.play("ChargeEnd")
-		areaCollided = area
-		
+		#anim_player.play("ChargeEnd")
+		current_state = STATE.CHARGE_END
+		if (area.owner.is_in_group("player")):
+			areaCollided = area
 	else:
 		if (area.owner.is_in_group("player")):
 			near_player = true
@@ -213,17 +217,17 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
-	if current_state != STATE.CHARGE_MID:
-		if current_state == STATE.DIED:
-			pass
-		elif area.owner && area.owner.is_in_group("player"):
-			near_player = false
-			#current_state = STATE.CHASE
-			#attack_delay_timer.stop()
-		if area.owner && area.owner.is_in_group("enemy"):
-			near_enemy = false
+	if current_state == STATE.DIED:
+		pass
+	elif area.owner && area.owner.is_in_group("player"):
+		near_player = false
+		#current_state = STATE.CHASE
+		#attack_delay_timer.stop()
+	if area.owner && area.owner.is_in_group("enemy"):
+		near_enemy = false
 		
 	
+
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.ATTACK
