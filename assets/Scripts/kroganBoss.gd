@@ -29,7 +29,7 @@ export(float) var ChargeDeelay := 5
 
 var current_state = STATE.CHASE
 
-var targetPositionStamp = Vector2()
+var directionPlayer = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
 var shakeFree: bool = false
@@ -55,7 +55,10 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	if shakeFree:
+	if shakeFree && (
+		current_state != STATE.CHARGE_START || 
+		current_state != STATE.CHARGE_MID || 
+		current_state != STATE.CHARGE_END):
 		current_state = STATE.SHAKE
 	elif chargeFree && current_state != STATE.SHAKE:
 		current_state = STATE.CHARGE_START
@@ -98,7 +101,7 @@ func _process(delta: float) -> void:
 			STATE.CHARGE_MID:
 				if anim_player.current_animation != "ChargeMid":
 					anim_player.play("ChargeMid")
-				move_towards(targetPositionStamp, charge_speed)
+				move_and_slide(directionPlayer * charge_speed)
 			STATE.CHARGE_END:
 				if (areaCollided != null):
 					if (areaCollided.owner.is_in_group("player")):
@@ -117,9 +120,9 @@ func _process(delta: float) -> void:
 				
 				anim_player.play("died")
 				
-				var direction = Vector2((global_position.x - player.global_position.x), 0).normalized()
+				var directionDead = Vector2((global_position.x - player.global_position.x), 0).normalized()
 				
-				move_and_slide(direction * death_speed)
+				move_and_slide(directionDead * death_speed)
 				
 			
 		
@@ -158,8 +161,10 @@ func set_state_idle():
 func ChargeStart():
 	chargeFree = false
 	current_state = STATE.CHARGE_MID
+	var targetPositionStamp = Vector2()
 	targetPositionStamp.x = player.global_position.x
 	targetPositionStamp.y = player.global_position.y
+	directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
 	
 
 func ChargeEnd():
@@ -201,7 +206,7 @@ func pause():
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if current_state == STATE.CHARGE_MID:
-		#anim_player.play("ChargeEnd")
+		anim_player.play("ChargeEnd")
 		current_state = STATE.CHARGE_END
 		if (area.owner.is_in_group("player")):
 			areaCollided = area
