@@ -94,6 +94,7 @@ func _process(delta: float) -> void:
 			STATE.SHAKE:
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
+				if anim_player.current_animation != "shake":
 					current_state = STATE.IDLE
 			STATE.CHARGE_START:
 				if timerCharge.is_stopped() && chargeFree:

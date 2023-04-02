@@ -50,17 +50,16 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="Control/MarginContainer"]
-margin_right = 293.0
-margin_bottom = 45.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
+visible = false
 margin_right = 293.0
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )
+custom_fonts/font = SubResource( 1 )
 text = "press \"V\" button to skip"
 align = 1
 

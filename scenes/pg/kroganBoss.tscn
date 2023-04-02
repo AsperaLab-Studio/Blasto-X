@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 10, 16 ]
+"values": [ 10, 9 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -146,7 +146,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 9, 10, 11 ]
+"values": [ 15, 16, 17 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -220,7 +220,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 3, 4 ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -233,15 +233,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0100001, 0.29, 0.56, 0.82 ),
+"times": PoolRealArray( 0.0100001, 0.29, 0.56, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 0, 1, 2 ]
+"values": [ 3, 4, 5, 4 ]
 }
 
 [sub_resource type="Animation" id=9]
 resource_name = "shake"
-length = 3.0
+length = 2.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -253,7 +253,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.75, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 15, 16, 17 ]
+"values": [ 6, 7, 8 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -262,14 +262,11 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.55, 2.95 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 1.55 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "shake"
-}, {
-"args": [  ],
-"method": "nothing"
 } ]
 }
 tracks/2/type = "audio"
@@ -301,12 +298,15 @@ z_index = -1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )
+ChargeDeelay = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.4, 1.4 )
+position = Vector2( -0.802639, -1.04731 )
+scale = Vector2( 0.242155, 0.242155 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 6
+frame = 6
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -369,7 +369,7 @@ margin_right = 19.8185
 margin_bottom = -63.7829
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 6 )
 bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
