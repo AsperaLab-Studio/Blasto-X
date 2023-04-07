@@ -9,6 +9,7 @@ onready var camera: Camera2D = $Camera2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
+onready var cooldownAttack_timer: Timer = $CooldownAttackTimer
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/pg/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
@@ -29,10 +30,12 @@ export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 export var randomShackeStrenght: float = 30.0
 export var shakeDecayRate: float = 5.0
+export var AttackCooldown: float = 1.0
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
+var canAttack = true
 var timer = Timer.new()
 var shakeStrenght: float = 0.0
 var defaultOffset
@@ -48,7 +51,9 @@ func _ready() -> void:
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
-	
+	cooldownAttack_timer.wait_time = AttackCooldown
+	cooldownAttack_timer.one_shot = true
+	cooldownAttack_timer.start()
 
 func do_this():
 	if boss == false:
@@ -67,8 +72,9 @@ func _process(delta: float) -> void:
 		
 		match current_state:
 			STATE.IDLE:
-				if Input.is_action_just_pressed("attack"):
+				if Input.is_action_just_pressed("attack") && canAttack == true:
 					current_state = STATE.ATTACK
+					canAttack = false
 					
 				if Input.is_action_just_pressed("shoot"):
 					current_state = STATE.SHOOT
@@ -223,3 +229,8 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 		invincible = true
 	
 
+func _on_CooldownAttackTimer_timeout():
+	canAttack = true;
+	cooldownAttack_timer.wait_time = AttackCooldown
+	cooldownAttack_timer.one_shot = true
+	cooldownAttack_timer.start()

@@ -11,7 +11,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.5
-loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -297,8 +296,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CooldownAttackTimer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_exited"]
+[connection signal="timeout" from="CooldownAttackTimer" to="." method="_on_CooldownAttackTimer_timeout"]
