@@ -132,7 +132,7 @@ scale = Vector2( 1, 2.75439 )
 shape = SubResource( 1 )
 
 [node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
-position = Vector2( -17.1374, 54.9276 )
+position = Vector2( -134.644, 53.3646 )
 scale = Vector2( 1, 1.03052 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall/AreaGo"]
@@ -427,17 +427,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GAME OVER" type="Sprite" parent="GUI/UI2"]
+visible = false
 position = Vector2( 862, 453 )
 scale = Vector2( 0.84, 0.84 )
 z_index = 7
 texture = ExtResource( 4 )
 
 [node name="Go" type="Sprite" parent="GUI/UI2"]
+visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 texture = ExtResource( 5 )
 
 [node name="WIN" type="Sprite" parent="GUI/UI2"]
+visible = false
 position = Vector2( 911.697, 483.081 )
 scale = Vector2( 1.16068, 1.16068 )
 texture = ExtResource( 16 )
@@ -787,49 +790,48 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 6
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]

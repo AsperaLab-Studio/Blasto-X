@@ -32,12 +32,13 @@ var current_state = STATE.CHASE
 var directionPlayer = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
-var shakeFree: bool = false
-var chargeFree: bool = false
 var healthBar = null
 var amount = 0
 var paused = false
 var areaCollided = null
+
+var shakeFree: bool = false
+var chargeFree: bool = false
 
 var sceneManager = null
 
@@ -55,13 +56,13 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	if shakeFree && (
-		current_state != STATE.CHARGE_START || 
-		current_state != STATE.CHARGE_MID || 
+	if chargeFree && current_state != STATE.SHAKE:
+		current_state = STATE.CHARGE_START
+	elif shakeFree && (
+		current_state != STATE.CHARGE_START && 
+		current_state != STATE.CHARGE_MID && 
 		current_state != STATE.CHARGE_END):
 		current_state = STATE.SHAKE
-	elif chargeFree && current_state != STATE.SHAKE:
-		current_state = STATE.CHARGE_START
 	
 	if(!paused):
 		match current_state:
@@ -92,11 +93,14 @@ func _process(delta: float) -> void:
 						current_state = STATE.WAIT
 						attack_delay_timer.stop()
 			STATE.SHAKE:
+				timerCharge.set_paused(true)
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
 				if anim_player.current_animation != "shake":
 					current_state = STATE.IDLE
+					timerCharge.set_paused(false)
 			STATE.CHARGE_START:
+				timerShake.set_paused(true)
 				if timerCharge.is_stopped() && chargeFree:
 					anim_player.play("ChargeStart")
 			STATE.CHARGE_MID:
@@ -108,11 +112,12 @@ func _process(delta: float) -> void:
 					if (areaCollided.owner.is_in_group("player")):
 						player.hit(dpsCharge)
 				if anim_player.current_animation != "ChargeEnd":
-					current_state = STATE.WAIT
+					timerShake.set_paused(false)
 					areaCollided = null
 					cooldownCharge_timer.wait_time = ChargeDeelay
 					cooldownCharge_timer.one_shot = true
 					cooldownCharge_timer.start()
+					current_state = STATE.WAIT
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
