@@ -138,13 +138,14 @@ func _process(delta: float) -> void:
 	
 
 func hit(dps) -> void:
-	healthBar.update_healthbar(dps)
-	amount = amount + dps
-	if amount >= HP:
-		current_state = STATE.DIED
-	else:
-		current_state = STATE.HIT
-	
+	if (current_state != STATE.CHARGE_START && current_state != STATE.CHARGE_MID && current_state != STATE.CHARGE_END):
+		healthBar.update_healthbar(dps)
+		amount = amount + dps
+		if amount >= HP:
+			current_state = STATE.DIED
+		else:
+			current_state = STATE.HIT
+		
 
 func shake(): 
 	shakeFree = false
