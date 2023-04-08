@@ -217,6 +217,7 @@ scale = Vector2( 2.13561, 2.13561 )
 collision_layer = 2
 script = ExtResource( 5 )
 debug_mode = true
+AttackCooldown = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 225.944, 227.741 )

@@ -114,6 +114,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 19 )
+current_level = "LevelDesertBoss"
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 

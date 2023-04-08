@@ -121,6 +121,7 @@ position = Vector2( -680, -496 )
 script = ExtResource( 10 )
 enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
 next_stage = "LevelDesert2"
+current_level = "LevelDesert1"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )

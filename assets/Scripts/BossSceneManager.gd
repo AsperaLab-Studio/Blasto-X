@@ -6,6 +6,7 @@ export var n_positions = 5
 export(Array, PackedScene) var enemy_types
 export(int) var current_stage := 0
 export var next_stage = ""
+export var current_level = ""
 
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var sound = get_parent().get_node("ost")
@@ -22,7 +23,7 @@ func _process(delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
-		get_tree().change_scene("res://scenes/levels/LevelDesert1.tscn")
+		get_tree().change_scene("res://scenes/levels/" + current_level + ".tscn")
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
