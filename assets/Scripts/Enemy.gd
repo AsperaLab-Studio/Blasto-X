@@ -113,29 +113,9 @@ func move_towards_target():
 		move_and_slide(velocity * moving_speed)
 	
 
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	if (area.owner.is_in_group("player")):
-		near_player = true
-	
-	if(area.owner.is_in_group("enemy")):
-		current_state = STATE.IDLE
-		near_enemy = true
-	
-
 func pause():
 	anim_player.stop()
 	set_process(false)
-	
-
-func _on_Area2D_area_exited(area: Area2D) -> void:
-	if current_state == STATE.DIED:
-		pass
-	elif area.owner && area.owner.is_in_group("player"):
-		near_player = false
-		#current_state = STATE.CHASE
-		#attack_delay_timer.stop()
-	if area.owner && area.owner.is_in_group("enemy"):
-		near_enemy = false
 	
 
 func attack():
@@ -149,10 +129,33 @@ func death():
 	queue_free()
 	
 
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	if (area.owner.is_in_group("player")):
+		near_player = true
+	
+	if(area.owner.is_in_group("enemy")):
+		var otherSprite: Sprite = area.owner.get_node("Sprite")
+		if(sprite.flip_h == otherSprite.flip_h):
+			current_state = STATE.IDLE
+			near_enemy = true
+		
+	
+
+func _on_Area2D_area_exited(area: Area2D) -> void:
+	if current_state == STATE.DIED:
+		pass
+	elif area.owner && area.owner.is_in_group("player"):
+		near_player = false
+		#current_state = STATE.CHASE
+		#attack_delay_timer.stop()
+	if area.owner && area.owner.is_in_group("enemy"):
+		near_enemy = false
+	
+
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.ATTACK
-
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
