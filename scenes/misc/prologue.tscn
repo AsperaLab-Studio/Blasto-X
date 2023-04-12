@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/video/Prologue.ogv" type="VideoStream" id=1]
-[ext_resource path="res://assets/audio/ost/prologue.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/Scripts/prologue.gd" type="Script" id=3]
-[ext_resource path="res://assets/Scripts/audioProloguer.gd" type="Script" id=4]
+[ext_resource path="res://assets/Scripts/cutscene.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -14,12 +12,6 @@ font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 13.4543, 6.72717 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-volume_db = -15.128
-bus = "Music"
-script = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -36,9 +28,7 @@ margin_bottom = 1089.0
 stream = ExtResource( 1 )
 autoplay = true
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+next_scene = "LevelDesert1"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 anchor_right = 1.0
