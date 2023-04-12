@@ -119,7 +119,8 @@ func pause():
 	
 
 func attack():
-	target.hit(dps)
+	if near_player:
+		target.hit(dps)
 	
 
 func death():
@@ -146,8 +147,6 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 		pass
 	elif area.owner && area.owner.is_in_group("player"):
 		near_player = false
-		#current_state = STATE.CHASE
-		#attack_delay_timer.stop()
 	if area.owner && area.owner.is_in_group("enemy"):
 		near_enemy = false
 	
