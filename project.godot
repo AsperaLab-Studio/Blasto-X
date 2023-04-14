@@ -34,7 +34,7 @@ _global_script_class_icons={
 
 config/name="Mass Effect - Blasto X"
 run/main_scene="res://scenes/misc/intro sh.tscn"
-config/icon="res://icon.png"
+config/icon="res://ico.png"
 config/windows_native_icon="res://icon.ico"
 
 [audio]
