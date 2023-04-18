@@ -160,8 +160,8 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 flip_h = true
 script = ExtResource( 1 )
-firstTab = "misc/prologue"
-thirdTab = "misc/credits"
+firstTab = "cutescenes/prologue"
+thirdTab = "cutescenes/credits"
 
 [node name="mainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

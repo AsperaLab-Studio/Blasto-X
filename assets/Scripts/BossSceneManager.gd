@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
-		next_stage = "res://scenes/levels/" + next_stage + ".tscn"
+		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		
 	if Input.is_action_just_pressed("menu"):
