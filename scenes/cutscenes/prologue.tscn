@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/video/Prologue.ogv" type="VideoStream" id=1]
+[ext_resource path="res://assets/Scripts/audioProloguer.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/cutscene.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/ost/prologue.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -16,9 +18,6 @@ position = Vector2( 13.4543, 6.72717 )
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VideoPlayer" type="VideoPlayer" parent="Control"]
 margin_left = -13.3303
@@ -40,17 +39,22 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="Control/MarginContainer"]
+margin_right = 293.0
+margin_bottom = 45.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
-visible = false
 margin_right = 293.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )
 custom_fonts/font = SubResource( 1 )
 text = "press \"V\" button to skip"
 align = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [connection signal="finished" from="Control/VideoPlayer" to="Control/VideoPlayer" method="_on_VideoPlayer_finished"]
