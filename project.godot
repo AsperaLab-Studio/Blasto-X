@@ -41,6 +41,10 @@ config/windows_native_icon="res://icon.ico"
 
 mix_rate=48000
 
+[autoload]
+
+Global="*res://assets/Scripts/Global.gd"
+
 [display]
 
 window/size/width=1920

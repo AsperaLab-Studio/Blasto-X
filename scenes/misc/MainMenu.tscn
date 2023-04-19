@@ -1,26 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=1]
+[ext_resource path="res://scenes/misc/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=6]
-[ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=7]
 
-[sub_resource type="DynamicFontData" id=4]
-font_path = "res://assets/fonts/Quickzag-rOzO.otf"
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=1]
-size = 650
-outline_size = 5
-font_data = SubResource( 4 )
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 250
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 4 )
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0.72549, 0.164706, 1 )
@@ -32,136 +26,9 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
-visible = false
-anchor_top = -0.055
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 165.48
-margin_right = -227.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer"]
-visible = false
-margin_right = 1527.0
-margin_bottom = 1139.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/title"]
-visible = false
-margin_right = 1527.0
-margin_bottom = 585.0
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "X"
-align = 1
-
-[node name="MarginContainer3" type="MarginContainer" parent="TextureRect"]
-visible = false
-anchor_top = 0.09
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 165.48
-margin_right = -227.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="VBoxContainer" parent="TextureRect/MarginContainer3"]
-visible = false
-margin_right = 1527.0
-margin_bottom = 982.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer3/title"]
-visible = false
-margin_right = 1527.0
-margin_bottom = 225.0
-custom_colors/font_color = Color( 0, 1, 0.415686, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "BLASTO"
-align = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="TextureRect"]
-anchor_left = 0.05
-anchor_top = 0.061
-anchor_right = 1.042
-anchor_bottom = 1.0
-margin_left = 672.0
-margin_top = 459.72
-margin_right = -846.0
-margin_bottom = -202.4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="menu" type="VBoxContainer" parent="TextureRect/MarginContainer2"]
-margin_right = 386.0
-margin_bottom = 352.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="start" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_right = 386.0
-margin_bottom = 85.0
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "START GAME"
-align = 1
-
-[node name="option" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_top = 89.0
-margin_right = 386.0
-margin_bottom = 174.0
-custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "OPTIONS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="credits" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_top = 178.0
-margin_right = 386.0
-margin_bottom = 263.0
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "CREDITS"
-align = 1
-
-[node name="exit" type="Label" parent="TextureRect/MarginContainer2/menu"]
-margin_top = 267.0
-margin_right = 386.0
-margin_bottom = 352.0
-custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "EXIT"
-align = 1
-
-[node name="cursor" type="Sprite" parent="TextureRect/MarginContainer2/menu"]
-position = Vector2( -36.9899, 37.0034 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-flip_h = true
 script = ExtResource( 1 )
-firstTab = "cutescenes/prologue"
-thirdTab = "cutescenes/credits"
+firstTab = "prologue"
+thirdTab = "credits"
 
 [node name="mainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -175,67 +42,83 @@ scale = Vector2( 1.20464, 1.20464 )
 z_index = -1
 texture = ExtResource( 5 )
 
-[node name="MusicSlider" type="HSlider" parent="."]
-margin_left = 21.1893
-margin_top = 943.512
-margin_right = 799.741
-margin_bottom = 1066.51
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
-custom_styles/slider = SubResource( 3 )
-min_value = -70.0
-max_value = 0.0
-value = -17.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXSlider" type="HSlider" parent="."]
-margin_left = 1177.31
-margin_top = 943.512
-margin_right = 1909.31
-margin_bottom = 1066.51
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
-custom_styles/slider = ExtResource( 7 )
-min_value = -70.0
-max_value = 0.0
-value = -8.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="music" type="Label" parent="."]
-margin_left = 21.1893
-margin_top = 886.051
-margin_right = 181.189
-margin_bottom = 976.051
+[node name="StartBtn" type="Button" parent="."]
+margin_left = 801.0
+margin_top = 513.0
+margin_right = 1135.0
+margin_bottom = 609.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "MUSIC"
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "START GAME"
 
-[node name="sfx" type="Label" parent="."]
-margin_left = 1177.31
-margin_top = 886.051
-margin_right = 1384.31
-margin_bottom = 976.051
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+[node name="OptionsBtn" type="Button" parent="."]
+margin_left = 801.0
+margin_top = 608.0
+margin_right = 1135.0
+margin_bottom = 704.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
-text = "EFFECTS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "OPTIONS"
+
+[node name="CreditsBtn" type="Button" parent="."]
+margin_left = 801.0
+margin_top = 705.0
+margin_right = 1135.0
+margin_bottom = 801.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "CREDITS"
+
+[node name="ExitBtn" type="Button" parent="."]
+margin_left = 801.0
+margin_top = 802.0
+margin_right = 1135.0
+margin_bottom = 898.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "EXIT"
+
+[node name="ReturnBtn" type="Button" parent="."]
+visible = false
+margin_left = 1003.0
+margin_top = 555.0
+margin_right = 1337.0
+margin_bottom = 651.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "BACK"
 
 [node name="checkFullscreen" type="CheckBox" parent="."]
-margin_left = 20.7684
-margin_top = 11.8921
-margin_right = 278.768
-margin_bottom = 108.892
+visible = false
+margin_left = 561.0
+margin_top = 554.0
+margin_right = 819.0
+margin_bottom = 651.0
 mouse_filter = 1
 custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
@@ -244,10 +127,62 @@ custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "FullScreen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[connection signal="value_changed" from="MusicSlider" to="TextureRect/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="SFXSlider" to="TextureRect/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
-[connection signal="toggled" from="checkFullscreen" to="TextureRect/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]
+[node name="music" type="Label" parent="."]
+visible = false
+margin_left = 561.0
+margin_top = 675.0
+margin_right = 721.0
+margin_bottom = 765.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="."]
+visible = false
+margin_left = 561.0
+margin_top = 732.461
+margin_right = 1339.55
+margin_bottom = 855.459
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 3 )
+min_value = -80.0
+max_value = 0.0
+value = -17.0
+
+[node name="sfx" type="Label" parent="."]
+visible = false
+margin_left = 561.0
+margin_top = 879.0
+margin_right = 753.0
+margin_bottom = 969.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "EFFECTS"
+
+[node name="SFXSlider" type="HSlider" parent="."]
+visible = false
+margin_left = 561.0
+margin_top = 930.0
+margin_right = 1339.55
+margin_bottom = 1053.0
+custom_icons/tick = ExtResource( 4 )
+custom_icons/grabber_disabled = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 4 )
+custom_styles/slider = SubResource( 3 )
+min_value = -80.0
+max_value = 0.0
+value = -17.0
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_StartBtn_pressed"]
+[connection signal="pressed" from="OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+[connection signal="pressed" from="CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="ReturnBtn" to="." method="_on_ReturnBtn_pressed"]
+[connection signal="toggled" from="checkFullscreen" to="." method="_on_checkFullscreen_toggled"]
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="SFXSlider" to="." method="_on_SFXSlider_value_changed"]
