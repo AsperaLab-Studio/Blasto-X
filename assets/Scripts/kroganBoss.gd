@@ -56,12 +56,14 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	if chargeFree && current_state != STATE.SHAKE:
+	if chargeFree && (current_state != STATE.SHAKE &&
+		current_state != STATE.DIED):
 		current_state = STATE.CHARGE_START
 	elif shakeFree && (
 		current_state != STATE.CHARGE_START && 
 		current_state != STATE.CHARGE_MID && 
-		current_state != STATE.CHARGE_END):
+		current_state != STATE.CHARGE_END &&
+		current_state != STATE.DIED):
 		current_state = STATE.SHAKE
 	
 	if(!paused):
@@ -106,6 +108,17 @@ func _process(delta: float) -> void:
 			STATE.CHARGE_MID:
 				if anim_player.current_animation != "ChargeMid":
 					anim_player.play("ChargeMid")
+				
+				if directionPlayer.x < 0:
+					sprite.flip_h = true
+					if pivot.scale.x > 0:
+						pivot.scale.x = - pivot.scale.x
+					
+				elif directionPlayer.x > 0:
+					sprite.flip_h = false
+					if pivot.scale.x < 0:
+						pivot.scale.x = - pivot.scale.x
+						
 				move_and_slide(directionPlayer * charge_speed)
 			STATE.CHARGE_END:
 				if (areaCollided != null):

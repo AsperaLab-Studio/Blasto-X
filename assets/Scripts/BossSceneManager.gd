@@ -22,6 +22,12 @@ func _process(delta: float) -> void:
 		game_over.visible = true
 		
 	
+	if $EnemiesContainer.get_child_count() == 0:
+		win.visible = true
+		var pausable_members = get_tree().get_nodes_in_group("pausable")
+		for member in pausable_members:
+			member.pause()
+	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
 		get_tree().change_scene("res://scenes/levels/" + current_level + ".tscn")
 		
@@ -30,6 +36,7 @@ func _process(delta: float) -> void:
 		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		
+	
 	if Input.is_action_just_pressed("menu"):
 		if menuShowed == false:
 			player.paused = true

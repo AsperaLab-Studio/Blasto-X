@@ -24,6 +24,7 @@ export var debug_mode : bool
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(int) var speed: int = 300
+export(int) var damage: int = 5
 export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
@@ -128,7 +129,7 @@ func attack():
 	for area in collidings_areas:
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(1)
+			enemy.hit(damage)
 			
 		
 	
@@ -138,7 +139,10 @@ func nothing():
 
 func shoot():
 	var bullet_instance = bullet.instance()
-	bullet_instance.direction = orientation
+	if sprite.flip_h == true:
+		bullet_instance.direction = Vector2(-1,0)
+	else:
+		bullet_instance.direction = Vector2(1,0)
 	owner.add_child(bullet_instance)
 	bullet_instance.global_transform = position2d.global_transform
 	
