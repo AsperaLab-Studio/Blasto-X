@@ -24,6 +24,10 @@ func _ready():
 		
 	
 
+func _process(delta):
+	if Input.is_action_just_pressed("skipBoss"):
+		get_tree().change_scene("res://scenes/levels/LevelDesertBoss.tscn")
+
 func _on_SFXSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value);
 

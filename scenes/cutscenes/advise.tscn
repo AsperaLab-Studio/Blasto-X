@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/Scripts/intro sh.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/cutscene.gd" type="Script" id=1]
 [ext_resource path="res://assets/video/AdviseVideo.ogv" type="VideoStream" id=2]
 [ext_resource path="res://assets/img/Black.png" type="Texture" id=3]
 
@@ -22,10 +22,7 @@ margin_bottom = 1089.0
 stream = ExtResource( 2 )
 autoplay = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-nextScene = "MainMenu"
+to_mainMenu = true
 
 [node name="Black" type="Sprite" parent="."]
 position = Vector2( 1700.03, 941.918 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scenes/misc/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/cursor.png" type="Texture" id=4]
@@ -162,6 +162,15 @@ margin_bottom = 969.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "EFFECTS"
+
+[node name="sfx2" type="Label" parent="."]
+margin_left = 11.5861
+margin_top = 13.2569
+margin_right = 519.586
+margin_bottom = 103.257
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "press l to skip to boss"
 
 [node name="SFXSlider" type="HSlider" parent="."]
 visible = false

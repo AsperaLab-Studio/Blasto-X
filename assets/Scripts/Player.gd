@@ -24,7 +24,7 @@ export var debug_mode : bool
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(int) var speed: int = 300
-export(int) var damage: int = 5
+export(int) var damage: int = 1
 export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
