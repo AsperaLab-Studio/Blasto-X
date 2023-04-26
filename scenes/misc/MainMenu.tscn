@@ -42,7 +42,20 @@ scale = Vector2( 1.20464, 1.20464 )
 z_index = -1
 texture = ExtResource( 5 )
 
-[node name="StartBtn" type="Button" parent="."]
+[node name="sfx2" type="Label" parent="."]
+margin_left = 11.5861
+margin_top = 13.2569
+margin_right = 519.586
+margin_bottom = 103.257
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "press l to skip to boss"
+
+[node name="MiscMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="StartBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
 margin_top = 513.0
 margin_right = 1135.0
@@ -56,7 +69,7 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "START GAME"
 
-[node name="OptionsBtn" type="Button" parent="."]
+[node name="OptionsBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
 margin_top = 608.0
 margin_right = 1135.0
@@ -70,7 +83,7 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "OPTIONS"
 
-[node name="CreditsBtn" type="Button" parent="."]
+[node name="CreditsBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
 margin_top = 705.0
 margin_right = 1135.0
@@ -84,7 +97,7 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "CREDITS"
 
-[node name="ExitBtn" type="Button" parent="."]
+[node name="ExitBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
 margin_top = 802.0
 margin_right = 1135.0
@@ -98,8 +111,12 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "EXIT"
 
-[node name="ReturnBtn" type="Button" parent="."]
+[node name="OptionMenu" type="Control" parent="."]
 visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ReturnBtn" type="Button" parent="OptionMenu"]
 margin_left = 1003.0
 margin_top = 555.0
 margin_right = 1337.0
@@ -113,8 +130,7 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "BACK"
 
-[node name="checkFullscreen" type="CheckBox" parent="."]
-visible = false
+[node name="checkFullscreen" type="CheckBox" parent="OptionMenu"]
 margin_left = 561.0
 margin_top = 554.0
 margin_right = 819.0
@@ -128,8 +144,7 @@ custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "FullScreen"
 
-[node name="music" type="Label" parent="."]
-visible = false
+[node name="music" type="Label" parent="OptionMenu"]
 margin_left = 561.0
 margin_top = 675.0
 margin_right = 721.0
@@ -138,8 +153,7 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "MUSIC"
 
-[node name="MusicSlider" type="HSlider" parent="."]
-visible = false
+[node name="MusicSlider" type="HSlider" parent="OptionMenu"]
 margin_left = 561.0
 margin_top = 732.461
 margin_right = 1339.55
@@ -153,8 +167,7 @@ min_value = -80.0
 max_value = 0.0
 value = -17.0
 
-[node name="sfx" type="Label" parent="."]
-visible = false
+[node name="sfx" type="Label" parent="OptionMenu"]
 margin_left = 561.0
 margin_top = 879.0
 margin_right = 753.0
@@ -163,17 +176,7 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "EFFECTS"
 
-[node name="sfx2" type="Label" parent="."]
-margin_left = 11.5861
-margin_top = 13.2569
-margin_right = 519.586
-margin_bottom = 103.257
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "press l to skip to boss"
-
-[node name="SFXSlider" type="HSlider" parent="."]
-visible = false
+[node name="SFXSlider" type="HSlider" parent="OptionMenu"]
 margin_left = 561.0
 margin_top = 930.0
 margin_right = 1339.55
@@ -187,11 +190,11 @@ min_value = -80.0
 max_value = 0.0
 value = -17.0
 
-[connection signal="pressed" from="StartBtn" to="." method="_on_StartBtn_pressed"]
-[connection signal="pressed" from="OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
-[connection signal="pressed" from="CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
-[connection signal="pressed" from="ExitBtn" to="." method="_on_ExitBtn_pressed"]
-[connection signal="pressed" from="ReturnBtn" to="." method="_on_ReturnBtn_pressed"]
-[connection signal="toggled" from="checkFullscreen" to="." method="_on_checkFullscreen_toggled"]
-[connection signal="value_changed" from="MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="pressed" from="MiscMenu/StartBtn" to="." method="_on_StartBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="OptionMenu/ReturnBtn" to="." method="_on_ReturnBtn_pressed"]
+[connection signal="toggled" from="OptionMenu/checkFullscreen" to="." method="_on_checkFullscreen_toggled"]
+[connection signal="value_changed" from="OptionMenu/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="OptionMenu/SFXSlider" to="." method="_on_SFXSlider_value_changed"]

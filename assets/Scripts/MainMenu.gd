@@ -2,27 +2,8 @@ extends Control
 export var firstTab = ""
 export var thirdTab = ""
 
-var positions = []
-var index = 0
-
-onready var startBtn: Button = get_node("StartBtn")
-onready var optionBtn: Button = get_node("OptionsBtn")
-onready var creditsBtn: Button = get_node("CreditsBtn")
-onready var exitBtn: Button = get_node("ExitBtn")
-onready var returnBtn: Button = get_node("ReturnBtn")
-
-onready var musicLabel: Label = get_node("music")
-onready var sfxLabel: Label = get_node("sfx")
-onready var musicSlider: HSlider = get_node("MusicSlider")
-onready var sfxSlider: HSlider = get_node("SFXSlider")
-onready var fullscreen: CheckBox = get_node("checkFullscreen")
-
-func _ready():
-	for node in get_parent().get_children():
-		if node is Label and node.visible:
-			positions.append(node)
-		
-	
+onready var miscMenu: Control = get_node("MiscMenu")
+onready var optionMenu: Control = get_node("OptionMenu")
 
 func _process(delta):
 	if Input.is_action_just_pressed("skipBoss"):
@@ -41,30 +22,14 @@ func _on_StartBtn_pressed():
 	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")
 
 func _on_OptionsBtn_pressed():
-	startBtn.visible = false
-	optionBtn.visible = false
-	creditsBtn.visible = false
-	exitBtn.visible = false
+	miscMenu.visible = false
+	optionMenu.visible = true
 	
-	musicLabel.visible = true
-	sfxLabel.visible = true
-	musicSlider.visible = true
-	sfxSlider.visible = true
-	returnBtn.visible = true
-	fullscreen.visible = true
 
 func _on_ReturnBtn_pressed():
-	startBtn.visible = true
-	optionBtn.visible = true
-	creditsBtn.visible = true
-	exitBtn.visible = true
+	miscMenu.visible = true
+	optionMenu.visible = false
 	
-	musicLabel.visible = false
-	sfxLabel.visible = false
-	musicSlider.visible = false
-	sfxSlider.visible = false
-	returnBtn.visible = false
-	fullscreen.visible = false
 
 func _on_CreditsBtn_pressed():
 	get_tree().change_scene("res://scenes/cutscenes/" + thirdTab + ".tscn")
