@@ -175,7 +175,7 @@ collision_mask = 5
 script = ExtResource( 3 )
 speed = 654
 moving_speed = 100
-dps = 30
+dps = 3
 HP = 4
 
 [node name="Sprite" type="Sprite" parent="."]

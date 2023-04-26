@@ -298,6 +298,8 @@ z_index = -1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )
+dps = 1
+dpsCharge = 2
 ChargeDeelay = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
