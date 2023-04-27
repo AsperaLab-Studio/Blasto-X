@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex"
+path="res://.import/barra vita con cornice.png-385659a5f9a6820d00812ebbdee4754f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/Player/cerulean Star.png"
-dest_files=[ "res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex" ]
+source_file="res://assets/img/UI/barra vita con cornice.png"
+dest_files=[ "res://.import/barra vita con cornice.png-385659a5f9a6820d00812ebbdee4754f.stex" ]
 
 [params]
 

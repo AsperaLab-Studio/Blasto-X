@@ -14,18 +14,16 @@ onready var wall: StaticBody2D = $MovingWall
 onready var AreaGo: Area2D = $MovingWall/AreaGo
 onready var sound = get_parent().get_node("ost")
 onready var player = get_parent().get_node("Player")
-onready var go = get_parent().get_node("GUI/UI2/Go")
-onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")
-onready var win = get_parent().get_node("GUI/UI2/WIN")
+onready var go = get_parent().get_node("GUI/UI/Go")
+onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
+onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
 
-onready var TotalPoints = get_parent().get_node("GUI/UI2/SCORE/TotalPoints")
-onready var TotalPoints2 = get_parent().get_node("GUI/UI2/SCORE/TotalPoints2")
-onready var showedPoints = get_parent().get_node("GUI/UI2/SCORE/ShowedPoints")
-onready var Hit = get_parent().get_node("GUI/UI2/SCORE/Hit")
-onready var Hit2 = get_parent().get_node("GUI/UI2/SCORE/Hit2")
-onready var Kill = get_parent().get_node("GUI/UI2/SCORE/Kill")
-onready var Kill2 = get_parent().get_node("GUI/UI2/SCORE/Kill2")
+onready var ScoreFolder = get_parent().get_node("GUI/UI/SCORE")
+onready var TotalPoints = get_parent().get_node("GUI/UI/SCORE/TotalPoints")
+onready var showedPoints = get_parent().get_node("GUI/UI/ShowedPoints")
+onready var Hit = get_parent().get_node("GUI/UI/SCORE/Hit")
+onready var Kill = get_parent().get_node("GUI/UI/SCORE/Kill")
 onready var points = 0
 onready var hit = 0
 onready var kill = 0
@@ -67,13 +65,8 @@ func _process(delta: float) -> void:
 		go.visible = false
 	
 	if player.collision_shape.disabled == true:
-		TotalPoints.visible = true
-		TotalPoints2.visible = true
 		showedPoints.visible = false
-		Hit2.visible = true
-		Kill2.visible = true
-		Hit.visible = true
-		Kill.visible = true		
+		ScoreFolder.visible = true
 		
 		game_over.visible = true
 		
@@ -86,34 +79,12 @@ func _process(delta: float) -> void:
 		next_stage = "res://scenes/levels/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		
-	if Input.is_action_just_pressed("menu"):
-		if menuShowed == false:
-			player.paused = true
-			var enemyList = $EnemiesContainer.get_children()
-			for enemy in enemyList:
-				enemy.paused = true
-				
-			menu.visible = true
-			menuShowed = true
-		else:
-			player.paused = false
-			var enemyList = $EnemiesContainer.get_children()
-			for enemy in enemyList:
-				enemy.paused = false
-			menuShowed = false
-			menu.visible = false
-		
 	
 
 func _select_stage(number):
 	if positions.size() - 1 == number: 
-		TotalPoints.visible = true
-		TotalPoints2.visible = true
+		ScoreFolder.visible = true
 		showedPoints.visible = false
-		Hit2.visible = true
-		Kill2.visible = true
-		Hit.visible = true
-		Kill.visible = true		
 		
 		win.visible = true
 		

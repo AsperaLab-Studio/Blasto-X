@@ -1,9 +1,9 @@
 extends Node2D
 
-var bar_red = preload("res://assets/img/barHorizontal_red.png")
-var bar_green = preload("res://assets/img/barHorizontal_green.png")
-var bar_yellow = preload("res://assets/img/barHorizontal_yellow.png")
-var bar_orange = preload("res://assets/img/barHorizontal_orange.png")
+var bar_red = preload("res://assets/img/UI/barHorizontal_red.png")
+var bar_green = preload("res://assets/img/UI/barHorizontal_green.png")
+var bar_yellow = preload("res://assets/img/UI/barHorizontal_yellow.png")
+var bar_orange = preload("res://assets/img/UI/barHorizontal_orange.png")
 
 onready var healthbar = $HealthBar
 

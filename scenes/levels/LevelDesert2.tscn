@@ -1,12 +1,12 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 2-d.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
-[ext_resource path="res://assets/img/GAME OVER.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/go.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/img/barHorizontal_green.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=10]
@@ -15,16 +15,17 @@
 [ext_resource path="res://scenes/tile/lvl 2 d/desert2Tile1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/tile/lvl 2 d/desert2Tile3.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/tile/lvl 2 d/desert2Tile2.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/img/pngwing.com.png" type="Texture" id=16]
 [ext_resource path="res://scenes/pg/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
-[ext_resource path="res://assets/img/cursor.png" type="Texture" id=22]
+[ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=22]
 [ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/img/frontground/obj/LV2-D OBJ.png" type="Texture" id=25]
+[ext_resource path="res://assets/img/UI/cornice barra vita.png" type="Texture" id=26]
+[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -56,57 +57,46 @@ extents = Vector2( 15744.5, 274.576 )
 extents = Vector2( 1990.15, 120.176 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 199, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 398, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 597, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 796, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 995, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1194, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1393, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1592, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1791, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
@@ -439,10 +429,9 @@ anchor_bottom = 1.0
 
 [node name="GAME OVER" type="Sprite" parent="GUI/UI2"]
 visible = false
-position = Vector2( 862, 453 )
-scale = Vector2( 0.84, 0.84 )
+position = Vector2( 963.059, 541.221 )
 z_index = 7
-texture = ExtResource( 4 )
+texture = ExtResource( 27 )
 
 [node name="Go" type="Sprite" parent="GUI/UI2"]
 visible = false
@@ -452,31 +441,8 @@ texture = ExtResource( 5 )
 
 [node name="WIN" type="Sprite" parent="GUI/UI2"]
 visible = false
-position = Vector2( 911.697, 483.081 )
-scale = Vector2( 1.16068, 1.16068 )
-texture = ExtResource( 16 )
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/UI2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_top = 24.0
-margin_right = -18.0
-margin_bottom = -26.0
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer"]
-margin_right = 1870.0
-margin_bottom = 1030.0
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 963.059, 541.221 )
+texture = ExtResource( 4 )
 
 [node name="SCORE" type="Node" parent="GUI/UI2"]
 
@@ -560,6 +526,34 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "ENEMIES KILLED ....."
 align = 1
+
+[node name="lifeBar" type="Control" parent="GUI/UI2"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI2/lifeBar"]
+position = Vector2( 293.239, 82.7536 )
+scale = Vector2( 0.295394, 0.289558 )
+texture = ExtResource( 26 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/lifeBar"]
+margin_left = 146.0
+margin_top = 57.0
+margin_right = 1507.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.293, 0.296 )
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/UI2/lifeBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = -8.0
+margin_bottom = -16.0
+script = ExtResource( 9 )
 
 [node name="menu" type="Control" parent="GUI"]
 visible = false
@@ -802,48 +796,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1167,9 +1162,9 @@ frame = 12
 script = SubResource( 20 )
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
-[connection signal="value_changed" from="GUI/UI2/MarginContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI2/lifeBar/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
 [connection signal="value_changed" from="GUI/menu/MusicSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="GUI/menu/SFXSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
 [connection signal="toggled" from="GUI/menu/checkFullscreen" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]
 [connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
-[connection signal="update_healthbar" from="Player" to="GUI/UI2/MarginContainer" method="_on_Player_update_healthbar"]
+[connection signal="update_healthbar" from="Player" to="GUI/UI2/lifeBar/MarginContainer" method="_on_Player_update_healthbar"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex"
+path="res://.import/go.png-2d8e08a69866bb6ee574e5db43d27220.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/Player/cerulean Star.png"
-dest_files=[ "res://.import/cerulean Star.png-6a1201892545c652d7f425afdcedee3c.stex" ]
+source_file="res://assets/img/UI/go.png"
+dest_files=[ "res://.import/go.png-2d8e08a69866bb6ee574e5db43d27220.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

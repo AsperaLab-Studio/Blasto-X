@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pngwing.com.png-d32a82c9f310f5e41a1c7110137fb06d.stex"
+path="res://.import/barra vita.png-f6c11a417a4321cf3ac26994611a2836.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/pngwing.com.png"
-dest_files=[ "res://.import/pngwing.com.png-d32a82c9f310f5e41a1c7110137fb06d.stex" ]
+source_file="res://assets/img/UI/barra vita.png"
+dest_files=[ "res://.import/barra vita.png-f6c11a417a4321cf3ac26994611a2836.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/img/cursor.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -26,9 +27,6 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-firstTab = "prologue"
-thirdTab = "credits"
 
 [node name="mainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -54,6 +52,7 @@ text = "press l to skip to boss"
 [node name="MiscMenu" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 1 )
 
 [node name="StartBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
@@ -115,6 +114,8 @@ text = "EXIT"
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 7 )
+main = true
 
 [node name="ReturnBtn" type="Button" parent="OptionMenu"]
 margin_left = 1003.0
@@ -194,7 +195,7 @@ value = -17.0
 [connection signal="pressed" from="MiscMenu/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="MiscMenu/CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
 [connection signal="pressed" from="MiscMenu/ExitBtn" to="." method="_on_ExitBtn_pressed"]
-[connection signal="pressed" from="OptionMenu/ReturnBtn" to="." method="_on_ReturnBtn_pressed"]
-[connection signal="toggled" from="OptionMenu/checkFullscreen" to="." method="_on_checkFullscreen_toggled"]
-[connection signal="value_changed" from="OptionMenu/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="OptionMenu/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="pressed" from="OptionMenu/ReturnBtn" to="OptionMenu" method="_on_ReturnBtn_pressed"]
+[connection signal="toggled" from="OptionMenu/checkFullscreen" to="OptionMenu" method="_on_checkFullscreen_toggled"]
+[connection signal="value_changed" from="OptionMenu/MusicSlider" to="OptionMenu" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="OptionMenu/SFXSlider" to="OptionMenu" method="_on_SFXSlider_value_changed"]
