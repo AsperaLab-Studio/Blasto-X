@@ -234,24 +234,6 @@ position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 texture = ExtResource( 5 )
 
-[node name="MarginContainer" type="Node2D" parent="GUI/UI"]
-script = ExtResource( 9 )
-
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/MarginContainer"]
-position = Vector2( 293.239, 82.7536 )
-scale = Vector2( 0.295394, 0.289558 )
-texture = ExtResource( 12 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/MarginContainer"]
-margin_left = 146.0
-margin_top = 57.0
-margin_right = 1507.0
-margin_bottom = 232.0
-rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 7 )
-
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
 margin_left = 1715.0
 margin_top = 7.0
@@ -261,11 +243,29 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = SubResource( 21 )
 align = 1
 
-[node name="MarginContainer2" type="Node2D" parent="GUI/UI"]
+[node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
+script = ExtResource( 9 )
+
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
+position = Vector2( 293.239, 82.7536 )
+scale = Vector2( 0.295394, 0.289558 )
+texture = ExtResource( 12 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
+margin_left = 146.0
+margin_top = 57.0
+margin_right = 1507.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.293, 0.296 )
+max_value = 20.0
+value = 20.0
+texture_progress = ExtResource( 7 )
+
+[node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
 position = Vector2( 1655.76, 989.869 )
 script = ExtResource( 17 )
 
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/MarginContainer2"]
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
 margin_left = -749.0
 margin_top = -29.0
 margin_right = 110.0
@@ -275,24 +275,85 @@ value = 40.0
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 
-[node name="TheJaw" type="Sprite" parent="GUI/UI/MarginContainer2"]
+[node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
 position = Vector2( -319.152, -10.6611 )
 scale = Vector2( 0.664756, 0.664756 )
 texture = ExtResource( 25 )
 
 [node name="pauseMenu" type="Control" parent="GUI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+
+[node name="mainPauseMenu" type="Control" parent="GUI/pauseMenu"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="optionMenu" type="Control" parent="GUI/pauseMenu"]
+[node name="ReturnBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 895.843
+margin_top = 370.715
+margin_right = 1080.84
+margin_bottom = 455.715
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+action_mode = 0
+text = "RETURN"
+
+[node name="OptionBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 886.404
+margin_top = 461.484
+margin_right = 1082.4
+margin_bottom = 546.484
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+action_mode = 0
+text = "OPTIONS"
+
+[node name="MainMenuBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 844.873
+margin_top = 544.545
+margin_right = 1123.87
+margin_bottom = 629.545
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+action_mode = 0
+text = "MAIN MENU"
+
+[node name="QuitBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 844.873
+margin_top = 635.156
+margin_right = 1123.87
+margin_bottom = 720.156
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+action_mode = 0
+text = "QUIT"
+
+[node name="OptionMenu" type="Control" parent="GUI/pauseMenu"]
 visible = false
 margin_left = -4.48981
 margin_top = -204.288
 margin_right = 35.5102
 margin_bottom = -164.288
-script = ExtResource( 4 )
 
-[node name="ReturnBtn" type="Button" parent="GUI/pauseMenu/optionMenu"]
+[node name="backToPauseBtn" type="Button" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 1003.0
 margin_top = 555.0
 margin_right = 1337.0
@@ -306,7 +367,7 @@ custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "BACK"
 
-[node name="checkFullscreen" type="CheckBox" parent="GUI/pauseMenu/optionMenu"]
+[node name="checkFullscreen" type="CheckBox" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
 margin_top = 554.0
 margin_right = 819.0
@@ -320,7 +381,7 @@ custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "FullScreen"
 
-[node name="music" type="Label" parent="GUI/pauseMenu/optionMenu"]
+[node name="music" type="Label" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
 margin_top = 675.0
 margin_right = 721.0
@@ -329,7 +390,7 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "MUSIC"
 
-[node name="MusicSlider" type="HSlider" parent="GUI/pauseMenu/optionMenu"]
+[node name="MusicSlider" type="HSlider" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
 margin_top = 732.461
 margin_right = 1339.55
@@ -343,7 +404,7 @@ min_value = -80.0
 max_value = 0.0
 value = -17.0
 
-[node name="sfx" type="Label" parent="GUI/pauseMenu/optionMenu"]
+[node name="sfx" type="Label" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
 margin_top = 879.0
 margin_right = 753.0
@@ -352,7 +413,7 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "EFFECTS"
 
-[node name="SFXSlider" type="HSlider" parent="GUI/pauseMenu/optionMenu"]
+[node name="SFXSlider" type="HSlider" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
 margin_top = 930.0
 margin_right = 1339.55
@@ -496,49 +557,48 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
+frame = 10
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -646,9 +706,14 @@ vframes = 5
 frame = 2
 script = SubResource( 20 )
 
-[connection signal="pressed" from="GUI/pauseMenu/optionMenu/ReturnBtn" to="GUI/pauseMenu/optionMenu" method="_on_ReturnBtn_pressed"]
-[connection signal="toggled" from="GUI/pauseMenu/optionMenu/checkFullscreen" to="GUI/pauseMenu/optionMenu" method="_on_checkFullscreen_toggled"]
-[connection signal="value_changed" from="GUI/pauseMenu/optionMenu/MusicSlider" to="GUI/pauseMenu/optionMenu" method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="GUI/pauseMenu/optionMenu/SFXSlider" to="GUI/pauseMenu/optionMenu" method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/QuitBtn" to="GUI/pauseMenu" method="_on_QuitBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/OptionMenu/backToPauseBtn" to="GUI/pauseMenu" method="_on_backToPauseBtn_pressed"]
+[connection signal="toggled" from="GUI/pauseMenu/OptionMenu/checkFullscreen" to="GUI/pauseMenu" method="_on_checkFullscreen_toggled"]
+[connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/MusicSlider" to="GUI/pauseMenu" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
-[connection signal="update_healthbar" from="Player" to="GUI/UI/MarginContainer" method="_on_Player_update_healthbar"]
+[connection signal="update_healthbar" from="Player" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]

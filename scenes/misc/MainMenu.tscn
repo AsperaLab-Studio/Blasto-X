@@ -53,6 +53,8 @@ text = "press l to skip to boss"
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
+firstTab = "prologue"
+thirdTab = "credits"
 
 [node name="StartBtn" type="Button" parent="MiscMenu"]
 margin_left = 801.0
@@ -191,10 +193,10 @@ min_value = -80.0
 max_value = 0.0
 value = -17.0
 
-[connection signal="pressed" from="MiscMenu/StartBtn" to="." method="_on_StartBtn_pressed"]
-[connection signal="pressed" from="MiscMenu/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
-[connection signal="pressed" from="MiscMenu/CreditsBtn" to="." method="_on_CreditsBtn_pressed"]
-[connection signal="pressed" from="MiscMenu/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/StartBtn" to="MiscMenu" method="_on_StartBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/OptionsBtn" to="MiscMenu" method="_on_OptionsBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/CreditsBtn" to="MiscMenu" method="_on_CreditsBtn_pressed"]
+[connection signal="pressed" from="MiscMenu/ExitBtn" to="MiscMenu" method="_on_ExitBtn_pressed"]
 [connection signal="pressed" from="OptionMenu/ReturnBtn" to="OptionMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="toggled" from="OptionMenu/checkFullscreen" to="OptionMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="OptionMenu/MusicSlider" to="OptionMenu" method="_on_MusicSlider_value_changed"]
