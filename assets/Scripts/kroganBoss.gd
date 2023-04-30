@@ -95,14 +95,14 @@ func _process(delta: float) -> void:
 						current_state = STATE.WAIT
 						attack_delay_timer.stop()
 			STATE.SHAKE:
-				timerCharge.set_paused(true)
+				#timerCharge.set_paused(true)
 				if timerShake.is_stopped() && shakeFree:
 					anim_player.play("shake")
 				if anim_player.current_animation != "shake":
 					current_state = STATE.IDLE
-					timerCharge.set_paused(false)
+					#timerCharge.set_paused(false)
 			STATE.CHARGE_START:
-				timerShake.set_paused(true)
+				#timerShake.set_paused(true)
 				if timerCharge.is_stopped() && chargeFree:
 					anim_player.play("ChargeStart")
 			STATE.CHARGE_MID:
@@ -125,7 +125,7 @@ func _process(delta: float) -> void:
 					if (areaCollided.owner.is_in_group("player")):
 						player.hit(dpsCharge)
 				if anim_player.current_animation != "ChargeEnd":
-					timerShake.set_paused(false)
+					#timerShake.set_paused(false)
 					areaCollided = null
 					cooldownCharge_timer.wait_time = ChargeDeelay
 					cooldownCharge_timer.one_shot = true

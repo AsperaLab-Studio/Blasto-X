@@ -11,8 +11,8 @@ export var current_level = ""
 onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
 onready var sound = get_parent().get_node("ost")
 onready var player = get_parent().get_node("Player")
-onready var game_over: Sprite = get_parent().get_node("GUI/UI2/GAME OVER")
-onready var win = get_parent().get_node("GUI/UI2/WIN")
+onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
+onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
 
 var menuShowed = false

@@ -129,7 +129,7 @@ current_level = "LevelDesertBoss"
 [node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
 position = Vector2( 755.132, 845.216 )
 charge_speed = 150
-HP = 30
+HP = 2
 ShakeDuration = 3.0
 ShakeDeelay = 10.0
 ChargeDeelay = 5.0
@@ -226,6 +226,7 @@ texture = ExtResource( 23 )
 [node name="WIN" type="Sprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 963.059, 541.221 )
+z_index = 1
 texture = ExtResource( 16 )
 
 [node name="Go" type="Sprite" parent="GUI/UI"]
@@ -270,8 +271,8 @@ margin_left = -749.0
 margin_top = -29.0
 margin_right = 110.0
 margin_bottom = 33.0
-max_value = 40.0
-value = 40.0
+max_value = 2.0
+value = 2.0
 texture_progress = ExtResource( 13 )
 nine_patch_stretch = true
 
@@ -281,6 +282,7 @@ scale = Vector2( 0.664756, 0.664756 )
 texture = ExtResource( 25 )
 
 [node name="pauseMenu" type="Control" parent="GUI"]
+pause_mode = 2
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -557,48 +559,47 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 10
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 8
+frame = 7
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="obj" type="Node" parent="."]

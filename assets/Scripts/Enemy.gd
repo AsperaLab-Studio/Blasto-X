@@ -38,51 +38,48 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	if(!paused):
-		match current_state:
-			STATE.HIT:
-				anim_player.play("hit")
-			STATE.CHASE:
-				anim_player.play("move")
-				if !near_player:
-					move_towards_target()
-				else:
-					current_state = STATE.WAIT
-			STATE.WAIT:
-				if near_player:
-					anim_player.play("idle")
-					if attack_delay_timer.is_stopped():
-						attack_delay_timer.wait_time = 1
-						attack_delay_timer.start()
-				else:
-					current_state = STATE.CHASE
-			STATE.IDLE:
+	match current_state:
+		STATE.HIT:
+			anim_player.play("hit")
+		STATE.CHASE:
+			anim_player.play("move")
+			if !near_player:
+				move_towards_target()
+			else:
+				current_state = STATE.WAIT
+		STATE.WAIT:
+			if near_player:
 				anim_player.play("idle")
-				if !near_enemy:
+				if attack_delay_timer.is_stopped():
+					attack_delay_timer.wait_time = 1
+					attack_delay_timer.start()
+			else:
+				current_state = STATE.CHASE
+		STATE.IDLE:
+			anim_player.play("idle")
+			if !near_enemy:
+				current_state = STATE.WAIT
+		STATE.ATTACK:
+				if near_player && !target.invincible:
+					anim_player.play("attack")
+				elif anim_player.current_animation != "attack":
 					current_state = STATE.WAIT
-			STATE.ATTACK:
-					if near_player && !target.invincible:
-						anim_player.play("attack")
-					elif anim_player.current_animation != "attack":
-						current_state = STATE.WAIT
-						attack_delay_timer.stop()
-			STATE.DIED:
-				collision_shape_body.disabled = true
-				collision_shape.disabled = true
-				
-				collition_area2d.disabled = true
-				
-				anim_player.play("died")
-				
-				var direction = Vector2((global_position.x - target.global_position.x), 0).normalized()
-				
-				move_and_slide(direction * death_speed)
-				
+					attack_delay_timer.stop()
+		STATE.DIED:
+			collision_shape_body.disabled = true
+			collision_shape.disabled = true
+			
+			collition_area2d.disabled = true
+			
+			anim_player.play("died")
+			
+			var direction = Vector2((global_position.x - target.global_position.x), 0).normalized()
+			
+			move_and_slide(direction * death_speed)
+			
 			
 		
-		$HealthDisplay/Label.text = STATE.keys()[current_state]
-	else:
-		anim_player.stop()
+	$HealthDisplay/Label.text = STATE.keys()[current_state]
 
 func hit(dps) -> void:
 	healthBar.update_healthbar(dps)

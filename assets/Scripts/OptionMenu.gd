@@ -9,24 +9,10 @@ var menuShowed: bool = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("menu") && !main:
-			if menuShowed == false:
-				get_parent().get_parent().get_node("Player").paused = true
-				var enemyList = get_parent().get_parent().get_node("StageManager/EnemiesContainer") .get_children()
-				for enemy in enemyList:
-					enemy.paused = true
-					
-				visible = true
-				menuShowed = true
-			else:
-				get_parent().get_parent().get_node("Player").paused = false
-				var enemyList = get_parent().get_parent().get_node("StageManager/EnemiesContainer") .get_children()
-				for enemy in enemyList:
-					enemy.paused = false
-				menuShowed = false
-				visible = false
-				
+		get_tree().paused = !get_tree().paused
+		visible = !visible
 			
-		
+	
 	
 
 func _on_ReturnBtn_pressed():
@@ -35,12 +21,8 @@ func _on_ReturnBtn_pressed():
 		optionMenu.visible = false
 		
 	else:
-		get_parent().get_parent().get_node("Player").paused = false
-		var enemyList = get_parent().get_parent().get_node("StageManager/EnemiesContainer") .get_children()
-		for enemy in enemyList:
-			enemy.paused = false
-		menuShowed = false
-		visible = false
+		get_tree().paused = !get_tree().paused
+		visible = !visible
 	
 func _on_SFXSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value);
