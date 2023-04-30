@@ -19,11 +19,11 @@ onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
 
-onready var ScoreFolder = get_parent().get_node("GUI/UI/SCORE")
-onready var TotalPoints = get_parent().get_node("GUI/UI/SCORE/TotalPoints")
+onready var ScoreFolder = get_parent().get_node("GUI/UI/Sprite/SCORE")
+onready var TotalPoints = get_parent().get_node("GUI/UI/Sprite/SCORE/TotalPoints")
 onready var showedPoints = get_parent().get_node("GUI/UI/ShowedPoints")
-onready var Hit = get_parent().get_node("GUI/UI/SCORE/Hit")
-onready var Kill = get_parent().get_node("GUI/UI/SCORE/Kill")
+onready var Hit = get_parent().get_node("GUI/UI/Sprite/SCORE/Hit")
+onready var Kill = get_parent().get_node("GUI/UI/Sprite/SCORE/Kill")
 onready var points = 0
 onready var hit = 0
 onready var kill = 0

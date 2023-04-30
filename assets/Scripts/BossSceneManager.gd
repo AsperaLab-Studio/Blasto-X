@@ -37,24 +37,6 @@ func _process(delta: float) -> void:
 		get_tree().change_scene(next_stage)
 		
 	
-	if Input.is_action_just_pressed("menu"):
-		if menuShowed == false:
-			player.paused = true
-			var enemyList = $EnemiesContainer.get_children()
-			for enemy in enemyList:
-				enemy.paused = true
-				
-			menu.visible = true
-			menuShowed = true
-		else:
-			player.paused = false
-			var enemyList = $EnemiesContainer.get_children()
-			for enemy in enemyList:
-				enemy.paused = false
-			menuShowed = false
-			menu.visible = false
-		
-	
 
 func _on_Player_death() -> void:
 	var pausable_members = get_tree().get_nodes_in_group("pausable")

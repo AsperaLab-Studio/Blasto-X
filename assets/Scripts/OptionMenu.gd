@@ -50,3 +50,7 @@ func _on_MusicSlider_value_changed(value: float) -> void:
 
 func _on_checkFullscreen_toggled(button_pressed: bool) -> void:
 	OS.window_fullscreen = !OS.window_fullscreen
+
+
+func _on_backToPauseBtn_pressed():
+	pass # Replace with function body.

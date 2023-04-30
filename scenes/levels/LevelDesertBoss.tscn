@@ -1,45 +1,51 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/The Jaw soundtrack.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
-[ext_resource path="res://assets/img/UI/game over.png" type="Texture" id=4]
+[ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
-[ext_resource path="res://assets/Scripts/MarginContainer.gd" type="Script" id=9]
+[ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
 [ext_resource path="res://scenes/pg/kroganBoss.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
-[ext_resource path="res://assets/Scripts/menuCursor.gd" type="Script" id=12]
-[ext_resource path="res://assets/img/UI/barHorizontal_orange.png" type="Texture" id=13]
+[ext_resource path="res://assets/img/UI/cornice barra vita.png" type="Texture" id=12]
+[ext_resource path="res://assets/img/UI/bosses/the jaw/barra vita the jaw.png" type="Texture" id=13]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/img/UI/you win.png" type="Texture" id=16]
+[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=16]
 [ext_resource path="res://assets/Scripts/HealthDisplay.gd" type="Script" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://assets/Scripts/BossSceneManager.gd" type="Script" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=22]
-[ext_resource path="res://scenes/misc/MainMenu.tres" type="StyleBox" id=23]
+[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://assets/img/UI/conice barra vita.png" type="Texture" id=25]
+[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw destra 1.png" type="Texture" id=25]
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=21]
 size = 130
 outline_size = 2
-font_data = SubResource( 2 )
+font_data = SubResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=22]
 size = 100
 outline_size = 2
-font_data = SubResource( 2 )
+font_data = SubResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0, 0.72549, 0.164706, 1 )
 border_width_top = 18
 border_width_bottom = 23
@@ -130,291 +136,181 @@ ChargeDeelay = 5.0
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="UI2" type="Control" parent="GUI"]
+[node name="UI" type="Control" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="GAME OVER" type="Sprite" parent="GUI/UI2"]
+[node name="Sprite" type="Sprite" parent="GUI/UI"]
+z_index = 2
+
+[node name="SCORE" type="Control" parent="GUI/UI/Sprite"]
 visible = false
-position = Vector2( 862, 453 )
-scale = Vector2( 0.84, 0.84 )
-z_index = 7
-texture = ExtResource( 4 )
+margin_left = -52.9167
+margin_top = 5.03967
+margin_right = -52.9167
+margin_bottom = 5.03967
 
-[node name="Go" type="Sprite" parent="GUI/UI2"]
-visible = false
-position = Vector2( 1480, 512 )
-scale = Vector2( 0.815703, 0.801639 )
-texture = ExtResource( 5 )
-
-[node name="WIN" type="Sprite" parent="GUI/UI2"]
-visible = false
-position = Vector2( 911.697, 483.081 )
-scale = Vector2( 1.16068, 1.16068 )
-texture = ExtResource( 16 )
-
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI2"]
-position = Vector2( 293.812, 83.0585 )
-scale = Vector2( 0.295394, 0.289558 )
-texture = ExtResource( 25 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI2"]
-margin_left = 145.232
-margin_top = 57.259
-margin_right = 1506.23
-margin_bottom = 232.259
-rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 7 )
-
-[node name="MarginContainer" type="MarginContainer" parent="GUI/UI2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_top = 24.0
-margin_right = -18.0
-margin_bottom = -26.0
-script = ExtResource( 9 )
-
-[node name="MarginContainer2" type="Node2D" parent="GUI/UI2"]
-position = Vector2( 1645.14, 1000.87 )
-script = ExtResource( 17 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI2/MarginContainer2"]
-anchor_right = 0.139
-margin_left = -1462.59
-margin_top = 1.7627
-margin_right = -655.593
-margin_bottom = 85.7627
-rect_scale = Vector2( 1.97409, 0.377509 )
-max_value = 30.0
-value = 30.0
-texture_progress = ExtResource( 13 )
-nine_patch_stretch = true
-
-[node name="SCORE" type="Node" parent="GUI/UI2"]
-
-[node name="TotalPoints" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="TotalPoints" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 939.303
 margin_top = 913.0
 margin_right = 939.303
 margin_bottom = 1030.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 
-[node name="TotalPoints2" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="TotalPoints2" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 643.0
 margin_top = 932.081
 margin_right = 929.0
 margin_bottom = 1022.08
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 22 )
 text = "SCORE ....."
 align = 1
 
-[node name="ShowedPoints" type="Label" parent="GUI/UI2/SCORE"]
-margin_left = 1715.0
-margin_top = 7.0
-margin_right = 1715.0
-margin_bottom = 124.0
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 3 )
-align = 1
-
-[node name="Hit" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="Hit" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 1107.0
 margin_top = 726.0
 margin_right = 1107.0
 margin_bottom = 843.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hit2" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="Hit2" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 651.0
 margin_top = 753.081
 margin_right = 1095.0
 margin_bottom = 843.081
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 22 )
 text = "HIT rECEIVED ....."
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Kill" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="Kill" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 1211.0
 margin_top = 830.0
 margin_right = 1211.0
 margin_bottom = 947.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Kill2" type="Label" parent="GUI/UI2/SCORE"]
-visible = false
+[node name="Kill2" type="Label" parent="GUI/UI/Sprite/SCORE"]
 margin_left = 651.0
 margin_top = 841.081
 margin_right = 1196.0
 margin_bottom = 931.081
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 22 )
 text = "ENEMIES KILLED ....."
 align = 1
 
-[node name="menu" type="Control" parent="GUI"]
+[node name="GAME OVER" type="Sprite" parent="GUI/UI"]
 visible = false
+position = Vector2( 958.351, 539.915 )
+scale = Vector2( 1.00097, 1.00097 )
+z_index = 1
+texture = ExtResource( 23 )
+
+[node name="WIN" type="Sprite" parent="GUI/UI"]
+visible = false
+position = Vector2( 963.059, 541.221 )
+texture = ExtResource( 16 )
+
+[node name="Go" type="Sprite" parent="GUI/UI"]
+visible = false
+position = Vector2( 1480, 512 )
+scale = Vector2( 0.815703, 0.801639 )
+texture = ExtResource( 5 )
+
+[node name="MarginContainer" type="Node2D" parent="GUI/UI"]
+script = ExtResource( 9 )
+
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/MarginContainer"]
+position = Vector2( 293.239, 82.7536 )
+scale = Vector2( 0.295394, 0.289558 )
+texture = ExtResource( 12 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/MarginContainer"]
+margin_left = 146.0
+margin_top = 57.0
+margin_right = 1507.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.293, 0.296 )
+max_value = 20.0
+value = 20.0
+texture_progress = ExtResource( 7 )
+
+[node name="ShowedPoints" type="Label" parent="GUI/UI"]
+margin_left = 1715.0
+margin_top = 7.0
+margin_right = 1715.0
+margin_bottom = 124.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 21 )
+align = 1
+
+[node name="MarginContainer2" type="Node2D" parent="GUI/UI"]
+position = Vector2( 1655.76, 989.869 )
+script = ExtResource( 17 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/MarginContainer2"]
+margin_left = -749.0
+margin_top = -29.0
+margin_right = 110.0
+margin_bottom = 33.0
+max_value = 40.0
+value = 40.0
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+
+[node name="TheJaw" type="Sprite" parent="GUI/UI/MarginContainer2"]
+position = Vector2( -319.152, -10.6611 )
+scale = Vector2( 0.664756, 0.664756 )
+texture = ExtResource( 25 )
+
+[node name="pauseMenu" type="Control" parent="GUI"]
 margin_right = 40.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( -727.819, 536.729 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Control" type="Control" parent="GUI/menu"]
-margin_left = 63.0
-margin_top = -456.0
-margin_right = 103.0
-margin_bottom = -416.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="optionMenu" type="Control" parent="GUI/pauseMenu"]
+visible = false
+margin_left = -4.48981
+margin_top = -204.288
+margin_right = 35.5102
+margin_bottom = -164.288
+script = ExtResource( 4 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/menu/Control"]
-anchor_left = 0.05
-anchor_top = 0.061
-anchor_right = 1.042
-anchor_bottom = 1.0
-margin_left = 672.0
-margin_top = 850.295
-margin_right = 1105.32
-margin_bottom = 1164.74
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="menu" type="VBoxContainer" parent="GUI/menu/Control/MarginContainer2"]
-margin_right = 473.0
-margin_bottom = 352.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="option" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
-margin_right = 473.0
-margin_bottom = 85.0
+[node name="ReturnBtn" type="Button" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 1003.0
+margin_top = 555.0
+margin_right = 1337.0
+margin_bottom = 651.0
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-text = "OPTIONS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+action_mode = 0
+text = "BACK"
 
-[node name="mainMenu" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
-margin_top = 89.0
-margin_right = 473.0
-margin_bottom = 174.0
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 24 )
-text = "EXIT TO MAIN MENU"
-align = 1
-
-[node name="exit" type="Label" parent="GUI/menu/Control/MarginContainer2/menu"]
-margin_top = 178.0
-margin_right = 473.0
-margin_bottom = 263.0
-custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
-custom_fonts/font = ExtResource( 24 )
-text = "EXIT"
-align = 1
-
-[node name="cursor" type="Sprite" parent="GUI/menu/Control/MarginContainer2/menu"]
-position = Vector2( -36.9899, 37.0034 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 22 )
-flip_h = true
-script = ExtResource( 12 )
-thirdTab = "misc/MainMenu"
-
-[node name="MusicSlider" type="HSlider" parent="GUI/menu"]
-margin_left = 21.1893
-margin_top = 850.278
-margin_right = 799.741
-margin_bottom = 973.276
-custom_icons/tick = ExtResource( 22 )
-custom_icons/grabber_disabled = ExtResource( 22 )
-custom_icons/grabber_highlight = ExtResource( 22 )
-custom_icons/grabber = ExtResource( 22 )
-custom_styles/slider = SubResource( 5 )
-min_value = -70.0
-max_value = 0.0
-value = -17.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXSlider" type="HSlider" parent="GUI/menu"]
-margin_left = 1177.31
-margin_top = 847.758
-margin_right = 1909.31
-margin_bottom = 970.756
-custom_icons/tick = ExtResource( 22 )
-custom_icons/grabber_disabled = ExtResource( 22 )
-custom_icons/grabber_highlight = ExtResource( 22 )
-custom_icons/grabber = ExtResource( 22 )
-custom_styles/slider = ExtResource( 23 )
-min_value = -70.0
-max_value = 0.0
-value = -8.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="music" type="Label" parent="GUI/menu"]
-margin_left = 21.1893
-margin_top = 792.817
-margin_right = 181.189
-margin_bottom = 882.817
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 24 )
-text = "MUSIC"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="sfx" type="Label" parent="GUI/menu"]
-margin_left = 1177.31
-margin_top = 790.297
-margin_right = 1384.31
-margin_bottom = 880.297
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_fonts/font = ExtResource( 24 )
-text = "EFFECTS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="checkFullscreen" type="CheckBox" parent="GUI/menu"]
-margin_left = 20.7684
-margin_top = 74.8882
-margin_right = 278.768
-margin_bottom = 171.888
+[node name="checkFullscreen" type="CheckBox" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 561.0
+margin_top = 554.0
+margin_right = 819.0
+margin_bottom = 651.0
 mouse_filter = 1
 custom_colors/font_color_disabled = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0, 0.72549, 0.164706, 1 )
@@ -423,9 +319,52 @@ custom_colors/font_color_hover = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.72549, 0.164706, 1 )
 custom_fonts/font = ExtResource( 24 )
 text = "FullScreen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="music" type="Label" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 561.0
+margin_top = 675.0
+margin_right = 721.0
+margin_bottom = 765.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 561.0
+margin_top = 732.461
+margin_right = 1339.55
+margin_bottom = 855.459
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = SubResource( 25 )
+min_value = -80.0
+max_value = 0.0
+value = -17.0
+
+[node name="sfx" type="Label" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 561.0
+margin_top = 879.0
+margin_right = 753.0
+margin_bottom = 969.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "EFFECTS"
+
+[node name="SFXSlider" type="HSlider" parent="GUI/pauseMenu/optionMenu"]
+margin_left = 561.0
+margin_top = 930.0
+margin_right = 1339.55
+margin_bottom = 1053.0
+custom_icons/tick = ExtResource( 22 )
+custom_icons/grabber_disabled = ExtResource( 22 )
+custom_icons/grabber_highlight = ExtResource( 22 )
+custom_icons/grabber = ExtResource( 22 )
+custom_styles/slider = SubResource( 25 )
+min_value = -80.0
+max_value = 0.0
+value = -17.0
 
 [node name="border" type="Node" parent="."]
 
@@ -484,7 +423,7 @@ shape = SubResource( 6 )
 [node name="Area2D" type="Area2D" parent="border/Bottom"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom/Area2D"]
-position = Vector2( 14914.6, 812.236 )
+position = Vector2( 14915.3, 810.945 )
 shape = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
@@ -557,48 +496,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 5
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 9
+frame = 10
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -706,10 +646,9 @@ vframes = 5
 frame = 2
 script = SubResource( 20 )
 
-[connection signal="value_changed" from="GUI/UI2/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
-[connection signal="value_changed" from="GUI/UI2/MarginContainer2/HealthBar" to="StageManager/EnemiesContainer/KroganBoss" method="_on_BossHealth_value_changed"]
-[connection signal="value_changed" from="GUI/menu/MusicSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="GUI/menu/SFXSlider" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_SFXSlider_value_changed"]
-[connection signal="toggled" from="GUI/menu/checkFullscreen" to="GUI/menu/Control/MarginContainer2/menu/cursor" method="_on_checkFullscreen_toggled"]
+[connection signal="pressed" from="GUI/pauseMenu/optionMenu/ReturnBtn" to="GUI/pauseMenu/optionMenu" method="_on_ReturnBtn_pressed"]
+[connection signal="toggled" from="GUI/pauseMenu/optionMenu/checkFullscreen" to="GUI/pauseMenu/optionMenu" method="_on_checkFullscreen_toggled"]
+[connection signal="value_changed" from="GUI/pauseMenu/optionMenu/MusicSlider" to="GUI/pauseMenu/optionMenu" method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="GUI/pauseMenu/optionMenu/SFXSlider" to="GUI/pauseMenu/optionMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
-[connection signal="update_healthbar" from="Player" to="GUI/UI2/MarginContainer" method="_on_Player_update_healthbar"]
+[connection signal="update_healthbar" from="Player" to="GUI/UI/MarginContainer" method="_on_Player_update_healthbar"]

@@ -13,7 +13,7 @@ onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
-onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI2/MarginContainer2")
+onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/MarginContainer2")
 enum STATE {CHASE, ATTACK, SHAKE, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
 
 export(int) var speed := 500
@@ -277,3 +277,7 @@ func _on_CooldownShakeTimer_timeout():
 
 func _on_CooldownChargeTimer_timeout():
 	chargeFree = true
+
+
+func _on_HealthBar_value_changed(value):
+	pass # Replace with function body.
