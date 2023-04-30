@@ -17,7 +17,6 @@ onready var player = get_parent().get_node("Player")
 onready var go = get_parent().get_node("GUI/UI/Go")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
-onready var menu = get_parent().get_node("GUI/menu")
 
 onready var ScoreFolder = get_parent().get_node("GUI/UI/Sprite/SCORE")
 onready var TotalPoints = get_parent().get_node("GUI/UI/Sprite/SCORE/TotalPoints")
