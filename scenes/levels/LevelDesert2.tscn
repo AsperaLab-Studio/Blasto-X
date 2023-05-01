@@ -227,7 +227,7 @@ position = Vector2( 422.995, 909.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
-position = Vector2( 1120, 944 )
+position = Vector2( 1112.02, 890.75 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
@@ -562,7 +562,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
@@ -768,12 +768,13 @@ position = Vector2( 7826.08, 843.656 )
 shape = SubResource( 22 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 58.151, 1291.04 )
+position = Vector2( 69.3839, 1280 )
 scale = Vector2( 1, 1 )
 speed = 200
 AttackCooldown = 1.0
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
+pause_mode = 2
 stream = ExtResource( 2 )
 bus = "Music"
 script = ExtResource( 8 )
