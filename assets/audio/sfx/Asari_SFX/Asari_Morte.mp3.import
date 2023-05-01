@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Asari_Morte.mp3-a1d5729219d24256e01afa5a529afe74.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Asari_SFX/Asari_Morte.mp3"
+dest_files=[ "res://.import/Asari_Morte.mp3-a1d5729219d24256e01afa5a529afe74.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

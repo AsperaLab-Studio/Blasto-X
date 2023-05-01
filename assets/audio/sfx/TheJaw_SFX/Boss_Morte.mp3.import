@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss_Morte.mp3-4e634c0e117f86942e97ad5c1bf8d5d9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/TheJaw_SFX/Boss_Morte.mp3"
+dest_files=[ "res://.import/Boss_Morte.mp3-4e634c0e117f86942e97ad5c1bf8d5d9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

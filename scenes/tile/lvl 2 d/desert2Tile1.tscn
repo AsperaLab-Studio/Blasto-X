@@ -14,7 +14,7 @@ scale = Vector2( 3.40444, 1.38482 )
 texture = ExtResource( 3 )
 
 [node name="LV1-D T-STR" type="Sprite" parent="."]
-position = Vector2( 216.025, 105.082 )
+position = Vector2( 216.025, 103.082 )
 texture = ExtResource( 2 )
 hframes = 3
 

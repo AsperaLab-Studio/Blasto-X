@@ -4,15 +4,16 @@ extends KinematicBody2D
 signal update_healthbar
 signal death
 
-onready var collision_shape : CollisionShape2D = $PlayerHitBox/CollisionShape2D
+onready var collision_shape : CollisionShape2D = $Pivot/PlayerHitBox/CollisionShape2D
 onready var camera: Camera2D = $Camera2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
+onready var cooldownAttack_timer: Timer = $CooldownAttackTimer
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/pg/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
-onready var go = get_parent().get_node("GUI/UI2/Go")
+onready var go = get_parent().get_node("GUI/UI/Go")
 onready var state_label = $StateLabel
 onready var invincibility_timer = $InvincibilityTimer
 onready var invincible = false
@@ -23,16 +24,19 @@ export var debug_mode : bool
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(int) var speed: int = 300
+export(int) var damage: int = 1
 export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
 export var randomShackeStrenght: float = 30.0
 export var shakeDecayRate: float = 5.0
+export var AttackCooldown: float = 1.0
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
+var canAttack = true
 var timer = Timer.new()
 var shakeStrenght: float = 0.0
 var defaultOffset
@@ -48,7 +52,9 @@ func _ready() -> void:
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
-	
+	cooldownAttack_timer.wait_time = AttackCooldown
+	cooldownAttack_timer.one_shot = true
+	cooldownAttack_timer.start()
 
 func do_this():
 	if boss == false:
@@ -67,8 +73,9 @@ func _process(delta: float) -> void:
 		
 		match current_state:
 			STATE.IDLE:
-				if Input.is_action_just_pressed("attack"):
+				if Input.is_action_just_pressed("attack") && canAttack == true:
 					current_state = STATE.ATTACK
+					canAttack = false
 					
 				if Input.is_action_just_pressed("shoot"):
 					current_state = STATE.SHOOT
@@ -122,7 +129,7 @@ func attack():
 	for area in collidings_areas:
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(1)
+			enemy.hit(damage)
 			
 		
 	
@@ -132,7 +139,10 @@ func nothing():
 
 func shoot():
 	var bullet_instance = bullet.instance()
-	bullet_instance.direction = orientation
+	if sprite.flip_h == true:
+		bullet_instance.direction = Vector2(-1,0)
+	else:
+		bullet_instance.direction = Vector2(1,0)
 	owner.add_child(bullet_instance)
 	bullet_instance.global_transform = position2d.global_transform
 	
@@ -197,13 +207,12 @@ func audioPlay():
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
 	if area.name == "PlayerHitBox":
-		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 && sceneManager.spawned == true:
-			sceneManager.spawned = false
-			
-		
-		if get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0:
+		if (get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 
+		&& sceneManager.ActualFightPhase == sceneManager.totalFightPhases - 1):
 			sceneManager.current_stage = sceneManager.current_stage + 1
 			sceneManager._select_stage(sceneManager.current_stage)
+			sceneManager.spawned = false
+			sceneManager.ActualFightPhase = 0
 			go.visible = false
 			
 		
@@ -224,3 +233,8 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 		invincible = true
 	
 
+func _on_CooldownAttackTimer_timeout():
+	canAttack = true;
+	cooldownAttack_timer.wait_time = AttackCooldown
+	cooldownAttack_timer.one_shot = true
+	cooldownAttack_timer.start()
