@@ -1,6 +1,6 @@
 extends Control
 
-onready var miscMenu: Control = get_node("MiscMenu")
+onready var miscMenu: Control = get_parent().get_node("MiscMenu")
 onready var optionMenu: Control = get_node("OptionMenu")
 
 export var main: bool = false
@@ -18,7 +18,7 @@ func _process(delta):
 func _on_ReturnBtn_pressed():
 	if main:
 		miscMenu.visible = true
-		optionMenu.visible = false
+		visible = false
 		
 	else:
 		get_tree().paused = !get_tree().paused

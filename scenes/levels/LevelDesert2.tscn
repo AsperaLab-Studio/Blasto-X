@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 2-d.ogg" type="AudioStream" id=2]
@@ -42,13 +42,41 @@ size = 100
 outline_size = 2
 font_data = SubResource( 3 )
 
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 358, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 713, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1068, 0, 355, 108 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [sub_resource type="StyleBoxFlat" id=27]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=28]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=29]
+[sub_resource type="StyleBoxFlat" id=34]
 bg_color = Color( 0, 0.72549, 0.164706, 1 )
 border_width_top = 18
 border_width_bottom = 23
@@ -116,9 +144,9 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="GDScript" id=30]
+[sub_resource type="GDScript" id=35]
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 20.6001, 0.868036 )
 
 [sub_resource type="GDScript" id=26]
@@ -529,11 +557,13 @@ position = Vector2( 963.059, 541.221 )
 z_index = 1
 texture = ExtResource( 15 )
 
-[node name="Go" type="Sprite" parent="GUI/UI"]
+[node name="Go" type="AnimatedSprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
-texture = ExtResource( 5 )
+frames = SubResource( 32 )
+frame = 2
+playing = true
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
@@ -583,7 +613,7 @@ custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 custom_styles/hover = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/normal = SubResource( 33 )
 action_mode = 0
 text = "RETURN"
 
@@ -597,7 +627,7 @@ custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 custom_styles/hover = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/normal = SubResource( 33 )
 action_mode = 0
 text = "OPTIONS"
 
@@ -611,7 +641,7 @@ custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 custom_styles/hover = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/normal = SubResource( 33 )
 action_mode = 0
 text = "MAIN MENU"
 
@@ -625,7 +655,7 @@ custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 custom_styles/hover = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/normal = SubResource( 33 )
 action_mode = 0
 text = "QUIT"
 
@@ -646,7 +676,7 @@ custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
 custom_styles/hover = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
+custom_styles/normal = SubResource( 33 )
 action_mode = 0
 text = "BACK"
 
@@ -682,7 +712,7 @@ custom_icons/tick = ExtResource( 22 )
 custom_icons/grabber_disabled = ExtResource( 22 )
 custom_icons/grabber_highlight = ExtResource( 22 )
 custom_icons/grabber = ExtResource( 22 )
-custom_styles/slider = SubResource( 29 )
+custom_styles/slider = SubResource( 34 )
 min_value = -80.0
 max_value = 0.0
 value = -17.0
@@ -705,7 +735,7 @@ custom_icons/tick = ExtResource( 22 )
 custom_icons/grabber_disabled = ExtResource( 22 )
 custom_icons/grabber_highlight = ExtResource( 22 )
 custom_icons/grabber = ExtResource( 22 )
-custom_styles/slider = SubResource( 29 )
+custom_styles/slider = SubResource( 34 )
 min_value = -80.0
 max_value = 0.0
 value = -17.0
@@ -801,49 +831,48 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 8
+frame = 10
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -857,13 +886,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ2/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
 position = Vector2( 720, 824 )
@@ -872,13 +901,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ3/StaticBody2D"]
 position = Vector2( -24.6178, -43.4524 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
 position = Vector2( 8064, 837 )
@@ -887,13 +916,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ11"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ11/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
 position = Vector2( 8576, 837 )
@@ -902,13 +931,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ12"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ12/StaticBody2D"]
 position = Vector2( -23.7074, -44.6754 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
 position = Vector2( 1616, 824 )
@@ -917,13 +946,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ4/StaticBody2D"]
 position = Vector2( -2.02051, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
 position = Vector2( 2416, 824 )
@@ -932,13 +961,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ5/StaticBody2D"]
 position = Vector2( -2.25, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/up"]
 position = Vector2( 3568, 824 )
@@ -947,13 +976,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ6/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/up"]
 position = Vector2( 4376, 829 )
@@ -962,13 +991,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ7/StaticBody2D"]
 position = Vector2( -23.29, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/up"]
 position = Vector2( 5272, 829 )
@@ -977,13 +1006,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ8/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/up"]
 position = Vector2( 6072, 829 )
@@ -992,13 +1021,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ9"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ9/StaticBody2D"]
 position = Vector2( -2.93799, -42.7797 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/up"]
 position = Vector2( 7224, 829 )
@@ -1007,13 +1036,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ10/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ" type="Sprite" parent="obj/up"]
 position = Vector2( 602.746, 790.382 )
@@ -1071,13 +1100,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ15"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ15/StaticBody2D"]
 position = Vector2( -0.390175, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ16" type="Sprite" parent="obj/down"]
 position = Vector2( 535.111, 971.868 )
@@ -1086,13 +1115,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ16"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ16/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
 position = Vector2( 1056, 977 )
@@ -1101,13 +1130,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ3/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
 position = Vector2( 1168, 976 )
@@ -1116,14 +1145,14 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ4"]
 position = Vector2( -22.0486, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ4/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
 position = Vector2( 2134, 1066.51 )
@@ -1133,14 +1162,14 @@ offset = Vector2( 10, -90.51 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ5"]
 position = Vector2( 13.4697, -91.4806 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ5/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/down"]
 position = Vector2( 3160, 976 )
@@ -1149,13 +1178,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ6/StaticBody2D"]
 position = Vector2( -25.4714, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/down"]
 position = Vector2( 3952, 981 )
@@ -1164,13 +1193,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ7/StaticBody2D"]
 position = Vector2( -0.545654, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/down"]
 position = Vector2( 4312, 981 )
@@ -1179,13 +1208,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ8/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/down"]
 position = Vector2( 4952, 981 )
@@ -1194,13 +1223,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ9"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ9/StaticBody2D"]
 position = Vector2( -0.329102, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/down"]
 position = Vector2( 5064, 981 )
@@ -1209,14 +1238,14 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ10"]
 position = Vector2( -15.0801, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ10/StaticBody2D"]
 position = Vector2( -0.329102, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/down"]
 position = Vector2( 6040, 981 )
@@ -1225,13 +1254,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ11"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ11/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ13" type="Sprite" parent="obj/down"]
 position = Vector2( 7679.8, 977 )
@@ -1240,13 +1269,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ13"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ13/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ14" type="Sprite" parent="obj/down"]
 position = Vector2( 8288, 968 )
@@ -1255,13 +1284,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ14"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ14/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/down"]
 position = Vector2( 7056, 981 )
@@ -1270,13 +1299,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 30 )
+script = SubResource( 35 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ12"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ12/StaticBody2D"]
 position = Vector2( -24.9507, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ7" type="Sprite" parent="obj/down"]
 position = Vector2( 1355, 927 )
@@ -1291,7 +1320,7 @@ position = Vector2( 23.8939, 23.8235 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV2-D OBJ7/StaticBody2D"]
 position = Vector2( -8.50623, -21.6996 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ8" type="Sprite" parent="obj/down"]
 position = Vector2( 2599.98, 942.478 )
@@ -1308,7 +1337,7 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV2-D OBJ8/StaticBody2D"]
 position = Vector2( 8.34521, -33.9823 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ9" type="Sprite" parent="obj/down"]
 position = Vector2( 4598.51, 937.716 )
@@ -1325,7 +1354,7 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV2-D OBJ9/StaticBody2D"]
 position = Vector2( 8.34521, -33.9823 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ10" type="Sprite" parent="obj/down"]
 position = Vector2( 4776.3, 932.953 )
@@ -1340,7 +1369,7 @@ position = Vector2( 51.9998, 45.7323 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV2-D OBJ10/StaticBody2D"]
 position = Vector2( -35.7803, -44.8843 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV2-D OBJ11" type="Sprite" parent="obj/down"]
 position = Vector2( 5789.06, 947.24 )
@@ -1357,7 +1386,7 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV2-D OBJ11/StaticBody2D"]
 position = Vector2( 8.34521, -35.9157 )
-shape = SubResource( 31 )
+shape = SubResource( 36 )
 
 [node name="LV 1-D T-OBJ" type="Sprite" parent="obj/down"]
 position = Vector2( 56, 976 )

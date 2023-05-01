@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
@@ -22,7 +22,9 @@
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=22]
+[ext_resource path="res://assets/img/UI/commands.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/Scripts/Commands.gd" type="Script" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -39,6 +41,34 @@ font_data = SubResource( 3 )
 size = 100
 outline_size = 2
 font_data = SubResource( 3 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 358, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 713, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1068, 0, 355, 108 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -118,6 +148,9 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 20.5186, 81.7723 )
 
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
@@ -525,11 +558,12 @@ position = Vector2( 963.059, 541.221 )
 z_index = 1
 texture = ExtResource( 15 )
 
-[node name="Go" type="Sprite" parent="GUI/UI"]
+[node name="Go" type="AnimatedSprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
-texture = ExtResource( 5 )
+frames = SubResource( 32 )
+playing = true
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
@@ -804,41 +838,42 @@ playing = true
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 7
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 7
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
+frame = 7
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 7
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1226,6 +1261,17 @@ script = SubResource( 20 )
 position = Vector2( -24.9507, -44.8843 )
 shape = SubResource( 26 )
 
+[node name="Commands" type="Sprite" parent="."]
+position = Vector2( 377.257, 1068.34 )
+texture = ExtResource( 23 )
+script = ExtResource( 25 )
+
+[node name="StaticBody2D" type="Area2D" parent="Commands"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Commands/StaticBody2D"]
+position = Vector2( 331.2, 233.71 )
+shape = SubResource( 27 )
+
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
@@ -1238,3 +1284,4 @@ shape = SubResource( 26 )
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
 [connection signal="update_healthbar" from="Player" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]
+[connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]

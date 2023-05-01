@@ -41,6 +41,7 @@ z_index = -1
 texture = ExtResource( 5 )
 
 [node name="sfx2" type="Label" parent="."]
+visible = false
 margin_left = 11.5861
 margin_top = 13.2569
 margin_right = 519.586

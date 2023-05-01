@@ -2,8 +2,7 @@ extends Control
 export var firstTab = ""
 export var thirdTab = ""
 
-onready var miscMenu: Control = get_node("MiscMenu")
-onready var optionMenu: Control = get_node("OptionMenu")
+onready var optionMenu: Control = get_parent().get_node("OptionMenu")
 
 func _process(delta):
 	if Input.is_action_just_pressed("skipBoss"):
@@ -13,7 +12,7 @@ func _on_StartBtn_pressed():
 	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")
 
 func _on_OptionsBtn_pressed():
-	miscMenu.visible = false
+	visible = false
 	optionMenu.visible = true
 	
 
