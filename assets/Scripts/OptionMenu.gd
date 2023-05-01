@@ -44,6 +44,8 @@ func _on_OptionBtn_pressed():
 	optionMenu.visible = true
 
 func _on_MainMenuBtn_pressed():
+	get_tree().paused = !get_tree().paused
+	visible = !visible
 	get_tree().change_scene("res://scenes/misc/MainMenu.tscn")
 
 func _on_QuitBtn_pressed():
