@@ -9,11 +9,11 @@ export var next_stage = ""
 export var current_level = ""
 export var totalFightPhases = 2
 
-onready var camera : Camera2D = get_parent().get_node("Player/Camera2D")
+onready var camera : Camera2D = get_parent().get_node("PlayersList/Player1/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
 onready var AreaGo: Area2D = $MovingWall/AreaGo
 onready var sound = get_parent().get_node("ost")
-onready var player = get_parent().get_node("Player")
+onready var players = get_parent().get_node("PlayersList").get_children()
 onready var go = get_parent().get_node("GUI/UI/Go")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
@@ -46,8 +46,9 @@ func _process(delta: float) -> void:
 	Kill.text = str(kill)
 	Hit.text = str(hit)
 	
-	if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
-		_enemy_spawn(current_stage, ActualFightPhase)
+	for player in players:
+		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
+			_enemy_spawn(current_stage, ActualFightPhase)
 		
 	
 	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase == totalFightPhases - 1:
@@ -63,11 +64,12 @@ func _process(delta: float) -> void:
 	if win.visible == true:
 		go.visible = false
 	
-	if player.collision_shape.disabled == true:
-		showedPoints.visible = false
-		ScoreFolder.visible = true
-		
-		game_over.visible = true
+	for player in players:
+		if player.collision_shape.disabled == true:
+			showedPoints.visible = false
+			ScoreFolder.visible = true
+			
+			game_over.visible = true
 		
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
@@ -112,7 +114,7 @@ func _enemy_spawn(number, ActualFightPhase):
 		var enemy_instance = enemy_types[rand_index].instance()
 		$EnemiesContainer.add_child(enemy_instance)
 		enemy_instance.global_position = (spawn as Position2D).global_position
-		enemy_instance.target = player
+		enemy_instance.targetList = players
 		
 	
 
@@ -123,3 +125,10 @@ func _on_Player_death() -> void:
 		member.pause()
 		
 	
+
+
+func _on_Player2_death():
+	var pausable_members = get_tree().get_nodes_in_group("pausable")
+	
+	for member in pausable_members:
+		member.pause()

@@ -21,7 +21,8 @@ export(int) var HP := 5
 
 var current_state = STATE.CHASE
 
-var target = null
+var targetList = null
+var actual_target: Player = null
 var near_player: bool = false
 var near_enemy: bool = false
 var healthBar = null
@@ -38,6 +39,8 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
+	actual_target = select_target()
+
 	match current_state:
 		STATE.HIT:
 			anim_player.play("hit")
@@ -60,7 +63,7 @@ func _process(delta: float) -> void:
 			if !near_enemy:
 				current_state = STATE.WAIT
 		STATE.ATTACK:
-				if near_player && !target.invincible:
+				if near_player && !actual_target.invincible:
 					anim_player.play("attack")
 				elif anim_player.current_animation != "attack":
 					current_state = STATE.WAIT
@@ -73,13 +76,26 @@ func _process(delta: float) -> void:
 			
 			anim_player.play("died")
 			
-			var direction = Vector2((global_position.x - target.global_position.x), 0).normalized()
+			var direction = Vector2((global_position.x - actual_target.global_position.x), 0).normalized()
 			
 			move_and_slide(direction * death_speed)
 			
 			
 		
 	$HealthDisplay/Label.text = STATE.keys()[current_state]
+
+
+func select_target() -> Player:
+	var distance: float = 100000
+	var choosedTarget: Player = null
+	for target in targetList:
+		var tmpDistance: float = global_position.distance_to(target.global_position)
+		if(tmpDistance < distance):
+			choosedTarget = target 
+			distance = tmpDistance
+	
+	return choosedTarget
+
 
 func hit(dps) -> void:
 	healthBar.update_healthbar(dps)
@@ -91,13 +107,13 @@ func hit(dps) -> void:
 	
 
 func move_towards_target():
-	if target:
-		if global_position.y > target.global_position.y:
+	if actual_target:
+		if global_position.y > actual_target.global_position.y:
 			z_index = 0
 		else:
 			z_index = -1
 			
-		var velocity = global_position.direction_to(target.global_position)
+		var velocity = global_position.direction_to(actual_target.global_position)
 		
 		if velocity.x < 0:
 			sprite.flip_h = true
@@ -118,7 +134,7 @@ func pause():
 
 func attack():
 	if near_player:
-		target.hit(dps)
+		actual_target.hit(dps)
 	
 
 func death():

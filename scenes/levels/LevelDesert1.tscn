@@ -1,11 +1,11 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
-[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/img/UI/commands.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/Scripts/Commands.gd" type="Script" id=25]
+[ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -563,7 +564,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 2
 playing = true
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
@@ -578,6 +578,21 @@ texture = ExtResource( 12 )
 margin_left = 146.0
 margin_top = 57.0
 margin_right = 1507.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.293, 0.296 )
+max_value = 20.0
+value = 20.0
+texture_progress = ExtResource( 7 )
+
+[node name="ConiceBarraVita2" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
+position = Vector2( 880.239, 82.7536 )
+scale = Vector2( 0.295394, 0.289558 )
+texture = ExtResource( 12 )
+
+[node name="HealthBar2" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
+margin_left = 733.0
+margin_top = 57.0
+margin_right = 2094.0
 margin_bottom = 232.0
 rect_scale = Vector2( 0.293, 0.296 )
 max_value = 20.0
@@ -768,11 +783,17 @@ scale = Vector2( 0.58, 0.57 )
 position = Vector2( 7826.08, 843.656 )
 shape = SubResource( 22 )
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
+[node name="PlayersList" type="Node2D" parent="."]
+
+[node name="Player1" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
 speed = 200
 AttackCooldown = 1.0
+
+[node name="Player2" parent="PlayersList" instance=ExtResource( 26 )]
+position = Vector2( 226, 1316 )
+scale = Vector2( 1, 1 )
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
@@ -833,49 +854,42 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1274,8 +1288,9 @@ script = ExtResource( 25 )
 position = Vector2( 331.2, 233.71 )
 shape = SubResource( 27 )
 
-[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="Player" method="_on_AreaGo_area_entered"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="Player" method="_on_HealthBar_value_changed"]
+[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Player1" method="_on_AreaGo_area_entered"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="PlayersList/Player1" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar2" to="PlayersList/Player2" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
@@ -1284,6 +1299,8 @@ shape = SubResource( 27 )
 [connection signal="toggled" from="GUI/pauseMenu/OptionMenu/checkFullscreen" to="GUI/pauseMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/MusicSlider" to="GUI/pauseMenu" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
-[connection signal="death" from="Player" to="StageManager" method="_on_Player_death"]
-[connection signal="update_healthbar" from="Player" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]
+[connection signal="death" from="PlayersList/Player1" to="StageManager" method="_on_Player_death"]
+[connection signal="update_healthbar" from="PlayersList/Player1" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]
+[connection signal="death" from="PlayersList/Player2" to="StageManager" method="_on_Player2_death"]
+[connection signal="update_healthbar" from="PlayersList/Player2" to="GUI/UI/HealthPlayerContainer" method="_on_Player2_update_healthbar"]
 [connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]

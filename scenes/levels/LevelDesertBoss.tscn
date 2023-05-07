@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
-[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw destra 1.png" type="Texture" id=25]
+
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"

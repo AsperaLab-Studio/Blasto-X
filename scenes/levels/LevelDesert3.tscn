@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
-[ext_resource path="res://scenes/pg/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=22]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )

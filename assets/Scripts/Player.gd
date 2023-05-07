@@ -19,6 +19,7 @@ onready var invincibility_timer = $InvincibilityTimer
 onready var invincible = false
 onready var timerShake: Timer = $TimerShake
 
+#test
 export var debug_mode : bool
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
@@ -45,7 +46,7 @@ export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
-	sceneManager = get_parent().get_node("StageManager")
+	sceneManager = get_parent().get_parent().get_node("StageManager")
 	defaultOffset = camera.offset
 	timer.connect("timeout",self,"do_this")
 	timer.wait_time = 1
@@ -63,7 +64,6 @@ func do_this():
 	else:
 		camera.smoothing_speed = 0
 		timer.disconnect("timeout", self, "do_this")
-	
 
 func _process(delta: float) -> void:
 	if(!paused):
