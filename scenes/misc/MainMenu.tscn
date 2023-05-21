@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=7]
@@ -52,7 +51,6 @@ custom_fonts/font = ExtResource( 6 )
 text = "press l to skip to boss"
 
 [node name="MiscMenu" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
@@ -163,10 +161,6 @@ margin_left = 561.0
 margin_top = 732.461
 margin_right = 1339.55
 margin_bottom = 855.459
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = SubResource( 3 )
 min_value = -80.0
 max_value = 0.0
@@ -186,16 +180,13 @@ margin_left = 561.0
 margin_top = 930.0
 margin_right = 1339.55
 margin_bottom = 1053.0
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = SubResource( 3 )
 min_value = -80.0
 max_value = 0.0
 value = -17.0
 
 [node name="PlayMenu" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 8 )

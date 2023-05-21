@@ -252,6 +252,7 @@ anims/shoot = SubResource( 6 )
 [node name="InvincibilityTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -7.02375, 0.46825 )
 shape = SubResource( 10 )
 
@@ -266,6 +267,7 @@ position = Vector2( 0, -5.96046e-08 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
+visible = false
 position = Vector2( 59.8836, -5.09534 )
 shape = SubResource( 8 )
 
@@ -273,6 +275,7 @@ shape = SubResource( 8 )
 position = Vector2( -18.3046, 0.0554073 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/PlayerHitBox"]
+visible = false
 position = Vector2( 0, -0.773 )
 shape = SubResource( 11 )
 

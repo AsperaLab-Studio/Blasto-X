@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barHorizontal_red.png-cef05f7ef544dc6111b75afcd889007f.stex"
+path="res://.import/ceruulean star cornice vita.png-44fb717ae9bf5327337d4e9359210bbd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/UI/barHorizontal_red.png"
-dest_files=[ "res://.import/barHorizontal_red.png-cef05f7ef544dc6111b75afcd889007f.stex" ]
+source_file="res://assets/img/UI/cerulean star/ceruulean star cornice vita.png"
+dest_files=[ "res://.import/ceruulean star cornice vita.png-44fb717ae9bf5327337d4e9359210bbd.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

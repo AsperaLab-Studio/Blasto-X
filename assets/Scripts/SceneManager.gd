@@ -40,7 +40,7 @@ func _ready() -> void:
 	randomize()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	TotalPoints.text = str(points)
 	showedPoints.text = str(points)
 	Kill.text = str(kill)
@@ -101,10 +101,10 @@ func _select_stage(number):
 		
 	
 
-func _enemy_spawn(number, ActualFightPhase):
+func _enemy_spawn(number, actualFightPhase):
 	spawned = true
 	var enemyNumber = NodePath((number) as String)
-	var phase =  NodePath((ActualFightPhase) as String)
+	var phase =  NodePath((actualFightPhase) as String)
 	
 	spawnList = $EnemiesSpawn.get_node(enemyNumber).get_node(phase).get_children()
 	

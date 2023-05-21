@@ -6,12 +6,12 @@
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/img/UI/barra vita.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
 [ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
-[ext_resource path="res://assets/img/UI/cornice barra vita.png" type="Texture" id=12]
+[ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=22]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
+
 
 
 [sub_resource type="RectangleShape2D" id=1]

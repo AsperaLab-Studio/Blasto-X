@@ -2,6 +2,7 @@ extends Control
 
 onready var miscMenu: Control = get_parent().get_node("MiscMenu")
 onready var optionMenu: Control = get_node("OptionMenu")
+onready var commandMenu: Control = get_parent().get_node("CommandMenu")
 
 export var main: bool = false
 
@@ -50,3 +51,8 @@ func _on_MainMenuBtn_pressed():
 
 func _on_QuitBtn_pressed():
 	get_tree().quit()
+
+
+func _on_CommandBtn_pressed():
+	commandMenu.visible = true
+	visible = false

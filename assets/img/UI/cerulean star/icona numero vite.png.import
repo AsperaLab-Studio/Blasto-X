@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barHorizontal_yellow.png-20da081aa542c0a44a8da9d8b24d9c8b.stex"
+path="res://.import/icona numero vite.png-49fba1af8cffd4806a9532f87fc53c69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/UI/barHorizontal_yellow.png"
-dest_files=[ "res://.import/barHorizontal_yellow.png-20da081aa542c0a44a8da9d8b24d9c8b.stex" ]
+source_file="res://assets/img/UI/cerulean star/icona numero vite.png"
+dest_files=[ "res://.import/icona numero vite.png-49fba1af8cffd4806a9532f87fc53c69.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barra vita con cornice.png-385659a5f9a6820d00812ebbdee4754f.stex"
+path="res://.import/barra vita.png-883c19a0254be780b496d9b63cfade79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/UI/barra vita con cornice.png"
-dest_files=[ "res://.import/barra vita con cornice.png-385659a5f9a6820d00812ebbdee4754f.stex" ]
+source_file="res://assets/img/UI/blasto/barra vita.png"
+dest_files=[ "res://.import/barra vita.png-883c19a0254be780b496d9b63cfade79.stex" ]
 
 [params]
 
