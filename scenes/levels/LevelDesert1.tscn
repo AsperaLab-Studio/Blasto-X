@@ -773,12 +773,12 @@ shape = SubResource( 22 )
 
 [node name="PlayersList" type="Node2D" parent="."]
 
-[node name="Player" parent="PlayersList" instance=ExtResource( 26 )]
+[node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
 position = Vector2( 109, 1251 )
 scale = Vector2( 1, 1 )
 AttackCooldown = 1.0
 
-[node name="Player1" parent="PlayersList" instance=ExtResource( 6 )]
+[node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
 speed = 200
@@ -843,49 +843,42 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1273,8 +1266,8 @@ script = SubResource( 20 )
 position = Vector2( -24.9507, -44.8843 )
 shape = SubResource( 26 )
 
-[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Player1" method="_on_AreaGo_area_entered"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="PlayersList/Player1" method="_on_HealthBar_value_changed"]
+[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
@@ -1283,5 +1276,5 @@ shape = SubResource( 26 )
 [connection signal="toggled" from="GUI/pauseMenu/OptionMenu/checkFullscreen" to="GUI/pauseMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/MusicSlider" to="GUI/pauseMenu" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
-[connection signal="death" from="PlayersList/Player1" to="StageManager" method="_on_Player_death"]
-[connection signal="update_healthbar" from="PlayersList/Player1" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]
+[connection signal="death" from="PlayersList/Blasto" to="StageManager" method="_on_Player_death"]
+[connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Player_update_healthbar"]

@@ -7,10 +7,17 @@ enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 var shaked: bool = false
 var camera
+var player2
 
 func _ready():
 	rnd.randomize()
 	camera = self
+	for tmpPlayer in get_parent().get_parent().get_children():
+		if(tmpPlayer != player):
+			player2 = tmpPlayer
+			
+		
+	
 
 func _process(delta):
 	if player.boss:
@@ -21,6 +28,11 @@ func _process(delta):
 			offset = get_random_offset()
 		else:
 			offset = player.defaultOffset
+	else:
+		var borderPositionX = global_position.x - size.x/2
+		if player2.global_position.x < borderPositionX:
+			#qui va il codice per trascinare il player 2
+			pass
 		
 	
 
