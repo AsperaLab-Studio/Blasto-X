@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://assets/Scripts/Enemy.gd"
+"path": "res://assets/Scripts/AI/Enemy.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "KroganBoss",
 "language": "GDScript",
-"path": "res://assets/Scripts/kroganBoss.gd"
+"path": "res://assets/Scripts/AI/kroganBoss.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://assets/Scripts/Player.gd"
+"path": "res://assets/Scripts/Player/Player.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",

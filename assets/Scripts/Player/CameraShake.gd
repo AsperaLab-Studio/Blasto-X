@@ -29,8 +29,8 @@ func _process(delta):
 		else:
 			offset = player.defaultOffset
 	else:
-		var borderPositionX = global_position.x - size.x/2
-		if player2.global_position.x < borderPositionX:
+		#var borderPositionX = global_position.x - size.x/2
+		#if player2.global_position.x < borderPositionX:
 			#qui va il codice per trascinare il player 2
 			pass
 		

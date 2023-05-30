@@ -12,6 +12,12 @@ func _process(delta):
 func _on_StartBtn_pressed():
 	visible = false
 	playMenu.visible = true
+	var multiBtn = playMenu.get_node("MultiBtn")
+	if(Global.multiplayerReady):
+		multiBtn.visible = true
+	else:
+		multiBtn.visible = true
+	
 
 func _on_OptionsBtn_pressed():
 	visible = false

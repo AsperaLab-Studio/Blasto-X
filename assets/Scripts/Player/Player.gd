@@ -24,6 +24,7 @@ export var debug_mode : bool
 
 enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
+export(bool) var isPlayerTwo: bool = false
 export(int) var speed: int = 300
 export(int) var damage: int = 1
 export(bool) var moving: bool = false
@@ -41,6 +42,7 @@ var canAttack = true
 var timer = Timer.new()
 var shakeStrenght: float = 0.0
 var defaultOffset
+var inputManager
 
 export var collidings_areas = []
 
@@ -66,6 +68,11 @@ func do_this():
 		timer.disconnect("timeout", self, "do_this")
 
 func _process(delta: float) -> void:
+	if(isPlayerTwo):
+		inputManager = Global.player2_input
+	else:
+		inputManager = Global.player1_input
+	
 	if(!paused):
 		direction = _get_direction()
 		if direction.x:

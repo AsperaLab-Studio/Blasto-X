@@ -7,15 +7,15 @@
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=7]
-[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=8]
-[ext_resource path="res://assets/Scripts/PlayerHealthBar.gd" type="Script" id=9]
-[ext_resource path="res://assets/Scripts/SceneManager.gd" type="Script" id=10]
+[ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=8]
+[ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=9]
+[ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
-[ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=16]
+[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
@@ -560,6 +560,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
+frame = 3
 playing = true
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
@@ -774,8 +775,10 @@ shape = SubResource( 22 )
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
+visible = false
 position = Vector2( 109, 1251 )
 scale = Vector2( 1, 1 )
+isPlayerTwo = true
 AttackCooldown = 1.0
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
