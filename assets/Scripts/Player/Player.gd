@@ -245,3 +245,8 @@ func _on_CooldownAttackTimer_timeout():
 	cooldownAttack_timer.wait_time = AttackCooldown
 	cooldownAttack_timer.one_shot = true
 	cooldownAttack_timer.start()
+
+
+func _on_HealthBar2_value_changed(value):
+	if value == 0:
+		current_state = STATE.DIED

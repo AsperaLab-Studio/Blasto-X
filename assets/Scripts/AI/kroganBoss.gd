@@ -28,7 +28,7 @@ export(float) var ShakeDeelay := 5
 export(float) var ChargeDeelay := 5
 
 var current_state = STATE.CHASE
-
+var actual_target: Player = null
 var directionPlayer = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
@@ -36,6 +36,7 @@ var healthBar = null
 var amount = 0
 var paused = false
 var areaCollided = null
+var targetList = null
 
 var shakeFree: bool = false
 var chargeFree: bool = false
@@ -56,6 +57,8 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
+	actual_target = select_target()
+	
 	if chargeFree && (current_state != STATE.SHAKE &&
 		current_state != STATE.DIED):
 		current_state = STATE.CHARGE_START
@@ -149,6 +152,18 @@ func _process(delta: float) -> void:
 	else:
 		anim_player.stop()
 	
+
+func select_target() -> Player:
+	var distance: float = 100000
+	var choosedTarget: Player = null
+	for target in targetList:
+		var tmpDistance: float = global_position.distance_to(target.global_position)
+		if(tmpDistance < distance):
+			choosedTarget = target 
+			distance = tmpDistance
+	
+	return choosedTarget
+
 
 func hit(dps) -> void:
 	if (current_state != STATE.CHARGE_START && current_state != STATE.CHARGE_MID && current_state != STATE.CHARGE_END):

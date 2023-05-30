@@ -118,7 +118,7 @@ func _enemy_spawn(number, actualFightPhase):
 		
 	
 
-func _on_Player_death() -> void:
+func _on_Blasto_death() -> void:
 	var pausable_members = get_tree().get_nodes_in_group("pausable")
 	
 	for member in pausable_members:
@@ -127,7 +127,7 @@ func _on_Player_death() -> void:
 	
 
 
-func _on_Player2_death():
+func _on_Ceru_Star_death():
 	var pausable_members = get_tree().get_nodes_in_group("pausable")
 	
 	for member in pausable_members:
