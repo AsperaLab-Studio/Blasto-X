@@ -43,12 +43,23 @@ var timer = Timer.new()
 var shakeStrenght: float = 0.0
 var defaultOffset
 var inputManager
+var lifesList
+var lifeCount: int
 
 export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
+	
 	sceneManager = get_parent().get_parent().get_node("StageManager")
+
+	if !isPlayerTwo:
+		lifesList = get_parent().get_parent().get_node("GUI/UI/LifesList/Blasto")
+	else:
+		lifesList = get_parent().get_parent().get_node("GUI/UI/LifesList/Ceru")
+	
+	lifeCount = lifesList.get_child_count()
+	
 	defaultOffset = camera.offset
 	timer.connect("timeout",self,"do_this")
 	timer.wait_time = 1
@@ -141,9 +152,6 @@ func attack():
 		
 	
 
-func nothing():
-	pass
-
 func shoot():
 	var bullet_instance = bullet.instance()
 	if sprite.flip_h == true:
@@ -160,7 +168,14 @@ func pause():
 	
 
 func death():
-	emit_signal("death")
+	lifeCount = lifeCount - 1
+	for life in lifesList.get_children():
+		if life.visibile == true:
+			life.visibile = false
+			break
+
+		
+	emit_signal("death", self)
 	
 
 func _get_direction() -> Vector2:
@@ -247,6 +262,3 @@ func _on_CooldownAttackTimer_timeout():
 	cooldownAttack_timer.start()
 
 
-func _on_HealthBar2_value_changed(value):
-	if value == 0:
-		current_state = STATE.DIED

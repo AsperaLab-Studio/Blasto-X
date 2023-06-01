@@ -118,17 +118,31 @@ func _enemy_spawn(number, actualFightPhase):
 		
 	
 
-func _on_Blasto_death() -> void:
-	var pausable_members = get_tree().get_nodes_in_group("pausable")
+func _on_Blasto_death(p) -> void:
+	eventDeath(p)
 	
-	for member in pausable_members:
-		member.pause()
+
+func _on_Ceru_Star_death(p):
+	eventDeath(p)
+
+
+func eventDeath(p):
+	if(p.lifeCount > 0):
+		var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
+		p.global_position = respawnPoint
+	else:
+		for playerTmp in players:
+			if playerTmp != p:
+				if playerTmp.lifeCount == 0:
+					var pausable_members = get_tree().get_nodes_in_group("pausable")
+		
+					for member in pausable_members:
+						member.pause()
+
+
+	
 		
 	
 
-
-func _on_Ceru_Star_death():
-	var pausable_members = get_tree().get_nodes_in_group("pausable")
-	
-	for member in pausable_members:
-		member.pause()
+			
+		

@@ -13,10 +13,10 @@ func _on_StartBtn_pressed():
 	visible = false
 	playMenu.visible = true
 	var multiBtn = playMenu.get_node("MultiBtn")
-	if(Global.multiplayerReady):
+	if(Global.multiplayerReady == true):
 		multiBtn.visible = true
 	else:
-		multiBtn.visible = true
+		multiBtn.visible = false
 	
 
 func _on_OptionsBtn_pressed():

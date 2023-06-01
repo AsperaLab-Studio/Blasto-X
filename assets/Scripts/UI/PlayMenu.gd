@@ -10,10 +10,10 @@ func _on_SingleBtn_pressed():
 
 
 func _on_BackBtn_pressed():
-	Global.isMultiplayer = true
-	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")
+	visible = false
+	miscMenu.visible = true
 
 
 func _on_MultiBtn_pressed():
-	visible = false
-	miscMenu.visible = true
+	Global.isMultiplayer = true
+	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")

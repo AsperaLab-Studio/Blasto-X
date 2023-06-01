@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
@@ -21,8 +21,6 @@
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
-[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
-[ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=27]
@@ -562,56 +560,17 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
 playing = true
-
-[node name="LifesList" type="Node2D" parent="GUI/UI"]
-
-[node name="Blasto" type="Node2D" parent="GUI/UI/LifesList"]
-
-[node name="Blasto1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
-position = Vector2( 172, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
-
-[node name="Blasto2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
-position = Vector2( 204, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
-
-[node name="Blasto3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
-position = Vector2( 236, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
-
-[node name="Ceru" type="Node2D" parent="GUI/UI/LifesList"]
-
-[node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 756, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
-
-[node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 788, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
-
-[node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 820, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
 
-[node name="Blasto" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
-
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Blasto"]
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
 position = Vector2( 293.239, 82.7536 )
 scale = Vector2( 0.295394, 0.289558 )
 texture = ExtResource( 12 )
 
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Blasto"]
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
 margin_left = 146.0
 margin_top = 57.0
 margin_right = 1507.0
@@ -621,14 +580,12 @@ max_value = 20.0
 value = 20.0
 texture_progress = ExtResource( 7 )
 
-[node name="Ceru" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
-
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Ceru"]
+[node name="ConiceBarraVita2" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
 position = Vector2( 880.239, 82.7536 )
 scale = Vector2( 0.295394, 0.289558 )
 texture = ExtResource( 28 )
 
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Ceru"]
+[node name="HealthBar2" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
 margin_left = 734.0
 margin_top = 56.0
 margin_right = 2096.0
@@ -887,49 +844,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 10
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1318,8 +1275,8 @@ position = Vector2( -24.9507, -44.8843 )
 shape = SubResource( 26 )
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar2" to="PlayersList/Ceru Star" method="_on_HealthBar2_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
