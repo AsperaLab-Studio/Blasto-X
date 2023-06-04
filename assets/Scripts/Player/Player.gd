@@ -27,6 +27,7 @@ enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 export(bool) var isPlayerTwo: bool = false
 export(int) var speed: int = 300
 export(int) var damage: int = 1
+export(int) var HP: int = 20
 export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
@@ -50,7 +51,6 @@ export var collidings_areas = []
 
 func _ready() -> void:
 	anim_player.play("idle")
-	
 	sceneManager = get_parent().get_parent().get_node("StageManager")
 
 	if !isPlayerTwo:
@@ -91,11 +91,11 @@ func _process(delta: float) -> void:
 		
 		match current_state:
 			STATE.IDLE:
-				if Input.is_action_just_pressed("attack") && canAttack == true:
+				if Input.is_action_just_pressed(inputManager[4]) && canAttack == true:
 					current_state = STATE.ATTACK
 					canAttack = false
 					
-				if Input.is_action_just_pressed("shoot"):
+				if Input.is_action_just_pressed(inputManager[5]):
 					current_state = STATE.SHOOT
 					
 				if direction:
@@ -130,7 +130,6 @@ func _process(delta: float) -> void:
 					
 				
 			STATE.DIED:
-				collision_shape.disabled = true
 				anim_player.play("died")
 				
 			
@@ -167,21 +166,10 @@ func pause():
 	set_process(false)
 	
 
-func death():
-	lifeCount = lifeCount - 1
-	for life in lifesList.get_children():
-		if life.visibile == true:
-			life.visibile = false
-			break
-
-		
-	emit_signal("death", self)
-	
-
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()
-	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	input_direction.x = int(Input.is_action_pressed(inputManager[3])) - int(Input.is_action_pressed(inputManager[2]))
+	input_direction.y = int(Input.is_action_pressed(inputManager[1])) - int(Input.is_action_pressed(inputManager[0]))
 	return input_direction
 	
 
@@ -197,6 +185,35 @@ func hit(dps):
 			emit_signal("update_healthbar", dps)
 		
 	
+
+func death():
+	var test = "test"
+	if lifeCount > 1:
+		respawn()
+	else:
+		KO()
+		
+	emit_signal("death", self)
+	
+
+func removeLife():
+	lifeCount = lifeCount - 1
+	for life in lifesList.get_children():
+		if life.visible == true:
+			life.visible = false
+			break
+			
+		
+	
+
+func respawn():
+	removeLife()
+	current_state = STATE.IDLE
+	emit_signal("update_healthbar", -HP)
+
+func KO():
+	removeLife()
+	queue_free()
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
@@ -229,7 +246,7 @@ func audioPlay():
 
 func _on_AreaGo_area_entered(area: Area2D) -> void:
 	if area.name == "PlayerHitBox":
-		if (get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 
+		if (get_parent().get_parent().get_node("StageManager/EnemiesContainer").get_child_count() == 0 
 		&& sceneManager.ActualFightPhase == sceneManager.totalFightPhases - 1):
 			sceneManager.current_stage = sceneManager.current_stage + 1
 			sceneManager._select_stage(sceneManager.current_stage)

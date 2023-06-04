@@ -24,9 +24,10 @@
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
+[ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=25]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=27]
-[ext_resource path="res://assets/img/UI/cerulean star/ceruulean star cornice vita.png" type="Texture" id=28]
+[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=28]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -145,8 +146,6 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="GDScript" id=20]
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
@@ -562,42 +561,42 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
 
 [node name="Blasto" type="Node2D" parent="GUI/UI/LifesList"]
 
-[node name="Blasto1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
-position = Vector2( 172, 140 )
+[node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+position = Vector2( 236, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 22 )
 
-[node name="Blasto2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+[node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 204, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 22 )
 
-[node name="Blasto3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
-position = Vector2( 236, 140 )
+[node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+position = Vector2( 172, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 22 )
 
 [node name="Ceru" type="Node2D" parent="GUI/UI/LifesList"]
 
 [node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 756, 140 )
+position = Vector2( 816, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 23 )
 
 [node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 788, 140 )
+position = Vector2( 784, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 23 )
 
 [node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 820, 140 )
+position = Vector2( 752, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 23 )
 
@@ -820,6 +819,7 @@ shape = SubResource( 22 )
 position = Vector2( 109, 1251 )
 scale = Vector2( 1, 1 )
 isPlayerTwo = true
+speed = 200
 AttackCooldown = 1.0
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
@@ -887,49 +887,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -943,7 +943,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ2"]
 
@@ -958,7 +958,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ3"]
 
@@ -973,7 +973,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ11"]
 
@@ -988,7 +988,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ12"]
 
@@ -1003,7 +1003,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ4"]
 
@@ -1018,7 +1018,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ5"]
 
@@ -1033,7 +1033,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ6"]
 
@@ -1048,7 +1048,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ7"]
 
@@ -1063,7 +1063,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ8"]
 
@@ -1078,7 +1078,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ9"]
 
@@ -1093,7 +1093,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ10"]
 
@@ -1110,7 +1110,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ15"]
 
@@ -1125,7 +1125,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ16"]
 
@@ -1140,7 +1140,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ3"]
 
@@ -1155,7 +1155,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ4"]
 position = Vector2( -22.0486, 0 )
@@ -1172,7 +1172,7 @@ offset = Vector2( 10, -90.51 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ5"]
 position = Vector2( 13.4697, -91.4806 )
@@ -1188,7 +1188,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ6"]
 
@@ -1203,7 +1203,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ7"]
 
@@ -1218,7 +1218,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ8"]
 
@@ -1233,7 +1233,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ9"]
 
@@ -1248,7 +1248,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ10"]
 position = Vector2( -15.0801, 0 )
@@ -1264,7 +1264,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ11"]
 
@@ -1279,7 +1279,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ13"]
 
@@ -1294,7 +1294,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ14"]
 
@@ -1309,7 +1309,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ12"]
 

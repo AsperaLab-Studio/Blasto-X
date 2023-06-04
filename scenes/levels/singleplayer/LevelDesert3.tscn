@@ -21,10 +21,11 @@
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
-[ext_resource path="res://assets/img/UI/cerulean star/ceruulean star cornice vita.png" type="Texture" id=22]
+[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=25]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )

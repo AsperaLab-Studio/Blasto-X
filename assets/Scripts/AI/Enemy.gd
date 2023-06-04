@@ -39,8 +39,9 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
+	targetList = sceneManager.players
 	actual_target = select_target()
-
+	
 	match current_state:
 		STATE.HIT:
 			anim_player.play("hit")

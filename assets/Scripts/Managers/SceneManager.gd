@@ -1,5 +1,7 @@
 extends Node
 
+signal respawn_player
+
 export var increment = 1566
 export var y = 768
 export var n_positions = 5
@@ -9,11 +11,12 @@ export var next_stage = ""
 export var current_level = ""
 export var totalFightPhases = 2
 
-onready var camera : Camera2D = get_parent().get_node("PlayersList/Blasto/Camera2D")
+onready var cameraBlasto : Camera2D = get_parent().get_node("PlayersList/Blasto/Camera2D")
+onready var cameraCeru : Camera2D = get_parent().get_node("PlayersList/Ceru/Camera2D")
 onready var wall: StaticBody2D = $MovingWall
 onready var AreaGo: Area2D = $MovingWall/AreaGo
 onready var sound = get_parent().get_node("ost")
-onready var players = get_parent().get_node("PlayersList").get_children()
+onready var playersParent = get_parent().get_node("PlayersList")
 onready var go = get_parent().get_node("GUI/UI/Go")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
@@ -32,19 +35,23 @@ var spawned = false
 var positions : Array = []
 var spawnList: Array = []
 var menuShowed = false
+var players
+var actualCamera
 
 func _ready() -> void:
 	positions = $Positions.get_children()
 	_select_stage(current_stage)
-	
+	players = playersParent.get_children()
 	randomize()
 	
+	actualCamera = cameraBlasto
 
 func _process(_delta: float) -> void:
 	TotalPoints.text = str(points)
 	showedPoints.text = str(points)
 	Kill.text = str(kill)
 	Hit.text = str(hit)
+	players = playersParent.get_children()
 	
 	for player in players:
 		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
@@ -64,20 +71,14 @@ func _process(_delta: float) -> void:
 	if win.visible == true:
 		go.visible = false
 	
-	for player in players:
-		if player.collision_shape.disabled == true:
-			showedPoints.visible = false
-			ScoreFolder.visible = true
-			
-			game_over.visible = true
-		
+	checkPlayersDead()
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
-		get_tree().change_scene("res://scenes/levels/" + current_level + ".tscn")
+		get_tree().change_scene("res://scenes/levels/" + Global.dirType + current_level + ".tscn")
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
-		next_stage = "res://scenes/levels/" + next_stage + ".tscn"
+		next_stage = "res://scenes/levels/" + Global.dirType + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		
 	
@@ -95,7 +96,7 @@ func _select_stage(number):
 			
 		
 	else:
-		camera.limit_right = (positions[number + 1] as Position2D).global_position.x
+		actualCamera.limit_right = (positions[number + 1] as Position2D).global_position.x
 		
 		wall.global_position = (positions[number + 1] as Position2D).global_position
 		
@@ -114,8 +115,22 @@ func _enemy_spawn(number, actualFightPhase):
 		var enemy_instance = enemy_types[rand_index].instance()
 		$EnemiesContainer.add_child(enemy_instance)
 		enemy_instance.global_position = (spawn as Position2D).global_position
-		enemy_instance.targetList = players
 		
+	
+
+func checkPlayersDead():
+	var both = 0
+	
+	for player in players:
+		if player.collision_shape.disabled == true:
+			both = both + 1
+		
+	
+	if(both == players.size()):
+		showedPoints.visible = false
+		ScoreFolder.visible = true
+		
+		game_over.visible = true
 	
 
 func _on_Blasto_death(p) -> void:
@@ -128,8 +143,7 @@ func _on_Ceru_Star_death(p):
 
 func eventDeath(p):
 	if(p.lifeCount > 0):
-		var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
-		p.global_position = respawnPoint
+		respawn(p)
 	else:
 		for playerTmp in players:
 			if playerTmp != p:
@@ -138,11 +152,13 @@ func eventDeath(p):
 		
 					for member in pausable_members:
 						member.pause()
-
-
-	
-		
-	
-
+					
+				
 			
 		
+	
+
+
+func respawn(p):
+	var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
+	p.global_position = respawnPoint

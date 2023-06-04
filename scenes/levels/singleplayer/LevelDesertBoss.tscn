@@ -21,12 +21,13 @@
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
-[ext_resource path="res://assets/img/UI/cerulean star/ceruulean star cornice vita.png" type="Texture" id=22]
+[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw destra 1.png" type="Texture" id=25]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=26]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=27]
+
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
