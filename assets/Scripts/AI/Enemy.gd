@@ -18,6 +18,8 @@ export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var dps := 10
 export(int) var HP := 5
+export(float) var rebonuceDistance := 5.0
+export(float) var rebounce_speed := 5.0
 
 var current_state = STATE.CHASE
 
@@ -45,10 +47,20 @@ func _process(delta: float) -> void:
 	match current_state:
 		STATE.HIT:
 			anim_player.play("hit")
+			# var pos = Vector2()
+			# pos.y = global_position.y
+
+			# if global_position.y > actual_target.global_position.y:
+			# 	pos.x = global_position.x + rebonuceDistance
+			# else:
+			# 	pos.x = global_position.x - rebonuceDistance
+			
+			# Vector2.move_toward(pos, rebounce_speed)
+			
 		STATE.CHASE:
 			anim_player.play("move")
 			if !near_player:
-				move_towards_target()
+				move_towards(actual_target.global_position, moving_speed)
 			else:
 				current_state = STATE.WAIT
 		STATE.WAIT:
@@ -107,14 +119,14 @@ func hit(dps) -> void:
 		current_state = STATE.HIT
 	
 
-func move_towards_target():
-	if actual_target:
-		if global_position.y > actual_target.global_position.y:
+func move_towards(target: Vector2, speed):
+	if target:
+		if global_position.y > target.y:
 			z_index = 0
 		else:
 			z_index = -1
 			
-		var velocity = global_position.direction_to(actual_target.global_position)
+		var velocity = global_position.direction_to(target)
 		
 		if velocity.x < 0:
 			sprite.flip_h = true
@@ -125,8 +137,8 @@ func move_towards_target():
 			if pivot.scale.x < 0:
 				pivot.scale.x = - pivot.scale.x
 				
-		move_and_slide(velocity * moving_speed)
-	
+		move_and_slide(velocity * speed)
+
 
 func pause():
 	anim_player.stop()

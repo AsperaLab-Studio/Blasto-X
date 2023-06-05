@@ -1,7 +1,5 @@
 extends Node
 
-signal respawn_player
-
 export var increment = 1566
 export var y = 768
 export var n_positions = 5
@@ -96,7 +94,7 @@ func _select_stage(number):
 			
 		
 	else:
-		actualCamera.limit_right = (positions[number + 1] as Position2D).global_position.x
+		cameraBlasto.limit_right = (positions[number + 1] as Position2D).global_position.x
 		
 		wall.global_position = (positions[number + 1] as Position2D).global_position
 		

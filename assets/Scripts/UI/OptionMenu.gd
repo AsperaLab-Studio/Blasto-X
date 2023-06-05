@@ -9,11 +9,10 @@ export var main: bool = false
 var menuShowed: bool = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("menu") && !main:
+	if (Input.is_action_just_pressed(Global.player1_input[6]) || Input.is_action_just_pressed(Global.player2_input[6])) && !main:
 		get_tree().paused = !get_tree().paused
 		visible = !visible
 			
-	
 	
 
 func _on_ReturnBtn_pressed():

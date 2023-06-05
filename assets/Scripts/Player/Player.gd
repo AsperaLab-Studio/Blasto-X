@@ -78,7 +78,7 @@ func do_this():
 		camera.smoothing_speed = 0
 		timer.disconnect("timeout", self, "do_this")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(isPlayerTwo):
 		inputManager = Global.player2_input
 	else:
@@ -130,8 +130,8 @@ func _process(delta: float) -> void:
 					
 				
 			STATE.DIED:
+				collision_shape.disabled = true
 				anim_player.play("died")
-				
 			
 		
 		if debug_mode:
@@ -179,21 +179,20 @@ func hit(dps):
 			if sceneManager.points > 0:
 				sceneManager.points -= 20
 			sceneManager.hit += 1
-		if current_state != STATE.HIT:
-			var amount = 0
+		if current_state != STATE.HIT || current_state != STATE.DIED:
 			current_state = STATE.HIT
 			emit_signal("update_healthbar", dps)
 		
 	
 
 func death():
-	var test = "test"
 	if lifeCount > 1:
 		respawn()
 	else:
 		KO()
 		
 	emit_signal("death", self)
+	collision_shape.disabled = false
 	
 
 func removeLife():
@@ -216,14 +215,15 @@ func KO():
 	queue_free()
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "attack":
-		current_state = STATE.IDLE
-	
-	if anim_name == "shoot":
-		current_state = STATE.IDLE
-	
-	if anim_name == "hit":
-		current_state = STATE.IDLE
+	if current_state != STATE.DIED:
+		if anim_name == "attack":
+			current_state = STATE.IDLE
+		
+		if anim_name == "shoot":
+			current_state = STATE.IDLE
+		
+		if anim_name == "hit":
+			current_state = STATE.IDLE
 	
 
 func _on_AttackCollision_area_entered(area: Area2D) -> void:
@@ -252,7 +252,7 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 			sceneManager._select_stage(sceneManager.current_stage)
 			sceneManager.spawned = false
 			sceneManager.ActualFightPhase = 0
-			go.visible = false
+			sceneManager.go.visible = false
 			
 		
 	

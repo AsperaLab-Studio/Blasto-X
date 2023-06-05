@@ -12,7 +12,6 @@ onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
-onready var player: Player = get_parent().get_parent().get_parent().get_node("Player")
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 enum STATE {CHASE, ATTACK, SHAKE, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
 
@@ -23,9 +22,9 @@ export(int) var charge_speed := 100
 export(int) var dps := 10
 export(int) var dpsCharge := 20
 export(int) var HP := 5
-export(float) var ShakeDuration := 5
-export(float) var ShakeDeelay := 5
-export(float) var ChargeDeelay := 5
+export(float) var ShakeDuration := 5.0
+export(float) var ShakeDeelay := 5.0
+export(float) var ChargeDeelay := 5.0
 
 var current_state = STATE.CHASE
 var actual_target: Player = null
@@ -76,7 +75,7 @@ func _process(delta: float) -> void:
 			STATE.CHASE:
 				anim_player.play("move")
 				if !near_player:
-					move_towards(player.global_position, moving_speed)
+					move_towards(actual_target.global_position, moving_speed)
 				else:
 					current_state = STATE.WAIT
 			STATE.WAIT:
@@ -92,7 +91,7 @@ func _process(delta: float) -> void:
 				if !near_enemy:
 					current_state = STATE.WAIT
 			STATE.ATTACK:
-					if near_player && !player.invincible:
+					if near_player && !actual_target.invincible:
 						anim_player.play("attack")
 					elif anim_player.current_animation != "attack":
 						current_state = STATE.WAIT
@@ -126,7 +125,7 @@ func _process(delta: float) -> void:
 			STATE.CHARGE_END:
 				if (areaCollided != null):
 					if (areaCollided.owner.is_in_group("player")):
-						player.hit(dpsCharge)
+						actual_target.hit(dpsCharge)
 				if anim_player.current_animation != "ChargeEnd":
 					#timerShake.set_paused(false)
 					areaCollided = null
@@ -142,7 +141,7 @@ func _process(delta: float) -> void:
 				
 				anim_player.play("died")
 				
-				var directionDead = Vector2((global_position.x - player.global_position.x), 0).normalized()
+				var directionDead = Vector2((global_position.x - actual_target.global_position.x), 0).normalized()
 				
 				move_and_slide(directionDead * death_speed)
 				
@@ -177,28 +176,32 @@ func hit(dps) -> void:
 
 func shake(): 
 	shakeFree = false
-	player.camera.smoothing_speed = 5
-	player.camera.shaked = true
 	timerShake.wait_time = ShakeDuration
 	timerShake.one_shot = true
-	player.paused = true
+	for target in targetList:
+		if(!target.isPlayerTwo):
+			target.camera.smoothing_speed = 5
+			target.camera.shaked = true
+		target.paused = true
 	timerShake.start()
 	cooldownShake_timer.wait_time = ShakeDeelay
 	cooldownShake_timer.one_shot = true
 	cooldownShake_timer.start()
 
 func set_state_idle():
-	player.camera.smoothing_speed = 0
-	player.camera.shaked = false
-	player.paused = false
+	for target in targetList:
+		if(!target.isPlayerTwo):
+			target.camera.smoothing_speed = 0
+			target.camera.shaked = false
+		target.paused = false
 	
 
 func ChargeStart():
 	chargeFree = false
 	current_state = STATE.CHARGE_MID
 	var targetPositionStamp = Vector2()
-	targetPositionStamp.x = player.global_position.x
-	targetPositionStamp.y = player.global_position.y
+	targetPositionStamp.x = actual_target.global_position.x
+	targetPositionStamp.y = actual_target.global_position.y
 	directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
 	
 
@@ -227,7 +230,7 @@ func move_towards(target: Vector2, speed):
 	
 
 func attack():
-	player.hit(dps)
+	actual_target.hit(dps)
 	
 
 func death():
@@ -241,10 +244,11 @@ func pause():
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if current_state == STATE.CHARGE_MID:
-		anim_player.play("ChargeEnd")
-		current_state = STATE.CHARGE_END
-		if (area.owner.is_in_group("player")):
-			areaCollided = area
+		if area.name != "BulletArea":
+			anim_player.play("ChargeEnd")
+			current_state = STATE.CHARGE_END
+			if (area.owner.is_in_group("player")):
+				areaCollided = area
 	else:
 		if (area.owner.is_in_group("player")):
 			near_player = true

@@ -10,11 +10,15 @@ export var current_level = ""
 
 onready var sound = get_parent().get_node("ost")
 onready var players = get_parent().get_node("PlayersList").get_children()
+onready var boss = get_node("EnemiesContainer/KroganBoss")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
 
 var menuShowed = false
+
+func _ready():
+	boss.targetList = players
 
 func _process(delta: float) -> void:
 	for player in players:

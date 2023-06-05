@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/audio/sfx/Asari_SFX/Asari_Colpita.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/audio/sfx/Asari_SFX/Asari_Morte.mp3" type="AudioStream" id=6]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.7
