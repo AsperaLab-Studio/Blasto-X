@@ -9,22 +9,25 @@ export var next_stage = ""
 export var current_level = ""
 
 onready var sound = get_parent().get_node("ost")
-onready var players = get_parent().get_node("PlayersList").get_children()
+onready var playersParent = get_parent().get_node("PlayersList")
 onready var boss = get_node("EnemiesContainer/KroganBoss")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
+onready var respawnPoint = get_node("respawnPoint")
 
 var menuShowed = false
+var players
 
 func _ready():
+	players = playersParent.get_children()
 	boss.targetList = players
 
-func _process(delta: float) -> void:
-	for player in players:
-		if player.collision_shape.disabled == true:
-			game_over.visible = true
-		
+func _process(_delta: float) -> void:
+	
+	players = playersParent.get_children()
+	boss.targetList = players
+	checkPlayersDead()
 	
 	if $EnemiesContainer.get_child_count() == 0:
 		win.visible = true
@@ -42,19 +45,44 @@ func _process(delta: float) -> void:
 		
 	
 
-func _on_Blasto_death() -> void:
-	var pausable_members = get_tree().get_nodes_in_group("pausable")
+func checkPlayersDead():
+	var both = 0
 	
-	for member in pausable_members:
-		member.pause()
+	for player in players:
+		if player.collision_shape.disabled == true:
+			both = both + 1
+		
+	
+	if(both == players.size()):
+		game_over.visible = true
+	
+
+func _on_Blasto_death(p) -> void:
+	eventDeath(p)
+	
+
+func _on_Ceru_Star_death(p):
+	eventDeath(p)
+
+
+func eventDeath(p):
+	if(p.lifeCount > 0):
+		respawn(p)
+	else:
+		for playerTmp in players:
+			if playerTmp != p:
+				if playerTmp.lifeCount == 0:
+					var pausable_members = get_tree().get_nodes_in_group("pausable")
+		
+					for member in pausable_members:
+						member.pause()
+					
+				
+			
 		
 	
 
 
-func _on_Ceru_Star_death():
-	var pausable_members = get_tree().get_nodes_in_group("pausable")
-	
-	for member in pausable_members:
-		member.pause()
-		
-	
+func respawn(p):
+	var tmp = Vector2(respawnPoint.global_position.x, p.global_position.y)
+	p.global_position = tmp

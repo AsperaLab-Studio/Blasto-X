@@ -33,7 +33,7 @@ func _set_selection(newIndex):
 		)
 	
 
-func _process(delta): 
+func _process(_delta): 
 	if (firstTab != ""):
 		match(index):
 			0:
@@ -110,5 +110,5 @@ func _on_SFXSlider_value_changed(value: float) -> void:
 func _on_MusicSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value);
 
-func _on_checkFullscreen_toggled(button_pressed: bool) -> void:
+func _on_checkFullscreen_toggled(_button_pressed: bool) -> void:
 	OS.window_fullscreen = !OS.window_fullscreen

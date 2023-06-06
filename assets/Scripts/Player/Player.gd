@@ -5,7 +5,6 @@ signal update_healthbar
 signal death
 
 onready var collision_shape : CollisionShape2D = $Pivot/PlayerHitBox/CollisionShape2D
-onready var camera: Camera2D = $Camera2D
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
@@ -32,17 +31,14 @@ export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
-export var randomShackeStrenght: float = 30.0
-export var shakeDecayRate: float = 5.0
+
 export var AttackCooldown: float = 1.0
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
 var canAttack = true
-var timer = Timer.new()
-var shakeStrenght: float = 0.0
-var defaultOffset
+
 var inputManager
 var lifesList
 var lifeCount: int
@@ -59,24 +55,11 @@ func _ready() -> void:
 		lifesList = get_parent().get_parent().get_node("GUI/UI/LifesList/Ceru")
 	
 	lifeCount = lifesList.get_child_count()
-	
-	defaultOffset = camera.offset
-	timer.connect("timeout",self,"do_this")
-	timer.wait_time = 1
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
+
 	cooldownAttack_timer.wait_time = AttackCooldown
 	cooldownAttack_timer.one_shot = true
 	cooldownAttack_timer.start()
 
-func do_this():
-	if boss == false:
-		camera.smoothing_speed = 5
-		timer.disconnect("timeout", self, "do_this")
-	else:
-		camera.smoothing_speed = 0
-		timer.disconnect("timeout", self, "do_this")
 
 func _process(_delta: float) -> void:
 	if(isPlayerTwo):

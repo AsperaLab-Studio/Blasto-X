@@ -8,7 +8,7 @@ export var main: bool = false
 
 var menuShowed: bool = false
 
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_pressed(Global.player1_input[6]) || Input.is_action_just_pressed(Global.player2_input[6])) && !main:
 		get_tree().paused = !get_tree().paused
 		visible = !visible
@@ -30,7 +30,7 @@ func _on_SFXSlider_value_changed(value: float) -> void:
 func _on_MusicSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value);
 
-func _on_checkFullscreen_toggled(button_pressed: bool) -> void:
+func _on_checkFullscreen_toggled(_button_pressed: bool) -> void:
 	OS.window_fullscreen = !OS.window_fullscreen
 
 func _on_backToPauseBtn_pressed():

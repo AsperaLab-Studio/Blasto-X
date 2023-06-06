@@ -13,7 +13,6 @@ onready var audio: AudioStreamPlayer = $PunchSFX
 
 enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
 
-export(int) var speed := 500
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var dps := 10
@@ -40,7 +39,7 @@ func _ready():
 	sceneManager = get_parent().get_parent()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	targetList = sceneManager.players
 	actual_target = select_target()
 	
@@ -110,8 +109,8 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dps) -> void:
-	healthBar.update_healthbar(dps)
+func hit(dpsTaken) -> void:
+	healthBar.update_healthbar(dpsTaken)
 	amount = amount + dps
 	if amount >= HP:
 		current_state = STATE.DIED

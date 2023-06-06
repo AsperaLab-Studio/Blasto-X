@@ -5,7 +5,7 @@ export var thirdTab = ""
 onready var optionMenu: Control = get_parent().get_node("OptionMenu")
 onready var playMenu: Control = get_parent().get_node("PlayMenu")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("skipBoss"):
 		get_tree().change_scene("res://scenes/levels/LevelDesertBoss.tscn")
 

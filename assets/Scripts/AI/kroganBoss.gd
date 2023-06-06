@@ -15,7 +15,6 @@ onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/Collisi
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 enum STATE {CHASE, ATTACK, SHAKE, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
 
-export(int) var speed := 500
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var charge_speed := 100
@@ -55,7 +54,7 @@ func _ready():
 	cooldownCharge_timer.start()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	actual_target = select_target()
 	
 	if chargeFree && (current_state != STATE.SHAKE &&
@@ -164,10 +163,10 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dps) -> void:
+func hit(dpsTaken) -> void:
 	if (current_state != STATE.CHARGE_START && current_state != STATE.CHARGE_MID && current_state != STATE.CHARGE_END):
-		healthBar.update_healthbar(dps)
-		amount = amount + dps
+		healthBar.update_healthbar(dpsTaken)
+		amount = amount + dpsTaken
 		if amount >= HP:
 			current_state = STATE.DIED
 		else:
@@ -297,6 +296,3 @@ func _on_CooldownShakeTimer_timeout():
 func _on_CooldownChargeTimer_timeout():
 	chargeFree = true
 
-
-func _on_HealthBar_value_changed(value):
-	pass # Replace with function body.
