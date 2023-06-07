@@ -46,15 +46,12 @@ func _process(_delta: float) -> void:
 	
 
 func checkPlayersDead():
-	var both = 0
-	
-	for player in players:
-		if player.collision_shape.disabled == true:
-			both = both + 1
-		
-	
-	if(both == players.size()):
+	if players.size() == 0:
 		game_over.visible = true
+
+		var pausable_members = get_tree().get_nodes_in_group("pausable")
+		for member in pausable_members:
+			member.pause()
 	
 
 func _on_Blasto_death(p) -> void:

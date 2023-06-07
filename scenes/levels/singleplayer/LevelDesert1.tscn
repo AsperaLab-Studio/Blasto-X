@@ -21,11 +21,11 @@
 [ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
+[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
-[ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=27]
-[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=28]
-
+[ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=25]
+[ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
+[ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -94,46 +94,57 @@ extents = Vector2( 1990.15, 120.176 )
 extents = Vector2( 7890.29, 291.611 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 199, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 398, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 597, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 796, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 995, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=14]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1194, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1393, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1592, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=17]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1791, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=18]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
@@ -144,8 +155,6 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="GDScript" id=20]
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
@@ -563,15 +572,36 @@ scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
 playing = true
 
+[node name="LifesList" type="Node2D" parent="GUI/UI"]
+
+[node name="Blasto" type="Node2D" parent="GUI/UI/LifesList"]
+
+[node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+position = Vector2( 236, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 22 )
+
+[node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+position = Vector2( 204, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 22 )
+
+[node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
+position = Vector2( 172, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 22 )
+
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
 
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
+[node name="Blasto" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
+
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Blasto"]
 position = Vector2( 293.239, 82.7536 )
 scale = Vector2( 0.295394, 0.289558 )
 texture = ExtResource( 12 )
 
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Blasto"]
 margin_left = 146.0
 margin_top = 57.0
 margin_right = 1507.0
@@ -580,21 +610,6 @@ rect_scale = Vector2( 0.293, 0.296 )
 max_value = 20.0
 value = 20.0
 texture_progress = ExtResource( 7 )
-
-[node name="ConiceBarraVita2" type="Sprite" parent="GUI/UI/HealthPlayerContainer"]
-position = Vector2( 880.239, 82.7536 )
-scale = Vector2( 0.295394, 0.289558 )
-texture = ExtResource( 28 )
-
-[node name="HealthBar2" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer"]
-margin_left = 734.0
-margin_top = 56.0
-margin_right = 2096.0
-margin_bottom = 231.0
-rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 27 )
 
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
 margin_left = 1716.0
@@ -748,6 +763,7 @@ value = -17.0
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
+visible = false
 position = Vector2( 121.151, 320.426 )
 scale = Vector2( 0.58, 0.57 )
 
@@ -756,6 +772,7 @@ position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
+visible = false
 position = Vector2( 386.667, 11.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
@@ -765,6 +782,7 @@ position = Vector2( 870.27, 780.269 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
+visible = false
 position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
 
@@ -774,17 +792,9 @@ shape = SubResource( 22 )
 
 [node name="PlayersList" type="Node2D" parent="."]
 
-[node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
-position = Vector2( 109, 1251 )
-scale = Vector2( 1, 1 )
-isPlayerTwo = true
-AttackCooldown = 1.0
-
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
-speed = 200
-AttackCooldown = 1.0
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
@@ -845,49 +855,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 5
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -901,7 +911,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ2"]
 
@@ -916,7 +926,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ3"]
 
@@ -931,7 +941,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ11"]
 
@@ -946,7 +956,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ12"]
 
@@ -961,7 +971,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ4"]
 
@@ -976,7 +986,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ5"]
 
@@ -991,7 +1001,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ6"]
 
@@ -1006,7 +1016,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ7"]
 
@@ -1021,7 +1031,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ8"]
 
@@ -1036,7 +1046,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ9"]
 
@@ -1051,7 +1061,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ10"]
 
@@ -1068,7 +1078,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ15"]
 
@@ -1083,7 +1093,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ16"]
 
@@ -1098,7 +1108,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ3"]
 
@@ -1113,7 +1123,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ4"]
 position = Vector2( -22.0486, 0 )
@@ -1130,7 +1140,7 @@ offset = Vector2( 10, -90.51 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ5"]
 position = Vector2( 13.4697, -91.4806 )
@@ -1146,7 +1156,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ6"]
 
@@ -1161,7 +1171,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ7"]
 
@@ -1176,7 +1186,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ8"]
 
@@ -1191,7 +1201,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ9"]
 
@@ -1206,7 +1216,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ10"]
 position = Vector2( -15.0801, 0 )
@@ -1222,7 +1232,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ11"]
 
@@ -1237,7 +1247,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ13"]
 
@@ -1252,7 +1262,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ14"]
 
@@ -1267,7 +1277,7 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = SubResource( 20 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ12"]
 
@@ -1275,9 +1285,30 @@ script = SubResource( 20 )
 position = Vector2( -24.9507, -44.8843 )
 shape = SubResource( 26 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 329, 1208 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 379
+limit_bottom = 1020
+limit_smoothed = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.11
+drag_margin_right = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 30 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="shake" type="Node2D" parent="Camera2D"]
+script = ExtResource( 29 )
+
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/HealthBar2" to="PlayersList/Ceru Star" method="_on_HealthBar2_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
@@ -1286,7 +1317,5 @@ shape = SubResource( 26 )
 [connection signal="toggled" from="GUI/pauseMenu/OptionMenu/checkFullscreen" to="GUI/pauseMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/MusicSlider" to="GUI/pauseMenu" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
-[connection signal="death" from="PlayersList/Ceru Star" to="StageManager" method="_on_Ceru_Star_death"]
-[connection signal="update_healthbar" from="PlayersList/Ceru Star" to="GUI/UI/HealthPlayerContainer" method="_on_Ceru_Star_update_healthbar"]
 [connection signal="death" from="PlayersList/Blasto" to="StageManager" method="_on_Blasto_death"]
 [connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Blasto_update_healthbar"]

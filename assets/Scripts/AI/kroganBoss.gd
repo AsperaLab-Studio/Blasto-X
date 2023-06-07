@@ -13,6 +13,7 @@ onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
+onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
 enum STATE {CHASE, ATTACK, SHAKE, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
@@ -177,10 +178,9 @@ func shake():
 	shakeFree = false
 	timerShake.wait_time = ShakeDuration
 	timerShake.one_shot = true
+	camera.smoothing_speed = 5
+	camera.get_child(0).shaked = true
 	for target in targetList:
-		if(!target.isPlayerTwo):
-			target.camera.smoothing_speed = 5
-			target.camera.shaked = true
 		target.paused = true
 	timerShake.start()
 	cooldownShake_timer.wait_time = ShakeDeelay
@@ -188,10 +188,9 @@ func shake():
 	cooldownShake_timer.start()
 
 func set_state_idle():
+	camera.smoothing_speed = 0
+	camera.get_child(0).shaked = false
 	for target in targetList:
-		if(!target.isPlayerTwo):
-			target.camera.smoothing_speed = 0
-			target.camera.shaked = false
 		target.paused = false
 	
 

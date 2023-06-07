@@ -111,7 +111,7 @@ func select_target() -> Player:
 
 func hit(dpsTaken) -> void:
 	healthBar.update_healthbar(dpsTaken)
-	amount = amount + dps
+	amount = amount + dpsTaken
 	if amount >= HP:
 		current_state = STATE.DIED
 	else:

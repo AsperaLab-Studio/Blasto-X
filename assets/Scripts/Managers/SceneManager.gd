@@ -9,8 +9,7 @@ export var next_stage = ""
 export var current_level = ""
 export var totalFightPhases = 2
 
-onready var cameraBlasto : Camera2D = get_parent().get_node("PlayersList/Blasto/Camera2D")
-onready var cameraCeru : Camera2D = get_parent().get_node("PlayersList/Ceru/Camera2D")
+onready var camera : Camera2D = get_parent().get_node("Camera2D")
 onready var wall: StaticBody2D = $MovingWall
 onready var AreaGo: Area2D = $MovingWall/AreaGo
 onready var sound = get_parent().get_node("ost")
@@ -40,9 +39,7 @@ func _ready() -> void:
 	positions = $Positions.get_children()
 	_select_stage(current_stage)
 	players = playersParent.get_children()
-	randomize()
-	
-	actualCamera = cameraBlasto
+	randomize()	
 
 func _process(_delta: float) -> void:
 	TotalPoints.text = str(points)
@@ -51,6 +48,8 @@ func _process(_delta: float) -> void:
 	Hit.text = str(hit)
 	players = playersParent.get_children()
 	
+	#checkPlayersDeep()
+
 	for player in players:
 		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
 			_enemy_spawn(current_stage, ActualFightPhase)
@@ -94,7 +93,7 @@ func _select_stage(number):
 			
 		
 	else:
-		cameraBlasto.limit_right = (positions[number + 1] as Position2D).global_position.x
+		camera.limit_right = (positions[number + 1] as Position2D).global_position.x
 		
 		wall.global_position = (positions[number + 1] as Position2D).global_position
 		
@@ -131,6 +130,16 @@ func checkPlayersDead():
 		game_over.visible = true
 	
 
+func checkPlayersDeep():
+	if playersParent.get_child_count() > 1:
+		if players[0].global_position.y > players[1].global_position.y:
+			var tmp = players[0].z_index
+			players[0].z_index = players[1].z_index
+			players[1].z_index = tmp
+		else:
+			players[1].z_index = players[1].z_index + 1 
+			players[0].z_index = players[0].z_index - 1 
+
 func _on_Blasto_death(p) -> void:
 	eventDeath(p)
 	
@@ -160,3 +169,7 @@ func eventDeath(p):
 func respawn(p):
 	var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
 	p.global_position = respawnPoint
+
+
+func _on_Cerulean_Star_death():
+	pass # Replace with function body.
