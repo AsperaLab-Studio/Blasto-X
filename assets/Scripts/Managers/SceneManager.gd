@@ -116,14 +116,7 @@ func _enemy_spawn(number, actualFightPhase):
 	
 
 func checkPlayersDead():
-	var both = 0
-	
-	for player in players:
-		if player.collision_shape.disabled == true:
-			both = both + 1
-		
-	
-	if(both == players.size()):
+	if players.size() == 0:
 		showedPoints.visible = false
 		ScoreFolder.visible = true
 		

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/the jaw spritesheet.png-71e52f5ae7f840792c5c49806a1b6926.stex"
+path="res://.import/Blasto_spritesheet.png-5a125ce50687da49a3017056603ef1c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/enemy/the jaw spritesheet.png"
-dest_files=[ "res://.import/the jaw spritesheet.png-71e52f5ae7f840792c5c49806a1b6926.stex" ]
+source_file="res://assets/img/sprites/Player/Blasto_spritesheet.png"
+dest_files=[ "res://.import/Blasto_spritesheet.png-5a125ce50687da49a3017056603ef1c5.stex" ]
 
 [params]
 
