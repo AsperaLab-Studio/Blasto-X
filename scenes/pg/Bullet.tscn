@@ -7,11 +7,12 @@
 radius = 23.0
 
 [node name="Bullet" type="Node2D"]
-position = Vector2( -17, 2 )
+position = Vector2( 0, 1 )
 script = ExtResource( 2 )
+damage = 2
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -26, 0 )
+position = Vector2( -41, 2 )
 rotation = 3.14159
 scale = Vector2( 2.14571, 1.88281 )
 texture = ExtResource( 1 )
@@ -20,10 +21,9 @@ vframes = 6
 frame = 14
 
 [node name="BulletArea" type="Area2D" parent="."]
-visible = false
-position = Vector2( 15, -4 )
+position = Vector2( 0, -1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
 shape = SubResource( 1 )
 
-[connection signal="area_entered" from="BulletArea" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="BulletArea" to="." method="_on_BulletArea_area_entered"]

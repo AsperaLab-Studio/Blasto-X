@@ -176,6 +176,8 @@ script = ExtResource( 3 )
 moving_speed = 150
 dps = 3
 HP = 6
+rebonuceDistance = 700.0
+rebounce_speed = 700.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1.4, 1.4 )

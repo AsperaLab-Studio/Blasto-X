@@ -48,7 +48,8 @@ func _process(_delta: float) -> void:
 	Hit.text = str(hit)
 	players = playersParent.get_children()
 	
-	#checkPlayersDeep()
+	if playersParent.get_child_count() > 1:
+		checkPlayersDeep()
 
 	for player in players:
 		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1:
@@ -124,14 +125,12 @@ func checkPlayersDead():
 	
 
 func checkPlayersDeep():
-	if playersParent.get_child_count() > 1:
-		if players[0].global_position.y > players[1].global_position.y:
-			var tmp = players[0].z_index
-			players[0].z_index = players[1].z_index
-			players[1].z_index = tmp
-		else:
-			players[1].z_index = players[1].z_index + 1 
-			players[0].z_index = players[0].z_index - 1 
+	if players[0].global_position.y > players[1].global_position.y:
+		players[0].z_index = 1
+		players[1].z_index = 0
+	else:
+		players[0].z_index = 0
+		players[1].z_index = 1
 
 func _on_Blasto_death(p) -> void:
 	eventDeath(p)

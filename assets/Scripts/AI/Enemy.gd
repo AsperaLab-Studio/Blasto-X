@@ -46,15 +46,17 @@ func _process(_delta: float) -> void:
 	match current_state:
 		STATE.HIT:
 			anim_player.play("hit")
-			# var pos = Vector2()
-			# pos.y = global_position.y
 
-			# if global_position.y > actual_target.global_position.y:
-			# 	pos.x = global_position.x + rebonuceDistance
-			# else:
-			# 	pos.x = global_position.x - rebonuceDistance
+			var pos = Vector2()
+			pos.y = global_position.y
+
+			if global_position.x > actual_target.global_position.x:
+				pos.x = global_position.x + rebonuceDistance
+			else:
+				pos.x = global_position.x - rebonuceDistance
 			
-			# Vector2.move_toward(pos, rebounce_speed)
+			collision_shape_body.disabled = true
+			move_rebounce(pos, rebounce_speed)
 			
 		STATE.CHASE:
 			anim_player.play("move")
@@ -138,6 +140,16 @@ func move_towards(target: Vector2, speed):
 				
 		move_and_slide(velocity * speed)
 
+func move_rebounce(target: Vector2, speed):
+	if target:
+		if global_position.y > target.y:
+			z_index = 0
+		else:
+			z_index = -1
+			
+		var velocity = global_position.direction_to(target)
+				
+		move_and_slide(velocity * speed)
 
 func pause():
 	anim_player.stop()
@@ -186,6 +198,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
+		collision_shape_body.disabled = false
 		current_state = STATE.CHASE
 		
 	

@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/img/sprites/Player/Cerulean_Star_spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/sfx/Punches_SFX/Punch 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Ceru_SFX/Ceru_Death.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Ceru_SFX/Ceru_Pain.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sfx/Carnifex_SFX/Carnifex 01.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Scripts/Player/Player.gd" type="Script" id=5]
-[ext_resource path="res://assets/audio/sfx/Blasto_SFX/Blasto_Colpito.mp3" type="AudioStream" id=6]
-[ext_resource path="res://assets/audio/sfx/Blasto_SFX/Blasto_Morte.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/Ceru_SFX/Ceru_Attack.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -47,9 +47,9 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 2 )
+"stream": ExtResource( 6 )
 } ],
-"times": PoolRealArray( 0.37 )
+"times": PoolRealArray( 0.29 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -92,13 +92,14 @@ tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 7 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=3]
-length = 0.6
+length = 0.4
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -106,7 +107,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.31 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 12, 13 ]
@@ -119,11 +120,11 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "clips": [ {
-"end_offset": 0.0,
+"end_offset": 0.215453,
 "start_offset": 0.0,
-"stream": ExtResource( 6 )
+"stream": ExtResource( 3 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0.04 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -202,14 +203,14 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 )
 }
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 12.8769, 7.83778 )
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 10.8067, 13.1889 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 31.8458, 6.82137 )
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 49.4518, 11.0873 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 5.26783, 18.1895 )
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 5.75, 21.8633 )
 
 [node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
 scale = Vector2( 2.13561, 2.13561 )
@@ -217,6 +218,7 @@ collision_layer = 2
 script = ExtResource( 5 )
 debug_mode = true
 speed = 200
+AttackCooldown = 1.2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 5.619, 1.40475 )
@@ -224,7 +226,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 6
-frame = 3
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -238,13 +240,11 @@ anims/shoot = SubResource( 6 )
 wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 7.72613, -7.96026 )
-shape = SubResource( 10 )
+position = Vector2( 0.806709, 0.0459213 )
+shape = SubResource( 12 )
 
 [node name="Pivot" type="Node2D" parent="."]
-visible = false
-position = Vector2( 5.19364, 0.881093 )
+position = Vector2( 0.46825, 0 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
 position = Vector2( 33.2029, 14.1029 )
@@ -254,23 +254,23 @@ position = Vector2( 0, -5.96046e-08 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-position = Vector2( 47.2504, -15.8651 )
-shape = SubResource( 8 )
+position = Vector2( 48.2298, -18.8808 )
+scale = Vector2( 0.600001, 1 )
+shape = SubResource( 14 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]
-position = Vector2( -3.32064, -0.881093 )
+position = Vector2( 1.40475, -1.40475 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/PlayerHitBox"]
-visible = false
-position = Vector2( -4.76837e-05, 0 )
-shape = SubResource( 11 )
+position = Vector2( -3.70311, 0.881093 )
+shape = SubResource( 13 )
 
 [node name="GunSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 bus = "SFX"
 
 [node name="PunchSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 3 )
 bus = "SFX"
 
 [node name="StateLabel" type="Label" parent="."]
