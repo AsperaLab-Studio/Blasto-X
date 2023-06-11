@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/audio/ost/prologue.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 outline_size = 5
@@ -40,18 +39,18 @@ __meta__ = {
 }
 
 [node name="title" type="VBoxContainer" parent="Control/MarginContainer"]
-margin_right = 293.0
+margin_right = 439.0
 margin_bottom = 45.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
-margin_right = 293.0
+margin_right = 439.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )
 custom_fonts/font = SubResource( 1 )
-text = "press \"V\" button to skip"
+text = "press \"V\" or \"Select\" button to skip"
 align = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]

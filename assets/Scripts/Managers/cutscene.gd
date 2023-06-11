@@ -3,8 +3,6 @@ extends VideoPlayer
 export var next_scene = ""
 export var to_mainMenu = false
 
-
-
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("skip"):
 		if to_mainMenu == false:
