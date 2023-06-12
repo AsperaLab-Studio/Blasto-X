@@ -54,5 +54,9 @@ func _process(_delta):
 			player1_input = playerPad1_input
 			player2_input = playerPad2_input
 	else:
-		player1_input = playerKeyboard_input
-		player2_input = playerPad1_input
+		if Input.get_connected_joypads().size() == 0:
+			player1_input = playerKeyboard_input
+			player2_input = playerPad1_input
+		if Input.get_connected_joypads().size() == 1:
+			player1_input = playerPad1_input
+			player2_input = playerPad1_input

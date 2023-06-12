@@ -161,7 +161,3 @@ func eventDeath(p):
 func respawn(p):
 	var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
 	p.global_position = respawnPoint
-
-
-func _on_Cerulean_Star_death():
-	pass # Replace with function body.

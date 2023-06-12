@@ -22,7 +22,6 @@ export(float) var rebounce_speed := 5.0
 
 var current_state = STATE.CHASE
 
-var targetList = null
 var actual_target: Player = null
 var near_player: bool = false
 var near_enemy: bool = false
@@ -40,18 +39,20 @@ func _ready():
 	
 
 func _process(_delta: float) -> void:
-	targetList = sceneManager.players
 	actual_target = select_target()
 	
 	match current_state:
 		STATE.HIT:
 			anim_player.play("hit")
-
+			
 			var pos = Vector2()
 			pos.y = global_position.y
-
+			
 			if global_position.x > actual_target.global_position.x:
 				pos.x = global_position.x + rebonuceDistance
+				var tmpCoord = (sceneManager.positions[sceneManager.current_stage + 1] as Position2D).global_position.x
+				if pos.x >= tmpCoord:
+					pos.x = tmpCoord - 100
 			else:
 				pos.x = global_position.x - rebonuceDistance
 			
@@ -102,7 +103,7 @@ func _process(_delta: float) -> void:
 func select_target() -> Player:
 	var distance: float = 100000
 	var choosedTarget: Player = null
-	for target in targetList:
+	for target in sceneManager.playersParent.get_children():
 		var tmpDistance: float = global_position.distance_to(target.global_position)
 		if(tmpDistance < distance):
 			choosedTarget = target 
