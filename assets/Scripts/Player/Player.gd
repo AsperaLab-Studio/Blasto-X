@@ -59,7 +59,11 @@ func _ready() -> void:
 	cooldownAttack_timer.wait_time = AttackCooldown
 	cooldownAttack_timer.one_shot = true
 	cooldownAttack_timer.start()
+	
+	linkSignals()
 
+func linkSignals():
+	sceneManager.AreaGo.connect("area_entered", self, "_on_AreaGo_area_entered")
 
 func _process(_delta: float) -> void:
 	if(isPlayerTwo):
@@ -241,7 +245,7 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 	
 
 func _on_HealthBar_value_changed(value: float) -> void:
-	if value == 0:
+	if value <= 0:
 		current_state = STATE.DIED
 	
 
