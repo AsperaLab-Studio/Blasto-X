@@ -43,8 +43,6 @@ var inputManager
 var lifesList
 var lifeCount: int
 
-export var collidings_areas = []
-
 func _ready() -> void:
 	anim_player.play("idle")
 	sceneManager = get_parent().get_parent().get_node("StageManager")
@@ -130,11 +128,10 @@ func _process(_delta: float) -> void:
 	
 
 func attack():
-	for area in collidings_areas:
+	for area in attack_collision.get_overlapping_areas():
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
 			enemy.hit(damage)
-			
 		
 	
 
@@ -211,14 +208,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		
 		if anim_name == "hit":
 			current_state = STATE.IDLE
-	
-
-func _on_AttackCollision_area_entered(area: Area2D) -> void:
-	collidings_areas.append(area)
-	
-
-func _on_AttackCollision_area_exited(area: Area2D) -> void:
-	collidings_areas.erase(area)
+		
 	
 
 func audioStop():
