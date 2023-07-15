@@ -50,13 +50,10 @@ func _process(_delta: float) -> void:
 			
 			if global_position.x > actual_target.global_position.x:
 				pos.x = global_position.x + rebonuceDistance
-				var tmpCoord = (sceneManager.positions[sceneManager.current_stage + 1] as Position2D).global_position.x
-				if pos.x >= tmpCoord:
-					pos.x = tmpCoord - 100
 			else:
 				pos.x = global_position.x - rebonuceDistance
 			
-			collision_shape_body.disabled = true
+			collision_shape.disabled = true
 			move_rebounce(pos, rebounce_speed)
 			
 		STATE.CHASE:
@@ -199,7 +196,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
-		collision_shape_body.disabled = false
+		collision_shape.disabled = false
 		current_state = STATE.CHASE
 		
 	
