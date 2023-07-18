@@ -12,6 +12,7 @@ onready var cooldownAttack_timer: Timer = $CooldownAttackTimer
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/pg/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
+onready var spritePivot: Position2D = $SpritePivot
 onready var go = get_parent().get_node("GUI/UI/Go")
 onready var state_label = $StateLabel
 onready var invincibility_timer = $InvincibilityTimer
@@ -97,15 +98,25 @@ func _process(_delta: float) -> void:
 			STATE.SHOOT:
 				anim_player.play("shoot")
 			STATE.MOVE:
-				if direction.x < 0:
-					sprite.flip_h = true
-					if pivot.scale.x > 0:
-						pivot.scale.x = - pivot.scale.x
+				# if direction.x < 0:
+				# 	sprite.flip_h = true
+				# 	if pivot.scale.x > 0:
+				# 		pivot.scale.x = - pivot.scale.x	
 					
-				elif direction.x > 0:
-					sprite.flip_h = false
+				# elif direction.x > 0:
+				# 	sprite.flip_h = false
+				# 	if pivot.scale.x < 0:
+				# 		pivot.scale.x = - pivot.scale.x
+
+				if direction.x < 0:
+					if pivot.scale.x > 0:
+						pivot.scale.x = - pivot.scale.x	
+						spritePivot.scale.x = -spritePivot.scale.x	
+				if direction.x > 0:
 					if pivot.scale.x < 0:
 						pivot.scale.x = - pivot.scale.x
+						spritePivot.scale.x = -spritePivot.scale.x	
+
 					
 				move_and_slide(direction * speed)
 				anim_player.play("move")
@@ -137,7 +148,7 @@ func attack():
 
 func shoot():
 	var bullet_instance = bullet.instance()
-	if sprite.flip_h == true:
+	if spritePivot.scale.x < 0 == true:
 		bullet_instance.direction = Vector2(-1,0)
 	else:
 		bullet_instance.direction = Vector2(1,0)

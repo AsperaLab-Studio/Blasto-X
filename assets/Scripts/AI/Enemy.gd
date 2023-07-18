@@ -53,7 +53,13 @@ func _process(_delta: float) -> void:
 			else:
 				pos.x = global_position.x - rebonuceDistance
 			
-			collision_shape.disabled = true
+			set_collision_layer_bit(3, true)
+			set_collision_layer_bit(2, false)
+			set_collision_mask_bit(2, false)
+			set_collision_mask_bit(0, false)
+			
+			print("layers active: ",  collision_layer)
+			print("masks active: ",  collision_mask)
 			move_rebounce(pos, rebounce_speed)
 			
 		STATE.CHASE:
@@ -196,7 +202,10 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
-		collision_shape.disabled = false
+		set_collision_layer_bit(3, false)
+		set_collision_layer_bit(2, true)
+		set_collision_mask_bit(2, true)
+		set_collision_mask_bit(0, true)
 		current_state = STATE.CHASE
 		
 	

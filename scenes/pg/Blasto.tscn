@@ -12,7 +12,7 @@ resource_name = "attack"
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -56,7 +56,7 @@ tracks/2/keys = {
 resource_name = "died"
 length = 1.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -99,7 +99,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -130,7 +130,7 @@ length = 0.8
 loop = true
 step = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -146,7 +146,7 @@ tracks/0/keys = {
 length = 0.8
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -161,7 +161,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -201,8 +201,8 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.5 )
 }
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 24.349, 16.1438 )
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 16.3888
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 46.8346, 6.82137 )
@@ -212,18 +212,21 @@ extents = Vector2( 11.9404, 21.8633 )
 
 [node name="Player" type="KinematicBody2D" groups=["pausable", "player"]]
 scale = Vector2( 2.13561, 2.13561 )
-collision_layer = 2
+collision_mask = 5
 script = ExtResource( 5 )
 debug_mode = true
 speed = 200
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.15075, 1.873 )
+[node name="SpritePivot" type="Position2D" parent="."]
+position = Vector2( 6.5555, 0 )
+
+[node name="Sprite" type="Sprite" parent="SpritePivot"]
+position = Vector2( 11.7063, -1.40475 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 6
-frame = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -237,27 +240,22 @@ anims/shoot = SubResource( 6 )
 wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -7.02375, 0.46825 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2( 5.19364, 0.881093 )
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
-position = Vector2( 52.268, 25.0481 )
+position = Vector2( 75.3883, 0.936502 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 0, -5.96046e-08 )
+position = Vector2( 77.2613, -1.873 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-visible = false
-position = Vector2( 59.8836, -5.09534 )
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]
-position = Vector2( -18.3046, 0.0554073 )
+position = Vector2( -6.08725, 0.9365 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/PlayerHitBox"]
 position = Vector2( 0, -0.773 )
