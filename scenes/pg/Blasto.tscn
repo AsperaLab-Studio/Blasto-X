@@ -248,11 +248,10 @@ shape = SubResource( 12 )
 position = Vector2( 75.3883, 0.936502 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 71.6423, -1.873 )
+position = Vector2( 69.7693, -1.873 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]

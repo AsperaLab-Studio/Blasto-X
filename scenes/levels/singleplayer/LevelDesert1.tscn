@@ -165,6 +165,8 @@ current_level = "LevelDesert1"
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
 scale = Vector2( 0.58, 0.57 )
+collision_layer = 2
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall"]
 position = Vector2( 0.000293732, 56.1404 )
@@ -560,7 +562,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -754,7 +755,7 @@ value = -17.0
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 121.151, 320.426 )
+position = Vector2( 121.151, 321.426 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -764,7 +765,7 @@ position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 11.83 )
+position = Vector2( 386.667, 12.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2
@@ -775,7 +776,7 @@ position = Vector2( 870.27, 780.269 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 626.875 )
+position = Vector2( 0, 627.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
