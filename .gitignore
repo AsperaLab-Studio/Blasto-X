@@ -17,3 +17,5 @@ mono_crash.*.json
 *.ogg.import
 *.wav.import
 *.otf.import
+scritta logo.png
+scritta logo.psd

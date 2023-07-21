@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Scripts/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/Scripts/ost.gd" type="Script" id=2]
+[ext_resource path="res://assets/Scripts/UI/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/img/UI/cursor.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/Scripts/OptionMenu.gd" type="Script" id=7]
+[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=7]
+[ext_resource path="res://assets/Scripts/UI/PlayMenu.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -54,7 +54,6 @@ text = "press l to skip to boss"
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
-firstTab = "prologue"
 thirdTab = "credits"
 
 [node name="StartBtn" type="Button" parent="MiscMenu"]
@@ -162,10 +161,6 @@ margin_left = 561.0
 margin_top = 732.461
 margin_right = 1339.55
 margin_bottom = 855.459
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = SubResource( 3 )
 min_value = -80.0
 max_value = 0.0
@@ -185,14 +180,60 @@ margin_left = 561.0
 margin_top = 930.0
 margin_right = 1339.55
 margin_bottom = 1053.0
-custom_icons/tick = ExtResource( 4 )
-custom_icons/grabber_disabled = ExtResource( 4 )
-custom_icons/grabber_highlight = ExtResource( 4 )
-custom_icons/grabber = ExtResource( 4 )
 custom_styles/slider = SubResource( 3 )
 min_value = -80.0
 max_value = 0.0
 value = -17.0
+
+[node name="PlayMenu" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 8 )
+firstTab = "prologue"
+
+[node name="SingleBtn" type="Button" parent="PlayMenu"]
+margin_left = 801.0
+margin_top = 513.0
+margin_right = 1135.0
+margin_bottom = 609.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "SINGLEPLAYER"
+
+[node name="MultiBtn" type="Button" parent="PlayMenu"]
+visible = false
+margin_left = 801.0
+margin_top = 608.0
+margin_right = 1135.0
+margin_bottom = 704.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "MULTIPLAYER"
+
+[node name="BackBtn" type="Button" parent="PlayMenu"]
+margin_left = 801.0
+margin_top = 830.0
+margin_right = 1135.0
+margin_bottom = 926.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "BACK"
 
 [connection signal="pressed" from="MiscMenu/StartBtn" to="MiscMenu" method="_on_StartBtn_pressed"]
 [connection signal="pressed" from="MiscMenu/OptionsBtn" to="MiscMenu" method="_on_OptionsBtn_pressed"]
@@ -202,3 +243,6 @@ value = -17.0
 [connection signal="toggled" from="OptionMenu/checkFullscreen" to="OptionMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="OptionMenu/MusicSlider" to="OptionMenu" method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="OptionMenu/SFXSlider" to="OptionMenu" method="_on_SFXSlider_value_changed"]
+[connection signal="pressed" from="PlayMenu/SingleBtn" to="PlayMenu" method="_on_SingleBtn_pressed"]
+[connection signal="pressed" from="PlayMenu/MultiBtn" to="PlayMenu" method="_on_MultiBtn_pressed"]
+[connection signal="pressed" from="PlayMenu/BackBtn" to="PlayMenu" method="_on_BackBtn_pressed"]
