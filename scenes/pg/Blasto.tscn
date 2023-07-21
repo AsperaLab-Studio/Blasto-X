@@ -205,7 +205,7 @@ tracks/2/keys = {
 radius = 16.3888
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 46.8346, 6.82137 )
+extents = Vector2( 52.9171, 6.82137 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 11.9404, 21.8633 )
@@ -248,10 +248,11 @@ shape = SubResource( 12 )
 position = Vector2( 75.3883, 0.936502 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 77.2613, -1.873 )
+position = Vector2( 71.6423, -1.873 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
+scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]

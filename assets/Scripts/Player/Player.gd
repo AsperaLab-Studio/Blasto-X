@@ -59,7 +59,8 @@ func _ready() -> void:
 	cooldownAttack_timer.one_shot = true
 	cooldownAttack_timer.start()
 	
-	linkSignals()
+	if (!boss):
+		linkSignals()
 
 func linkSignals():
 	sceneManager.AreaGo.connect("area_entered", self, "_on_AreaGo_area_entered")
