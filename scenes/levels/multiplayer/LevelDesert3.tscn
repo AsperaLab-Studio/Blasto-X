@@ -16,9 +16,9 @@
 [ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
-[ext_resource path="res://scenes/pg/asari.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/pg/multiplayer/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
@@ -48,22 +48,18 @@ outline_size = 2
 font_data = SubResource( 33 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1068, 0, 355, 108 )
 
@@ -98,57 +94,46 @@ extents = Vector2( 1990.15, 120.176 )
 extents = Vector2( 7890.29, 291.611 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 199, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 398, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 597, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 796, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 995, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1194, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1393, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1592, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1791, 0, 199, 114 )
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
@@ -172,7 +157,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
+enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
 next_stage = "LevelDesertBoss"
 current_level = "LevelDesert3"
 
@@ -803,6 +788,8 @@ value = -17.0
 [node name="Top" type="StaticBody2D" parent="border"]
 position = Vector2( 121.151, 320.426 )
 scale = Vector2( 0.58, 0.57 )
+collision_layer = 2
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
 position = Vector2( 15527.8, 482.173 )
@@ -812,6 +799,8 @@ shape = SubResource( 6 )
 position = Vector2( 386.667, 11.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
+collision_layer = 2
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
 position = Vector2( 870.27, 780.269 )
@@ -820,6 +809,8 @@ shape = SubResource( 7 )
 [node name="Bottom" type="StaticBody2D" parent="border"]
 position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
+collision_layer = 2
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
 position = Vector2( 7826.08, 843.656 )
@@ -895,49 +886,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 10
+frame = 2
 playing = true
 
 [node name="obj" type="Node" parent="."]

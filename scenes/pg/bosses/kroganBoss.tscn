@@ -284,8 +284,8 @@ tracks/2/keys = {
 "times": PoolRealArray( 2.02 )
 }
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 16.875, 10 )
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 19.0
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 8.4275, 21.8633 )
@@ -322,7 +322,8 @@ anims/move = SubResource( 5 )
 anims/shake = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 13 )
+position = Vector2( -1, 0 )
+shape = SubResource( 15 )
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 wait_time = 0.25

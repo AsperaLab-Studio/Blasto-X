@@ -52,16 +52,11 @@ func _process(_delta: float) -> void:
 				pos.x = global_position.x + rebonuceDistance
 			else:
 				pos.x = global_position.x - rebonuceDistance
-			
-			set_collision_layer_bit(3, true)
-			set_collision_layer_bit(2, false)
-			set_collision_mask_bit(2, false)
-			set_collision_mask_bit(0, false)
-			
+		
 			print("layers active: ",  collision_layer)
 			print("masks active: ",  collision_mask)
 			move_rebounce(pos, rebounce_speed)
-			
+				
 		STATE.CHASE:
 			anim_player.play("move")
 			if !near_player:
@@ -122,7 +117,20 @@ func hit(dpsTaken) -> void:
 		current_state = STATE.DIED
 	else:
 		current_state = STATE.HIT
+		switchLayers(true)
+		
 	
+func switchLayers(hitting):
+	if hitting:
+		set_collision_layer_bit(3, true)
+		set_collision_layer_bit(2, false)
+		set_collision_mask_bit(2, false)
+		set_collision_mask_bit(0, false)
+	else:
+		set_collision_layer_bit(3, false)
+		set_collision_layer_bit(2, true)
+		set_collision_mask_bit(2, true)
+		set_collision_mask_bit(0, true)
 
 func move_towards(target: Vector2, speed):
 	if target:
@@ -202,10 +210,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
 		current_state = STATE.CHASE
 	if anim_name == "hit":
-		set_collision_layer_bit(3, false)
-		set_collision_layer_bit(2, true)
-		set_collision_mask_bit(2, true)
-		set_collision_mask_bit(0, true)
+		switchLayers(false)
 		current_state = STATE.CHASE
 		
 	

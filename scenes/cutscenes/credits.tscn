@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/Scripts/Managers/audioProloguer.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 outline_size = 5
@@ -47,6 +46,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
+anchor_right = 0.054
 margin_right = 293.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )

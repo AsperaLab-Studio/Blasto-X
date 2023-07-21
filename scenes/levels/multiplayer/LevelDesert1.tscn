@@ -16,9 +16,9 @@
 [ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
-[ext_resource path="res://scenes/pg/asari.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/krogan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/pg/multiplayer/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
@@ -162,7 +162,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
+enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
 next_stage = "LevelDesert2"
 current_level = "LevelDesert1"
 
@@ -564,6 +564,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -794,7 +795,7 @@ value = -17.0
 position = Vector2( 121.151, 320.426 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
-collision_mask = 9
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
 position = Vector2( 15527.8, 482.173 )
@@ -805,7 +806,7 @@ position = Vector2( 386.667, 11.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2
-collision_mask = 9
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
 position = Vector2( 870.27, 684.068 )
@@ -815,7 +816,7 @@ shape = SubResource( 7 )
 position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
-collision_mask = 9
+collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
 position = Vector2( 7826.08, 843.656 )
@@ -824,7 +825,7 @@ shape = SubResource( 22 )
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 32, 1261 )
+position = Vector2( 32, 1260 )
 scale = Vector2( 1, 1 )
 
 [node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
@@ -892,49 +893,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]

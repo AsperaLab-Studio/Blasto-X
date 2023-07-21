@@ -46,6 +46,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control/MarginContainer/title"]
+anchor_left = -0.315
+anchor_right = -0.31
 margin_right = 439.0
 margin_bottom = 45.0
 custom_colors/font_color = Color( 1, 1, 1, 0.192157 )
