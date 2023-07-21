@@ -1,16 +1,62 @@
 extends Node
 
+var isMultiplayer: bool = false
+var multiplayerReady: bool = false
+var dirType = null
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var playerKeyboard_input = [
+	"move_up_keyboard",
+	"move_down_keyboard",
+	"move_left_keyboard",
+	"move_right_keyboard",
+	"attack_keyboard",
+	"shoot_keyboard",
+	"menu_keyboard",
+]
 
+var playerPad1_input = [
+	"move_up_pad1",
+	"move_down_pad1",
+	"move_left_pad1",
+	"move_right_pad1",
+	"attack_pad1",
+	"shoot_pad1",
+	"menu_pad1",
+]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var playerPad2_input = [
+	"move_up_pad2",
+	"move_down_pad2",
+	"move_left_pad2",
+	"move_right_pad2",
+	"attack_pad2",
+	"shoot_pad2",
+	"menu_pad2",
+]
 
+var player1_input
+var player2_input
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if Input.get_connected_joypads().size() > 0:
+		multiplayerReady = true
+	
+	if Global.isMultiplayer:
+		dirType = "multiplayer/"
+	else:
+		dirType = "singleplayer/"
+	
+	if isMultiplayer:
+		if Input.get_connected_joypads().size() == 1:
+			player1_input = playerKeyboard_input
+			player2_input = playerPad1_input
+		if Input.get_connected_joypads().size() == 2:
+			player1_input = playerPad1_input
+			player2_input = playerPad2_input
+	else:
+		if Input.get_connected_joypads().size() == 0:
+			player1_input = playerKeyboard_input
+			player2_input = playerPad1_input
+		if Input.get_connected_joypads().size() == 1:
+			player1_input = playerPad1_input
+			player2_input = playerKeyboard_input
