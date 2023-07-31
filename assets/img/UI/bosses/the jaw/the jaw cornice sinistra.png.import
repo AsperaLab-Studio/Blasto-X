@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LV1-A Forefnjsjdfj.png-86f26c71ae82b9c7cc1cbba21f12763c.stex"
+path="res://.import/the jaw cornice sinistra.png-f33a9f510c37fe1f85fa9428ce9b908e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/frontground/lvl sea/tileset/lv1-a/LV1-A Forefnjsjdfj.png"
-dest_files=[ "res://.import/LV1-A Forefnjsjdfj.png-86f26c71ae82b9c7cc1cbba21f12763c.stex" ]
+source_file="res://assets/img/UI/bosses/the jaw/the jaw cornice sinistra.png"
+dest_files=[ "res://.import/the jaw cornice sinistra.png-f33a9f510c37fe1f85fa9428ce9b908e.stex" ]
 
 [params]
 

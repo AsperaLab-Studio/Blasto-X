@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/the jaw destra 1.png-b8b3c8eb63d5f44acf118208bc7b9d7c.stex"
+path="res://.import/barra vita the vine.png-f9f5574b49907501265826d79427f7a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/UI/bosses/the jaw/the jaw destra 1.png"
-dest_files=[ "res://.import/the jaw destra 1.png-b8b3c8eb63d5f44acf118208bc7b9d7c.stex" ]
+source_file="res://assets/img/UI/bosses/the vine/barra vita the vine.png"
+dest_files=[ "res://.import/barra vita the vine.png-f9f5574b49907501265826d79427f7a8.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
@@ -12,22 +12,26 @@
 [ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/tile/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/desert/lvl 1 d/desert1Tile1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tile/desert/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
-[ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/pg/multiplayer/krogan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
-[ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=23]
+[ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=25]
-[ext_resource path="res://assets/img/UI/commandsSingleplayer.png" type="Texture" id=26]
+[ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=27]
+[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=28]
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
+[ext_resource path="res://assets/img/UI/commands.png" type="Texture" id=31]
+[ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=32]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -86,7 +90,7 @@ shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 extents = Vector2( 15745.8, 285.783 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 1990.15, 120.176 )
+extents = Vector2( 1990.15, 23.975 )
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 7890.29, 291.611 )
@@ -158,9 +162,9 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
-next_stage = "LevelDesert2"
-current_level = "LevelDesert1"
+enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
+next_stage = "desert/LevelDesert2"
+current_level = "desert/LevelDesert1"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
@@ -444,19 +448,19 @@ scale = Vector2( 0.58, 0.57 )
 
 [node name="6" type="Node" parent="StageManager/EnemiesSpawn"]
 
-[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 9213.8, 765.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 9405.8, 901.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 10045.8, 885.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 10285.8, 773.7 )
 scale = Vector2( 0.58, 0.57 )
 
@@ -562,7 +566,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -584,6 +588,23 @@ position = Vector2( 172, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 22 )
 
+[node name="Ceru" type="Node2D" parent="GUI/UI/LifesList"]
+
+[node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
+position = Vector2( 815, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 23 )
+
+[node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
+position = Vector2( 784, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 23 )
+
+[node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
+position = Vector2( 752, 140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 23 )
+
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
 
@@ -603,6 +624,23 @@ rect_scale = Vector2( 0.293, 0.296 )
 max_value = 20.0
 value = 20.0
 texture_progress = ExtResource( 7 )
+
+[node name="Ceru" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
+
+[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Ceru"]
+position = Vector2( 880.239, 82.7536 )
+scale = Vector2( 0.295394, 0.289558 )
+texture = ExtResource( 28 )
+
+[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Ceru"]
+margin_left = 734.0
+margin_top = 56.0
+margin_right = 2096.0
+margin_bottom = 231.0
+rect_scale = Vector2( 0.293, 0.296 )
+max_value = 20.0
+value = 20.0
+texture_progress = ExtResource( 27 )
 
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
 margin_left = 1716.0
@@ -756,7 +794,7 @@ value = -17.0
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 121.151, 321.426 )
+position = Vector2( 121.151, 320.426 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -766,18 +804,18 @@ position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 12.83 )
+position = Vector2( 386.667, 11.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
-position = Vector2( 870.27, 780.269 )
+position = Vector2( 870.27, 684.068 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 627.875 )
+position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -789,8 +827,14 @@ shape = SubResource( 22 )
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 25.4528, 1232.18 )
+position = Vector2( 32, 1260 )
 scale = Vector2( 1, 1 )
+
+[node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
+position = Vector2( 77, 1356 )
+scale = Vector2( 1, 1 )
+z_index = 1
+isPlayerTwo = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
@@ -851,42 +895,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1062,7 +1113,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ15" type="Sprite" parent="obj/down"]
 position = Vector2( 59.8328, 974.837 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1077,7 +1128,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ16" type="Sprite" parent="obj/down"]
 position = Vector2( 535.111, 971.868 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1092,7 +1143,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
 position = Vector2( 1056, 977 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1107,7 +1158,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
 position = Vector2( 1168, 976 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1123,7 +1174,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
 position = Vector2( 2134, 1066.51 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 offset = Vector2( 10, -90.51 )
 hframes = 3
@@ -1140,7 +1191,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/down"]
 position = Vector2( 3160, 976 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1155,7 +1206,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/down"]
 position = Vector2( 3952, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1170,7 +1221,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/down"]
 position = Vector2( 4312, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1185,7 +1236,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/down"]
 position = Vector2( 4952, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1200,7 +1251,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/down"]
 position = Vector2( 5064, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1216,7 +1267,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/down"]
 position = Vector2( 6040, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1231,7 +1282,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ13" type="Sprite" parent="obj/down"]
 position = Vector2( 7679.8, 977 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1246,7 +1297,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ14" type="Sprite" parent="obj/down"]
 position = Vector2( 8288, 968 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1261,7 +1312,7 @@ shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/down"]
 position = Vector2( 7056, 981 )
-z_index = 3
+z_index = 4
 texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
@@ -1298,8 +1349,8 @@ script = ExtResource( 29 )
 
 [node name="Commands" type="Sprite" parent="."]
 position = Vector2( 372, 1126 )
-texture = ExtResource( 26 )
-script = ExtResource( 23 )
+texture = ExtResource( 31 )
+script = ExtResource( 32 )
 
 [node name="StaticBody2D" type="Area2D" parent="Commands"]
 position = Vector2( 126, 178 )
@@ -1308,8 +1359,8 @@ position = Vector2( 126, 178 )
 position = Vector2( -4, 14.5 )
 shape = SubResource( 33 )
 
-[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
@@ -1320,4 +1371,6 @@ shape = SubResource( 33 )
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="PlayersList/Blasto" to="StageManager" method="_on_Blasto_death"]
 [connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Blasto_update_healthbar"]
+[connection signal="death" from="PlayersList/Ceru Star" to="StageManager" method="_on_Cerulean_Star_death"]
+[connection signal="update_healthbar" from="PlayersList/Ceru Star" to="GUI/UI/HealthPlayerContainer" method="_on_Ceru_Star_update_healthbar"]
 [connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]

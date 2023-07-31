@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/the jaw sinistra 1.png-0cb6fde2a13166f1273348a5ca40901a.stex"
+path="res://.import/the_vine_spritesheet.png-0ea27bdbaf2093e6e0313525d2d97837.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/UI/bosses/the jaw/the jaw sinistra 1.png"
-dest_files=[ "res://.import/the jaw sinistra 1.png-0cb6fde2a13166f1273348a5ca40901a.stex" ]
+source_file="res://assets/img/sprites/enemy/the_vine_spritesheet.png"
+dest_files=[ "res://.import/the_vine_spritesheet.png-0ea27bdbaf2093e6e0313525d2d97837.stex" ]
 
 [params]
 

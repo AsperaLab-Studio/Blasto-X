@@ -13,8 +13,8 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=13]
-[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/tile/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=17]
 [ext_resource path="res://assets/img/UI/bosses/the jaw/barra vita the jaw balanced.png" type="Texture" id=18]
@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw destra 1 balanced.png" type="Texture" id=25]
+[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw cornice destra balanced.png" type="Texture" id=25]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=26]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=28]
@@ -115,7 +115,7 @@ __meta__ = {
 position = Vector2( -680, -496 )
 script = ExtResource( 19 )
 next_stage = "defeat jaw"
-current_level = "LevelDesertBoss"
+current_level = "desert/LevelDesertBoss"
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 

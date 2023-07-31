@@ -26,7 +26,10 @@ func _ready():
 func _process(_delta: float) -> void:
 	
 	players = playersParent.get_children()
-	boss.targetList = players
+
+	if is_instance_valid(boss):
+		boss.targetList = players
+
 	checkPlayersDead()
 	
 	if $EnemiesContainer.get_child_count() == 0:
