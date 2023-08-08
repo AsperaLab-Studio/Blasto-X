@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/Scripts/AI/props/Vine Spear.gd" type="Script" id=2]
-[ext_resource path="res://assets/img/sprites/enemy/bosses/liana_above_0.5.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/sprites/enemy/bosses/liana_down.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=5]
 resource_name = "growth"
@@ -42,11 +42,9 @@ extents = Vector2( 22.5, 8.5 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -250 )
-rotation = 3.14159
+position = Vector2( 0, -150 )
 texture = ExtResource( 3 )
 hframes = 3
-frame = 1
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

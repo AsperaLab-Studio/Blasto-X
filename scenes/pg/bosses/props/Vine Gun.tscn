@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/Scripts/AI/props/Vine Gun.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Shoot.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/img/sprites/enemy/bosses/liana_above_0.9.1.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/sprites/enemy/bosses/liana_up.png" type="Texture" id=4]
 [ext_resource path="res://scenes/pg/bosses/props/Bullet Vine.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=5]
