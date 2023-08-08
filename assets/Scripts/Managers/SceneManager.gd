@@ -1,7 +1,5 @@
 extends Node
 
-export var increment = 1566
-export var y = 768
 export var n_positions = 5
 export(Array, PackedScene) var enemy_types
 export(int) var current_stage := 0

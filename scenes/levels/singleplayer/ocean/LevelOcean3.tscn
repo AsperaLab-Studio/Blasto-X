@@ -1,8 +1,7 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/lvl-3-d.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
@@ -12,45 +11,41 @@
 [ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/ocean/lvl 3 s/ocean3Tile1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
-[ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/multiplayer/krogan.tscn" type="PackedScene" id=19]
-[ext_resource path="res://pxArt.png" type="Texture" id=20]
+[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
-[ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=23]
+[ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=25]
-[ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=26]
-[ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=27]
-[ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=28]
+[ext_resource path="res://assets/img/UI/commandsSingleplayer.png" type="Texture" id=26]
+[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=27]
+[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=28]
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
-[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=31]
+[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=31]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=32]
-[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=33]
-[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=34]
-[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=35]
+[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
 
-[sub_resource type="DynamicFontData" id=33]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/fonts/Quickzag-rOzO.otf"
 
 [sub_resource type="DynamicFont" id=4]
 size = 130
 outline_size = 2
-font_data = SubResource( 33 )
+font_data = SubResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 100
 outline_size = 2
-font_data = SubResource( 33 )
+font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 5 )
@@ -75,12 +70,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="StyleBoxFlat" id=34]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxFlat" id=35]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -159,7 +148,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
 
-[node name="testing2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 10, 136.5 )
+
+[node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
@@ -168,9 +160,9 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
-next_stage = "desert/LevelDesertBoss"
-current_level = "desert/LevelDesert3"
+enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
+next_stage = "ocean/LevelOcean3"
+current_level = "ocean/LevelOcean2"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
@@ -454,19 +446,19 @@ scale = Vector2( 0.58, 0.57 )
 
 [node name="6" type="Node" parent="StageManager/EnemiesSpawn"]
 
-[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 9213.8, 765.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 9405.8, 901.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 10045.8, 885.7 )
 scale = Vector2( 0.58, 0.57 )
 
-[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
 position = Vector2( 10285.8, 773.7 )
 scale = Vector2( 0.58, 0.57 )
 
@@ -572,7 +564,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -594,23 +586,6 @@ position = Vector2( 172, 140 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 22 )
 
-[node name="Ceru" type="Node2D" parent="GUI/UI/LifesList"]
-
-[node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 815, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
-
-[node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 784, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
-
-[node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
-position = Vector2( 752, 140 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 23 )
-
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
 
@@ -631,23 +606,6 @@ max_value = 20.0
 value = 20.0
 texture_progress = ExtResource( 7 )
 
-[node name="Ceru" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
-
-[node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Ceru"]
-position = Vector2( 880.239, 82.7536 )
-scale = Vector2( 0.295394, 0.289558 )
-texture = ExtResource( 28 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Ceru"]
-margin_left = 734.0
-margin_top = 56.0
-margin_right = 2096.0
-margin_bottom = 231.0
-rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 27 )
-
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
 margin_left = 1716.0
 margin_top = 6.0
@@ -662,15 +620,15 @@ margin_left = 1764.0
 margin_top = 954.0
 margin_right = 1804.0
 margin_bottom = 994.0
-script = ExtResource( 31 )
-rate_list = [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 35 ) ]
+script = ExtResource( 33 )
+rate_list = [ ExtResource( 28 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 27 ) ]
 rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
 visible = false
 scale = Vector2( 0.520833, 0.520833 )
 z_index = 1
-texture = ExtResource( 33 )
+texture = ExtResource( 28 )
 
 [node name="pauseMenu" type="Control" parent="GUI"]
 pause_mode = 2
@@ -692,8 +650,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/normal = SubResource( 35 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "RETURN"
 
@@ -706,8 +664,8 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/normal = SubResource( 35 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "RESTART LEVEL"
 
@@ -720,8 +678,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/normal = SubResource( 35 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "OPTIONS"
 
@@ -734,8 +692,8 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/normal = SubResource( 35 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "MAIN MENU"
 
@@ -748,8 +706,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/normal = SubResource( 35 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "QUIT"
 
@@ -829,7 +787,7 @@ value = -17.0
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 121.151, 320.426 )
+position = Vector2( 121.151, 321.426 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -839,7 +797,7 @@ position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 11.83 )
+position = Vector2( 386.667, 12.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2
@@ -850,7 +808,7 @@ position = Vector2( 870.27, 780.269 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 626.875 )
+position = Vector2( 0, 627.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -862,13 +820,8 @@ shape = SubResource( 22 )
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 10, 1286 )
+position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
-
-[node name="Ceru Star" parent="PlayersList" instance=ExtResource( 26 )]
-position = Vector2( 109, 1251 )
-scale = Vector2( 1, 1 )
-isPlayerTwo = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
@@ -877,12 +830,12 @@ bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -2799, 544 )
+position = Vector2( -2407.87, 512 )
 z_index = -2
 script = ExtResource( 11 )
-increment = 2387
-n_positions = 6
-scenes = [ ExtResource( 14 ), ExtResource( 13 ) ]
+increment = 1350
+n_positions = 8
+scenes = [ ExtResource( 13 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
@@ -893,35 +846,7 @@ texture = ExtResource( 18 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="background" type="Node" parent="ParallaxBackground"]
-
-[node name="desert1" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 1288, 360 )
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 3 )
-
-[node name="desert2" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 120, 352 )
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 3 )
-
 [node name="background2" type="Node" parent="ParallaxBackground"]
-
-[node name="pxArt" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 368, 352 )
-scale = Vector2( 0.726563, 0.726563 )
-texture = ExtResource( 20 )
-
-[node name="pxArt2" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 1104, 352 )
-scale = Vector2( 0.726563, 0.796875 )
-texture = ExtResource( 20 )
-
-[node name="pxArt3" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 1848, 348 )
-scale = Vector2( 0.726563, 0.820313 )
-texture = ExtResource( 20 )
-flip_h = true
 
 [node name="obj" type="Node" parent="ParallaxBackground"]
 
@@ -929,49 +854,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1381,9 +1306,20 @@ __meta__ = {
 [node name="shake" type="Node2D" parent="Camera2D"]
 script = ExtResource( 29 )
 
+[node name="Commands" type="Sprite" parent="."]
+position = Vector2( 372, 1126 )
+texture = ExtResource( 26 )
+script = ExtResource( 23 )
+
+[node name="StaticBody2D" type="Area2D" parent="Commands"]
+position = Vector2( 126, 178 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Commands/StaticBody2D"]
+position = Vector2( -4, 14.5 )
+shape = SubResource( 33 )
+
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
-[connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
@@ -1395,5 +1331,4 @@ script = ExtResource( 29 )
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="PlayersList/Blasto" to="StageManager" method="_on_Blasto_death"]
 [connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Blasto_update_healthbar"]
-[connection signal="death" from="PlayersList/Ceru Star" to="StageManager" method="_on_Ceru_Star_death"]
-[connection signal="update_healthbar" from="PlayersList/Ceru Star" to="GUI/UI/HealthPlayerContainer" method="_on_Ceru_Star_update_healthbar"]
+[connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]

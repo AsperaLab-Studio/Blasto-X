@@ -43,11 +43,11 @@ func _process(_delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
-		var save_data = SaveManager.save_data.new()
-		save_data.current_level = current_level
+		var saveData = save_data.new()
+		saveData.current_level = current_level
 
 		# Salvataggio dei dati
-		SaveManager.save_game("save_data.dat", save_data)
+		SaveManager.save_game("save_data.dat", saveData)
 
 		Global.score = 0
 		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"

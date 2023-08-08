@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/audio/ost/prologue.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/fonts/Quickzag-rOzO.otf" type="DynamicFontData" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 outline_size = 5
@@ -31,6 +30,7 @@ margin_bottom = 1083.27
 stream = ExtResource( 1 )
 autoplay = true
 script = ExtResource( 3 )
+next_scene = "ocean/LevelOcean1"
 to_mainMenu = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]

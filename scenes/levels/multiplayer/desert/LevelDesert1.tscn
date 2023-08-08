@@ -577,7 +577,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -935,49 +935,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1401,6 +1401,11 @@ shape = SubResource( 33 )
 
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/QuitBtn" to="GUI/pauseMenu" method="_on_QuitBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/OptionMenu/backToPauseBtn" to="GUI/pauseMenu" method="_on_backToPauseBtn_pressed"]
 [connection signal="toggled" from="GUI/pauseMenu/OptionMenu/checkFullscreen" to="GUI/pauseMenu" method="_on_checkFullscreen_toggled"]
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/MusicSlider" to="GUI/pauseMenu" method="_on_MusicSlider_value_changed"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/background/sea/sea1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
@@ -13,7 +12,6 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]
@@ -31,6 +29,11 @@
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
 [ext_resource path="res://assets/img/UI/commands.png" type="Texture" id=31]
 [ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=32]
+[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
+[ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=34]
+[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=35]
+[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=36]
+[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=37]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -71,6 +74,12 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -162,8 +171,8 @@ __meta__ = {
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
 enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
-next_stage = "desert/LevelDesert2"
-current_level = "desert/LevelDesert1"
+next_stage = "ocean/LevelOcean2"
+current_level = "ocean/LevelOcean1"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
@@ -565,7 +574,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -650,6 +659,21 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 
+[node name="Rating" type="Control" parent="GUI/UI"]
+margin_left = 1764.0
+margin_top = 954.0
+margin_right = 1804.0
+margin_bottom = 994.0
+script = ExtResource( 33 )
+rate_list = [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 34 ), ExtResource( 37 ) ]
+rate_points = [ 1200, 2400, 3600, 4800 ]
+
+[node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
+visible = false
+scale = Vector2( 0.520833, 0.520833 )
+z_index = 1
+texture = ExtResource( 35 )
+
 [node name="pauseMenu" type="Control" parent="GUI"]
 pause_mode = 2
 visible = false
@@ -666,54 +690,68 @@ margin_left = 895.843
 margin_top = 370.715
 margin_right = 1080.84
 margin_bottom = 455.715
-custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
-custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
-action_mode = 0
-text = "RETURN"
-
-[node name="OptionBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
-margin_left = 886.404
-margin_top = 461.484
-margin_right = 1082.4
-margin_bottom = 546.484
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
+action_mode = 0
+text = "RETURN"
+
+[node name="RestartLevelBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 803.0
+margin_top = 462.0
+margin_right = 1164.0
+margin_bottom = 547.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
+action_mode = 0
+text = "RESTART LEVEL"
+
+[node name="OptionBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
+margin_left = 886.404
+margin_top = 551.0
+margin_right = 1082.4
+margin_bottom = 636.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
 action_mode = 0
 text = "OPTIONS"
 
 [node name="MainMenuBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
 margin_left = 844.873
-margin_top = 544.545
+margin_top = 634.061
 margin_right = 1123.87
-margin_bottom = 629.545
+margin_bottom = 719.061
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
 action_mode = 0
 text = "MAIN MENU"
 
 [node name="QuitBtn" type="Button" parent="GUI/pauseMenu/mainPauseMenu"]
 margin_left = 844.873
-margin_top = 635.156
+margin_top = 723.0
 margin_right = 1123.87
-margin_bottom = 720.156
+margin_bottom = 808.0
 custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 34 )
+custom_styles/normal = SubResource( 35 )
 action_mode = 0
 text = "QUIT"
 
@@ -814,7 +852,7 @@ position = Vector2( 870.27, 684.068 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 647 )
+position = Vector2( 0, 626.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
@@ -845,9 +883,9 @@ script = ExtResource( 8 )
 position = Vector2( -2407.87, 512 )
 z_index = -2
 script = ExtResource( 11 )
-increment = 1725
+increment = 1354
 n_positions = 6
-scenes = [ ExtResource( 13 ), ExtResource( 14 ) ]
+scenes = [ ExtResource( 13 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
@@ -860,59 +898,48 @@ texture = ExtResource( 18 )
 
 [node name="background2" type="Node" parent="ParallaxBackground"]
 
-[node name="Sea1" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 960, 540 )
-texture = ExtResource( 3 )
-
 [node name="obj" type="Node" parent="ParallaxBackground"]
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 6
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -1337,6 +1364,7 @@ shape = SubResource( 33 )
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
+[connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/OptionBtn" to="GUI/pauseMenu" method="_on_OptionBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/MainMenuBtn" to="GUI/pauseMenu" method="_on_MainMenuBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/QuitBtn" to="GUI/pauseMenu" method="_on_QuitBtn_pressed"]

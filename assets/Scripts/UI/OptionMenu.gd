@@ -59,4 +59,5 @@ func _on_CommandBtn_pressed():
 
 func _on_RestartLevelBtn_pressed():
 	var stageManager = get_parent().get_parent().get_child(0)
+	get_tree().paused = !get_tree().paused
 	get_tree().change_scene("res://scenes/levels/" + Global.dirType + stageManager.current_level + ".tscn")
