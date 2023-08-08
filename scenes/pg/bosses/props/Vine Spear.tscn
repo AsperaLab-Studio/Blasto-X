@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/Scripts/AI/props/Vine Spear.gd" type="Script" id=2]
+[ext_resource path="res://assets/img/sprites/enemy/the_vine_spritesheet.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "growth"
+length = 4.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.95, 1.96 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0.51 )
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 22.5, 8.5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.772251, -141 )
+scale = Vector2( 1, 2 )
+texture = ExtResource( 4 )
+hframes = 3
+vframes = 9
+frame = 21
+region_rect = Rect2( 9, 14, 63, 96 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/growth = SubResource( 5 )
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2( 0, -100 )
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 0.5, 10.5 )
+shape = SubResource( 6 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

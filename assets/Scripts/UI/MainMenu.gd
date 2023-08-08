@@ -7,16 +7,23 @@ onready var playMenu: Control = get_parent().get_node("PlayMenu")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("skipBoss"):
-		get_tree().change_scene("res://scenes/levels/singleplayer/LevelDesertBoss.tscn")
+		get_tree().change_scene("res://scenes/levels/singleplayer/ocean/LevelOceanBoss.tscn")
 
 func _on_StartBtn_pressed():
 	visible = false
 	playMenu.visible = true
 	var multiBtn = playMenu.get_node("MultiBtn")
+	var loadBtn = playMenu.get_node("LoadBtn")
+	
 	if(Global.multiplayerReady == true):
 		multiBtn.visible = true
 	else:
 		multiBtn.visible = false
+	
+	if SaveManager.load_game(Global.save_path) != null:
+		loadBtn.visible = true
+	else:
+		loadBtn.visible = false
 	
 
 func _on_OptionsBtn_pressed():

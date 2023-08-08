@@ -10,14 +10,27 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
-enum STATE {CHASE, ATTACK, WAIT, IDLE, HIT, DIED}
+
+onready var spear_list_pos: Array = get_parent().get_parent().get_node("spearZones").get_children()
+onready var gun_list_pos: Array = get_parent().get_parent().get_node("gunZones").get_children()
+#onready var vine_spear = preload("res://scenes/pg/bosses/Vine Spear.tscn")
+#onready var vine_gun = preload("res://scenes/pg/bosses/Vine Gun.tscn")
+onready var cooldown: Timer = $Cooldown
+enum STATE {KNOCKBACK, SELECTING_VINE, VINE, ATTACK, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
+
+export(int) var delay_after_spear := 3
+export(int) var delay_after_gun := 3
+
 export(int) var dps := 10
 export(int) var HP := 5
+export(PackedScene) var vine_spear
+export(PackedScene) var vine_gun
+export(float) var shooot_delay
 
-var current_state = STATE.CHASE
+var current_state = STATE.IDLE
 var actual_target: Player = null
 var directionPlayer = Vector2()
 var near_player: bool = false
@@ -28,12 +41,18 @@ var paused = false
 var areaCollided = null
 var targetList = null
 
+var canAttack = false
+var attack_type = 2
+var actual_vine = null
+var actual_list_pos: Array
+var rng
 var sceneManager = null
+var just_changed = false
 
 func _ready():
 	anim_player.play("idle")
 	healthBar = UIHealthBar
-	
+	rng = RandomNumberGenerator.new()
 	sceneManager = get_parent().get_parent()
 	
 
@@ -44,30 +63,70 @@ func _process(_delta: float) -> void:
 		match current_state:
 			STATE.HIT:
 				anim_player.play("hit")
-			STATE.CHASE:
-				anim_player.play("move")
-				if !near_player:
-					move_towards(actual_target.global_position, moving_speed)
-				else:
-					current_state = STATE.WAIT
-			STATE.WAIT:
+			STATE.IDLE:
+				anim_player.play("idle")
 				if near_player:
-					anim_player.play("idle")
 					if attack_delay_timer.is_stopped():
 						attack_delay_timer.wait_time = 1
 						attack_delay_timer.start()
-				else:
-					current_state = STATE.CHASE
-			STATE.IDLE:
-				anim_player.play("idle")
-				if !near_enemy:
-					current_state = STATE.WAIT
 			STATE.ATTACK:
-					if near_player && !actual_target.invincible:
-						anim_player.play("attack")
-					elif anim_player.current_animation != "attack":
-						current_state = STATE.WAIT
-						attack_delay_timer.stop()
+				if near_player && !actual_target.invincible:
+					anim_player.play("attack")
+				elif anim_player.current_animation != "attack":
+					current_state = STATE.IDLE
+					attack_delay_timer.stop()
+				else:
+					current_state = STATE.IDLE
+			STATE.KNOCKBACK:
+				current_state = STATE.IDLE
+			STATE.SELECTING_VINE:
+				just_changed = true
+				if attack_type == 1:
+					actual_vine = vine_spear
+					actual_list_pos = spear_list_pos
+					attack_type = 2
+					current_state = STATE.VINE
+				else:
+					actual_vine = vine_gun
+					actual_list_pos = gun_list_pos
+					attack_type = 1
+					current_state = STATE.VINE
+			STATE.VINE:
+				if just_changed == true:
+					if attack_type == 1:
+						anim_player.play("gun")
+					else:
+						anim_player.play("spear")
+					#anim_player.play("vine")
+					just_changed = false
+
+				elif anim_player.current_animation != "gun" && anim_player.current_animation != "spear":
+					
+					var zone = rng.randi_range(0, actual_list_pos.size()-1)
+					var i = 1
+
+					for pos in actual_list_pos[zone].get_children():
+						var actual_vine_instance = actual_vine.instance()
+
+						if attack_type == 1:
+							var test = shooot_delay * i
+							(actual_vine_instance as VineGun).delay = test
+
+						if pos.name == "1" || pos.name == "2":
+							actual_vine_instance.z_index = -2
+						else:
+							actual_vine_instance.z_index = 3
+						
+						owner.add_child(actual_vine_instance)
+						actual_vine_instance.global_transform = pos.global_transform
+						i = i + 1
+
+					if attack_type == 1:
+						cooldown.wait_time = delay_after_gun
+					elif attack_type == 2:
+						cooldown.wait_time = delay_after_spear
+					cooldown.start()
+					current_state = STATE.IDLE
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -75,12 +134,6 @@ func _process(_delta: float) -> void:
 				collition_area2d.disabled = true
 				
 				anim_player.play("died")
-				
-				var directionDead = Vector2((global_position.x - actual_target.global_position.x), 0).normalized()
-				
-				move_and_slide(directionDead * death_speed)
-				
-			
 		
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
@@ -147,12 +200,6 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	if (area.owner.is_in_group("player")):
 		near_player = true
 	
-	if(area.owner.is_in_group("enemy")):
-		current_state = STATE.IDLE
-		near_enemy = true
-		
-		
-	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	if current_state == STATE.DIED:
@@ -160,19 +207,22 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 	elif area.owner && area.owner.is_in_group("player"):
 		near_player = false
 
-	if area.owner && area.owner.is_in_group("enemy"):
-		near_enemy = false
-		
-	
 
 func _on_Timer_timeout() -> void:
-	if current_state == STATE.WAIT:
+	if current_state == STATE.IDLE:
 		current_state = STATE.ATTACK
 	
 
+func _on_Cooldown_timeout():
+	if current_state == STATE.IDLE:
+		current_state = STATE.SELECTING_VINE
+
+
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "attack":
-		current_state = STATE.CHASE
+		current_state = STATE.IDLE
 	if anim_name == "hit":
-		current_state = STATE.CHASE
+		current_state = STATE.KNOCKBACK
 		
+
+

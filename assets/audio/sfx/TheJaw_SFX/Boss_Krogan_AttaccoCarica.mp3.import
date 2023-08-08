@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss_Krogan_AttaccoCarica.mp3-f01bfffd89f45ab285534b2dad3a62dd.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/TheJaw_SFX/Boss_Krogan_AttaccoCarica.mp3"
+dest_files=[ "res://.import/Boss_Krogan_AttaccoCarica.mp3-f01bfffd89f45ab285534b2dad3a62dd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

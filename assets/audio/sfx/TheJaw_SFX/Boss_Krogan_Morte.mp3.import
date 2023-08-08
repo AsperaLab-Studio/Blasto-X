@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Boss_Krogan_Morte.mp3-3d85e3737e31db2f2f8151f3d713813f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/TheJaw_SFX/Boss_Krogan_Morte.mp3"
+dest_files=[ "res://.import/Boss_Krogan_Morte.mp3-3d85e3737e31db2f2f8151f3d713813f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

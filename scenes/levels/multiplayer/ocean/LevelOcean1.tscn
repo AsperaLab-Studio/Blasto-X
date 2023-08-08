@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean2Tile1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/multiplayer/asari.tscn" type="PackedScene" id=17]

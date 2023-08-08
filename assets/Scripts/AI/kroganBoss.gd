@@ -48,10 +48,8 @@ func _ready():
 	
 	sceneManager = get_parent().get_parent()
 	cooldownShake_timer.wait_time = ShakeDeelay
-	cooldownShake_timer.one_shot = true
 	cooldownShake_timer.start()
 	cooldownCharge_timer.wait_time = ChargeDeelay
-	cooldownCharge_timer.one_shot = true
 	cooldownCharge_timer.start()
 	
 
@@ -130,7 +128,6 @@ func _process(_delta: float) -> void:
 					#timerShake.set_paused(false)
 					areaCollided = null
 					cooldownCharge_timer.wait_time = ChargeDeelay
-					cooldownCharge_timer.one_shot = true
 					cooldownCharge_timer.start()
 					current_state = STATE.WAIT
 			STATE.DIED:

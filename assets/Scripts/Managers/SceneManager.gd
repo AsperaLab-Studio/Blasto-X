@@ -76,6 +76,7 @@ func _process(_delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
+		Global.score = Global.score + points
 		next_stage = "res://scenes/levels/" + Global.dirType + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

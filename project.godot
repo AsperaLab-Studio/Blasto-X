@@ -28,12 +28,30 @@ _global_script_classes=[ {
 "class": "SalarianBoss",
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/salarianBoss.gd"
+}, {
+"base": "Node2D",
+"class": "VineGun",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/Vine Gun.gd"
+}, {
+"base": "Node2D",
+"class": "VineSpear",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/Vine Spear.gd"
+}, {
+"base": "Node",
+"class": "save_data",
+"language": "GDScript",
+"path": "res://assets/Scripts/SaveManager.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
 "KroganBoss": "",
 "Player": "",
-"SalarianBoss": ""
+"SalarianBoss": "",
+"VineGun": "",
+"VineSpear": "",
+"save_data": ""
 }
 
 [application]
@@ -50,6 +68,7 @@ mix_rate=48000
 [autoload]
 
 Global="*res://assets/Scripts/Global.gd"
+SaveManager="*res://assets/Scripts/SaveManager.gd"
 
 [display]
 

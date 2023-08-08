@@ -10,7 +10,7 @@ export var current_level = ""
 
 onready var sound = get_parent().get_node("ost")
 onready var playersParent = get_parent().get_node("PlayersList")
-onready var boss = get_node("EnemiesContainer/KroganBoss")
+onready var boss = get_node("EnemiesContainer").get_child(0)
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
@@ -29,9 +29,9 @@ func _process(_delta: float) -> void:
 
 	if is_instance_valid(boss):
 		boss.targetList = players
-
-	checkPlayersDead()
-	
+		
+		checkPlayersDead()
+		
 	if $EnemiesContainer.get_child_count() == 0:
 		win.visible = true
 		var pausable_members = get_tree().get_nodes_in_group("pausable")
@@ -43,6 +43,13 @@ func _process(_delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
+		var save_data = SaveManager.save_data.new()
+		save_data.current_level = current_level
+
+		# Salvataggio dei dati
+		SaveManager.save_game("save_data.dat", save_data)
+
+		Global.score = 0
 		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

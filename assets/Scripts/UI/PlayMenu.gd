@@ -17,3 +17,9 @@ func _on_BackBtn_pressed():
 func _on_MultiBtn_pressed():
 	Global.isMultiplayer = true
 	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")
+
+
+func _on_LoadBtn_pressed():
+	var loaded_data = SaveManager.load_game(Global.save_path)
+	if loaded_data:
+		get_tree().change_scene("res://scenes/levels/" + loaded_data.current_level + ".tscn")

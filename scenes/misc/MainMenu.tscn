@@ -221,13 +221,28 @@ custom_styles/normal = SubResource( 4 )
 action_mode = 0
 text = "MULTIPLAYER"
 
-[node name="BackBtn" type="Button" parent="PlayMenu"]
+[node name="LoadBtn" type="Button" parent="PlayMenu"]
+visible = false
 margin_left = 801.0
-margin_top = 830.0
+margin_top = 708.0
 margin_right = 1135.0
-margin_bottom = 926.0
+margin_bottom = 804.0
 custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+action_mode = 0
+text = "LOAD GAME"
+
+[node name="BackBtn" type="Button" parent="PlayMenu"]
+margin_left = 801.0
+margin_top = 906.0
+margin_right = 1135.0
+margin_bottom = 1002.0
+custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
 custom_styles/hover = SubResource( 6 )
@@ -245,4 +260,5 @@ text = "BACK"
 [connection signal="value_changed" from="OptionMenu/SFXSlider" to="OptionMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="pressed" from="PlayMenu/SingleBtn" to="PlayMenu" method="_on_SingleBtn_pressed"]
 [connection signal="pressed" from="PlayMenu/MultiBtn" to="PlayMenu" method="_on_MultiBtn_pressed"]
+[connection signal="pressed" from="PlayMenu/LoadBtn" to="PlayMenu" method="_on_LoadBtn_pressed"]
 [connection signal="pressed" from="PlayMenu/BackBtn" to="PlayMenu" method="_on_BackBtn_pressed"]
