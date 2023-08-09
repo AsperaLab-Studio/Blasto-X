@@ -7,13 +7,12 @@ onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 
 export(int) var dps = 1
 
-var initialFrame
+var initialFrame = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_player.play("growth")
 	collision_shape.disabled = true
-	initialFrame = sprite.frame
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,5 +24,5 @@ func _process(_delta):
 	
 
 func _on_HitBox_body_entered(body:Node):
-	(body as Player).hit(dps)
+	(body as Player).hit(dps, self)
 	queue_free()

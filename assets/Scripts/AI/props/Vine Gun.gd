@@ -11,7 +11,7 @@ enum STATE {GROW, SHOOT}
 export(int) var dps = 1
 export(PackedScene) var bullet
 
-var initialFrame
+var initialFrame = 0
 var delay
 var current_state = STATE.GROW
 var timer = Timer.new()
@@ -28,7 +28,8 @@ func _ready():
 func _process(_delta):
 	match(current_state):
 		STATE.GROW:
-			pass
+			if sprite.frame == initialFrame + 1:
+				collision_shape.disabled = false
 		STATE.SHOOT:
 			anim_player.play("shoot")
 	

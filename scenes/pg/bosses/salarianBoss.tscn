@@ -240,7 +240,7 @@ shape = SubResource( 15 )
 wait_time = 0.25
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 autostart = true
 
 [node name="HitBox" type="Area2D" parent="."]

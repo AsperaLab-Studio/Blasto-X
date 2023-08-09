@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Blasto_Colpito.mp3-53550a7f406df8f4d518c3e55c30f3e9.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

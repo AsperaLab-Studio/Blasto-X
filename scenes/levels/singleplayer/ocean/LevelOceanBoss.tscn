@@ -121,8 +121,7 @@ current_level = "ocean/LevelOceanBoss"
 
 [node name="SalarianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
 position = Vector2( 845, 860 )
-delay_after_spear = 5
-delay_after_gun = 6
+delay_after_spear = 2.0
 HP = 11
 shooot_delay = 0.2
 
@@ -132,10 +131,22 @@ position = Vector2( 1000, 1826 )
 [node name="spearZones" type="Node" parent="StageManager"]
 
 [node name="1" type="Node2D" parent="StageManager/spearZones"]
-position = Vector2( 258, 940 )
+position = Vector2( 139, 940 )
 
 [node name="1" type="Position2D" parent="StageManager/spearZones/1"]
 position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/1"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/1"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/1"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/1"]
+position = Vector2( -22, 35 )
 
 [node name="5" type="Position2D" parent="StageManager/spearZones/1"]
 position = Vector2( -39, -65 )
@@ -147,10 +158,22 @@ position = Vector2( 63, -13 )
 position = Vector2( 36, 55 )
 
 [node name="2" type="Node2D" parent="StageManager/spearZones"]
-position = Vector2( 457, 940 )
+position = Vector2( 226, 940 )
 
 [node name="1" type="Position2D" parent="StageManager/spearZones/2"]
 position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/2"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/2"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/2"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/2"]
+position = Vector2( -22, 35 )
 
 [node name="5" type="Position2D" parent="StageManager/spearZones/2"]
 position = Vector2( -39, -65 )
@@ -162,10 +185,22 @@ position = Vector2( 63, -13 )
 position = Vector2( 36, 55 )
 
 [node name="3" type="Node2D" parent="StageManager/spearZones"]
-position = Vector2( 645, 940 )
+position = Vector2( 320, 940 )
 
 [node name="1" type="Position2D" parent="StageManager/spearZones/3"]
 position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/3"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/3"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/3"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/3"]
+position = Vector2( -22, 35 )
 
 [node name="5" type="Position2D" parent="StageManager/spearZones/3"]
 position = Vector2( -39, -65 )
@@ -176,10 +211,118 @@ position = Vector2( 63, -13 )
 [node name="4" type="Position2D" parent="StageManager/spearZones/3"]
 position = Vector2( 36, 55 )
 
+[node name="4" type="Node2D" parent="StageManager/spearZones"]
+position = Vector2( 412, 940 )
+
+[node name="1" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( -22, 35 )
+
+[node name="5" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( -39, -65 )
+
+[node name="6" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( 63, -13 )
+
+[node name="4" type="Position2D" parent="StageManager/spearZones/4"]
+position = Vector2( 36, 55 )
+
+[node name="5" type="Node2D" parent="StageManager/spearZones"]
+position = Vector2( 522, 940 )
+
+[node name="1" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( -22, 35 )
+
+[node name="5" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( -39, -65 )
+
+[node name="6" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( 63, -13 )
+
+[node name="4" type="Position2D" parent="StageManager/spearZones/5"]
+position = Vector2( 36, 55 )
+
+[node name="6" type="Node2D" parent="StageManager/spearZones"]
+position = Vector2( 618, 940 )
+
+[node name="1" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( -22, 35 )
+
+[node name="5" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( -39, -65 )
+
+[node name="6" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( 63, -13 )
+
+[node name="4" type="Position2D" parent="StageManager/spearZones/6"]
+position = Vector2( 36, 55 )
+
+[node name="7" type="Node2D" parent="StageManager/spearZones"]
+position = Vector2( 722, 940 )
+
+[node name="1" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( -69, -5 )
+
+[node name="2" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( -70, -43 )
+
+[node name="3" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( 14, -48 )
+
+[node name="7" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( 60, 23 )
+
+[node name="8" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( -22, 35 )
+
+[node name="5" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( -39, -65 )
+
+[node name="6" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( 63, -13 )
+
+[node name="4" type="Position2D" parent="StageManager/spearZones/7"]
+position = Vector2( 36, 55 )
+
 [node name="gunZones" type="Node" parent="StageManager"]
 
 [node name="1" type="Node2D" parent="StageManager/gunZones"]
-position = Vector2( 273, 419 )
+position = Vector2( 248, 420 )
 
 [node name="1" type="Position2D" parent="StageManager/gunZones/1"]
 position = Vector2( -38, -59 )
@@ -194,7 +337,7 @@ position = Vector2( 14, 16 )
 position = Vector2( 43, 52 )
 
 [node name="2" type="Node2D" parent="StageManager/gunZones"]
-position = Vector2( 454, 419 )
+position = Vector2( 342, 416 )
 
 [node name="1" type="Position2D" parent="StageManager/gunZones/2"]
 position = Vector2( -38, -60 )
@@ -209,7 +352,7 @@ position = Vector2( 14, 16 )
 position = Vector2( 43, 52 )
 
 [node name="3" type="Node2D" parent="StageManager/gunZones"]
-position = Vector2( 653, 419 )
+position = Vector2( 438, 420 )
 
 [node name="1" type="Position2D" parent="StageManager/gunZones/3"]
 position = Vector2( -38, -60 )
@@ -221,6 +364,51 @@ position = Vector2( -13, -20 )
 position = Vector2( 14, 16 )
 
 [node name="4" type="Position2D" parent="StageManager/gunZones/3"]
+position = Vector2( 43, 52 )
+
+[node name="4" type="Node2D" parent="StageManager/gunZones"]
+position = Vector2( 528, 416 )
+
+[node name="1" type="Position2D" parent="StageManager/gunZones/4"]
+position = Vector2( -38, -60 )
+
+[node name="2" type="Position2D" parent="StageManager/gunZones/4"]
+position = Vector2( -13, -20 )
+
+[node name="3" type="Position2D" parent="StageManager/gunZones/4"]
+position = Vector2( 14, 16 )
+
+[node name="4" type="Position2D" parent="StageManager/gunZones/4"]
+position = Vector2( 43, 52 )
+
+[node name="5" type="Node2D" parent="StageManager/gunZones"]
+position = Vector2( 624, 420 )
+
+[node name="1" type="Position2D" parent="StageManager/gunZones/5"]
+position = Vector2( -38, -60 )
+
+[node name="2" type="Position2D" parent="StageManager/gunZones/5"]
+position = Vector2( -13, -20 )
+
+[node name="3" type="Position2D" parent="StageManager/gunZones/5"]
+position = Vector2( 14, 16 )
+
+[node name="4" type="Position2D" parent="StageManager/gunZones/5"]
+position = Vector2( 43, 52 )
+
+[node name="6" type="Node2D" parent="StageManager/gunZones"]
+position = Vector2( 624, 420 )
+
+[node name="1" type="Position2D" parent="StageManager/gunZones/6"]
+position = Vector2( -38, -60 )
+
+[node name="2" type="Position2D" parent="StageManager/gunZones/6"]
+position = Vector2( -13, -20 )
+
+[node name="3" type="Position2D" parent="StageManager/gunZones/6"]
+position = Vector2( 14, 16 )
+
+[node name="4" type="Position2D" parent="StageManager/gunZones/6"]
 position = Vector2( 43, 52 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -573,49 +761,49 @@ texture = ExtResource( 3 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]

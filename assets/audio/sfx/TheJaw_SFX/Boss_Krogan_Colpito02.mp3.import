@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Boss_Krogan_Colpito02.mp3-3452c0ccabe2da41518da7c26b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

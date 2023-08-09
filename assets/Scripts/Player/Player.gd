@@ -143,7 +143,7 @@ func attack():
 	for area in attack_collision.get_overlapping_areas():
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(damage)
+			enemy.hit(damage, self)
 		
 	
 
@@ -169,7 +169,7 @@ func _get_direction() -> Vector2:
 	return input_direction
 	
 
-func hit(dps):
+func hit(dps, source):
 	if invincible == false:
 		if !boss:
 			if sceneManager.points > 0:

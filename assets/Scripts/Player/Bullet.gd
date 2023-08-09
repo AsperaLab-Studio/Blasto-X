@@ -1,3 +1,4 @@
+class_name Bullet
 extends Node2D
 
 var velocity = Vector2.ZERO
@@ -19,7 +20,7 @@ func _process(delta: float) -> void:
 func _on_BulletArea_area_entered(area):
 	if area.owner.is_in_group(target):
 		var enemy = area.owner
-		enemy.hit(damage)
+		enemy.hit(damage, self)
 		$BulletArea.monitorable = false
 		queue_free()
 

@@ -21,8 +21,8 @@ enum STATE {KNOCKBACK, SELECTING_VINE, VINE, ATTACK, IDLE, HIT, DIED}
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 
-export(int) var delay_after_spear := 3
-export(int) var delay_after_gun := 3
+export(float) var delay_after_spear := 3
+export(float) var delay_after_gun := 3
 
 export(int) var dps := 10
 export(int) var HP := 5
@@ -48,6 +48,7 @@ var actual_list_pos: Array
 var rng
 var sceneManager = null
 var just_changed = false
+var actual_zone
 
 func _ready():
 	anim_player.play("idle")
@@ -101,11 +102,11 @@ func _process(_delta: float) -> void:
 					just_changed = false
 
 				elif anim_player.current_animation != "gun" && anim_player.current_animation != "spear":
-					
-					var zone = rng.randi_range(0, actual_list_pos.size()-1)
+					randomize()
+					actual_zone = int(rand_range(0, actual_list_pos.size()-1))
 					var i = 1
 
-					for pos in actual_list_pos[zone].get_children():
+					for pos in actual_list_pos[actual_zone].get_children():
 						var actual_vine_instance = actual_vine.instance()
 
 						if attack_type == 1:
@@ -152,14 +153,15 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dpsTaken) -> void:
-	healthBar.update_healthbar(dpsTaken)
-	amount = amount + dpsTaken
-	if amount >= HP:
-		current_state = STATE.DIED
-	else:
-		current_state = STATE.HIT
-		
+func hit(dpsTaken, source) -> void:
+	if not source is Bullet: 
+		healthBar.update_healthbar(dpsTaken)
+		amount = amount + dpsTaken
+		if amount >= HP:
+			current_state = STATE.DIED
+		else:
+			current_state = STATE.HIT
+			
 	
 
 func move_towards(target: Vector2, speed):
@@ -184,7 +186,7 @@ func move_towards(target: Vector2, speed):
 	
 
 func attack():
-	actual_target.hit(dps)
+	actual_target.hit(dps, self)
 	
 
 func death():
