@@ -132,13 +132,13 @@ current_level = "desert/LevelDesertBoss"
 
 [node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
 position = Vector2( 755.132, 845.216 )
-charge_speed = 150
 dps = 3
 dpsCharge = 4
+ChargeDeelay = 5.0
+charge_speed = 150
 HP = 60
 ShakeDuration = 3.0
 ShakeDeelay = 10.0
-ChargeDeelay = 5.0
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 1000, 1826 )
@@ -260,7 +260,7 @@ margin_top = 954.0
 margin_right = 1804.0
 margin_bottom = 994.0
 script = ExtResource( 31 )
-rate_list = [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 35 ) ]
+rate_list = [ ExtResource( 32 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 35 ) ]
 rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
@@ -556,49 +556,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="obj" type="Node" parent="."]

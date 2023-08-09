@@ -567,7 +567,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -624,7 +624,7 @@ margin_top = 954.0
 margin_right = 1804.0
 margin_bottom = 994.0
 script = ExtResource( 33 )
-rate_list = [ ExtResource( 28 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 27 ) ]
+rate_list = [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 27 ) ]
 rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
