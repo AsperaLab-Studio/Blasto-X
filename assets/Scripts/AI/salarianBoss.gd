@@ -21,8 +21,8 @@ enum STATE {KNOCKBACK, SELECTING_VINE, VINE, ATTACK, IDLE, HIT, DIED}
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 
-export(float) var delay_after_spear := 3
-export(float) var delay_after_gun := 3
+export(float) var delay_after_spear := 3.0
+export(float) var delay_after_gun := 3.0
 
 export(int) var dps := 10
 export(int) var HP := 5
@@ -49,6 +49,7 @@ var rng
 var sceneManager = null
 var just_changed = false
 var actual_zone
+var choosed_pos = -1
 
 func _ready():
 	anim_player.play("idle")
@@ -79,10 +80,16 @@ func _process(_delta: float) -> void:
 				else:
 					current_state = STATE.IDLE
 			STATE.KNOCKBACK:
-				current_state = STATE.IDLE
+				anim_player.play("knockback")
 			STATE.SELECTING_VINE:
 				just_changed = true
-				if attack_type == 1:
+				if choosed_pos != -1:
+					actual_vine = vine_gun
+					actual_list_pos = gun_list_pos
+					attack_type = 1
+					actual_zone = actual_list_pos.size()-1
+					current_state = STATE.VINE
+				elif attack_type == 1:
 					actual_vine = vine_spear
 					actual_list_pos = spear_list_pos
 					attack_type = 2
@@ -102,8 +109,10 @@ func _process(_delta: float) -> void:
 					just_changed = false
 
 				elif anim_player.current_animation != "gun" && anim_player.current_animation != "spear":
-					randomize()
-					actual_zone = int(rand_range(0, actual_list_pos.size()-1))
+					if choosed_pos == -1:
+						randomize()
+						actual_zone = int(rand_range(0, actual_list_pos.size()-1))
+						
 					var i = 1
 
 					for pos in actual_list_pos[actual_zone].get_children():
@@ -127,6 +136,7 @@ func _process(_delta: float) -> void:
 					elif attack_type == 2:
 						cooldown.wait_time = delay_after_spear
 					cooldown.start()
+					choosed_pos = -1
 					current_state = STATE.IDLE
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -162,7 +172,9 @@ func hit(dpsTaken, source) -> void:
 		else:
 			current_state = STATE.HIT
 			
-	
+func do_knockback():
+	actual_target.knockback()
+	choosed_pos = 0
 
 func move_towards(target: Vector2, speed):
 	if target:
@@ -225,6 +237,8 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		current_state = STATE.IDLE
 	if anim_name == "hit":
 		current_state = STATE.KNOCKBACK
+	if anim_name == "knockback":
+		current_state = STATE.IDLE
 		
 
 

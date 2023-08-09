@@ -22,7 +22,7 @@ onready var timerShake: Timer = $TimerShake
 #test
 export var debug_mode : bool
 
-enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
+enum STATE {IDLE, MOVE, KNOCKBACK, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(bool) var isPlayerTwo: bool = false
 export(int) var speed: int = 300
@@ -32,6 +32,9 @@ export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
+
+export(float) var rebonuce_distance := 500.0
+export(float) var rebounce_speed := 700.0
 
 export var AttackCooldown: float = 1.0
 
@@ -96,19 +99,24 @@ func _process(_delta: float) -> void:
 				anim_player.play("attack")
 			STATE.HIT:
 				anim_player.play("hit")
+			STATE.KNOCKBACK:
+				anim_player.play("hit")
+
+				var pos = Vector2()
+				pos.y = global_position.y
+				
+				if direction.x < 0:
+					pos.x = global_position.x + rebonuce_distance
+				else:
+					pos.x = global_position.x - rebonuce_distance
+			
+				move_rebounce(pos, rebounce_speed)
+
+				if global_position == pos:
+					current_state = STATE.IDLE
 			STATE.SHOOT:
 				anim_player.play("shoot")
 			STATE.MOVE:
-				# if direction.x < 0:
-				# 	sprite.flip_h = true
-				# 	if pivot.scale.x > 0:
-				# 		pivot.scale.x = - pivot.scale.x	
-					
-				# elif direction.x > 0:
-				# 	sprite.flip_h = false
-				# 	if pivot.scale.x < 0:
-				# 		pivot.scale.x = - pivot.scale.x
-
 				if direction.x < 0:
 					if pivot.scale.x > 0:
 						pivot.scale.x = - pivot.scale.x	
@@ -161,6 +169,21 @@ func pause():
 	anim_player.stop()
 	set_process(false)
 	
+
+func knockback():
+	current_state = STATE.KNOCKBACK
+
+
+func move_rebounce(target: Vector2, rebounceSpeed):
+	if target:
+		if global_position.y > target.y:
+			z_index = 0
+		else:
+			z_index = -1
+			
+		var velocity = global_position.direction_to(target)
+				
+		move_and_slide(velocity * rebounceSpeed)
 
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()

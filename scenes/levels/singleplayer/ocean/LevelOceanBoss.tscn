@@ -120,7 +120,7 @@ current_level = "ocean/LevelOceanBoss"
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
 [node name="SalarianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
-position = Vector2( 845, 860 )
+position = Vector2( 901, 860 )
 delay_after_spear = 2.0
 HP = 11
 shooot_delay = 0.2
@@ -409,6 +409,21 @@ position = Vector2( -13, -20 )
 position = Vector2( 14, 16 )
 
 [node name="4" type="Position2D" parent="StageManager/gunZones/6"]
+position = Vector2( 43, 52 )
+
+[node name="7" type="Node2D" parent="StageManager/gunZones"]
+position = Vector2( 712, 420 )
+
+[node name="1" type="Position2D" parent="StageManager/gunZones/7"]
+position = Vector2( -38, -60 )
+
+[node name="2" type="Position2D" parent="StageManager/gunZones/7"]
+position = Vector2( -13, -20 )
+
+[node name="3" type="Position2D" parent="StageManager/gunZones/7"]
+position = Vector2( 14, 16 )
+
+[node name="4" type="Position2D" parent="StageManager/gunZones/7"]
 position = Vector2( 43, 52 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -761,49 +776,49 @@ texture = ExtResource( 3 )
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="obj" type="Node" parent="."]

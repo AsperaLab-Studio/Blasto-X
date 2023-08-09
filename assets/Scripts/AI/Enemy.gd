@@ -170,7 +170,7 @@ func pause():
 
 func attack():
 	if near_player:
-		actual_target.hit(dps)
+		actual_target.hit(dps, self)
 	
 
 func death():
