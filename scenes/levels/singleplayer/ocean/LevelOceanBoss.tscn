@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/booble.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls sub/thevine_01.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ost/lvls sub/The Vine soundtrack.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/sea/sea3.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=5]
@@ -56,62 +56,77 @@ extents = Vector2( 15748, 123.529 )
 extents = Vector2( 1990.15, 120.176 )
 
 [sub_resource type="AtlasTexture" id=49]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=50]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 59, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=51]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 118, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=52]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 177, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=53]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 236, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=39]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 295, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=40]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 354, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=54]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 413, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=55]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 472, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=43]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 531, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=44]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 590, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=45]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 649, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=46]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 708, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=47]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 767, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=48]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 826, 0, 59, 278 )
 
@@ -132,7 +147,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 19 )
-next_stage = "defeat jaw"
+next_stage = "defeat vine"
 current_level = "ocean/LevelOceanBoss"
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
@@ -826,7 +841,7 @@ texture = ExtResource( 3 )
 position = Vector2( 131, 219 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 11
 speed_scale = 1.8
 playing = true
 
@@ -834,7 +849,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 11
 speed_scale = 1.8
 playing = true
 
@@ -842,7 +857,7 @@ playing = true
 position = Vector2( 1157, 165 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 5
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -850,7 +865,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -858,7 +873,7 @@ playing = true
 position = Vector2( 456, 144 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -866,7 +881,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 3
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -874,7 +889,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -882,7 +897,7 @@ playing = true
 position = Vector2( 1508, 258 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -890,7 +905,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -898,7 +913,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 1
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -906,7 +921,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 1
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -914,6 +929,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -921,6 +937,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 5
 speed_scale = 1.8
 playing = true
 
