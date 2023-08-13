@@ -24,14 +24,12 @@ func _ready():
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), SaveManager.game_data.sfxValue);
 			sfxSlider.value = pow(10, SaveManager.game_data.sfxValue / 20)
 			OS.window_fullscreen = SaveManager.game_data.fullscreen
-			tickFullScreen.pressed = SaveManager.game_data.fullscreen
 		else:
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), SaveManager.game_data.musicValue);
 			musicSlider.value = pow(10, SaveManager.game_data.musicValue / 20)
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), SaveManager.game_data.sfxValue);
 			sfxSlider.value = pow(10, SaveManager.game_data.sfxValue / 20)
 			OS.window_fullscreen = SaveManager.game_data.fullscreen
-			tickFullScreen.pressed = SaveManager.game_data.fullscreen
 
 	else:
 		musicSlider = $OptionMenu/MusicSlider
@@ -45,8 +43,6 @@ func _ready():
 		bus_index = AudioServer.get_bus_index("SFX")
 		current_volume_db = AudioServer.get_bus_volume_db(bus_index)
 		sfxSlider.value = pow(10, current_volume_db / 20)
-
-		tickFullScreen.pressed = SaveManager.game_data.fullscreen
 
 
 func _process(_delta):
