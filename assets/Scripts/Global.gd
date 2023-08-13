@@ -4,7 +4,6 @@ var isMultiplayer: bool = false
 var multiplayerReady: bool = false
 var dirType = null
 var score = 0
-var save_path = "save_data.dat"
 
 var playerKeyboard_input = [
 	"move_up_keyboard",

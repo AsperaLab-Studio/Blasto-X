@@ -1,25 +1,27 @@
 extends Node
 
-# Definiamo una struttura dati per rappresentare le informazioni del gioco da salvare
-class_name save_data
-var current_level: String
+const save_path = "res://save_data.save"
+var game_data = {}
 
-# Funzione per salvare i dati su disco
-func save_game(file_path: String, data: save_data) -> void:
+func save_game():
 	var file = File.new()
-	if file.open(file_path, File.WRITE) == OK:
-		file.store_var(data)
-		file.close()
-	else:
-		print("Impossibile salvare il file.")
+	file.open(save_path, File.WRITE)
+	file.store_var(game_data)
+	file.close()
 
-# Funzione per caricare i dati dal disco
-func load_game(file_path: String) -> save_data:
+
+func load_game() -> bool:
 	var file = File.new()
-	if file.open(file_path, File.READ) == OK:
-		var data = file.get_var()
+	if file.file_exists(save_path):
+		file.open(save_path, File.READ)
+		game_data = file.get_var()
 		file.close()
-		return data
+		return true
 	else:
-		print("File di salvataggio non trovato.")
-		return null
+		game_data = {
+			"stage_saved": "",
+			"musicValue": -10.5,
+			"sfxValue": -10.5,
+			"fullscreen": false
+		}
+		return false

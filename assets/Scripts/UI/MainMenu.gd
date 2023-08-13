@@ -20,7 +20,7 @@ func _on_StartBtn_pressed():
 	else:
 		multiBtn.visible = false
 	
-	if SaveManager.load_game(Global.save_path) != null:
+	if SaveManager.load_game():
 		loadBtn.visible = true
 	else:
 		loadBtn.visible = false

@@ -20,6 +20,6 @@ func _on_MultiBtn_pressed():
 
 
 func _on_LoadBtn_pressed():
-	var loaded_data = SaveManager.load_game(Global.save_path)
-	if loaded_data:
-		get_tree().change_scene("res://scenes/levels/" + loaded_data.current_level + ".tscn")
+	if SaveManager.load_game():
+		var t = SaveManager.game_data.stage_saved
+		get_tree().change_scene("res://scenes/cutscenes/" + SaveManager.game_data.stage_saved + ".tscn")

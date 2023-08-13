@@ -594,7 +594,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -825,9 +824,10 @@ margin_top = 732.461
 margin_right = 1339.55
 margin_bottom = 855.459
 custom_styles/slider = SubResource( 25 )
-min_value = -80.0
-max_value = 0.0
-value = -17.0
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="sfx" type="Label" parent="GUI/pauseMenu/OptionMenu"]
 margin_left = 561.0
@@ -844,9 +844,10 @@ margin_top = 930.0
 margin_right = 1339.55
 margin_bottom = 1053.0
 custom_styles/slider = SubResource( 25 )
-min_value = -80.0
-max_value = 0.0
-value = -17.0
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="border" type="Node" parent="."]
 
@@ -929,7 +930,7 @@ texture = ExtResource( 1 )
 position = Vector2( 131, 2.00002 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 5
+frame = 14
 speed_scale = 1.8
 playing = true
 
@@ -937,7 +938,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 5
+frame = 14
 speed_scale = 1.8
 playing = true
 
@@ -945,7 +946,7 @@ playing = true
 position = Vector2( 1157, -52 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 4
+frame = 13
 speed_scale = 1.8
 playing = true
 
@@ -953,7 +954,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 3
+frame = 12
 speed_scale = 1.8
 playing = true
 
@@ -961,7 +962,7 @@ playing = true
 position = Vector2( 456, -73 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 3
+frame = 12
 speed_scale = 1.8
 playing = true
 
@@ -969,7 +970,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 2
+frame = 11
 speed_scale = 1.8
 playing = true
 
@@ -977,7 +978,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 1
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -985,7 +986,7 @@ playing = true
 position = Vector2( 1508, 41 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 1
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -993,7 +994,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 1
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -1001,6 +1002,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 51 )
 animation = "New Anim"
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -1008,6 +1010,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 51 )
 animation = "New Anim"
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -1015,7 +1018,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 14
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -1023,7 +1026,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 14
+frame = 8
 speed_scale = 1.8
 playing = true
 

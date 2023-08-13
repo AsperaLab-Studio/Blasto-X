@@ -162,9 +162,10 @@ margin_top = 732.461
 margin_right = 1339.55
 margin_bottom = 855.459
 custom_styles/slider = SubResource( 3 )
-min_value = -80.0
-max_value = 0.0
-value = -17.0
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="sfx" type="Label" parent="OptionMenu"]
 margin_left = 561.0
@@ -181,9 +182,10 @@ margin_top = 930.0
 margin_right = 1339.55
 margin_bottom = 1053.0
 custom_styles/slider = SubResource( 3 )
-min_value = -80.0
-max_value = 0.0
-value = -17.0
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="PlayMenu" type="Control" parent="."]
 visible = false

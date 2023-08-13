@@ -43,11 +43,6 @@ _global_script_classes=[ {
 "class": "VineSpear",
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/props/Vine Spear.gd"
-}, {
-"base": "Node",
-"class": "save_data",
-"language": "GDScript",
-"path": "res://assets/Scripts/SaveManager.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -56,8 +51,7 @@ _global_script_class_icons={
 "Player": "",
 "SalarianBoss": "",
 "VineGun": "",
-"VineSpear": "",
-"save_data": ""
+"VineSpear": ""
 }
 
 [application]
