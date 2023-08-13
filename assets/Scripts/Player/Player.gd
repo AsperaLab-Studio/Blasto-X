@@ -18,6 +18,7 @@ onready var state_label = $StateLabel
 onready var invincibility_timer = $InvincibilityTimer
 onready var invincible = false
 onready var timerShake: Timer = $TimerShake
+onready var phisicBody: CollisionShape2D = $CollisionShape2D
 
 #test
 export var debug_mode : bool
@@ -75,12 +76,14 @@ func _process(_delta: float) -> void:
 		inputManager = Global.player1_input
 	
 	if(!paused):
-		direction = _get_direction()
-		if direction.x:
-			orientation.x = direction.x
+		if current_state != STATE.KNOCKBACK:
+			direction = _get_direction()
+			if direction.x:
+				orientation.x = direction.x
 		
 		match current_state:
 			STATE.IDLE:
+				phisicBody.disabled = false
 				if Input.is_action_just_pressed(inputManager[4]) && canAttack == true:
 					current_state = STATE.ATTACK
 					canAttack = false
@@ -101,6 +104,8 @@ func _process(_delta: float) -> void:
 				anim_player.play("hit")
 			STATE.KNOCKBACK:
 				anim_player.play("hit")
+
+				phisicBody.disabled = true
 
 				var pos = Vector2()
 				pos.y = global_position.y

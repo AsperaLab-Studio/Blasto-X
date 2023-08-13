@@ -189,11 +189,11 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 14.125
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 8.4275, 21.8633 )
-
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 38.7757, 10 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 8.4275, 21.8633 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
@@ -227,7 +227,6 @@ frame = 1
 [node name="dustCloudVFX" type="Sprite" parent="Node2D"]
 visible = false
 position = Vector2( -3, 70 )
-scale = Vector2( 2.71875, 0.974245 )
 texture = ExtResource( 8 )
 hframes = 5
 frame = 4
@@ -249,14 +248,6 @@ wait_time = 0.15
 
 [node name="CooldownTimer" type="Timer" parent="."]
 
-[node name="HitBox" type="Area2D" parent="."]
-visible = false
-position = Vector2( -9, -1 )
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource( 10 )
-
 [node name="Pivot" type="Node2D" parent="."]
 visible = false
 
@@ -268,6 +259,14 @@ monitorable = false
 position = Vector2( 41.0454, -24.9452 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
+
+[node name="HitBox" type="Area2D" parent="Pivot"]
+visible = false
+position = Vector2( -9, -1 )
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HitBox"]
+shape = SubResource( 10 )
 
 [node name="HealthDisplay" type="Node2D" parent="."]
 script = ExtResource( 2 )

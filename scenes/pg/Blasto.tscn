@@ -244,15 +244,14 @@ debug_mode = true
 speed = 200
 
 [node name="SpritePivot" type="Position2D" parent="."]
-position = Vector2( 6.5555, 0 )
+position = Vector2( 2.38419e-07, 0.46825 )
 
 [node name="Sprite" type="Sprite" parent="SpritePivot"]
-position = Vector2( 11.7063, -1.40475 )
+position = Vector2( 9.36501, -1.873 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 6
-frame = 12
 
 [node name="meleeHittedVFX" type="Sprite" parent="SpritePivot"]
 visible = false
@@ -282,7 +281,6 @@ anims/shoot = SubResource( 6 )
 wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 12 )
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -298,7 +296,7 @@ collision_layer = 2
 shape = SubResource( 8 )
 
 [node name="PlayerHitBox" type="Area2D" parent="Pivot"]
-position = Vector2( -6.08725, 0.9365 )
+position = Vector2( -13.5793, 0.9365 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/PlayerHitBox"]
 position = Vector2( 0, -0.773 )

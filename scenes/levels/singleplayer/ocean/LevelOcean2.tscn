@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=68 format=2]
 
-[ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/img/sprites/obj/booble.png" type="Texture" id=1]
+[ext_resource path="res://assets/audio/ost/lvls sub/lvl 2-a.WAV" type="AudioStream" id=2]
+[ext_resource path="res://assets/img/background/sea/sea2.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
@@ -12,11 +13,13 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/ocean/lvl 2 s/ocean2Tile1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tile/ocean/lvl 2 s/ocean2Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/tile/ocean/lvl 2 s/ocean2Tile3.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
 [ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=23]
@@ -30,6 +33,7 @@
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=31]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=32]
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
+[ext_resource path="res://scenes/pg/singleplayer/salarian.tscn" type="PackedScene" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -93,56 +97,72 @@ extents = Vector2( 1990.15, 120.176 )
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 7890.29, 291.611 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 199, 114 )
+region = Rect2( 0, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 1 )
-region = Rect2( 199, 0, 199, 114 )
+region = Rect2( 59, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 1 )
-region = Rect2( 398, 0, 199, 114 )
+region = Rect2( 118, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 1 )
-region = Rect2( 597, 0, 199, 114 )
+region = Rect2( 177, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 1 )
-region = Rect2( 796, 0, 199, 114 )
+region = Rect2( 236, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 1 )
-region = Rect2( 995, 0, 199, 114 )
+region = Rect2( 295, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 1 )
-region = Rect2( 1194, 0, 199, 114 )
+region = Rect2( 354, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 1 )
-region = Rect2( 1393, 0, 199, 114 )
+region = Rect2( 413, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 1 )
-region = Rect2( 1592, 0, 199, 114 )
+region = Rect2( 472, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 1 )
-region = Rect2( 1791, 0, 199, 114 )
+region = Rect2( 531, 0, 59, 278 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 1 )
-region = Rect2( 1990, 0, 199, 114 )
+region = Rect2( 590, 0, 59, 278 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 1 )
+region = Rect2( 649, 0, 59, 278 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 1 )
+region = Rect2( 708, 0, 59, 278 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 767, 0, 59, 278 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 1 )
+region = Rect2( 826, 0, 59, 278 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
-"name": "default",
-"speed": 12.0
+"name": "New Anim",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=26]
@@ -160,7 +180,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
+enemy_types = [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 34 ) ]
 next_stage = "ocean/LevelOcean3"
 current_level = "ocean/LevelOcean2"
 
@@ -826,6 +846,7 @@ scale = Vector2( 1, 1 )
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
 stream = ExtResource( 2 )
+volume_db = 2.0
 bus = "Music"
 script = ExtResource( 8 )
 
@@ -835,7 +856,7 @@ z_index = -2
 script = ExtResource( 11 )
 increment = 1354
 n_positions = 8
-scenes = [ ExtResource( 13 ) ]
+scenes = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 20 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
@@ -848,55 +869,115 @@ texture = ExtResource( 18 )
 
 [node name="background2" type="Node" parent="ParallaxBackground"]
 
+[node name="Sea3" type="Sprite" parent="ParallaxBackground/background2"]
+position = Vector2( 960, 271 )
+scale = Vector2( 2.37037, 2.37037 )
+texture = ExtResource( 3 )
+
 [node name="obj" type="Node" parent="ParallaxBackground"]
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1368.43, 522.308 )
-scale = Vector2( 0.812395, 0.784622 )
+position = Vector2( 131, 2.00002 )
 frames = SubResource( 19 )
-frame = 6
-playing = true
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 588.103, 50.5414 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 6
+animation = "New Anim"
+frame = 11
+speed_scale = 1.8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1644.18, 125.905 )
-scale = Vector2( 0.901329, 0.885789 )
+position = Vector2( 663, 224 )
 frames = SubResource( 19 )
-frame = 6
+animation = "New Anim"
+frame = 11
+speed_scale = 1.8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 294.987, 271.825 )
-scale = Vector2( 0.901329, 0.885789 )
+position = Vector2( 1157, -52 )
 frames = SubResource( 19 )
-frame = 6
+animation = "New Anim"
+frame = 10
+speed_scale = 1.8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 564.379, 635.503 )
-scale = Vector2( 0.901329, 0.885789 )
+position = Vector2( 998, 284 )
 frames = SubResource( 19 )
-frame = 6
+animation = "New Anim"
+frame = 10
+speed_scale = 1.8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1799.08, 696.116 )
-scale = Vector2( 0.901329, 0.885789 )
+position = Vector2( 456, -73 )
 frames = SubResource( 19 )
-frame = 6
+animation = "New Anim"
+frame = 9
+speed_scale = 1.8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1022.34, 361.622 )
-scale = Vector2( 0.901329, 0.885789 )
+position = Vector2( 297, 278 )
 frames = SubResource( 19 )
+animation = "New Anim"
+frame = 8
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1361, 401 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 8
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1508, 41 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 7
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 759, 538 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 7
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1601, 514 )
+frames = SubResource( 19 )
+animation = "New Anim"
 frame = 6
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 369, 646 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 6
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 63, 532 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 5
+speed_scale = 1.8
+playing = true
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="ParallaxBackground/obj"]
+position = Vector2( 1046, 637 )
+frames = SubResource( 19 )
+animation = "New Anim"
+frame = 5
+speed_scale = 1.8
 playing = true
 
 [node name="obj" type="Node" parent="."]

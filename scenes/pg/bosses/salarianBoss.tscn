@@ -249,7 +249,7 @@ radius = 19.0
 extents = Vector2( 8.21375, 21.8633 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 57.4999, 10 )
+extents = Vector2( 84.1665, 10 )
 
 [node name="SalarianBoss" type="KinematicBody2D" groups=["enemy", "pausable"]]
 z_index = -1
@@ -306,7 +306,7 @@ collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-position = Vector2( 43.1256, 0 )
+position = Vector2( 59.1256, 0 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
@@ -327,6 +327,7 @@ margin_bottom = -63.7829
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = 1.588
 bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

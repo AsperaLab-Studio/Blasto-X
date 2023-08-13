@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1 && current_stage != positions.size() - 1:
 			_enemy_spawn(current_stage, ActualFightPhase)
 		
-	
+	var t = $EnemiesContainer.get_child_count()
 	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase == totalFightPhases - 1:
 		go.visible = true
 		spawned = true

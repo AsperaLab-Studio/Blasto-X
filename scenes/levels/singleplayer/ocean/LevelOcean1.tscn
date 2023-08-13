@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ost/lvls sub/lvl 1-a.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/img/background/sea/sea1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
@@ -12,11 +13,13 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/tile/ocean/lvl 1 s/ocean1Tile3.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
 [ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=23]
@@ -30,6 +33,7 @@
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=31]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=32]
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
+[ext_resource path="res://scenes/pg/singleplayer/test.tscn" type="PackedScene" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -160,7 +164,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
-enemy_types = [ ExtResource( 17 ), ExtResource( 19 ) ]
+enemy_types = [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 34 ) ]
 next_stage = "ocean/LevelOcean2"
 current_level = "ocean/LevelOcean1"
 
@@ -564,7 +568,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -826,6 +829,7 @@ scale = Vector2( 1, 1 )
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
 stream = ExtResource( 2 )
+volume_db = 2.0
 bus = "Music"
 script = ExtResource( 8 )
 
@@ -834,8 +838,8 @@ position = Vector2( -2407.87, 512 )
 z_index = -2
 script = ExtResource( 11 )
 increment = 1354
-n_positions = 6
-scenes = [ ExtResource( 13 ) ]
+n_positions = 8
+scenes = [ ExtResource( 13 ), ExtResource( 20 ), ExtResource( 14 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
@@ -848,55 +852,59 @@ texture = ExtResource( 18 )
 
 [node name="background2" type="Node" parent="ParallaxBackground"]
 
+[node name="Sea1" type="Sprite" parent="ParallaxBackground/background2"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 3 )
+
 [node name="obj" type="Node" parent="ParallaxBackground"]
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 19 )
-frame = 7
+frame = 9
 playing = true
 
 [node name="obj" type="Node" parent="."]

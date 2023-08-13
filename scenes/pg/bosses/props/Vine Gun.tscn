@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/Scripts/AI/props/Vine Gun.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Liana_Shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/sprites/enemy/bosses/liana_up.png" type="Texture" id=4]
 [ext_resource path="res://scenes/pg/bosses/props/Bullet Vine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Bloom.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=5]
 resource_name = "growth"
@@ -61,9 +62,13 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
 "stream": ExtResource( 3 )
 } ],
-"times": PoolRealArray( 1 )
+"times": PoolRealArray( 0, 1 )
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -101,11 +106,13 @@ anims/shoot = SubResource( 7 )
 position = Vector2( 0, -0.108902 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 position = Vector2( 0.5, 220.054 )
 shape = SubResource( 6 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -4.522
 bus = "SFX"
 
 [node name="Position2D" type="Position2D" parent="."]
