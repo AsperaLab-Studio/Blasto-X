@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Krogan_Attacco.mp3-b20e3124c2dc7f33f7ce30a641bb9275.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

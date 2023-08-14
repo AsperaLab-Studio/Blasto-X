@@ -1,3 +1,4 @@
+class_name Bullet
 extends Node2D
 
 var velocity = Vector2.ZERO
@@ -5,6 +6,7 @@ var direction = Vector2.RIGHT
 
 export(int) var speed: int = 700
 export(int) var damage: int = 1
+export(String) var target
 
 func _process(delta: float) -> void:
 	velocity.x = speed * delta 
@@ -16,8 +18,11 @@ func _process(delta: float) -> void:
 
 
 func _on_BulletArea_area_entered(area):
-	if area.owner.is_in_group("enemy"):
+	if area.owner.is_in_group(target):
 		var enemy = area.owner
-		enemy.hit(damage)
+		enemy.hit(damage, self)
 		$BulletArea.monitorable = false
 		queue_free()
+
+func _on_Timer_timeout():
+	queue_free()

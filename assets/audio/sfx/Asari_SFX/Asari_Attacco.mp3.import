@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Asari_Attacco.mp3-9583753cbd2a07b2c69ff617162e88da.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

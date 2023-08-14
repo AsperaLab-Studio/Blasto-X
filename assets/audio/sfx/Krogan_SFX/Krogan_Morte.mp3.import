@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Krogan_Morte.mp3-dcf9ebe5d37568e5f86a6ffea83d5dc1.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
