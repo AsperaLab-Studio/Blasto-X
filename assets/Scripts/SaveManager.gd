@@ -1,6 +1,6 @@
 extends Node
 
-const save_path = "res://save_data.save"
+const save_path = "user://save_data.save"
 var game_data = {}
 
 func save_game():
@@ -20,8 +20,11 @@ func load_game() -> bool:
 	else:
 		game_data = {
 			"stage_saved": "",
+			"isMultiplayer": false,
 			"musicValue": -10.5,
 			"sfxValue": -10.5,
-			"fullscreen": false
+			"fullscreen": false,
+			"lastScore": 0,
+			"highScore": 0
 		}
 		return false

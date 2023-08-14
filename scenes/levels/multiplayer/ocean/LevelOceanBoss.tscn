@@ -60,77 +60,62 @@ extents = Vector2( 15748, 123.529 )
 extents = Vector2( 1990.15, 120.176 )
 
 [sub_resource type="AtlasTexture" id=49]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=50]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 59, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=51]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 118, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=52]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 177, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=53]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 236, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=39]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 295, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=40]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 354, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=54]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 413, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=55]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 472, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=43]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 531, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=44]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 590, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=45]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 649, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=46]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 708, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=47]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 767, 0, 59, 278 )
 
 [sub_resource type="AtlasTexture" id=48]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 826, 0, 59, 278 )
 
@@ -160,7 +145,7 @@ current_level = "ocean/LevelOceanBoss"
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
 [node name="SalarianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
-position = Vector2( 792, 873 )
+position = Vector2( 886, 873 )
 delay_after_spear = 5
 delay_after_gun = 6
 HP = 10
@@ -888,7 +873,7 @@ texture = ExtResource( 15 )
 position = Vector2( 131, 2.00002 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 8
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -896,7 +881,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 8
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -904,7 +889,7 @@ playing = true
 position = Vector2( 1157, -52 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 7
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -912,7 +897,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -920,7 +905,7 @@ playing = true
 position = Vector2( 456, -73 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -928,7 +913,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 5
+frame = 4
 speed_scale = 1.8
 playing = true
 
@@ -936,7 +921,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 3
 speed_scale = 1.8
 playing = true
 
@@ -944,7 +929,7 @@ playing = true
 position = Vector2( 1508, 41 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 3
 speed_scale = 1.8
 playing = true
 
@@ -952,7 +937,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 3
 speed_scale = 1.8
 playing = true
 
@@ -960,7 +945,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 3
+frame = 2
 speed_scale = 1.8
 playing = true
 
@@ -968,7 +953,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 3
+frame = 2
 speed_scale = 1.8
 playing = true
 
@@ -976,7 +961,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 1
 speed_scale = 1.8
 playing = true
 
@@ -984,7 +969,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 1
 speed_scale = 1.8
 playing = true
 

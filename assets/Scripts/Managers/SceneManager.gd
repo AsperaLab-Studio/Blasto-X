@@ -70,11 +70,22 @@ func _process(_delta: float) -> void:
 	checkPlayersDead()
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
+		SaveManager.game_data.lastScore = Global.totalScore
+		
+		if SaveManager.game_data.highScore < Global.totalScore:
+			SaveManager.game_data.highScore = Global.totalScore
+		SaveManager.save_game()
+
 		get_tree().change_scene("res://scenes/levels/" + Global.dirType + current_level + ".tscn")
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
-		Global.score = Global.score + points
+		Global.scoreZone = Global.scoreZone + points
+		Global.totalScore = Global.totalScore + points
+
+		SaveManager.game_data.lastScore = Global.totalScore
+		SaveManager.save_game()
+
 		next_stage = "res://scenes/levels/" + Global.dirType + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

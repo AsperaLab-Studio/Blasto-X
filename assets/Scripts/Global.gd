@@ -3,7 +3,8 @@ extends Node
 var isMultiplayer: bool = false
 var multiplayerReady: bool = false
 var dirType = null
-var score = 0
+var scoreZone = 0
+var totalScore = 0
 
 var playerKeyboard_input = [
 	"move_up_keyboard",

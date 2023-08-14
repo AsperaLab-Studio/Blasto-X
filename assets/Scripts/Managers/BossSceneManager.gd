@@ -18,9 +18,14 @@ onready var respawnPoint = get_node("respawnPoint")
 
 var menuShowed = false
 var players
+var isMultiplayer = false
 
 func _ready():
 	players = playersParent.get_children()
+
+	if playersParent.get_child_count() == 2:
+		isMultiplayer = true
+
 	boss.targetList = players
 
 func _process(_delta: float) -> void:
@@ -44,9 +49,10 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
 		SaveManager.game_data.stage_saved = next_stage
+		SaveManager.game_data.isMultiplayer = isMultiplayer
 		SaveManager.save_game()
 
-		Global.score = 0
+		Global.scoreZone = 0
 		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

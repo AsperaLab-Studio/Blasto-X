@@ -21,5 +21,6 @@ func _on_MultiBtn_pressed():
 
 func _on_LoadBtn_pressed():
 	if SaveManager.load_game():
+		Global.isMultiplayer = SaveManager.game_data.isMultiplayer
 		var t = SaveManager.game_data.stage_saved
 		get_tree().change_scene("res://scenes/cutscenes/" + SaveManager.game_data.stage_saved + ".tscn")

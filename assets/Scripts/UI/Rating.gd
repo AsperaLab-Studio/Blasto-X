@@ -25,7 +25,7 @@ func calculate_rate():
 	if !boss:
 		score = stageManager.points
 	else:
-		score = Global.score
+		score = Global.scoreZone
 
 	if score <= rate_points[0]:
 		actual_rate = 0

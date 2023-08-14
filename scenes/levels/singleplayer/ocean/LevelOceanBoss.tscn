@@ -802,7 +802,6 @@ scenes = [ ExtResource( 14 ), ExtResource( 27 ), ExtResource( 21 ) ]
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1315 )
 scale = Vector2( 1, 1 )
-damage = 10
 boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
@@ -826,7 +825,7 @@ texture = ExtResource( 3 )
 position = Vector2( 131, 219 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -834,7 +833,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -842,7 +841,7 @@ playing = true
 position = Vector2( 1157, 165 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 3
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -850,7 +849,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -858,7 +857,7 @@ playing = true
 position = Vector2( 456, 144 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -866,7 +865,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 1
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -874,6 +873,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -881,6 +881,7 @@ playing = true
 position = Vector2( 1508, 258 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -888,6 +889,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -895,7 +897,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 14
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -903,7 +905,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 14
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -911,7 +913,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 13
+frame = 4
 speed_scale = 1.8
 playing = true
 
@@ -919,7 +921,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 13
+frame = 4
 speed_scale = 1.8
 playing = true
 
