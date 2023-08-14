@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Blasto_Morte.mp3-6dd119823b1d546a5a90dd841e4bb95a.mp
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

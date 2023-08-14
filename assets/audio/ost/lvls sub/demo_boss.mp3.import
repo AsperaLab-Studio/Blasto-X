@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/demo_boss.mp3-7e6f5bb3c92178f8963765985e7ee12a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/ost/lvls sub/demo_boss.mp3"
+dest_files=[ "res://.import/demo_boss.mp3-7e6f5bb3c92178f8963765985e7ee12a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

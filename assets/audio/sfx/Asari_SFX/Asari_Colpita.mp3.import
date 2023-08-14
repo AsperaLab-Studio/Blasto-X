@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Asari_Colpita.mp3-2df5691d18b896a37ef622853f361da0.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

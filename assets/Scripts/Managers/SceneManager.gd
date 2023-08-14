@@ -1,7 +1,5 @@
 extends Node
 
-export var increment = 1566
-export var y = 768
 export var n_positions = 5
 export(Array, PackedScene) var enemy_types
 export(int) var current_stage := 0
@@ -55,7 +53,7 @@ func _process(_delta: float) -> void:
 		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1 && current_stage != positions.size() - 1:
 			_enemy_spawn(current_stage, ActualFightPhase)
 		
-	
+	var t = $EnemiesContainer.get_child_count()
 	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase == totalFightPhases - 1:
 		go.visible = true
 		spawned = true
@@ -72,10 +70,22 @@ func _process(_delta: float) -> void:
 	checkPlayersDead()
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
+		SaveManager.game_data.lastScore = Global.totalScore
+		
+		if SaveManager.game_data.highScore < Global.totalScore:
+			SaveManager.game_data.highScore = Global.totalScore
+		SaveManager.save_game()
+
 		get_tree().change_scene("res://scenes/levels/" + Global.dirType + current_level + ".tscn")
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
+		Global.scoreZone = Global.scoreZone + points
+		Global.totalScore = Global.totalScore + points
+
+		SaveManager.game_data.lastScore = Global.totalScore
+		SaveManager.save_game()
+
 		next_stage = "res://scenes/levels/" + Global.dirType + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

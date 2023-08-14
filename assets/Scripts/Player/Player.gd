@@ -18,11 +18,12 @@ onready var state_label = $StateLabel
 onready var invincibility_timer = $InvincibilityTimer
 onready var invincible = false
 onready var timerShake: Timer = $TimerShake
+onready var phisicBody: CollisionShape2D = $CollisionShape2D
 
 #test
 export var debug_mode : bool
 
-enum STATE {IDLE, MOVE, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
+enum STATE {IDLE, MOVE, KNOCKBACK, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(bool) var isPlayerTwo: bool = false
 export(int) var speed: int = 300
@@ -32,6 +33,9 @@ export(bool) var moving: bool = false
 export(bool) var boss: bool = false
 export(Vector2) var direction: = Vector2.ZERO
 export(Vector2) var orientation: = Vector2.RIGHT
+
+export(float) var rebonuce_distance := 500.0
+export(float) var rebounce_speed := 700.0
 
 export var AttackCooldown: float = 1.0
 
@@ -72,12 +76,14 @@ func _process(_delta: float) -> void:
 		inputManager = Global.player1_input
 	
 	if(!paused):
-		direction = _get_direction()
-		if direction.x:
-			orientation.x = direction.x
+		if current_state != STATE.KNOCKBACK:
+			direction = _get_direction()
+			if direction.x:
+				orientation.x = direction.x
 		
 		match current_state:
 			STATE.IDLE:
+				phisicBody.disabled = false
 				if Input.is_action_just_pressed(inputManager[4]) && canAttack == true:
 					current_state = STATE.ATTACK
 					canAttack = false
@@ -96,19 +102,26 @@ func _process(_delta: float) -> void:
 				anim_player.play("attack")
 			STATE.HIT:
 				anim_player.play("hit")
+			STATE.KNOCKBACK:
+				anim_player.play("hit")
+
+				phisicBody.disabled = true
+
+				var pos = Vector2()
+				pos.y = global_position.y
+				
+				if direction.x < 0:
+					pos.x = global_position.x + rebonuce_distance
+				else:
+					pos.x = global_position.x - rebonuce_distance
+			
+				move_rebounce(pos, rebounce_speed)
+
+				if global_position == pos:
+					current_state = STATE.IDLE
 			STATE.SHOOT:
 				anim_player.play("shoot")
 			STATE.MOVE:
-				# if direction.x < 0:
-				# 	sprite.flip_h = true
-				# 	if pivot.scale.x > 0:
-				# 		pivot.scale.x = - pivot.scale.x	
-					
-				# elif direction.x > 0:
-				# 	sprite.flip_h = false
-				# 	if pivot.scale.x < 0:
-				# 		pivot.scale.x = - pivot.scale.x
-
 				if direction.x < 0:
 					if pivot.scale.x > 0:
 						pivot.scale.x = - pivot.scale.x	
@@ -143,7 +156,7 @@ func attack():
 	for area in attack_collision.get_overlapping_areas():
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(damage)
+			enemy.hit(damage, self)
 		
 	
 
@@ -162,6 +175,21 @@ func pause():
 	set_process(false)
 	
 
+func knockback():
+	current_state = STATE.KNOCKBACK
+
+
+func move_rebounce(target: Vector2, rebounceSpeed):
+	if target:
+		if global_position.y > target.y:
+			z_index = 0
+		else:
+			z_index = -1
+			
+		var velocity = global_position.direction_to(target)
+				
+		move_and_slide(velocity * rebounceSpeed)
+
 func _get_direction() -> Vector2:
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed(inputManager[3])) - int(Input.is_action_pressed(inputManager[2]))
@@ -169,7 +197,7 @@ func _get_direction() -> Vector2:
 	return input_direction
 	
 
-func hit(dps):
+func hit(dps, source):
 	if invincible == false:
 		if !boss:
 			if sceneManager.points > 0:

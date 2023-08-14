@@ -6,7 +6,7 @@ onready var pivot: Node2D = $Pivot
 onready var attack_delay_timer: Timer = $AttackDelayTimer
 onready var cooldown_timer: Timer = $CooldownTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
-onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
+onready var collision_shape : CollisionShape2D = $Pivot/HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var audio: AudioStreamPlayer = $PunchSFX
@@ -19,6 +19,7 @@ export(int) var dps := 10
 export(int) var HP := 5
 export(float) var rebonuceDistance := 5.0
 export(float) var rebounce_speed := 5.0
+export(bool) var group = false
 
 var current_state = STATE.CHASE
 
@@ -35,7 +36,10 @@ func _ready():
 	anim_player.play("idle")
 	healthBar = get_node("HealthDisplay")
 	
-	sceneManager = get_parent().get_parent()
+	if !group:
+		sceneManager = get_parent().get_parent()
+	else:
+		sceneManager = get_parent().get_parent().get_parent()
 	
 
 func _process(_delta: float) -> void:
@@ -59,7 +63,7 @@ func _process(_delta: float) -> void:
 				
 		STATE.CHASE:
 			anim_player.play("move")
-			if !near_player:
+			if !near_player && is_instance_valid(actual_target):
 				move_towards(actual_target.global_position, moving_speed)
 			else:
 				current_state = STATE.WAIT
@@ -99,18 +103,31 @@ func _process(_delta: float) -> void:
 
 
 func select_target() -> Player:
-	var distance: float = 100000
-	var choosedTarget: Player = null
-	for target in sceneManager.playersParent.get_children():
-		var tmpDistance: float = global_position.distance_to(target.global_position)
-		if(tmpDistance < distance):
-			choosedTarget = target 
-			distance = tmpDistance
-	
-	return choosedTarget
+	if !group:
+		var distance: float = 100000
+		var choosedTarget: Player = null
+		for target in sceneManager.playersParent.get_children():
+			var tmpDistance: float = global_position.distance_to(target.global_position)
+			if(tmpDistance < distance):
+				choosedTarget = target 
+				distance = tmpDistance
+
+		return choosedTarget
+	else:
+		var distance: float = 100000
+		var choosedTarget: Player = null
+		var t = sceneManager.playersParent.get_children()
+		for target in sceneManager.playersParent.get_children():
+			var tmpDistance: float = global_position.distance_to(target.global_position)
+			if(tmpDistance < distance):
+				choosedTarget = target 
+				distance = tmpDistance
+
+		return choosedTarget
 
 
-func hit(dpsTaken) -> void:
+
+func hit(dpsTaken, source) -> void:
 	healthBar.update_healthbar(dpsTaken)
 	amount = amount + dpsTaken
 	if amount >= HP:
@@ -170,7 +187,7 @@ func pause():
 
 func attack():
 	if near_player:
-		actual_target.hit(dps)
+		actual_target.hit(dps, self)
 	
 
 func death():

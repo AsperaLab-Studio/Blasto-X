@@ -10,7 +10,7 @@ export var current_level = ""
 
 onready var sound = get_parent().get_node("ost")
 onready var playersParent = get_parent().get_node("PlayersList")
-onready var boss = get_node("EnemiesContainer/KroganBoss")
+onready var boss = get_node("EnemiesContainer").get_child(0)
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
@@ -18,17 +18,25 @@ onready var respawnPoint = get_node("respawnPoint")
 
 var menuShowed = false
 var players
+var isMultiplayer = false
 
 func _ready():
 	players = playersParent.get_children()
+
+	if playersParent.get_child_count() == 2:
+		isMultiplayer = true
+
 	boss.targetList = players
 
 func _process(_delta: float) -> void:
 	
 	players = playersParent.get_children()
-	boss.targetList = players
-	checkPlayersDead()
-	
+
+	if is_instance_valid(boss):
+		boss.targetList = players
+		
+		checkPlayersDead()
+		
 	if $EnemiesContainer.get_child_count() == 0:
 		win.visible = true
 		var pausable_members = get_tree().get_nodes_in_group("pausable")
@@ -40,6 +48,11 @@ func _process(_delta: float) -> void:
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:
+		SaveManager.game_data.stage_saved = next_stage
+		SaveManager.game_data.isMultiplayer = isMultiplayer
+		SaveManager.save_game()
+
+		Global.scoreZone = 0
 		next_stage = "res://scenes/cutscenes/" + next_stage + ".tscn"
 		get_tree().change_scene(next_stage)
 		

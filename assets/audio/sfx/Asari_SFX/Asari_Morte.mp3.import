@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Asari_Morte.mp3-a1d5729219d24256e01afa5a529afe74.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

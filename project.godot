@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://assets/Scripts/Player/Bullet.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -23,11 +28,30 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://assets/Scripts/Player/Player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "SalarianBoss",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/salarianBoss.gd"
+}, {
+"base": "Node2D",
+"class": "VineGun",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/Vine Gun.gd"
+}, {
+"base": "Node2D",
+"class": "VineSpear",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/Vine Spear.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "Enemy": "",
 "KroganBoss": "",
-"Player": ""
+"Player": "",
+"SalarianBoss": "",
+"VineGun": "",
+"VineSpear": ""
 }
 
 [application]
@@ -44,6 +68,7 @@ mix_rate=48000
 [autoload]
 
 Global="*res://assets/Scripts/Global.gd"
+SaveManager="*res://assets/Scripts/SaveManager.gd"
 
 [display]
 
@@ -76,6 +101,26 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+mp3={
+"loop": false,
+"loop_offset": 0
+}
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
+wav={
+"compress/mode": 0,
+"edit/loop_begin": 0,
+"edit/loop_end": -1,
+"edit/loop_mode": 1,
+"edit/normalize": false,
+"edit/trim": false,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
 }
 
 [input]
