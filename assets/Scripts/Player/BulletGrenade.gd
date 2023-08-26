@@ -1,4 +1,4 @@
-class_name Bullet
+class_name BulletGrenade
 extends Node2D
 
 var velocity = Vector2.ZERO

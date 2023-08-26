@@ -1,50 +1,86 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/The Jaw soundtrack.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ost/lvls desert/lvl 1-d loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
-[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=4]
-[ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=5]
+[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=9]
-[ext_resource path="res://scenes/pg/bosses/kroganBoss.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw cornice destra.png" type="Texture" id=13]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=16]
-[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=17]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/barra vita the jaw.png" type="Texture" id=18]
-[ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=19]
+[ext_resource path="res://scenes/tile/desert/lvl 1 d/desert1Tile1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/tile/desert/lvl 1 d/desert1Tile2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
+[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
+[ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
+[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
 [ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
-[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=22]
-[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
+[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
+[ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=25]
-[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=26]
-[ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=27]
-[ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=28]
-[ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=29]
+[ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=25]
+[ext_resource path="res://assets/img/UI/commandsSingleplayer.png" type="Texture" id=26]
+[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=27]
+[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=28]
+[ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
-[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=31]
+[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=31]
+[ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=32]
+[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
 
-[sub_resource type="StyleBoxFlat" id=41]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 89.7126, 98.8925 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/fonts/Quickzag-rOzO.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 130
+outline_size = 2
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 100
+outline_size = 2
+font_data = SubResource( 3 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 3, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 358, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 713, 0, 355, 108 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 1068, 0, 355, 108 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=42]
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxFlat" id=36]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxFlat" id=37]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxFlat" id=38]
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0, 0.72549, 0.164706, 1 )
 border_width_top = 18
 border_width_bottom = 23
@@ -52,10 +88,13 @@ border_color = Color( 0.839216, 0, 1, 1 )
 shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 15748, 123.529 )
+extents = Vector2( 15745.8, 285.783 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1990.15, 120.176 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 7890.29, 291.611 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
@@ -101,7 +140,7 @@ region = Rect2( 1791, 0, 199, 114 )
 atlas = ExtResource( 1 )
 region = Rect2( 1990, 0, 199, 114 )
 
-[sub_resource type="SpriteFrames" id=39]
+[sub_resource type="SpriteFrames" id=19]
 animations = [ {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
@@ -109,8 +148,11 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=40]
+[sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 10, 136.5 )
 
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
@@ -120,24 +162,310 @@ __meta__ = {
 
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
-script = ExtResource( 19 )
-next_stage = "defeat jaw"
-current_level = "desert/LevelDesertBoss"
+script = ExtResource( 10 )
+enemy_types = [ ExtResource( 19 ), ExtResource( 17 ) ]
+next_stage = "desert/LevelDesert2"
+current_level = "desert/LevelDesert1"
+
+[node name="MovingWall" type="StaticBody2D" parent="StageManager"]
+position = Vector2( 8936, 1272 )
+scale = Vector2( 0.58, 0.57 )
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall"]
+position = Vector2( 0.000293732, 56.1404 )
+scale = Vector2( 1, 2.75439 )
+shape = SubResource( 1 )
+
+[node name="AreaGo" type="Area2D" parent="StageManager/MovingWall"]
+position = Vector2( -134.644, 53.3646 )
+scale = Vector2( 1, 1.03052 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageManager/MovingWall/AreaGo"]
+position = Vector2( -5.23311, -4.12054 )
+scale = Vector2( 1, 2.75439 )
+shape = SubResource( 1 )
+
+[node name="Positions" type="Node" parent="StageManager"]
+
+[node name="0" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 0, 761.004 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 1500, 857.787 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 3000, 784.444 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 4500, 776.694 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 6000, 774.048 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 7500, 774.048 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="6" type="Position2D" parent="StageManager/Positions"]
+position = Vector2( 9000, 774.048 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="EnemiesSpawn" type="Node" parent="StageManager"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/0"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
+position = Vector2( 141.321, 866.724 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
+position = Vector2( 438.611, 924.672 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
+position = Vector2( 955.147, 939.328 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/0/0"]
+position = Vector2( 1352, 872 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/0"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/0/1"]
+position = Vector2( 162.595, 981.276 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/0/1"]
+position = Vector2( 584.202, 1073.48 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/0/1"]
+position = Vector2( 883.006, 1081.45 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/0/1"]
+position = Vector2( 1383.98, 1001.64 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/1"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/1/0"]
+position = Vector2( 1760, 784 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/1/0"]
+position = Vector2( 1944, 904 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/1/0"]
+position = Vector2( 2656, 888 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/1/0"]
+position = Vector2( 2808, 800 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/1"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/1/1"]
+position = Vector2( 1641.49, 977.713 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/1/1"]
+position = Vector2( 2063.09, 1069.92 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/1/1"]
+position = Vector2( 2361.9, 1077.88 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/1/1"]
+position = Vector2( 2862.87, 998.077 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/2"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/2/0"]
+position = Vector2( 3256, 808 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/2/0"]
+position = Vector2( 3456, 904 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/2/0"]
+position = Vector2( 4152, 904 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/2/0"]
+position = Vector2( 4233.9, 852.699 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/2"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/2/1"]
+position = Vector2( 3235.82, 966.088 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/2/1"]
+position = Vector2( 3444.81, 1084.15 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/2/1"]
+position = Vector2( 4049.99, 1080.79 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/2/1"]
+position = Vector2( 4209, 978.725 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/3"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/3/0"]
+position = Vector2( 4720, 800 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/3/0"]
+position = Vector2( 4845.26, 933.33 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/3/0"]
+position = Vector2( 5552, 920 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/3/0"]
+position = Vector2( 5792, 808 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/3"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/3/1"]
+position = Vector2( 4706.55, 988.361 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/3/1"]
+position = Vector2( 4920.99, 1082.51 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/3/1"]
+position = Vector2( 5560.99, 1066.51 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/3/1"]
+position = Vector2( 5778.55, 992.997 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/4"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/4/0"]
+position = Vector2( 6223.18, 829.763 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/4/0"]
+position = Vector2( 6373.8, 909.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/4/0"]
+position = Vector2( 6929.7, 937.75 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/4/0"]
+position = Vector2( 7340.56, 838.431 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/4"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/4/1"]
+position = Vector2( 6138.07, 988.969 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/4/1"]
+position = Vector2( 6335.7, 1089.85 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/4/1"]
+position = Vector2( 6975.7, 1073.85 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/4/1"]
+position = Vector2( 7210.07, 996.969 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="0" type="Node" parent="StageManager/EnemiesSpawn/5"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/5/0"]
+position = Vector2( 7693.8, 781.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/5/0"]
+position = Vector2( 7885.8, 917.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/5/0"]
+position = Vector2( 8525.8, 901.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/5/0"]
+position = Vector2( 8765.8, 789.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="1" type="Node" parent="StageManager/EnemiesSpawn/5"]
+
+[node name="1" type="Position2D" parent="StageManager/EnemiesSpawn/5/1"]
+position = Vector2( 7572.71, 980.152 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/5/1"]
+position = Vector2( 7777.07, 1091.12 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/5/1"]
+position = Vector2( 8417.06, 1075.12 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/5/1"]
+position = Vector2( 8644.71, 988.152 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="6" type="Node" parent="StageManager/EnemiesSpawn"]
+
+[node name="2" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+position = Vector2( 9213.8, 765.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="3" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+position = Vector2( 9405.8, 901.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="4" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+position = Vector2( 10045.8, 885.7 )
+scale = Vector2( 0.58, 0.57 )
+
+[node name="5" type="Position2D" parent="StageManager/EnemiesSpawn/6"]
+position = Vector2( 10285.8, 773.7 )
+scale = Vector2( 0.58, 0.57 )
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
-
-[node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
-position = Vector2( 755.132, 845.216 )
-charge_speed = 150
-dps = 2
-dpsCharge = 3
-HP = 40
-ShakeDuration = 3.0
-ShakeDeelay = 10.0
-ChargeDeelay = 5.0
-
-[node name="respawnPoint" type="Node2D" parent="StageManager"]
-position = Vector2( 1000, 1826 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -145,18 +473,101 @@ position = Vector2( 1000, 1826 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Sprite" type="Sprite" parent="GUI/UI"]
+z_index = 2
+
+[node name="SCORE" type="Control" parent="GUI/UI/Sprite"]
+visible = false
+margin_left = -52.9167
+margin_top = 5.03967
+margin_right = -52.9167
+margin_bottom = 5.03967
+
+[node name="TotalPoints" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 939.303
+margin_top = 913.0
+margin_right = 939.303
+margin_bottom = 1030.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+
+[node name="TotalPoints2" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 643.0
+margin_top = 932.081
+margin_right = 929.0
+margin_bottom = 1022.08
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "SCORE ....."
+align = 1
+
+[node name="Hit" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 1107.0
+margin_top = 726.0
+margin_right = 1107.0
+margin_bottom = 843.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hit2" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 651.0
+margin_top = 753.081
+margin_right = 1095.0
+margin_bottom = 843.081
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "HIT rECEIVED ....."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kill" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 1211.0
+margin_top = 830.0
+margin_right = 1211.0
+margin_bottom = 947.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kill2" type="Label" parent="GUI/UI/Sprite/SCORE"]
+margin_left = 651.0
+margin_top = 841.081
+margin_right = 1196.0
+margin_bottom = 931.081
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "ENEMIES KILLED ....."
+align = 1
+
 [node name="GAME OVER" type="Sprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 958.351, 539.915 )
 scale = Vector2( 1.00097, 1.00097 )
 z_index = 1
-texture = ExtResource( 23 )
+texture = ExtResource( 4 )
 
 [node name="WIN" type="Sprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 963.059, 541.221 )
 z_index = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
+
+[node name="Go" type="AnimatedSprite" parent="GUI/UI"]
+visible = false
+position = Vector2( 1480, 512 )
+scale = Vector2( 0.815703, 0.801639 )
+frames = SubResource( 32 )
+playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
 
@@ -165,17 +576,17 @@ texture = ExtResource( 16 )
 [node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 235, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 
 [node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 204, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 
 [node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 172, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 17 )
+texture = ExtResource( 22 )
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
@@ -197,47 +608,36 @@ max_value = 20.0
 value = 20.0
 texture_progress = ExtResource( 7 )
 
-[node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1655.76, 989.869 )
-script = ExtResource( 29 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
-margin_left = -1014.0
-margin_top = -46.0
-margin_right = -151.0
-margin_bottom = 34.0
-max_value = 40.0
-value = 40.0
-texture_progress = ExtResource( 18 )
-nine_patch_stretch = true
-
-[node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
-position = Vector2( -581.76, -13.869 )
-scale = Vector2( 0.664756, 0.659794 )
-texture = ExtResource( 13 )
+[node name="ShowedPoints" type="Label" parent="GUI/UI"]
+margin_left = 1716.0
+margin_top = 6.0
+margin_right = 1716.0
+margin_bottom = 123.0
+custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
+custom_fonts/font = SubResource( 4 )
+align = 1
 
 [node name="Rating" type="Control" parent="GUI/UI"]
 margin_left = 1764.0
 margin_top = 954.0
 margin_right = 1804.0
 margin_bottom = 994.0
-script = ExtResource( 31 )
-rate_list = [ ExtResource( 27 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 22 ) ]
-boss = true
-rate_points = [ 3600, 7200, 10800, 14400 ]
+script = ExtResource( 33 )
+rate_list = [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 27 ) ]
+rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
 visible = false
 scale = Vector2( 0.520833, 0.520833 )
 z_index = 1
-texture = ExtResource( 25 )
+texture = ExtResource( 28 )
 
 [node name="pauseMenu" type="Control" parent="GUI"]
 pause_mode = 2
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 4 )
+script = ExtResource( 16 )
 
 [node name="mainPauseMenu" type="Control" parent="GUI/pauseMenu"]
 margin_right = 40.0
@@ -252,8 +652,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 41 )
-custom_styles/normal = SubResource( 42 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "RETURN"
 
@@ -266,8 +666,8 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 41 )
-custom_styles/normal = SubResource( 42 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "RESTART LEVEL"
 
@@ -280,8 +680,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 41 )
-custom_styles/normal = SubResource( 42 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "OPTIONS"
 
@@ -294,8 +694,8 @@ custom_colors/font_color = Color( 0.682353, 0, 0.901961, 1 )
 custom_colors/font_color_hover = Color( 0.811765, 0.235294, 1, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 41 )
-custom_styles/normal = SubResource( 42 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "MAIN MENU"
 
@@ -308,8 +708,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 41 )
-custom_styles/normal = SubResource( 42 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "QUIT"
 
@@ -329,8 +729,8 @@ custom_colors/font_color = Color( 0, 0.72549, 0.164706, 1 )
 custom_colors/font_color_hover = Color( 0, 1, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 24 )
-custom_styles/hover = SubResource( 36 )
-custom_styles/normal = SubResource( 37 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 action_mode = 0
 text = "BACK"
 
@@ -362,7 +762,7 @@ margin_left = 561.0
 margin_top = 732.461
 margin_right = 1339.55
 margin_bottom = 855.459
-custom_styles/slider = SubResource( 38 )
+custom_styles/slider = SubResource( 25 )
 min_value = 0.001
 max_value = 1.0
 step = 0.001
@@ -382,7 +782,7 @@ margin_left = 561.0
 margin_top = 930.0
 margin_right = 1339.55
 margin_bottom = 1053.0
-custom_styles/slider = SubResource( 38 )
+custom_styles/slider = SubResource( 25 )
 min_value = 0.001
 max_value = 1.0
 step = 0.001
@@ -391,23 +791,17 @@ value = 1.0
 [node name="border" type="Node" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 132.312, 444.188 )
+position = Vector2( 121.151, 321.426 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
-position = Vector2( 15525.4, 415.184 )
-shape = SubResource( 6 )
-
-[node name="Area2D" type="Area2D" parent="border/Top"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top/Area2D"]
-position = Vector2( 15525.4, 415.184 )
+position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 6 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 11.83 )
+position = Vector2( 386.667, 12.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2
@@ -417,65 +811,42 @@ collision_mask = 13
 position = Vector2( 870.27, 780.269 )
 shape = SubResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="border/Left"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left/Area2D"]
-position = Vector2( 870.27, 780.269 )
-shape = SubResource( 7 )
-
-[node name="Right" type="StaticBody2D" parent="border"]
-position = Vector2( 1932.8, 13.7178 )
-rotation = 1.5708
-scale = Vector2( 0.57, 0.58 )
-collision_layer = 2
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Right"]
-position = Vector2( 870.135, 1606.41 )
-shape = SubResource( 7 )
-
-[node name="Area2D" type="Area2D" parent="border/Right"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Right/Area2D"]
-position = Vector2( 870.135, 1606.41 )
-shape = SubResource( 7 )
-
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 3.17841, 556.951 )
+position = Vector2( 0, 627.875 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
-position = Vector2( 14914.6, 812.236 )
-shape = SubResource( 6 )
-
-[node name="Area2D" type="Area2D" parent="border/Bottom"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom/Area2D"]
-position = Vector2( 14915.3, 810.945 )
-shape = SubResource( 6 )
-
-[node name="floor" type="Node2D" parent="."]
-position = Vector2( -3186.7, 542 )
-z_index = -2
-script = ExtResource( 11 )
-increment = 2720
-n_positions = 1
-scenes = [ ExtResource( 15 ), ExtResource( 14 ) ]
+position = Vector2( 7826.08, 843.656 )
+shape = SubResource( 22 )
 
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
-boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
 stream = ExtResource( 2 )
 bus = "Music"
 script = ExtResource( 8 )
+
+[node name="floor" type="Node2D" parent="."]
+position = Vector2( -2407.87, 512 )
+z_index = -2
+script = ExtResource( 11 )
+increment = 1956
+n_positions = 6
+scenes = [ ExtResource( 13 ), ExtResource( 14 ) ]
+
+[node name="desert1 door" type="Sprite" parent="."]
+visible = false
+position = Vector2( 8872, 1192 )
+scale = Vector2( 0.995586, 0.97842 )
+z_index = 5
+texture = ExtResource( 18 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -514,50 +885,50 @@ flip_h = true
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 5
+frames = SubResource( 19 )
+frame = 9
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -571,13 +942,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ2/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
 position = Vector2( 720, 824 )
@@ -586,13 +957,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ3/StaticBody2D"]
 position = Vector2( -24.6178, -43.4524 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
 position = Vector2( 8064, 837 )
@@ -601,13 +972,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ11"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ11/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
 position = Vector2( 8576, 837 )
@@ -616,13 +987,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ12"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ12/StaticBody2D"]
 position = Vector2( -23.7074, -44.6754 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
 position = Vector2( 1616, 824 )
@@ -631,13 +1002,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ4/StaticBody2D"]
 position = Vector2( -2.02051, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
 position = Vector2( 2416, 824 )
@@ -646,13 +1017,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ5/StaticBody2D"]
 position = Vector2( -2.25, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/up"]
 position = Vector2( 3568, 824 )
@@ -661,13 +1032,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ6/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/up"]
 position = Vector2( 4376, 829 )
@@ -676,13 +1047,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ7/StaticBody2D"]
 position = Vector2( -23.29, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/up"]
 position = Vector2( 5272, 829 )
@@ -691,13 +1062,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 8
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ8/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/up"]
 position = Vector2( 6072, 829 )
@@ -706,13 +1077,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 10
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ9"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ9/StaticBody2D"]
 position = Vector2( -2.93799, -42.7797 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/up"]
 position = Vector2( 7224, 829 )
@@ -721,13 +1092,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ10/StaticBody2D"]
 position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="down" type="Node" parent="obj"]
 
@@ -738,13 +1109,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 1
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ15"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ15/StaticBody2D"]
 position = Vector2( -0.390175, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ16" type="Sprite" parent="obj/down"]
 position = Vector2( 535.111, 971.868 )
@@ -753,13 +1124,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ16"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ16/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
 position = Vector2( 1056, 977 )
@@ -768,13 +1139,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ3/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
 position = Vector2( 1168, 976 )
@@ -783,14 +1154,14 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ4"]
 position = Vector2( -22.0486, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ4/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
 position = Vector2( 2134, 1066.51 )
@@ -800,14 +1171,14 @@ offset = Vector2( 10, -90.51 )
 hframes = 3
 vframes = 5
 frame = 2
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ5"]
 position = Vector2( 13.4697, -91.4806 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ5/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/down"]
 position = Vector2( 3160, 976 )
@@ -816,13 +1187,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ6/StaticBody2D"]
 position = Vector2( -25.4714, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/down"]
 position = Vector2( 3952, 981 )
@@ -831,13 +1202,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 11
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ7/StaticBody2D"]
 position = Vector2( -0.545654, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/down"]
 position = Vector2( 4312, 981 )
@@ -846,13 +1217,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ8/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/down"]
 position = Vector2( 4952, 981 )
@@ -861,13 +1232,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 3
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ9"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ9/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/down"]
 position = Vector2( 5064, 981 )
@@ -876,14 +1247,14 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 4
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ10"]
 position = Vector2( -15.0801, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ10/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/down"]
 position = Vector2( 6040, 981 )
@@ -892,13 +1263,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ11"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ11/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ13" type="Sprite" parent="obj/down"]
 position = Vector2( 7679.8, 977 )
@@ -907,13 +1278,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 9
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ13"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ13/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ14" type="Sprite" parent="obj/down"]
 position = Vector2( 8288, 968 )
@@ -922,13 +1293,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 2
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ14"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ14/StaticBody2D"]
 position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/down"]
 position = Vector2( 7056, 981 )
@@ -937,13 +1308,13 @@ texture = ExtResource( 21 )
 hframes = 3
 vframes = 5
 frame = 12
-script = ExtResource( 28 )
+script = ExtResource( 25 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ12"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ12/StaticBody2D"]
 position = Vector2( -24.9507, -44.8843 )
-shape = SubResource( 40 )
+shape = SubResource( 26 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 329, 1208 )
@@ -965,10 +1336,21 @@ __meta__ = {
 }
 
 [node name="shake" type="Node2D" parent="Camera2D"]
-script = ExtResource( 5 )
-boss = true
-randomShackeStrenght = 10.0
+script = ExtResource( 29 )
 
+[node name="Commands" type="Sprite" parent="."]
+position = Vector2( 372, 1126 )
+texture = ExtResource( 26 )
+script = ExtResource( 23 )
+
+[node name="StaticBody2D" type="Area2D" parent="Commands"]
+position = Vector2( 126, 178 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Commands/StaticBody2D"]
+position = Vector2( -4, 14.5 )
+shape = SubResource( 33 )
+
+[connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]
@@ -981,3 +1363,4 @@ randomShackeStrenght = 10.0
 [connection signal="value_changed" from="GUI/pauseMenu/OptionMenu/SFXSlider" to="GUI/pauseMenu" method="_on_SFXSlider_value_changed"]
 [connection signal="death" from="PlayersList/Blasto" to="StageManager" method="_on_Blasto_death"]
 [connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Blasto_update_healthbar"]
+[connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]
