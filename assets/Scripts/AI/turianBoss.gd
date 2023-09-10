@@ -18,7 +18,7 @@ onready var grenade : Grenade = $Grenade
 enum STATE {ATTACK, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
-export(int) var moving_speed := 50
+#export(int) var moving_speed := 50
 
 export(int) var dps := 10
 export(int) var HP := 5
@@ -40,7 +40,7 @@ var selectedWeapon : TurianWeapon
 var counterAttacks = 0
 var animNameSelectedWeapon = "rifle"
 
-var canAttack = false
+var canAttack = true
 var attack_type = 2
 var sceneManager = null
 
@@ -63,18 +63,18 @@ func _process(_delta: float) -> void:
 					#attack_delay_timer.wait_time = 1
 					attack_delay_timer.start()
 			STATE.ATTACK:
-				if actual_target.invincible:
+				if !actual_target.invincible && canAttack:
 					#update the number of attack
 					updateCounter()
 					#calculate the attack with %3
 					selectWeapon()
 					#exec the attack choosing the selected weapon and bullet
 					anim_player.play(animNameSelectedWeapon)
-				elif anim_player.current_animation != "attack":
-					current_state = STATE.IDLE
-					attack_delay_timer.stop()
-				else:
-					current_state = STATE.IDLE
+					canAttack = false
+				#elif anim_player.current_animation != "rifle" && anim_player.current_animation != "grenade":
+					#current_state = STATE.IDLE
+				#else:
+					#current_state = STATE.IDLE
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -116,11 +116,13 @@ func shoot():
 func selectWeapon():
 	if(counterAttacks % 3 == 0):
 		selectedWeapon = grenade
+		selectedWeapon.position2d = spawnGrenade
 		animNameSelectedWeapon = "grenade"
 	else:
 		selectedWeapon = rifle
+		selectedWeapon.position2d = spawnRifle
 		animNameSelectedWeapon = "rifle"
-	selectedWeapon.direction = global_transform
+	#selectedWeapon.direction.origin = global_position
 	pass
 
 func updateCounter():
@@ -164,6 +166,8 @@ func _on_Timer_timeout() -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "grenade" || anim_name == "rifle":
 		current_state = STATE.IDLE
+		attack_delay_timer.stop()
+		canAttack = true
 	if anim_name == "hit":
 		current_state = STATE.IDLE
 		

@@ -16,9 +16,9 @@ func _ready():
 func _process(delta: float) -> void:
 	velocity.x = speed * delta 
 	
-	if direction.x < 0:
-		$Sprite.flip_v = true
-	position += velocity * direction
+	#if direction.x < 0:
+		#$Sprite.flip_v = true
+	#position += velocity * direction
 
 
 func _on_BulletArea_area_entered(area):
