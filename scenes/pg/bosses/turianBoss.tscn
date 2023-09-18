@@ -277,9 +277,11 @@ bus = "SFX"
 
 [node name="PositionGrenade" type="Position2D" parent="."]
 position = Vector2( -123, 2 )
+rotation = 3.14159
 
 [node name="PositionRifle" type="Position2D" parent="."]
 position = Vector2( -119, 4 )
+rotation = 3.14159
 
 [node name="Rifle" type="Node2D" parent="."]
 script = ExtResource( 5 )

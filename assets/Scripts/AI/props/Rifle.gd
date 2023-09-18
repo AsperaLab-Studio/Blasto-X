@@ -14,11 +14,11 @@ func shoot(player):
 	var i = 0
 	for n in numberOfBullets:
 		var bullet_instance = bullet.instance()
-		bullet_instance.position = position2d.position
 		var angleOffset = shootingAmplitude/2 - deltaAngle * i
 		bullet_instance.global_transform = bullet_instance.global_transform.rotated(angle + angleOffset)
 		#direction to calculate = shootingAmplitude/2 - deltaAngle * i
-		get_parent().add_child(bullet_instance)
+		get_parent().get_parent().get_parent().get_parent().get_parent().add_child(bullet_instance)
+		bullet_instance.set_global_position(position2d.get_global_position())
 		#to set
 		i+=1
 
