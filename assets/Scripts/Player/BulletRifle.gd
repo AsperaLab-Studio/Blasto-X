@@ -1,7 +1,7 @@
 class_name BulletRifle
 extends Node2D
 
-var velocity = Vector2.ZERO
+var velocity = 0
 var direction = Vector2.RIGHT
 onready var collider : CollisionShape2D = $BulletArea/CollisionShape2D
 
@@ -14,11 +14,11 @@ func _ready():
 	collider.disabled = true
 
 func _process(delta: float) -> void:
-	velocity.x = speed * delta 
+	velocity = speed * delta 
 	
-	#if direction.x < 0:
-		#$Sprite.flip_v = true
-	#position += velocity * direction
+	if direction.x < 0:
+		$Sprite.flip_v = true
+	position += velocity * direction
 
 
 func _on_BulletArea_area_entered(area):
