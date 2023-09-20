@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/kroganBoss.gd"
 }, {
+"base": "TurianWeapon",
+"class": "Missile",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/Missile.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "Enemy": "",
 "Grenade": "",
 "KroganBoss": "",
+"Missile": "",
 "Player": "",
 "Rifle": "",
 "SalarianBoss": "",

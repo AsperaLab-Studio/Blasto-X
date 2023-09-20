@@ -11,7 +11,7 @@ export(String) var target
 func _process(delta: float) -> void:
 	velocity.x = speed * delta 
 	
-	if direction.x == Vector2.LEFT:
+	if direction == Vector2.LEFT:
 		$Sprite.flip_v = true
 	
 	position += velocity * direction

@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/img/sprites/enemy/the_vine_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Pain.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Scripts/AI/turianBoss.gd" type="Script" id=3]
+[ext_resource path="res://assets/Scripts/AI/props/Missile.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/AI/props/Rifle.gd" type="Script" id=5]
 [ext_resource path="res://assets/Scripts/AI/props/Grenade.gd" type="Script" id=6]
 [ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Death.wav" type="AudioStream" id=7]
-[ext_resource path="res://scenes/pg/BulletRifle.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/pg/BulletGrenade.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletRifle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletGrenade.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletMissile.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=2]
 resource_name = "died"
@@ -276,22 +278,27 @@ volume_db = 1.588
 bus = "SFX"
 
 [node name="PositionGrenade" type="Position2D" parent="."]
-position = Vector2( -123, 2 )
-rotation = 3.14159
+position = Vector2( -120, 0 )
 
 [node name="PositionRifle" type="Position2D" parent="."]
-position = Vector2( -119, 4 )
-rotation = 3.14159
+position = Vector2( -120, 0 )
+
+[node name="PositionMissile" type="Position2D" parent="."]
+position = Vector2( -120, 0 )
 
 [node name="Rifle" type="Node2D" parent="."]
 script = ExtResource( 5 )
 bullet = ExtResource( 8 )
 numberOfBullets = 3
-shootingAmplitude = 30.0
+shootingAmplitude = 8.0
 
 [node name="Grenade" type="Node2D" parent="."]
 script = ExtResource( 6 )
 bullet = ExtResource( 9 )
+
+[node name="Missile" type="Node2D" parent="."]
+script = ExtResource( 4 )
+bullet = ExtResource( 10 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
