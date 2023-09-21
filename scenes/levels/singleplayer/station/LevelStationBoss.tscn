@@ -127,7 +127,7 @@ current_level = "desert/LevelDesertBoss"
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
 [node name="TurianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 812, 817 )
+position = Vector2( 793, 873 )
 HP = 10
 shoot_delay = 3.0
 
@@ -462,7 +462,7 @@ scenes = [ ExtResource( 30 ), ExtResource( 29 ) ]
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 25.4528, 1232.18 )
+position = Vector2( 59, 1328 )
 scale = Vector2( 1, 1 )
 boss = true
 

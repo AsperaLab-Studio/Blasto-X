@@ -1,18 +1,15 @@
-class_name BulletGrenade
+class_name BulletRifle
 extends Node2D
 
 var velocity = Vector2.ZERO
-var direction = Vector2.RIGHT
+var direction
 
 export(int) var speed: int = 700
 export(int) var damage: int = 1
 export(String) var target
 
 func _process(delta: float) -> void:
-	velocity.x = speed * delta 
-	
-	if direction.x < 0:
-		$Sprite.flip_v = true
+	velocity = speed * delta
 	
 	position += velocity * direction
 

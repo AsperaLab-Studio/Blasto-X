@@ -9,11 +9,13 @@ onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
-onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
+
 onready var spawnRifle : Position2D = $PositionRifle
 onready var spawnGrenade : Position2D = $PositionGrenade
+onready var spawnMissile : Position2D = $PositionMissile
 onready var rifle : Rifle = $Rifle
 onready var grenade : Grenade = $Grenade
+onready var missile : Missile = $Missile
 
 enum STATE {ATTACK, IDLE, HIT, DIED}
 
@@ -101,20 +103,23 @@ func select_target() -> Player:
 
 
 func hit(dpsTaken, source) -> void:
-	if not source is Bullet: 
-		healthBar.update_healthbar(dpsTaken)
-		amount = amount + dpsTaken
-		if amount >= HP:
-			current_state = STATE.DIED
-		else:
-			current_state = STATE.HIT
+	healthBar.update_healthbar(dpsTaken)
+	amount = amount + dpsTaken
+	if amount >= HP:
+		current_state = STATE.DIED
+	else:
+		current_state = STATE.HIT
 
 func shoot():
 	selectedWeapon.shoot(actual_target)
 
 
 func selectWeapon():
-	if(counterAttacks % 3 == 0):
+	if(counterAttacks % 2 == 0):
+		selectedWeapon = missile
+		selectedWeapon.position2d = spawnMissile
+		animNameSelectedWeapon = "missile"
+	elif(counterAttacks % 3 == 0):
 		selectedWeapon = grenade
 		selectedWeapon.position2d = spawnGrenade
 		animNameSelectedWeapon = "grenade"
@@ -129,9 +134,6 @@ func updateCounter():
 	counterAttacks += 1
 	pass
 	
-#sentire Arthley
-func do_knockback():
-	actual_target.knockback()
 
 func attack():
 	actual_target.hit(dps, self)
@@ -164,7 +166,7 @@ func _on_Timer_timeout() -> void:
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "grenade" || anim_name == "rifle":
+	if anim_name == "grenade" || anim_name == "rifle" || anim_name == "missile":
 		current_state = STATE.IDLE
 		attack_delay_timer.stop()
 		canAttack = true

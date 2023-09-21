@@ -17,12 +17,17 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BulletGrenade",
 "language": "GDScript",
-"path": "res://assets/Scripts/Player/BulletGrenade.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/BulletGrenade.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "BulletMissile",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/props/TheGun/BulletMissile.gd"
 }, {
 "base": "Node2D",
 "class": "BulletRifle",
 "language": "GDScript",
-"path": "res://assets/Scripts/Player/BulletRifle.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/BulletRifle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -32,7 +37,7 @@ _global_script_classes=[ {
 "base": "TurianWeapon",
 "class": "Grenade",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/Grenade.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/Grenade.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "KroganBoss",
@@ -42,7 +47,7 @@ _global_script_classes=[ {
 "base": "TurianWeapon",
 "class": "Missile",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/Missile.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/Missile.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -52,7 +57,7 @@ _global_script_classes=[ {
 "base": "TurianWeapon",
 "class": "Rifle",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/Rifle.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/Rifle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "SalarianBoss",
@@ -67,21 +72,22 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "TurianWeapon",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/TurianWeapon.gd"
+"path": "res://assets/Scripts/AI/props/TheGun/TurianWeapon.gd"
 }, {
 "base": "Node2D",
 "class": "VineGun",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/Vine Gun.gd"
+"path": "res://assets/Scripts/AI/props/TheVine/Vine Gun.gd"
 }, {
 "base": "Node2D",
 "class": "VineSpear",
 "language": "GDScript",
-"path": "res://assets/Scripts/AI/props/Vine Spear.gd"
+"path": "res://assets/Scripts/AI/props/TheVine/Vine Spear.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "BulletGrenade": "",
+"BulletMissile": "",
 "BulletRifle": "",
 "Enemy": "",
 "Grenade": "",

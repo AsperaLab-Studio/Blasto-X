@@ -7,7 +7,6 @@
 extents = Vector2( 23, 6.5 )
 
 [node name="Bullet" type="Node2D"]
-position = Vector2( 0, 1 )
 script = ExtResource( 2 )
 damage = 2
 target = "enemy"
