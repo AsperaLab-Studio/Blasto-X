@@ -13,13 +13,13 @@ func _process(delta: float) -> void:
 	
 	position += velocity * direction
 
+func _on_Timer_timeout():
+	queue_free()
 
-func _on_BulletArea_area_entered(area):
-	if area.owner.is_in_group(target):
-		var enemy = area.owner
+
+func _on_BulletArea_body_entered(body:Node):
+	if body.is_in_group(target):
+		var enemy = body as Player
 		enemy.hit(damage, self)
 		$BulletArea.monitorable = false
 		queue_free()
-
-func _on_Timer_timeout():
-	queue_free()

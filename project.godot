@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/props/TheGun/BulletGrenade.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Node2D",
 "class": "BulletMissile",
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/props/TheGun/BulletMissile.gd"

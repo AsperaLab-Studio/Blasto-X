@@ -62,7 +62,7 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:
 				anim_player.play("idle")
 				if attack_delay_timer.is_stopped():
-					#attack_delay_timer.wait_time = 1
+					attack_delay_timer.wait_time = 1
 					attack_delay_timer.start()
 			STATE.ATTACK:
 				if !actual_target.invincible && canAttack:
