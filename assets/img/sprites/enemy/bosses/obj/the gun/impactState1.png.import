@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/liana_up.png-1b2beae2e1caab1d9a942d754bbb6e35.stex"
+path="res://.import/impactState1.png-c1dd89a49e3bd12e00aeb58fc091bf4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/enemy/bosses/liana_up.png"
-dest_files=[ "res://.import/liana_up.png-1b2beae2e1caab1d9a942d754bbb6e35.stex" ]
+source_file="res://assets/img/sprites/enemy/bosses/obj/the gun/impactState1.png"
+dest_files=[ "res://.import/impactState1.png-c1dd89a49e3bd12e00aeb58fc091bf4b.stex" ]
 
 [params]
 

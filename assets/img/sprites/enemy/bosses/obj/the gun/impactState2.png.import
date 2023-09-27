@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ombra base.png-700bd8bf7b9be4d2e0b807e4993b9693.stex"
+path="res://.import/impactState2.png-9c3cb3544b2e8afb586aee5f8104e7be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/sprites/ombra base.png"
-dest_files=[ "res://.import/ombra base.png-700bd8bf7b9be4d2e0b807e4993b9693.stex" ]
+source_file="res://assets/img/sprites/enemy/bosses/obj/the gun/impactState2.png"
+dest_files=[ "res://.import/impactState2.png-9c3cb3544b2e8afb586aee5f8104e7be.stex" ]
 
 [params]
 
