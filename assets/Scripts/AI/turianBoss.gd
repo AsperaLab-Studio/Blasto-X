@@ -17,6 +17,8 @@ onready var rifle : Rifle = $Rifle
 onready var grenade : Grenade = $Grenade
 onready var missile : Missile = $Missile
 
+onready var impact_list_pos: Array = get_parent().get_parent().get_node("impactZones").get_children()
+
 enum STATE {ATTACK, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
@@ -122,6 +124,7 @@ func selectWeapon():
 	elif(counterAttacks % 3 == 0):
 		selectedWeapon = grenade
 		selectedWeapon.position2d = spawnGrenade
+		selectedWeapon.total_impact_zones = impact_list_pos
 		animNameSelectedWeapon = "grenade"
 	else:
 		selectedWeapon = rifle

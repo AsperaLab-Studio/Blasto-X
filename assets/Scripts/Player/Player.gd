@@ -8,7 +8,10 @@ onready var collision_shape : CollisionShape2D = $Pivot/PlayerHitBox/CollisionSh
 onready var sprite: Sprite = $Sprite
 onready var attack_collision: Area2D = $Pivot/AttackCollision
 onready var pivot: Node2D = $Pivot
-onready var cooldownAttack_timer: Timer = $CooldownAttackTimer
+
+onready var cooldownAttack1_timer: Timer = $CooldownAttack1Timer
+onready var cooldownAttack2_timer: Timer = $CooldownAttack2Timer
+
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var bullet = preload("res://scenes/pg/Bullet.tscn")
 onready var position2d: Position2D = $Pivot/Position2D
@@ -23,7 +26,7 @@ onready var phisicBody: CollisionShape2D = $CollisionShape2D
 #test
 export var debug_mode : bool
 
-enum STATE {IDLE, MOVE, KNOCKBACK, ATTACK, HIT, SHOOT, SHAKE, WIN, DIED}
+enum STATE {IDLE, MOVE, KNOCKBACK, ATTACK1, ATTACK2, HIT, SHOOT, SHAKE, WIN, DIED}
 
 export(bool) var isPlayerTwo: bool = false
 export(int) var speed: int = 300
@@ -37,16 +40,21 @@ export(Vector2) var orientation: = Vector2.RIGHT
 export(float) var rebonuce_distance := 500.0
 export(float) var rebounce_speed := 700.0
 
-export var AttackCooldown: float = 1.0
+export var attack1Cooldown: float = 1.0
+export var attack2Cooldown: float = 1.0
 
 var current_state = STATE.IDLE
 var sceneManager = null
 var paused = false
-var canAttack = true
+
+var canAttack1 = true
+var canAttack2 = true
 
 var inputManager
 var lifesList
 var lifeCount: int
+
+var actualAttackType: int
 
 func _ready() -> void:
 	anim_player.play("idle")
@@ -59,9 +67,13 @@ func _ready() -> void:
 	
 	lifeCount = lifesList.get_child_count()
 
-	cooldownAttack_timer.wait_time = AttackCooldown
-	cooldownAttack_timer.one_shot = true
-	cooldownAttack_timer.start()
+	cooldownAttack1_timer.wait_time = attack1Cooldown
+	cooldownAttack1_timer.one_shot = true
+	cooldownAttack1_timer.start()
+
+	cooldownAttack2_timer.wait_time = attack2Cooldown
+	cooldownAttack2_timer.one_shot = true
+	cooldownAttack2_timer.start()
 	
 	if (!boss):
 		linkSignals()
@@ -84,11 +96,17 @@ func _process(_delta: float) -> void:
 		match current_state:
 			STATE.IDLE:
 				phisicBody.disabled = false
-				if Input.is_action_just_pressed(inputManager[4]) && canAttack == true:
-					current_state = STATE.ATTACK
-					canAttack = false
+				if Input.is_action_just_pressed(inputManager[4]) && canAttack1 == true:
+					current_state = STATE.ATTACK1
+					actualAttackType = 1
+					canAttack1 = false
+
+				if Input.is_action_just_pressed(inputManager[5]) && canAttack2 == true:
+					current_state = STATE.ATTACK2
+					actualAttackType = 2
+					canAttack2 = false
 					
-				if Input.is_action_just_pressed(inputManager[5]):
+				if Input.is_action_just_pressed(inputManager[6]):
 					current_state = STATE.SHOOT
 					
 				if direction:
@@ -98,8 +116,10 @@ func _process(_delta: float) -> void:
 					anim_player.play("idle")
 					
 				
-			STATE.ATTACK:
-				anim_player.play("attack")
+			STATE.ATTACK1:
+				anim_player.play("attack1")
+			STATE.ATTACK2:
+				anim_player.play("attack2")
 			STATE.HIT:
 				anim_player.play("hit")
 			STATE.KNOCKBACK:
@@ -156,7 +176,7 @@ func attack():
 	for area in attack_collision.get_overlapping_areas():
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(damage, self)
+			enemy.hit(damage, actualAttackType)
 		
 	
 
@@ -240,7 +260,10 @@ func KO():
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if current_state != STATE.DIED:
-		if anim_name == "attack":
+		if anim_name == "attack1":
+			current_state = STATE.IDLE
+
+		if anim_name == "attack2":
 			current_state = STATE.IDLE
 		
 		if anim_name == "shoot":
@@ -274,7 +297,7 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 		
 	
 
-func _on_HealthBar_value_changed(value: float) -> void:
+func _on_HealthBar_vactual_list_posmenualue_changed(value: float) -> void:
 	if value <= 0:
 		current_state = STATE.DIED
 	
@@ -287,12 +310,18 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 	if anim_name == "hit":
 		invincibility_timer.start(1)
 		invincible = true
-	
-
-func _on_CooldownAttackTimer_timeout():
-	canAttack = true;
-	cooldownAttack_timer.wait_time = AttackCooldown
-	cooldownAttack_timer.one_shot = true
-	cooldownAttack_timer.start()
 
 
+func _on_CooldownAttack1Timer_timeout():
+	canAttack1 = true;
+	cooldownAttack1_timer.wait_time = attack1Cooldown
+	cooldownAttack1_timer.one_shot = true
+	cooldownAttack1_timer.start()
+
+
+
+func _on_CooldownAttack2Timer_timeout():
+	canAttack2 = true;
+	cooldownAttack2_timer.wait_time = attack2Cooldown
+	cooldownAttack2_timer.one_shot = true
+	cooldownAttack2_timer.start()

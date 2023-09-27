@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Turian_Boss_Pain.mp3-f745978de06f18b62e2947e9f91efac7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Pain.mp3"
+dest_files=[ "res://.import/Turian_Boss_Pain.mp3-f745978de06f18b62e2947e9f91efac7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

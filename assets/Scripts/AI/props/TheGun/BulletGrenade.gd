@@ -9,12 +9,7 @@ export(int) var damage: int = 1
 export(String) var target
 
 func _process(delta: float) -> void:
-	velocity.x = speed * delta 
-	
-	if direction == Vector2.LEFT:
-		$Sprite.flip_v = true
-	
-	position += velocity * direction
+	pass
 
 
 func _on_BulletArea_area_entered(area):

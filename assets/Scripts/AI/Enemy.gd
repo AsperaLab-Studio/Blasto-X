@@ -32,6 +32,8 @@ var paused = false
 
 var sceneManager = null
 
+var actualAttackTypeReceived: int
+
 func _ready():
 	anim_player.play("idle")
 	healthBar = get_node("HealthDisplay")
@@ -49,17 +51,18 @@ func _process(_delta: float) -> void:
 		STATE.HIT:
 			anim_player.play("hit")
 			
-			var pos = Vector2()
-			pos.y = global_position.y
+			if actualAttackTypeReceived == 2:
+				var pos = Vector2()
+				pos.y = global_position.y
+				
+				if global_position.x > actual_target.global_position.x:
+					pos.x = global_position.x + rebonuceDistance
+				else:
+					pos.x = global_position.x - rebonuceDistance
 			
-			if global_position.x > actual_target.global_position.x:
-				pos.x = global_position.x + rebonuceDistance
-			else:
-				pos.x = global_position.x - rebonuceDistance
-		
-			print("layers active: ",  collision_layer)
-			print("masks active: ",  collision_mask)
-			move_rebounce(pos, rebounce_speed)
+				print("layers active: ",  collision_layer)
+				print("masks active: ",  collision_mask)
+				move_rebounce(pos, rebounce_speed)
 				
 		STATE.CHASE:
 			anim_player.play("move")
@@ -134,6 +137,7 @@ func hit(dpsTaken, source) -> void:
 		current_state = STATE.DIED
 	else:
 		current_state = STATE.HIT
+		actualAttackTypeReceived = source
 		switchLayers(true)
 		
 	

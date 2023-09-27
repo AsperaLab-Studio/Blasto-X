@@ -1,15 +1,18 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/img/sprites/enemy/the_vine_spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Pain.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Pain.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Scripts/AI/turianBoss.gd" type="Script" id=3]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Missile.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Rifle.gd" type="Script" id=5]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Grenade.gd" type="Script" id=6]
-[ext_resource path="res://assets/audio/sfx/TheVine_SFX/Boss_Salarian_Death.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Death.wav" type="AudioStream" id=7]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletRifle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletGranade.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletMissile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Rocket_Fire.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Rifle.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Granade_Fire.mp3" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=2]
 resource_name = "died"
@@ -58,7 +61,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=21]
 resource_name = "grenade"
-length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -85,6 +87,20 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot"
 } ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -135,7 +151,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "missile"
-length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -163,10 +178,24 @@ tracks/1/keys = {
 "method": "shoot"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=20]
 resource_name = "rifle"
-length = 0.5
+length = 0.8
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -194,6 +223,20 @@ tracks/1/keys = {
 "method": "shoot"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="CapsuleShape2D" id=15]
 radius = 19.0
@@ -215,7 +258,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 3
 vframes = 9
-frame = 3
+frame = 18
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -257,7 +300,7 @@ margin_right = 19.8185
 margin_bottom = -63.7829
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 13 )
 volume_db = 1.588
 bus = "SFX"
 

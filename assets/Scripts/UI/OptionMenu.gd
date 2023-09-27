@@ -46,7 +46,7 @@ func _ready():
 
 
 func _process(_delta):
-	if (Input.is_action_just_pressed(Global.player1_input[6]) || Input.is_action_just_pressed(Global.player2_input[6])) && !main:
+	if (Input.is_action_just_pressed(Global.player1_input[7]) || Input.is_action_just_pressed(Global.player2_input[7])) && !main:
 		get_tree().paused = !get_tree().paused
 		visible = !visible
 			

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Turian_Pain.mp3-fb864e36fa306ba1918f634b5de30c4e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Enemies/Turian_SFX/Turian_Pain.mp3"
+dest_files=[ "res://.import/Turian_Pain.mp3-fb864e36fa306ba1918f634b5de30c4e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
