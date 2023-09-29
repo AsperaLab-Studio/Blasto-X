@@ -164,7 +164,7 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dpsTaken, source) -> void:
+func hit(dpsTaken, attackType, source) -> void:
 	if (current_state != STATE.CHARGE_START && current_state != STATE.CHARGE_MID && current_state != STATE.CHARGE_END):
 		healthBar.update_healthbar(dpsTaken)
 		amount = amount + dpsTaken

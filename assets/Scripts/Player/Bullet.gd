@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 func _on_BulletArea_area_entered(area):
 	if area.owner.is_in_group(target):
 		var enemy = area.owner
-		enemy.hit(damage, self)
+		enemy.hit(damage, "ranged", self)
 		$BulletArea.monitorable = false
 		queue_free()
 

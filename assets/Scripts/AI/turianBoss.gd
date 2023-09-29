@@ -102,7 +102,7 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dpsTaken, source) -> void:
+func hit(dpsTaken, attackType, source) -> void:
 	healthBar.update_healthbar(dpsTaken)
 	amount = amount + dpsTaken
 	if amount >= HP:

@@ -176,7 +176,7 @@ func attack():
 	for area in attack_collision.get_overlapping_areas():
 		if area.owner.is_in_group("enemy"):
 			var enemy = area.owner
-			enemy.hit(damage, actualAttackType)
+			enemy.hit(damage, "melee", actualAttackType)
 		
 	
 
@@ -297,7 +297,7 @@ func _on_AreaGo_area_entered(area: Area2D) -> void:
 		
 	
 
-func _on_HealthBar_vactual_list_posmenualue_changed(value: float) -> void:
+func _on_HealthBar_value_changed(value: float) -> void:
 	if value <= 0:
 		current_state = STATE.DIED
 	

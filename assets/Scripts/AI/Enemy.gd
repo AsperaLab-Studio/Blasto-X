@@ -130,14 +130,15 @@ func select_target() -> Player:
 
 
 
-func hit(dpsTaken, source) -> void:
+func hit(dpsTaken, attackType, source) -> void:
 	healthBar.update_healthbar(dpsTaken)
 	amount = amount + dpsTaken
 	if amount >= HP:
 		current_state = STATE.DIED
 	else:
 		current_state = STATE.HIT
-		actualAttackTypeReceived = source
+		if attackType == "melee":
+			actualAttackTypeReceived = source
 		switchLayers(true)
 		
 	
