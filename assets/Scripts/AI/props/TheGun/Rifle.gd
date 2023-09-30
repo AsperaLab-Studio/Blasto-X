@@ -7,10 +7,8 @@ export(float) var shootingAmplitude
 func shoot(player):
 	var deltaAngle = shootingAmplitude/(numberOfBullets -1)
 	var playerRef := player as Player
-	var t1 = playerRef.global_position
-	var t2 = position2d.get_global_position()
-	var direction = t2.direction_to(t1)
-	var angle = -acos(direction.x)
+	var direction = position2d.get_global_position().direction_to(playerRef.global_position)
+	var angle = -sign(direction.y) * acos(abs(direction.x))
 	
 	# var numerator = (direction.x * t1.x + direction.y * t1.y)
 	# var denominator = (sqrt(powFunctionSum(direction.x, direction.y, 2)) *sqrt( powFunctionSum(t1.x, t1.y, 2)))
