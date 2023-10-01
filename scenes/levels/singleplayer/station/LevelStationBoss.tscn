@@ -1,10 +1,10 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw cornice destra.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/UI/bosses/the gun/the gun cornice destra.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
@@ -28,8 +28,7 @@
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
 [ext_resource path="res://scenes/pg/bosses/turianBoss.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=29]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=30]
+[ext_resource path="res://scenes/tile/station/lvl 3 s/station3Tile3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -222,22 +221,22 @@ value = 10.0
 texture_progress = ExtResource( 14 )
 
 [node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1655.76, 989.869 )
+position = Vector2( 1926, 968 )
 script = ExtResource( 22 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
-margin_left = -1014.0
-margin_top = -46.0
-margin_right = -151.0
-margin_bottom = 34.0
+margin_left = -1085.0
+margin_top = -26.0
+margin_right = -89.0
+margin_bottom = 60.0
 max_value = 10.0
 value = 10.0
 texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 
 [node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
-position = Vector2( -581.76, -13.869 )
-scale = Vector2( 0.664756, 0.659794 )
+position = Vector2( -581.76, 20.7754 )
+scale = Vector2( 0.664756, 0.595638 )
 texture = ExtResource( 5 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
@@ -481,18 +480,18 @@ position = Vector2( 14915.3, 810.945 )
 shape = SubResource( 6 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -3186.7, 542 )
+position = Vector2( -2238, 510 )
 z_index = -2
 script = ExtResource( 16 )
-increment = 2720
+increment = 1564
 n_positions = 1
-scenes = [ ExtResource( 30 ), ExtResource( 29 ) ]
+scenes = [ ExtResource( 29 ) ]
 
 [node name="PlayersList" type="Node2D" parent="."]
 position = Vector2( 0, -126 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 72, 1459 )
+position = Vector2( 44, 1360 )
 scale = Vector2( 1, 1 )
 boss = true
 
@@ -503,6 +502,7 @@ bus = "Music"
 script = ExtResource( 18 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="background" type="Node" parent="ParallaxBackground"]
 
@@ -540,49 +540,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -612,6 +612,7 @@ boss = true
 randomShackeStrenght = 10.0
 
 [node name="Node" type="Node2D" parent="."]
+visible = false
 position = Vector2( -98, 455 )
 
 [node name="Lv1-DObj2" type="Sprite" parent="Node"]

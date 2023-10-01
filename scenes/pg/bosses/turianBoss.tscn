@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://scenes/pg/bosses/turian_spritesheet_0.2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/pg/bosses/turian0.5.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Pain.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Scripts/AI/turianBoss.gd" type="Script" id=3]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Missile.gd" type="Script" id=4]
@@ -69,10 +69,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
+"times": PoolRealArray( 0, 0.1, 0.55 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14 ]
+"values": [ 6, 7, 8 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -162,7 +162,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 5 ]
+"values": [ 9, 10, 11 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -258,7 +258,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 3
 vframes = 7
-frame = 3
+frame = 8
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -302,7 +302,7 @@ margin_right = 19.8185
 margin_bottom = -63.7829
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = 1.588
 bus = "SFX"
 
