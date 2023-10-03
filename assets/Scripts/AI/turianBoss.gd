@@ -7,7 +7,7 @@ onready var attack_delay_timer: Timer = $AttackDelayTimer
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
-onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
+
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 
 onready var spawnRifle : Position2D = $PositionRifle
@@ -81,8 +81,6 @@ func _process(_delta: float) -> void:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
 				
-				collition_area2d.disabled = true
-				
 				anim_player.play("died")
 		
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
@@ -129,11 +127,9 @@ func selectWeapon():
 		selectedWeapon.position2d = spawnRifle
 		animNameSelectedWeapon = "rifle"
 	#selectedWeapon.direction.origin = global_position
-	pass
 
 func updateCounter():
 	counterAttacks += 1
-	pass
 	
 
 func attack():
@@ -164,6 +160,7 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.IDLE:
 		current_state = STATE.ATTACK
+		canAttack = true
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

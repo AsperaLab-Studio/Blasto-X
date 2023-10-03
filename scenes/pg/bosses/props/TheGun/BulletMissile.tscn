@@ -8,6 +8,7 @@ extents = Vector2( 22.5, 14 )
 
 [node name="BulletMissile" type="Node2D"]
 script = ExtResource( 2 )
+damage = 2
 target = "player"
 
 [node name="Sprite" type="Sprite" parent="."]

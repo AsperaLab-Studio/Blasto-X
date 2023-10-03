@@ -324,6 +324,8 @@ shootingAmplitude = 8.0
 [node name="Grenade" type="Node2D" parent="."]
 script = ExtResource( 6 )
 bullet = ExtResource( 9 )
+zonesAmount = 6
+explosionDamage = 3
 
 [node name="Missile" type="Node2D" parent="."]
 script = ExtResource( 4 )
