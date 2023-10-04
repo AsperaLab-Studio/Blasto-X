@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/img/frontground/lvl station/tileset/lv2-s/LV2-S FORE.png" type="Texture" id=1]
-[ext_resource path="res://assets/img/frontground/lvl station/tileset/lv3-s/LV3-S BACK.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/frontground/lvl station/tileset/lv3-s/LV3-S_BACK.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl station/tileset/lv3-s/LV2-S_FORE.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=4]
+[ext_resource path="res://assets/img/frontground/obj/LV2-S OBJ.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.7187, 2.01658 )
@@ -17,58 +18,61 @@ extents = Vector2( 54.5, 2 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 39.5481, 2.01658 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 47.1683, 2.01658 )
+
 [node name="Node2D" type="Node2D"]
 position = Vector2( -40, -24 )
 
 [node name="Lv1-SBack" type="Sprite" parent="."]
 position = Vector2( 236, -159 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 hframes = 4
+frame = 3
 
 [node name="Lv1-SBack2" type="Sprite" parent="."]
-position = Vector2( 627, -159 )
-texture = ExtResource( 2 )
+position = Vector2( 628, -159 )
+texture = ExtResource( 1 )
 hframes = 4
-frame = 1
 
 [node name="Lv1-SBack3" type="Sprite" parent="."]
-position = Vector2( 1018, -159 )
-texture = ExtResource( 2 )
+position = Vector2( 1020, -159 )
+texture = ExtResource( 1 )
 hframes = 4
 frame = 2
 
 [node name="Lv1-SBack4" type="Sprite" parent="."]
-position = Vector2( 1409, -159 )
-texture = ExtResource( 2 )
+position = Vector2( 1412, -159 )
+texture = ExtResource( 1 )
 hframes = 4
 frame = 3
 
 [node name="Lv1-SFore" type="Sprite" parent="."]
-position = Vector2( 325, 112 )
-texture = ExtResource( 1 )
+position = Vector2( 324, 112 )
+texture = ExtResource( 2 )
 hframes = 4
 
 [node name="Lv1-SFore4" type="Sprite" parent="."]
-position = Vector2( 1498, 112 )
-texture = ExtResource( 1 )
+position = Vector2( 1500, 112 )
+texture = ExtResource( 2 )
 hframes = 4
 
 [node name="Lv1-SFore2" type="Sprite" parent="."]
 position = Vector2( 716, 112 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 hframes = 4
 frame = 2
 
 [node name="Lv1-SFore3" type="Sprite" parent="."]
-position = Vector2( 1107, 112 )
-texture = ExtResource( 1 )
+position = Vector2( 1108, 112 )
+texture = ExtResource( 2 )
 hframes = 4
 frame = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="Node2D"]
-position = Vector2( 418.167, 7 )
+position = Vector2( 341, 7 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -82,7 +86,7 @@ position = Vector2( 0.670486, -41.7024 )
 shape = SubResource( 1 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="Node2D"]
-position = Vector2( 930.167, 7 )
+position = Vector2( 1308, -5 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -155,3 +159,31 @@ position = Vector2( -22.0486, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LV 1-D T-OBJ5/StaticBody2D"]
 position = Vector2( 11.5005, -44.8843 )
 shape = SubResource( 4 )
+
+[node name="LV 1-D T-OBJ6" type="Sprite" parent="Node2D"]
+position = Vector2( 1509, -10 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 3
+frame = 1
+script = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/LV 1-D T-OBJ6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LV 1-D T-OBJ6/StaticBody2D"]
+position = Vector2( -5.16827, -43.4524 )
+shape = SubResource( 5 )
+
+[node name="LV 1-D T-OBJ7" type="Sprite" parent="Node2D"]
+position = Vector2( 1422, -10 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 3
+frame = 1
+script = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/LV 1-D T-OBJ7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/LV 1-D T-OBJ7/StaticBody2D"]
+position = Vector2( -5.16827, -43.4524 )
+shape = SubResource( 5 )

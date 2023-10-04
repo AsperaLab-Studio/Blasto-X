@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/barra vita the jaw.png" type="Texture" id=11]
+[ext_resource path="res://assets/img/UI/bosses/the gun/barra vita the gun.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=14]
@@ -28,7 +28,8 @@
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
 [ext_resource path="res://scenes/pg/bosses/turianBoss.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/tile/station/lvl 3 s/station3Tile3.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/img/frontground/obj/LV2-S OBJ.png" type="Texture" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -540,49 +541,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -899,6 +900,36 @@ frame = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj21/StaticBody2D"]
 position = Vector2( 1.85715, 0.232544 )
 shape = SubResource( 43 )
+
+[node name="Lv2-SObj" type="Sprite" parent="."]
+position = Vector2( 580, 1287 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj2" type="Sprite" parent="."]
+position = Vector2( 820, 1282 )
+z_index = -2
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj3" type="Sprite" parent="."]
+position = Vector2( 714, 1317 )
+z_index = -1
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj4" type="Sprite" parent="."]
+position = Vector2( 865, 1373 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 5
 
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
