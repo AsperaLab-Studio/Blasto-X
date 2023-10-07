@@ -11,7 +11,8 @@ var playerKeyboard_input = [
 	"move_down_keyboard",
 	"move_left_keyboard",
 	"move_right_keyboard",
-	"attack_keyboard",
+	"attack1_keyboard",
+	"attack2_keyboard",
 	"shoot_keyboard",
 	"menu_keyboard",
 ]
@@ -21,7 +22,8 @@ var playerPad1_input = [
 	"move_down_pad1",
 	"move_left_pad1",
 	"move_right_pad1",
-	"attack_pad1",
+	"attack1_pad1",
+	"attack2_pad1",
 	"shoot_pad1",
 	"menu_pad1",
 ]
@@ -31,7 +33,8 @@ var playerPad2_input = [
 	"move_down_pad2",
 	"move_left_pad2",
 	"move_right_pad2",
-	"attack_pad2",
+	"attack1_pad2",
+	"attack2_pad2",
 	"shoot_pad2",
 	"menu_pad2",
 ]

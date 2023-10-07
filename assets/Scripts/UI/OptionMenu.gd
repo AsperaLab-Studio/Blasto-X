@@ -46,9 +46,11 @@ func _ready():
 
 
 func _process(_delta):
-	if (Input.is_action_just_pressed(Global.player1_input[6]) || Input.is_action_just_pressed(Global.player2_input[6])) && !main:
-		get_tree().paused = !get_tree().paused
-		visible = !visible
+	var sceneManager = get_parent().get_parent().get_node("StageManager")
+	if sceneManager.game_over.visible == false && sceneManager.win.visible == false:
+		if (Input.is_action_just_pressed(Global.player1_input[7]) || Input.is_action_just_pressed(Global.player2_input[7])) && !main:
+			get_tree().paused = !get_tree().paused
+			visible = !visible
 			
 
 func _on_ReturnBtn_pressed():

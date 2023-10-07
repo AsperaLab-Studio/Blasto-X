@@ -35,7 +35,6 @@ bus = "Music"
 script = ExtResource( 2 )
 
 [node name="background" type="Sprite" parent="."]
-modulate = Color( 0.584314, 0.584314, 0.584314, 1 )
 position = Vector2( 970.519, 539.208 )
 scale = Vector2( 1.20464, 1.20464 )
 z_index = -1

@@ -577,6 +577,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
+frame = 2
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -631,8 +632,8 @@ margin_top = 57.0
 margin_right = 1507.0
 margin_bottom = 232.0
 rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 7 )
 
 [node name="Ceru" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
@@ -648,8 +649,8 @@ margin_top = 56.0
 margin_right = 2096.0
 margin_bottom = 231.0
 rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 27 )
 
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
