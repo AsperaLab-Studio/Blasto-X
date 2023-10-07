@@ -319,7 +319,7 @@ position = Vector2( -120, 0 )
 script = ExtResource( 5 )
 bullet = ExtResource( 8 )
 numberOfBullets = 3
-shootingAmplitude = 8.0
+shootingAmplitude = 16.0
 
 [node name="Grenade" type="Node2D" parent="."]
 script = ExtResource( 6 )

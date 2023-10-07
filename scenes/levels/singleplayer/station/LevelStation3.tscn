@@ -558,7 +558,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -804,7 +803,7 @@ position = Vector2( 870.27, 780.269 )
 shape = SubResource( 7 )
 
 [node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 627.875 )
+position = Vector2( 0, 639 )
 scale = Vector2( 0.58, 0.57 )
 collision_layer = 2
 collision_mask = 13
