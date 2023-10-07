@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lvl 1-s.mp3-eec099545b2488a399376f896cc57d54.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/ost/lvls station/lvl 1-s.mp3"
+dest_files=[ "res://.import/lvl 1-s.mp3-eec099545b2488a399376f896cc57d54.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

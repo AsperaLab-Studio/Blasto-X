@@ -128,13 +128,13 @@ current_level = "desert/LevelDesertBoss"
 
 [node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
 position = Vector2( 755.132, 845.216 )
+charge_speed = 150
 dps = 2
 dpsCharge = 3
-ChargeDeelay = 5.0
-charge_speed = 150
 HP = 40
 ShakeDuration = 3.0
 ShakeDeelay = 10.0
+ChargeDeelay = 5.0
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 1000, 1826 )
@@ -193,8 +193,8 @@ margin_top = 57.0
 margin_right = 1507.0
 margin_bottom = 232.0
 rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 7 )
 
 [node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
@@ -206,8 +206,8 @@ margin_left = -1014.0
 margin_top = -46.0
 margin_right = -151.0
 margin_bottom = 34.0
-max_value = 40.0
-value = 40.0
+max_value = 20.0
+value = 20.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
 
@@ -469,7 +469,6 @@ scenes = [ ExtResource( 15 ), ExtResource( 14 ) ]
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
 position = Vector2( 25.4528, 1232.18 )
 scale = Vector2( 1, 1 )
-damage = 40
 boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
@@ -516,49 +515,42 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]

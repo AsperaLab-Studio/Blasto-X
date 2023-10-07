@@ -48,8 +48,10 @@ func _ready():
 	
 	sceneManager = get_parent().get_parent()
 	cooldownShake_timer.wait_time = ShakeDeelay
+	cooldownShake_timer.one_shot = true
 	cooldownShake_timer.start()
 	cooldownCharge_timer.wait_time = ChargeDeelay
+	cooldownCharge_timer.one_shot = true
 	cooldownCharge_timer.start()
 	
 
@@ -123,11 +125,12 @@ func _process(_delta: float) -> void:
 			STATE.CHARGE_END:
 				if (areaCollided != null):
 					if (areaCollided.owner.is_in_group("player")):
-						actual_target.hit(dpsCharge)
+						actual_target.hit(dpsCharge, self)
 				if anim_player.current_animation != "ChargeEnd":
 					#timerShake.set_paused(false)
 					areaCollided = null
 					cooldownCharge_timer.wait_time = ChargeDeelay
+					cooldownCharge_timer.one_shot = true
 					cooldownCharge_timer.start()
 					current_state = STATE.WAIT
 			STATE.DIED:
@@ -161,7 +164,7 @@ func select_target() -> Player:
 	return choosedTarget
 
 
-func hit(dpsTaken, source) -> void:
+func hit(dpsTaken, attackType, source) -> void:
 	if (current_state != STATE.CHARGE_START && current_state != STATE.CHARGE_MID && current_state != STATE.CHARGE_END):
 		healthBar.update_healthbar(dpsTaken)
 		amount = amount + dpsTaken
@@ -174,12 +177,14 @@ func hit(dpsTaken, source) -> void:
 func shake(): 
 	shakeFree = false
 	timerShake.wait_time = ShakeDuration
+	timerShake.one_shot = true
 	camera.smoothing_speed = 5
 	camera.get_child(0).shaked = true
 	for target in targetList:
 		target.paused = true
 	timerShake.start()
 	cooldownShake_timer.wait_time = ShakeDeelay
+	cooldownShake_timer.one_shot = true
 	cooldownShake_timer.start()
 
 func set_state_idle():
@@ -223,7 +228,7 @@ func move_towards(target: Vector2, speed):
 	
 
 func attack():
-	actual_target.hit(dps)
+	actual_target.hit(dps, self)
 	
 
 func death():
@@ -289,4 +294,3 @@ func _on_CooldownShakeTimer_timeout():
 
 func _on_CooldownChargeTimer_timeout():
 	chargeFree = true
-

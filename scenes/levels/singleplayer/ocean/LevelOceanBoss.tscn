@@ -369,9 +369,6 @@ position = Vector2( 36, 55 )
 [node name="1" type="Node2D" parent="StageManager/gunZones"]
 position = Vector2( 248, 420 )
 
-[node name="1" type="Position2D" parent="StageManager/gunZones/1"]
-position = Vector2( -38, -59 )
-
 [node name="2" type="Position2D" parent="StageManager/gunZones/1"]
 position = Vector2( -13, -20 )
 
@@ -389,9 +386,6 @@ position = Vector2( -38, -60 )
 
 [node name="2" type="Position2D" parent="StageManager/gunZones/2"]
 position = Vector2( -13, -20 )
-
-[node name="3" type="Position2D" parent="StageManager/gunZones/2"]
-position = Vector2( 14, 16 )
 
 [node name="4" type="Position2D" parent="StageManager/gunZones/2"]
 position = Vector2( 43, 52 )
@@ -417,9 +411,6 @@ position = Vector2( 528, 416 )
 [node name="1" type="Position2D" parent="StageManager/gunZones/4"]
 position = Vector2( -38, -60 )
 
-[node name="2" type="Position2D" parent="StageManager/gunZones/4"]
-position = Vector2( -13, -20 )
-
 [node name="3" type="Position2D" parent="StageManager/gunZones/4"]
 position = Vector2( 14, 16 )
 
@@ -438,17 +429,11 @@ position = Vector2( -13, -20 )
 [node name="3" type="Position2D" parent="StageManager/gunZones/5"]
 position = Vector2( 14, 16 )
 
-[node name="4" type="Position2D" parent="StageManager/gunZones/5"]
-position = Vector2( 43, 52 )
-
 [node name="6" type="Node2D" parent="StageManager/gunZones"]
 position = Vector2( 624, 420 )
 
 [node name="1" type="Position2D" parent="StageManager/gunZones/6"]
 position = Vector2( -38, -60 )
-
-[node name="2" type="Position2D" parent="StageManager/gunZones/6"]
-position = Vector2( -13, -20 )
 
 [node name="3" type="Position2D" parent="StageManager/gunZones/6"]
 position = Vector2( 14, 16 )
@@ -464,9 +449,6 @@ position = Vector2( -38, -60 )
 
 [node name="2" type="Position2D" parent="StageManager/gunZones/7"]
 position = Vector2( -13, -20 )
-
-[node name="3" type="Position2D" parent="StageManager/gunZones/7"]
-position = Vector2( 14, 16 )
 
 [node name="4" type="Position2D" parent="StageManager/gunZones/7"]
 position = Vector2( 43, 52 )
@@ -526,8 +508,8 @@ margin_top = 57.0
 margin_right = 1507.0
 margin_bottom = 232.0
 rect_scale = Vector2( 0.293, 0.296 )
-max_value = 20.0
-value = 20.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 7 )
 
 [node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
@@ -825,7 +807,7 @@ texture = ExtResource( 3 )
 position = Vector2( 131, 219 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 10
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -833,7 +815,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 10
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -841,7 +823,7 @@ playing = true
 position = Vector2( 1157, 165 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 9
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -849,7 +831,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 8
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -857,7 +839,7 @@ playing = true
 position = Vector2( 456, 144 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 8
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -865,7 +847,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 7
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -873,7 +855,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -881,7 +863,7 @@ playing = true
 position = Vector2( 1508, 258 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -889,7 +871,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 6
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -897,7 +879,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 5
+frame = 4
 speed_scale = 1.8
 playing = true
 
@@ -905,7 +887,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 5
+frame = 4
 speed_scale = 1.8
 playing = true
 
@@ -913,7 +895,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 3
 speed_scale = 1.8
 playing = true
 
@@ -921,7 +903,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 3
 speed_scale = 1.8
 playing = true
 
