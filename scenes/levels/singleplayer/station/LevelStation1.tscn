@@ -48,22 +48,18 @@ outline_size = 2
 font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1068, 0, 355, 108 )
 
@@ -782,7 +778,7 @@ bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -2407.87, 512 )
+position = Vector2( -2410, 509 )
 z_index = -2
 script = ExtResource( 11 )
 increment = 1173

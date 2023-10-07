@@ -218,14 +218,15 @@ func _get_direction() -> Vector2:
 	
 
 func hit(dps, source):
-	if invincible == false:
-		if !boss:
-			if sceneManager.points > 0:
-				sceneManager.points -= 20
-			sceneManager.hit += 1
-		if current_state != STATE.HIT || current_state != STATE.DIED:
-			current_state = STATE.HIT
-			emit_signal("update_healthbar", dps)
+	if current_state != STATE.DIED:
+		if invincible == false:
+			if !boss:
+				if sceneManager.points > 0:
+					sceneManager.points -= 20
+				sceneManager.hit += 1
+			if current_state != STATE.HIT || current_state != STATE.DIED:
+				current_state = STATE.HIT
+				emit_signal("update_healthbar", dps)
 		
 	
 
