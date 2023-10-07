@@ -7,7 +7,7 @@ onready var playMenu: Control = get_parent().get_node("PlayMenu")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("skipBoss"):
-		get_tree().change_scene("res://scenes/levels/singleplayer/ocean/LevelOceanBoss.tscn")
+		get_tree().change_scene("res://scenes/levels/singleplayer/station/LevelStationBoss.tscn")
 
 func _on_StartBtn_pressed():
 	visible = false

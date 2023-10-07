@@ -3,6 +3,9 @@ extends Node
 const save_path = "user://save_data.save"
 var game_data = {}
 
+func _process(delta):
+	pass
+
 func save_game():
 	var file = File.new()
 	file.open(save_path, File.WRITE)
