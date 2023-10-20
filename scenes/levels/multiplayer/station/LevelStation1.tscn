@@ -864,7 +864,7 @@ __meta__ = {
 script = ExtResource( 29 )
 
 [node name="Commands" type="Sprite" parent="."]
-position = Vector2( 372, 1126 )
+position = Vector2( 524, 1126 )
 texture = ExtResource( 31 )
 script = ExtResource( 32 )
 
