@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
-[ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/UI/bosses/the gun/barra vita the gun.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
@@ -108,9 +107,6 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=43]
-extents = Vector2( 54.1429, 41.2791 )
 
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
@@ -541,49 +537,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -611,295 +607,6 @@ __meta__ = {
 script = ExtResource( 17 )
 boss = true
 randomShackeStrenght = 10.0
-
-[node name="Node" type="Node2D" parent="."]
-visible = false
-position = Vector2( -98, 455 )
-
-[node name="Lv1-DObj2" type="Sprite" parent="Node"]
-position = Vector2( 431, 821 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj2/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj11" type="Sprite" parent="Node"]
-position = Vector2( 386, 784 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj11/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj6" type="Sprite" parent="Node"]
-position = Vector2( 431, 821 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj6/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj3" type="Sprite" parent="Node"]
-position = Vector2( 578, 809 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj3/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj4" type="Sprite" parent="Node"]
-position = Vector2( 635, 844 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj4/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj5" type="Sprite" parent="Node"]
-position = Vector2( 514, 832 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj5/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj7" type="Sprite" parent="Node"]
-position = Vector2( 553, 865 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj7/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj8" type="Sprite" parent="Node"]
-position = Vector2( 618, 885 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj8/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj9" type="Sprite" parent="Node"]
-position = Vector2( 402, 858 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj9/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj10" type="Sprite" parent="Node"]
-position = Vector2( 468, 879 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj10/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj22" type="Sprite" parent="Node"]
-position = Vector2( 411, 880 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj22"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj22/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj12" type="Sprite" parent="Node"]
-position = Vector2( 544, 909 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj12/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj13" type="Sprite" parent="Node"]
-position = Vector2( 666, 922 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj13/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj15" type="Sprite" parent="Node"]
-position = Vector2( 612, 930 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj15/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj16" type="Sprite" parent="Node"]
-position = Vector2( 674, 969 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj16/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj17" type="Sprite" parent="Node"]
-position = Vector2( 470, 935 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj17"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj17/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj18" type="Sprite" parent="Node"]
-position = Vector2( 542, 942 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj18"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj18/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj20" type="Sprite" parent="Node"]
-position = Vector2( 568, 977 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj20"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj20/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj21" type="Sprite" parent="Node"]
-position = Vector2( 486, 981 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj21"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj21/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
 
 [node name="Lv2-SObj" type="Sprite" parent="."]
 position = Vector2( 580, 1287 )
