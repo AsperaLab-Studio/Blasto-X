@@ -1,8 +1,7 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tile/metro/lvl 2 m/metro1Tile1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/audio/ost/lvls station/lvl 2-s.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/background/sea/sea1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
@@ -12,15 +11,11 @@
 [ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://scenes/tile/station/lvl 2 s/station2Tile1.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/tile/station/lvl 2 s/station2Tile2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
 [ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
 [ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/tile/station/lvl 2 s/station2Tile3.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/img/frontground/obj/LV2-S OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=27]
@@ -49,18 +44,22 @@ outline_size = 2
 font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1068, 0, 355, 108 )
 
@@ -85,70 +84,6 @@ border_width_bottom = 23
 border_color = Color( 0.839216, 0, 1, 1 )
 shadow_color = Color( 1, 0.6, 0.6, 0.6 )
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 15745.8, 285.783 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 1990.15, 120.176 )
-
-[sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 7890.29, 291.611 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 199, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 398, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 597, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 796, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 995, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
-region = Rect2( 1194, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
-region = Rect2( 1393, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 1 )
-region = Rect2( 1592, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
-region = Rect2( 1791, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 1 )
-region = Rect2( 1990, 0, 199, 114 )
-
-[sub_resource type="SpriteFrames" id=19]
-animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "default",
-"speed": 12.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=34]
-extents = Vector2( 63.75, 3.5 )
-
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
 __meta__ = {
@@ -156,7 +91,7 @@ __meta__ = {
 }
 
 [node name="StageManager" type="Node2D" parent="."]
-position = Vector2( -680, -496 )
+position = Vector2( -554, -554 )
 script = ExtResource( 10 )
 enemy_types = [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 34 ) ]
 next_stage = "station/LevelStation3"
@@ -189,11 +124,11 @@ position = Vector2( 0, 761.004 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="1" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1500, 857.787 )
+position = Vector2( 982, 857.787 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="2" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 3000, 784.444 )
+position = Vector2( 1019, 784.444 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="3" type="Position2D" parent="StageManager/Positions"]
@@ -562,7 +497,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -784,43 +719,10 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="border" type="Node" parent="."]
-
-[node name="Top" type="StaticBody2D" parent="border"]
-position = Vector2( 121.151, 321.426 )
-scale = Vector2( 0.58, 0.57 )
-collision_layer = 2
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Top"]
-position = Vector2( 15527.8, 482.173 )
-shape = SubResource( 6 )
-
-[node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 12.83 )
-rotation = 1.5708
-scale = Vector2( 0.57, 0.58 )
-collision_layer = 2
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Left"]
-position = Vector2( 870.27, 780.269 )
-shape = SubResource( 7 )
-
-[node name="Bottom" type="StaticBody2D" parent="border"]
-position = Vector2( 0, 639 )
-scale = Vector2( 0.58, 0.57 )
-collision_layer = 2
-collision_mask = 13
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="border/Bottom"]
-position = Vector2( 7826.08, 843.656 )
-shape = SubResource( 22 )
-
 [node name="PlayersList" type="Node2D" parent="."]
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 25.4528, 1232.18 )
+position = Vector2( 3, 1132 )
 scale = Vector2( 1, 1 )
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
@@ -831,12 +733,14 @@ bus = "Music"
 script = ExtResource( 8 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -2408, 512 )
+position = Vector2( -424, 617 )
 z_index = -2
 script = ExtResource( 11 )
-increment = 1568
+increment = 543
+x = 150
 n_positions = 8
-scenes = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 20 ) ]
+horizonal_vertical = true
+scenes = [ ExtResource( 1 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
@@ -844,242 +748,6 @@ position = Vector2( 8872, 1192 )
 scale = Vector2( 0.995586, 0.97842 )
 z_index = 5
 texture = ExtResource( 18 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="background2" type="Node" parent="ParallaxBackground"]
-
-[node name="Sea1" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 960, 540 )
-texture = ExtResource( 3 )
-
-[node name="obj" type="Node" parent="ParallaxBackground"]
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1368.43, 522.308 )
-scale = Vector2( 0.812395, 0.784622 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 588.103, 50.5414 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1644.18, 125.905 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 294.987, 271.825 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 564.379, 635.503 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1799.08, 696.116 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1022.34, 361.622 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 19 )
-frame = 5
-playing = true
-
-[node name="obj" type="Node" parent="."]
-
-[node name="up" type="Node2D" parent="obj"]
-visible = false
-position = Vector2( -392, 3 )
-
-[node name="Lv2-SObj2" type="Sprite" parent="obj/up"]
-position = Vector2( 693, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj2/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj3" type="Sprite" parent="obj/up"]
-position = Vector2( 1462, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj3/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj4" type="Sprite" parent="obj/up"]
-position = Vector2( 2941, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj4/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj5" type="Sprite" parent="obj/up"]
-position = Vector2( 4159, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj5/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj6" type="Sprite" parent="obj/up"]
-position = Vector2( 5372, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj6/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj7" type="Sprite" parent="obj/up"]
-position = Vector2( 6105, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj7/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj8" type="Sprite" parent="obj/up"]
-position = Vector2( 7215, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Lv2-SObj8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Lv2-SObj8/StaticBody2D"]
-position = Vector2( -29, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Node2D" type="Node2D" parent="obj/up"]
-
-[node name="Node2D2" type="Node2D" parent="obj/up"]
-
-[node name="Lv2-SObj9" type="Sprite" parent="obj/up/Node2D2"]
-position = Vector2( 2546, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 6
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D2/Lv2-SObj9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D2/Lv2-SObj9/StaticBody2D"]
-position = Vector2( -5.5, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj10" type="Sprite" parent="obj/up/Node2D2"]
-position = Vector2( 2637, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 8
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D2/Lv2-SObj10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D2/Lv2-SObj10/StaticBody2D"]
-position = Vector2( -11.75, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Node2D3" type="Node2D" parent="obj/up"]
-position = Vector2( 1775, 0 )
-
-[node name="Lv2-SObj9" type="Sprite" parent="obj/up/Node2D3"]
-position = Vector2( 2546, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 6
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D3/Lv2-SObj9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D3/Lv2-SObj9/StaticBody2D"]
-position = Vector2( -5.5, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj10" type="Sprite" parent="obj/up/Node2D3"]
-position = Vector2( 2637, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 7
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D3/Lv2-SObj10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D3/Lv2-SObj10/StaticBody2D"]
-position = Vector2( -11.75, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj11" type="Sprite" parent="obj/up/Node2D3"]
-position = Vector2( 2749, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 7
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D3/Lv2-SObj11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D3/Lv2-SObj11/StaticBody2D"]
-position = Vector2( -11.75, -41.5 )
-shape = SubResource( 34 )
-
-[node name="Lv2-SObj12" type="Sprite" parent="obj/up/Node2D3"]
-position = Vector2( 2861, 816 )
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 3
-frame = 8
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/Node2D3/Lv2-SObj12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/Node2D3/Lv2-SObj12/StaticBody2D"]
-position = Vector2( -11.75, -41.5 )
-shape = SubResource( 34 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 329, 1208 )
