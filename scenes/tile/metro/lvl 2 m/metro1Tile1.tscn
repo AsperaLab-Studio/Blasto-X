@@ -27,7 +27,7 @@ extents = Vector2( 1990.15, 120.176 )
 extents = Vector2( 7890.29, 291.611 )
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -40, -24 )
+position = Vector2( -216, -24 )
 
 [node name="Lv1-SBack" type="Sprite" parent="."]
 position = Vector2( 236, -159 )
@@ -62,7 +62,30 @@ texture = ExtResource( 1 )
 hframes = 3
 frame = 2
 
+[node name="Lv1-SBack4" type="Sprite" parent="."]
+position = Vector2( 1409, -159 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Lv1-SFore4" type="Sprite" parent="."]
+position = Vector2( 1496, 112 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="Lv1-SBack5" type="Sprite" parent="."]
+position = Vector2( 1800, -159 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Lv1-SFore5" type="Sprite" parent="."]
+position = Vector2( 1887, 112 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="Node2D"]
 position = Vector2( 418.167, 7 )
@@ -167,7 +190,7 @@ position = Vector2( 15527.8, 482.173 )
 shape = SubResource( 5 )
 
 [node name="Left" type="StaticBody2D" parent="border"]
-position = Vector2( 386.667, 12.83 )
+position = Vector2( 475, 12.83 )
 rotation = 1.5708
 scale = Vector2( 0.57, 0.58 )
 collision_layer = 2

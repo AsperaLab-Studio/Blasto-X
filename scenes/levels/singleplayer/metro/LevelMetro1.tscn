@@ -50,18 +50,22 @@ outline_size = 2
 font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1068, 0, 355, 108 )
 
@@ -549,7 +553,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -835,14 +839,13 @@ n_positions = 7
 scenes = [ ExtResource( 13 ), ExtResource( 1 ), ExtResource( 3 ) ]
 
 [node name="Start-EndTile" type="Sprite" parent="floor"]
-position = Vector2( 9715, 866 )
-scale = Vector2( 1, 1.007 )
+position = Vector2( 9717, 867 )
 texture = ExtResource( 20 )
 hframes = 2
 frame = 1
 
 [node name="Start-EndTile2" type="Sprite" parent="floor"]
-position = Vector2( 1085, 867 )
+position = Vector2( 1084, 867 )
 texture = ExtResource( 20 )
 hframes = 2
 

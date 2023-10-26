@@ -6,6 +6,7 @@ export(int) var current_stage := 0
 export var next_stage = ""
 export var current_level = ""
 export var totalFightPhases = 2
+export(bool) var horizonal_vertical = false
 
 onready var camera : Camera2D = get_parent().get_node("Camera2D")
 onready var wall: StaticBody2D = $MovingWall
