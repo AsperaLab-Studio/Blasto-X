@@ -217,7 +217,7 @@ func _get_direction() -> Vector2:
 	return input_direction
 	
 
-func hit(dps, source):
+func hit(dps, type, source):
 	if current_state != STATE.DIED:
 		if invincible == false:
 			if !boss:

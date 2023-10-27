@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lvl_metropolis.mp3-bd79df1696969fd9b72e453f569b88f6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/ost/lvls city/lvl_metropolis.mp3"
+dest_files=[ "res://.import/lvl_metropolis.mp3-bd79df1696969fd9b72e453f569b88f6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
