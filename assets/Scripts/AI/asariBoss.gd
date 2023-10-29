@@ -14,11 +14,13 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
-enum STATE {CHASE, ATTACK, TELEPORT_START, TELEPORT_MID_, TELEPORT_FINISH, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, CHARGE, WAIT, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var charge_speed := 100
+export(float) var jump_speed := 50
+export(float) var fall_speed := 50
 export(int) var dps := 10
 export(int) var dpsCharge := 20
 export(int) var HP := 5
@@ -29,6 +31,7 @@ export(float) var ChargeDeelay := 5.0
 var current_state = STATE.CHASE
 var actual_target: Player = null
 var directionPlayer = Vector2()
+var directionJump = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
 var healthBar = null
@@ -37,7 +40,6 @@ var paused = false
 var areaCollided = null
 var targetList = null
 
-var shakeFree: bool = false
 var chargeFree: bool = false
 
 var sceneManager = null
@@ -47,54 +49,72 @@ func _ready():
 	healthBar = UIHealthBar
 	
 	sceneManager = get_parent().get_parent()
-	cooldownShake_timer.wait_time = ShakeDeelay
-	cooldownShake_timer.one_shot = true
-	cooldownShake_timer.start()
-	cooldownCharge_timer.wait_time = ChargeDeelay
-	cooldownCharge_timer.one_shot = true
-	cooldownCharge_timer.start()
 	
 
 func _process(_delta: float) -> void:
 	actual_target = select_target()
 	
-	if chargeFree && (current_state != STATE.SHAKE &&
-		current_state != STATE.DIED):
-		current_state = STATE.CHARGE_START
-	elif shakeFree && (
-		current_state != STATE.CHARGE_START && 
-		current_state != STATE.CHARGE_MID && 
-		current_state != STATE.CHARGE_END &&
-		current_state != STATE.DIED):
-		current_state = STATE.SHAKE
-	
 	if(!paused):
-		func _process(delta):
-	match current_state:
+
+		match current_state:
 			STATE.HIT:
-
-			STATE.CHASE:
-
-			STATE.WAIT:
-
-			STATE.IDLE:
-
-			STATE.ATTACK:
-
-			STATE.SHAKE:
+				anim_player.play("hit")
 				
-			STATE.TELEPORT_START
-			
-			STATE.TELEPORT_MID
-			
-			STATE.TELELPORT_FINISH
-
-			STATE.CHARGE_START:
-
-			STATE.CHARGE_MID:
-
-			STATE.CHARGE_END:
-
+			STATE.CHASE:
+				anim_player.play("move")
+				if !near_player:
+					move_towards(actual_target.global_position, moving_speed)
+				else:
+					current_state = STATE.WAIT
+					
+			STATE.WAIT:
+				if near_player:
+					anim_player.play("idle")
+					
+			STATE.IDLE:
+				anim_player.play("idle")
+				if !near_enemy:
+					current_state = STATE.WAIT
+					
+			STATE.ATTACK:
+				if near_player && !actual_target.invincible:
+						anim_player.play("attack")
+				elif anim_player.current_animation != "attack":
+					current_state = STATE.WAIT
+					attack_delay_timer.stop()
+					
+			STATE.JUMP_START:
+				anim_player.play("JumpStart")
+				move_and_slide(Vector2(global_position.x, directionJump.y) * jump_speed)
+				#signal for asari boss manager
+				
+			STATE.JUMP_MID:
+				global_position = (Vector2(directionPlayer.x, global_position.y))
+				current_state = STATE.JUMP_FINISH
+				
+			STATE.JUMP_FINISH:
+				anim_player.play("JumpFinish")
+				move_and_slide(Vector2(global_position.x, directionPlayer.y) * fall_speed)
+				anim_player.play("Landing")
+				#area damage
+				current_state = STATE.WAIT
+				
+			STATE.CHARGE:
+				if anim_player.current_animation != "Charge":
+					anim_player.play("Charge")
+				
+				if directionPlayer.x < 0:
+					sprite.flip_h = true
+					if pivot.scale.x > 0:
+						pivot.scale.x = - pivot.scale.x
+					
+				elif directionPlayer.x > 0:
+					sprite.flip_h = false
+					if pivot.scale.x < 0:
+						pivot.scale.x = - pivot.scale.x
+						
+				move_and_slide(directionPlayer * charge_speed)
+				
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -135,19 +155,6 @@ func hit(dpsTaken, attackType, source) -> void:
 		else:
 			current_state = STATE.HIT
 		
-
-func shake(): 
-	shakeFree = false
-	timerShake.wait_time = ShakeDuration
-	timerShake.one_shot = true
-	camera.smoothing_speed = 5
-	camera.get_child(0).shaked = true
-	for target in targetList:
-		target.paused = true
-	timerShake.start()
-	cooldownShake_timer.wait_time = ShakeDeelay
-	cooldownShake_timer.one_shot = true
-	cooldownShake_timer.start()
 
 func set_state_idle():
 	camera.smoothing_speed = 0
@@ -251,8 +258,3 @@ func _on_TimerShake_timeout():
 func _on_TimerCharge_timeout():
 	pass
 
-func _on_CooldownShakeTimer_timeout():
-	shakeFree = true
-
-func _on_CooldownChargeTimer_timeout():
-	chargeFree = true

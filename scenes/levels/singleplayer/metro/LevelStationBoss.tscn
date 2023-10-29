@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
-[ext_resource path="res://scenes/levels/singleplayer/metro/AsariBossManager.gd" type="Script" id=9]
+[ext_resource path="res://assets/Scripts/Managers/AsariBossManager.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/UI/bosses/the gun/barra vita the gun.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
@@ -27,9 +27,7 @@
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=25]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
-[ext_resource path="res://scenes/pg/bosses/turianBoss.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
-[ext_resource path="res://scenes/pg/bosses/kroganBoss.tscn" type="PackedScene" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -123,19 +121,14 @@ current_level = "desert/LevelDesertBoss"
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
-[node name="TurianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 817, 867 )
-HP = 20
-shoot_delay = 3.0
-
-[node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 30 )]
-
 [node name="AsariBossManager" type="Node2D" parent="StageManager/EnemiesContainer"]
 script = ExtResource( 9 )
 
 [node name="asariBoss" parent="StageManager/EnemiesContainer/AsariBossManager" instance=ExtResource( 20 )]
+position = Vector2( 768, 824 )
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer/AsariBossManager" instance=ExtResource( 20 )]
+position = Vector2( 592, 870 )
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )
@@ -518,49 +511,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="obj" type="Node" parent="."]

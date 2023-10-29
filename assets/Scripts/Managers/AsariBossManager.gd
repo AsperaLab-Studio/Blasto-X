@@ -1,7 +1,5 @@
 extends Node2D
 
-enum STATE {CHASE, ATTACK, TELEPORT_START, TELEPORT_MID_, TELEPORT_FINISH, CHARGE_START, CHARGE_MID, CHARGE_END, WAIT, IDLE, HIT, DIED}
-
 var asari_boss_1 = get_child(1)
 var asari_boss_2 = get_child(2)
 
