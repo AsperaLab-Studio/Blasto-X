@@ -1,31 +1,31 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://scenes/tile/metro/lvl 2 m/metro1Tile1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/audio/ost/lvls station/lvl 2-s.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
-[ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=7]
-[ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=8]
-[ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=9]
-[ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=10]
-[ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
-[ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=15]
-[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=16]
-[ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=18]
-[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=19]
-[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=22]
+[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=8]
+[ext_resource path="res://assets/audio/ost/lvls station/lvl 2-s.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/img/UI/go.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=11]
+[ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=12]
+[ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=13]
+[ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=14]
+[ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=15]
+[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=16]
+[ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=17]
+[ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=18]
+[ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/pg/singleplayer/turian.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/tile/metro/lvl 2 m/metro2Tile1.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=27]
-[ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=28]
-[ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
-[ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
-[ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=31]
-[ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=32]
-[ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
-[ext_resource path="res://scenes/pg/singleplayer/turian.tscn" type="PackedScene" id=34]
+[ext_resource path="res://assets/Scripts/Managers/SceneManager.gd" type="Script" id=25]
+[ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
@@ -44,23 +44,19 @@ outline_size = 2
 font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 1068, 0, 355, 108 )
 
 [sub_resource type="SpriteFrames" id=32]
@@ -92,8 +88,8 @@ __meta__ = {
 
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -554, -554 )
-script = ExtResource( 10 )
-enemy_types = [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 34 ) ]
+script = ExtResource( 25 )
+enemy_types = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ) ]
 next_stage = "station/LevelStation3"
 current_level = "station/LevelStation2"
 
@@ -124,27 +120,27 @@ position = Vector2( 0, 761.004 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="1" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1791, 870 )
+position = Vector2( 1545, 856 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="2" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1792, 1414 )
+position = Vector2( 1552, 1431 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="3" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1797, 1975 )
+position = Vector2( 1557, 1978 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="4" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1781, 2500 )
+position = Vector2( 1538, 2517 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="5" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1795, 3039 )
+position = Vector2( 1559.8, 3067.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="6" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1802, 3573 )
+position = Vector2( 1566.8, 3601.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="EnemiesSpawn" type="Node" parent="StageManager"]
@@ -484,20 +480,20 @@ visible = false
 position = Vector2( 958.351, 539.915 )
 scale = Vector2( 1.00097, 1.00097 )
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 
 [node name="WIN" type="Sprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 963.059, 541.221 )
 z_index = 1
-texture = ExtResource( 15 )
+texture = ExtResource( 8 )
 
 [node name="Go" type="AnimatedSprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -507,27 +503,27 @@ playing = true
 [node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 235, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
+texture = ExtResource( 12 )
 
 [node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 204, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
+texture = ExtResource( 12 )
 
 [node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Blasto"]
 position = Vector2( 172, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 22 )
+texture = ExtResource( 12 )
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
-script = ExtResource( 9 )
+script = ExtResource( 15 )
 
 [node name="Blasto" type="Node2D" parent="GUI/UI/HealthPlayerContainer"]
 
 [node name="ConiceBarraVita" type="Sprite" parent="GUI/UI/HealthPlayerContainer/Blasto"]
 position = Vector2( 293.239, 82.7536 )
 scale = Vector2( 0.295394, 0.289558 )
-texture = ExtResource( 12 )
+texture = ExtResource( 7 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthPlayerContainer/Blasto"]
 margin_left = 146.0
@@ -537,7 +533,7 @@ margin_bottom = 232.0
 rect_scale = Vector2( 0.293, 0.296 )
 max_value = 10.0
 value = 10.0
-texture_progress = ExtResource( 7 )
+texture_progress = ExtResource( 5 )
 
 [node name="ShowedPoints" type="Label" parent="GUI/UI"]
 margin_left = 1716.0
@@ -553,22 +549,22 @@ margin_left = 1764.0
 margin_top = 954.0
 margin_right = 1804.0
 margin_bottom = 994.0
-script = ExtResource( 33 )
-rate_list = [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 27 ) ]
+script = ExtResource( 16 )
+rate_list = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ]
 rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
 visible = false
 scale = Vector2( 0.520833, 0.520833 )
 z_index = 1
-texture = ExtResource( 28 )
+texture = ExtResource( 2 )
 
 [node name="pauseMenu" type="Control" parent="GUI"]
 pause_mode = 2
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
 [node name="mainPauseMenu" type="Control" parent="GUI/pauseMenu"]
 margin_right = 40.0
@@ -721,33 +717,33 @@ value = 1.0
 
 [node name="PlayersList" type="Node2D" parent="."]
 
-[node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 41, 2963 )
+[node name="Blasto" parent="PlayersList" instance=ExtResource( 23 )]
+position = Vector2( 201, 1299 )
 scale = Vector2( 1, 1 )
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
 pause_mode = 2
-stream = ExtResource( 2 )
+stream = ExtResource( 9 )
 volume_db = 2.0
 bus = "Music"
-script = ExtResource( 8 )
+script = ExtResource( 26 )
 
 [node name="floor" type="Node2D" parent="."]
 position = Vector2( -424, 736 )
 z_index = -2
-script = ExtResource( 11 )
+script = ExtResource( 14 )
 increment = 543
 x = 150
 n_positions = 6
 horizonal_vertical = true
-scenes = [ ExtResource( 1 ) ]
+scenes = [ ExtResource( 22 ) ]
 
 [node name="desert1 door" type="Sprite" parent="."]
 visible = false
 position = Vector2( 8872, 1192 )
 scale = Vector2( 0.995586, 0.97842 )
 z_index = 5
-texture = ExtResource( 18 )
+texture = ExtResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 329, 1208 )
@@ -763,13 +759,13 @@ drag_margin_left = 0.11
 drag_margin_right = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 30 )
+script = ExtResource( 13 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="shake" type="Node2D" parent="Camera2D"]
-script = ExtResource( 29 )
+script = ExtResource( 17 )
 
 [connection signal="area_entered" from="StageManager/MovingWall/AreaGo" to="PlayersList/Blasto" method="_on_AreaGo_area_entered"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
