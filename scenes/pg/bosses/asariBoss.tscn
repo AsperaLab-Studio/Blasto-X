@@ -328,8 +328,6 @@ z_index = -1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )
-dps = 1
-dpsCharge = 2
 ChargeDeelay = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -399,6 +397,7 @@ scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
 [node name="FallCollision" type="Area2D" parent="Pivot"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/FallCollision"]
 position = Vector2( 0, 25 )
@@ -427,5 +426,6 @@ bus = "SFX"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="CooldownChargeTimer" to="." method="_on_CooldownChargeTimer_timeout"]
-[connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_exited"]
+[connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]

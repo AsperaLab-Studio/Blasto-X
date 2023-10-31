@@ -14,7 +14,7 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
-enum STATE {CHASE, ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, SPRINT, WAIT, IDLE, HIT, DIED}
+enum STATE {CHASE, ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, SPRINT, WAIT, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
@@ -73,11 +73,6 @@ func _process(_delta: float) -> void:
 				if near_player:
 					anim_player.play("idle")
 					
-			STATE.IDLE:
-				anim_player.play("idle")
-				if !near_enemy:
-					current_state = STATE.WAIT
-					
 			STATE.ATTACK:
 				actual_dps = dpsAttack
 				if near_player && !actual_target.invincible:
@@ -97,28 +92,21 @@ func _process(_delta: float) -> void:
 				
 			STATE.JUMP_FINISH:
 				actual_dps = dpsLanding
+				directionPlayer = actual_target
 				anim_player.play("JumpFinish")
-				move_and_slide(Vector2(global_position.x, directionPlayer.y) * fall_speed)
+				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
 				anim_player.play("Landing")
 				#area damage
 				current_state = STATE.WAIT
 				
 			STATE.SPRINT:
 				actual_dps = dpsSprint
-				if anim_player.current_animation != "Sprint":
-					anim_player.play("Sprint")
 				
-				if directionPlayer.x < 0:
-					sprite.flip_h = true
-					if pivot.scale.x > 0:
-						pivot.scale.x = - pivot.scale.x
-					
-				elif directionPlayer.x > 0:
-					sprite.flip_h = false
-					if pivot.scale.x < 0:
-						pivot.scale.x = - pivot.scale.x
-						
-				move_and_slide(directionPlayer * charge_speed)
+				var targetPositionStamp = Vector2()
+				targetPositionStamp.x = actual_target.global_position.x
+				targetPositionStamp.y = actual_target.global_position.y
+				directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
+				move_towards(directionPlayer, charge_speed)
 				
 				if anim_player.current_animation != "Sprint":
 					current_state = STATE.WAIT
@@ -155,34 +143,15 @@ func select_target() -> Player:
 
 
 func hit(dpsTaken, attackType, source) -> void:
-	if (current_state != STATE.JUMP_START && current_state != STATE.JUMP_MID && current_state != STATE.JUMP_FINISH && current_state != STATE.CHARGE):
+	if (current_state != STATE.JUMP_START && current_state != STATE.JUMP_MID 
+		&& current_state != STATE.JUMP_FINISH && current_state != STATE.CHARGE):
 		healthBar.update_healthbar(dpsTaken)
 		amount = amount + dpsTaken
 		if amount >= HP:
 			current_state = STATE.DIED
 		else:
 			current_state = STATE.HIT
-		
-
-func set_state_idle():
-	camera.smoothing_speed = 0
-	camera.get_child(0).shaked = false #!!! essential?
-	for target in targetList:
-		target.paused = false
 	
-
-func Charge():
-	chargeFree = false
-	current_state = STATE.CHARGE_MID
-	var targetPositionStamp = Vector2()
-	targetPositionStamp.x = actual_target.global_position.x
-	targetPositionStamp.y = actual_target.global_position.y
-	directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
-	
-
-func ChargeEnd():
-	pass
-
 func move_towards(target: Vector2, speed): #!!! to use instead move_and_slide?
 	if target:
 		if global_position.y > target.y:
@@ -216,9 +185,8 @@ func pause():
 	anim_player.stop()
 	set_process(false)
 	
-
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	if current_state == STATE.CHARGE_MID:
+	if current_state == STATE.SPRINT:
 		if area.name != "BulletArea":
 			anim_player.play("ChargeEnd")
 			current_state = STATE.CHARGE_END
@@ -258,11 +226,20 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = STATE.CHASE
 		
-	
-
-func _on_TimerShake_timeout():
-	set_state_idle()
 
 func _on_TimerCharge_timeout():
 	pass
 
+
+
+func _on_FallCollision_area_entered(area):
+	if area.owner.is_in_group("player"):
+		if current_state == STATE.JUMP_FINISH && global_position.y == directionPlayer.y:
+			attack()
+
+
+func _on_AttackCollision_area_entered(area : Area2D):
+	if area.owner.is_in_group("player"):
+		if current_state == STATE.SPRINT:
+			attack()
+			
