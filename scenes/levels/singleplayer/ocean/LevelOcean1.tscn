@@ -33,7 +33,6 @@
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
 [ext_resource path="res://scenes/pg/singleplayer/salarian group.tscn" type="PackedScene" id=34]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
 
