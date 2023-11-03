@@ -14,7 +14,7 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
 onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
-enum STATE {CHASE, ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, SPRINT, WAIT, HIT, DIED}
+enum STATE {ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, SPRINT, WAIT, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
@@ -28,6 +28,7 @@ export(int) var HP := 5
 export(float) var ShakeDuration := 5.0
 export(float) var ShakeDeelay := 5.0
 export(float) var ChargeDeelay := 5.0
+export(float) var SprintDistance := 5.0
 
 var current_state = STATE.CHASE
 var actual_target: Player = null
@@ -62,16 +63,11 @@ func _process(_delta: float) -> void:
 			STATE.HIT:
 				anim_player.play("hit")
 				
-			STATE.CHASE:
-				anim_player.play("move")
-				if !near_player:
-					move_towards(actual_target.global_position, moving_speed)
-				else:
-					current_state = STATE.WAIT
-					
 			STATE.WAIT:
 				if near_player:
 					anim_player.play("idle")
+				if !near_player:
+					current_state = STATE.JUMP_START
 					
 			STATE.ATTACK:
 				actual_dps = dpsAttack
@@ -83,8 +79,9 @@ func _process(_delta: float) -> void:
 					
 			STATE.JUMP_START:
 				anim_player.play("JumpStart")
-				move_and_slide(Vector2(global_position.x, directionJump.y) * jump_speed)
-				#signal for asari boss manager
+				if !anim_player.play("JumpStart"):
+					global_position = (Vector2(global_position.x, directionJump.y) * jump_speed)
+				#RANDOM signal for asari boss manager FOR SPRINT OR ACTUAL JUMP
 				
 			STATE.JUMP_MID:
 				global_position = (Vector2(directionPlayer.x, global_position.y))
@@ -101,7 +98,8 @@ func _process(_delta: float) -> void:
 				
 			STATE.SPRINT:
 				actual_dps = dpsSprint
-				
+				var temp_direction = rand_range(0, 1) * 2 - 1
+				global_position = Vector2((actual_target.x + SprintDistance * temp_direction), actual_target.y)
 				var targetPositionStamp = Vector2()
 				targetPositionStamp.x = actual_target.global_position.x
 				targetPositionStamp.y = actual_target.global_position.y
