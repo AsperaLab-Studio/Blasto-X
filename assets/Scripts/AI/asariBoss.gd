@@ -69,7 +69,7 @@ func _process(_delta: float) -> void:
 						attack_delay_timer.wait_time = wait_time_attack
 						attack_delay_timer.start()
 				if !near_player:
-					current_state = STATE.JUMP_START
+					current_state = STATE.JUMP
 					
 			STATE.JUMP:
 				has_sprinted = false
