@@ -1,36 +1,32 @@
 class_name asariBoss
 extends KinematicBody2D
 
+signal CallSprint
+
 onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
 onready var attack_delay_timer: Timer = $AttackDelayTimer
-onready var cooldownShake_timer: Timer = $CooldownShakeTimer
-onready var timerShake: Timer = $TimerShake
-onready var cooldownCharge_timer: Timer = $CooldownChargeTimer
-onready var timerCharge: Timer = $TimerCharge
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
-onready var UIHealthBar: Node2D = get_parent().get_parent().get_parent().get_node("GUI/UI/HealthBossContainer")
-onready var camera: Camera2D = get_parent().get_parent().get_parent().get_node("Camera2D")
-enum STATE {ATTACK, JUMP_START, JUMP_MID,JUMP_FINISH, SPRINT, WAIT, HIT, DIED}
+
+enum STATE {JUMP, LANDING, SPRINT, WAIT, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var charge_speed := 100
 export(float) var jump_speed := 50
 export(float) var fall_speed := 50
-export(int) var dpsAttack := 10
-export(int) var dpsSprint := 20
-export(int) var dpsLanding := 15
+export(int) var dpsSprint := 15
+export(int) var dpsLanding := 20
 export(int) var HP := 5
-export(float) var ShakeDuration := 5.0
-export(float) var ShakeDeelay := 5.0
 export(float) var ChargeDeelay := 5.0
 export(float) var SprintDistance := 5.0
+export var HealthBarName = ""
+export var wait_time_attack := 1
 
-var current_state = STATE.CHASE
+var current_state = STATE.WAIT
 var actual_target: Player = null
 var directionPlayer = Vector2()
 var directionJump = Vector2()
@@ -41,18 +37,21 @@ var amount = 0
 var paused = false
 var areaCollided = null
 var targetList = null
-var actual_dps = dpsAttack
+var actual_dps = dpsSprint
+var has_sprinted : bool = false
 
+var UIHealthBar: Node2D 
 var chargeFree: bool = false
 
 var sceneManager = null
 
 func _ready():
+	UIHealthBar = get_parent().get_parent().get_parent().get_node(HealthBarName)
 	anim_player.play("idle")
 	healthBar = UIHealthBar
 	
 	sceneManager = get_parent().get_parent()
-	
+	attack_delay_timer.wait_time = wait_time_attack
 
 func _process(_delta: float) -> void:
 	actual_target = select_target()
@@ -66,39 +65,37 @@ func _process(_delta: float) -> void:
 			STATE.WAIT:
 				if near_player:
 					anim_player.play("idle")
+					if attack_delay_timer.is_stopped():
+						attack_delay_timer.wait_time = wait_time_attack
+						attack_delay_timer.start()
 				if !near_player:
 					current_state = STATE.JUMP_START
 					
-			STATE.ATTACK:
-				actual_dps = dpsAttack
-				if near_player && !actual_target.invincible:
-						anim_player.play("attack")
-				elif anim_player.current_animation != "attack":
-					current_state = STATE.WAIT
-					attack_delay_timer.stop()
-					
-			STATE.JUMP_START:
-				anim_player.play("JumpStart")
-				if !anim_player.play("JumpStart"):
+			STATE.JUMP:
+				has_sprinted = false
+				anim_player.play("Jump")
+				if !anim_player.play("Jump"):
 					global_position = (Vector2(global_position.x, directionJump.y) * jump_speed)
-				#RANDOM signal for asari boss manager FOR SPRINT OR ACTUAL JUMP
+					var temp = choose_array_numb([0, 1])
+					if temp == 0:
+						current_state = STATE.SPRINT
+					elif temp == 1:
+						current_state = STATE.LANDING
 				
-			STATE.JUMP_MID:
-				global_position = (Vector2(directionPlayer.x, global_position.y))
-				current_state = STATE.JUMP_FINISH
-				
-			STATE.JUMP_FINISH:
+			STATE.LANDING:
 				actual_dps = dpsLanding
 				directionPlayer = actual_target
-				anim_player.play("JumpFinish")
+				global_position = (Vector2(directionPlayer.x, global_position.y))
+				anim_player.play("Falling")
 				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
-				anim_player.play("Landing")
-				#area damage
+				if global_position == Vector2(global_position.x, directionPlayer.y):
+					anim_player.play("Landing")
+
 				current_state = STATE.WAIT
 				
 			STATE.SPRINT:
 				actual_dps = dpsSprint
-				var temp_direction = rand_range(0, 1) * 2 - 1
+				var temp_direction = choose_array_numb([-1, 1])
 				global_position = Vector2((actual_target.x + SprintDistance * temp_direction), actual_target.y)
 				var targetPositionStamp = Vector2()
 				targetPositionStamp.x = actual_target.global_position.x
@@ -106,7 +103,11 @@ func _process(_delta: float) -> void:
 				directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
 				move_towards(directionPlayer, charge_speed)
 				
-				if anim_player.current_animation != "Sprint":
+				if anim_player.current_animation != "Sprint" && global_position == directionPlayer:
+					anim_player.play("attack")
+					has_sprinted = true
+					
+					emit_signal("CallSprint")
 					current_state = STATE.WAIT
 				
 			STATE.DIED:
@@ -183,23 +184,6 @@ func pause():
 	anim_player.stop()
 	set_process(false)
 	
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	if current_state == STATE.SPRINT:
-		if area.name != "BulletArea":
-			anim_player.play("ChargeEnd")
-			current_state = STATE.CHARGE_END
-			if (area.owner.is_in_group("player")):
-				areaCollided = area
-	else:
-		if (area.owner.is_in_group("player")):
-			near_player = true
-		
-		if(area.owner.is_in_group("enemy")):
-			current_state = STATE.IDLE
-			near_enemy = true
-			
-		
-	
 
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	if current_state == STATE.DIED:
@@ -215,14 +199,12 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
-		current_state = STATE.ATTACK
+		current_state = STATE.JUMP
 	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "attack":
-		current_state = STATE.CHASE
 	if anim_name == "hit":
-		current_state = STATE.CHASE
+		current_state = STATE.WAIT
 		
 
 func _on_TimerCharge_timeout():
@@ -232,12 +214,26 @@ func _on_TimerCharge_timeout():
 
 func _on_FallCollision_area_entered(area):
 	if area.owner.is_in_group("player"):
-		if current_state == STATE.JUMP_FINISH && global_position.y == directionPlayer.y:
+		if current_state == STATE.LANDING && global_position.y == directionPlayer.y:
 			attack()
 
 
-func _on_AttackCollision_area_entered(area : Area2D):
-	if area.owner.is_in_group("player"):
-		if current_state == STATE.SPRINT:
-			attack()
+#func _on_AttackCollision_area_entered(area : Area2D):
+	#if area.owner.is_in_group("player"):
+		#if current_state == STATE.SPRINT:
+			#attack()
 			
+
+func choose_array_numb(array):
+	return array[randi() % array.size()]
+
+
+func _on_asariBoss_CallSprint():
+	StateToSprint()
+
+func _on_asariBoss2_CallSprint():
+	StateToSprint()
+
+func StateToSprint():
+	if has_sprinted == false:
+		current_state = STATE.SPRINT
