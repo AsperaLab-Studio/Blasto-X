@@ -190,7 +190,6 @@ z_index = -1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )
-ChargeDeelay = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.772251, -20.8911 )
@@ -284,6 +283,7 @@ stream = ExtResource( 5 )
 bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="AttackDelayTimer" to="." method="_on_Timer_timeout"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_exited"]
 [connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]
