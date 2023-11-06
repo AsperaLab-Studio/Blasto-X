@@ -11,7 +11,7 @@ onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 
-enum STATE {JUMP, LANDING, SPRINT, WAIT, HIT, DIED}
+enum STATE {JUMP, LANDING_START, LANDING_END, SPRINT_START, SPRINT_END, WAIT, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
@@ -22,14 +22,13 @@ export(int) var dpsSprint := 15
 export(int) var dpsLanding := 20
 export(int) var HP := 5
 export(float) var ChargeDeelay := 5.0
-export(float) var SprintDistance := 5.0
+export(float) var SprintDistance := 500.0
 export var HealthBarName = ""
-export var wait_time_attack := 1
+export var wait_time_attack := 3
 
 var current_state = STATE.WAIT
 var actual_target: Player = null
 var directionPlayer = Vector2()
-var directionJump = Vector2()
 var near_player: bool = false
 var near_enemy: bool = false
 var healthBar = null
@@ -39,6 +38,9 @@ var areaCollided = null
 var targetList = null
 var actual_dps = dpsSprint
 var has_sprinted : bool = false
+var sprint_direction = 1
+
+var rng
 
 var UIHealthBar: Node2D 
 var chargeFree: bool = false
@@ -46,6 +48,7 @@ var chargeFree: bool = false
 var sceneManager = null
 
 func _ready():
+	rng = RandomNumberGenerator.new()
 	UIHealthBar = get_parent().get_parent().get_parent().get_node(HealthBarName)
 	anim_player.play("idle")
 	healthBar = UIHealthBar
@@ -64,7 +67,8 @@ func _process(_delta: float) -> void:
 				
 			STATE.WAIT:
 				if near_player:
-					anim_player.play("idle")
+					if anim_player.current_animation != "idle":
+						anim_player.play("idle")
 					if attack_delay_timer.is_stopped():
 						attack_delay_timer.wait_time = wait_time_attack
 						attack_delay_timer.start()
@@ -72,35 +76,49 @@ func _process(_delta: float) -> void:
 					current_state = STATE.JUMP
 					
 			STATE.JUMP:
+				if anim_player.current_animation != "Jump":
+					anim_player.play("Jump")
 				has_sprinted = false
-				anim_player.play("Jump")
-				if !anim_player.play("Jump"):
-					global_position = (Vector2(global_position.x, directionJump.y) * jump_speed)
-					var temp = choose_array_numb([0, 1])
+				if anim_player.current_animation !="Jump":
+					global_position = Vector2(global_position.x, global_position.y - 800)
+					randomize()
+					var temp = int(rand_range(0, 2))
 					if temp == 0:
-						current_state = STATE.SPRINT
+						current_state = STATE.SPRINT_START
 					elif temp == 1:
-						current_state = STATE.LANDING
+						current_state = STATE.LANDING_START
 				
-			STATE.LANDING:
+			STATE.LANDING_START:
 				actual_dps = dpsLanding
-				directionPlayer = actual_target
+				directionPlayer = actual_target.position
 				global_position = (Vector2(directionPlayer.x, global_position.y))
-				anim_player.play("Falling")
-				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
+				
+				current_state = STATE.LANDING_END
+			
+			STATE.LANDING_END:
+#				actual_dps = dpsLanding
+#				directionPlayer = actual_target.position
+#				global_position = (Vector2(directionPlayer.x, global_position.y))
+				if anim_player.current_animation != "Falling":
+					anim_player.play("Falling")
+				var targetPositionStamp = Vector2()
+				targetPositionStamp.y = actual_target.position.y
+				move_towards(Vector2(global_position.x, targetPositionStamp.y), fall_speed)
 				if global_position == Vector2(global_position.x, directionPlayer.y):
 					anim_player.play("Landing")
-
-				current_state = STATE.WAIT
+					#STATE.WAIT on animation end
 				
-			STATE.SPRINT:
+			STATE.SPRINT_START:
 				actual_dps = dpsSprint
-				var temp_direction = choose_array_numb([-1, 1])
-				global_position = Vector2((actual_target.x + SprintDistance * temp_direction), actual_target.y)
-				var targetPositionStamp = Vector2()
-				targetPositionStamp.x = actual_target.global_position.x
-				targetPositionStamp.y = actual_target.global_position.y
-				directionPlayer = Vector2((targetPositionStamp.x - global_position.x), (targetPositionStamp.y - global_position.y)).normalized()
+				global_position = Vector2((actual_target.position.x + SprintDistance * sprint_direction), actual_target.position.y)
+				directionPlayer = Vector2((actual_target.position.x), (actual_target.position.y))
+				
+				current_state = STATE.SPRINT_END
+			
+			STATE.SPRINT_END:
+#				actual_dps = dpsSprint
+#				global_position = Vector2((actual_target.position.x + SprintDistance * sprint_direction), actual_target.position.y)
+#				directionPlayer = Vector2((actual_target.position.x), (actual_target.position.y))
 				move_towards(directionPlayer, charge_speed)
 				
 				if anim_player.current_animation != "Sprint" && global_position == directionPlayer:
@@ -118,7 +136,7 @@ func _process(_delta: float) -> void:
 				
 				anim_player.play("died")
 				
-				var directionDead = Vector2((global_position.x - actual_target.global_position.x), 0).normalized()
+				var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()
 				
 				move_and_slide(directionDead * death_speed)
 				
@@ -151,7 +169,7 @@ func hit(dpsTaken, attackType, source) -> void:
 		else:
 			current_state = STATE.HIT
 	
-func move_towards(target: Vector2, speed): #!!! to use instead move_and_slide?
+func move_towards(target: Vector2, speed):
 	if target:
 		if global_position.y > target.y:
 			z_index = 0
@@ -205,11 +223,11 @@ func _on_Timer_timeout() -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = STATE.WAIT
-		
+	if anim_name == "Landing":
+		current_state = STATE.WAIT
 
 func _on_TimerCharge_timeout():
 	pass
-
 
 
 func _on_FallCollision_area_entered(area):
@@ -217,21 +235,16 @@ func _on_FallCollision_area_entered(area):
 		if current_state == STATE.LANDING && global_position.y == directionPlayer.y:
 			attack()
 
-
-#func _on_AttackCollision_area_entered(area : Area2D):
-	#if area.owner.is_in_group("player"):
-		#if current_state == STATE.SPRINT:
-			#attack()
-			
-
 func choose_array_numb(array):
 	return array[randi() % array.size()]
 
 
 func _on_asariBoss_CallSprint():
+	sprint_direction = 1
 	StateToSprint()
 
 func _on_asariBoss2_CallSprint():
+	sprint_direction = -1
 	StateToSprint()
 
 func StateToSprint():
