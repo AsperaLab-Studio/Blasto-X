@@ -79,36 +79,20 @@ func _process(_delta: float) -> void:
 				if anim_player.current_animation != "Jump":
 					anim_player.play("Jump")
 				has_sprinted = false
-#				if anim_player.current_animation !="Jump":
-#					global_position = Vector2(global_position.x, global_position.y - 800)
-#					randomize()
-#					var temp = int(rand_range(0, 2))
-#					if temp == 0:
-#						current_state = STATE.SPRINT_START
-#					elif temp == 1:
-#						current_state = STATE.LANDING_START
-				
+			
 			STATE.LANDING_START:
-				actual_dps = dpsLanding
-				collision_shape.disabled = true
 				directionPlayer = actual_target.position
 				global_position = (Vector2(directionPlayer.x, global_position.y))
 				
 				current_state = STATE.LANDING_END
 			
 			STATE.LANDING_END:
-#				actual_dps = dpsLanding
-#				directionPlayer = actual_target.position
-#				global_position = (Vector2(directionPlayer.x, global_position.y))
 				if anim_player.current_animation != "Falling":
 					anim_player.play("Falling")
-#				var targetPositionStamp = Vector2()
-#				targetPositionStamp.y = actual_target.position.y
 				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
 				if global_position == Vector2(global_position.x, directionPlayer.y) && anim_player.current_animation != "Landing":
 					anim_player.play("Landing")
-					#STATE.WAIT on animation end
-				
+			
 			STATE.SPRINT_START:
 				actual_dps = dpsSprint
 				global_position = Vector2((actual_target.position.x + SprintDistance * sprint_direction), actual_target.position.y)
@@ -117,19 +101,12 @@ func _process(_delta: float) -> void:
 				current_state = STATE.SPRINT_END
 			
 			STATE.SPRINT_END:
-#				actual_dps = dpsSprint
-#				global_position = Vector2((actual_target.position.x + SprintDistance * sprint_direction), actual_target.position.y)
-#				directionPlayer = Vector2((actual_target.position.x), (actual_target.position.y))
 				move_towards(directionPlayer, charge_speed)
 				if anim_player.current_animation != "Sprint":
 					anim_player.play("Sprint")
 				if global_position == directionPlayer && anim_player.current_animation != "attack":
 					anim_player.play("attack")
-#					has_sprinted = true
-#
-#					emit_signal("CallSprint")
-#					current_state = STATE.WAIT
-				
+			
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -142,19 +119,11 @@ func _process(_delta: float) -> void:
 				
 				move_and_slide(directionDead * death_speed)
 				
-			
 		
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
 	
-func landing() -> void:
-	var targetPositionStamp = Vector2()
-	targetPositionStamp.y = actual_target.position.y
-	directionPlayer = targetPositionStamp
-#	if global_position == Vector2(global_position.x, directionPlayer.y):
-#		anim_player.play("Landing")
-
 func select_target() -> Player:
 	var distance: float = 100000
 	var choosedTarget: Player = null
@@ -216,50 +185,18 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 		pass
 	elif area.owner && area.owner.is_in_group("player"):
 		near_player = false
-		#current_state = STATE.CHASE
-		#attack_delay_timer.stop()
 	if area.owner && area.owner.is_in_group("enemy"):
 		near_enemy = false
-		
-	
 
 func _on_Timer_timeout() -> void:
 	if current_state == STATE.WAIT:
 		current_state = STATE.JUMP
 	
-
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "hit":
-		current_state = STATE.WAIT
-	if anim_name == "Jump":
-		global_position = Vector2(global_position.x, global_position.y - 800)
-		randomize()
-		var temp = int(rand_range(0, 2))
-		if temp == 0:
-			current_state = STATE.SPRINT_START
-		elif temp == 1:
-			current_state = STATE.LANDING_START
-	if anim_name == "Landing":
-		collision_shape.disabled = false
-		current_state = STATE.WAIT
-	if anim_name == "Sprint":
-		has_sprinted = true
-		emit_signal("CallSprint")
-	if anim_name == "attack" && current_state == STATE.SPRINT_END:
-		current_state = STATE.WAIT
-
 func _on_TimerCharge_timeout():
 	pass
 
-
-func _on_FallCollision_area_entered(area):
-	if area.owner.is_in_group("player"):
-		if current_state == STATE.LANDING && global_position.y == directionPlayer.y && anim_player.current_animation == "Landing":
-			attack()
-
 func choose_array_numb(array):
 	return array[randi() % array.size()]
-
 
 func _on_asariBoss_CallSprint():
 	sprint_direction = 1
@@ -269,11 +206,46 @@ func _on_asariBoss2_CallSprint():
 	sprint_direction = -1
 	StateToSprint()
 
-func StateToSprint():
-	if has_sprinted == false:
-		current_state = STATE.SPRINT_START
+func _on_FallCollision_area_entered(area):
+	if area.owner.is_in_group("player"):
+		if current_state == STATE.LANDING_END && global_position.y == directionPlayer.y && anim_player.current_animation == "Landing":
+			attack()
 
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "Falling":
-		landing()
+		falling()
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "hit":
+		current_state = STATE.WAIT
+	if anim_name == "Jump":
+		jumping()
+	if anim_name == "Landing":
+		collision_shape.disabled = false
+		current_state = STATE.WAIT
+	if anim_name == "Sprint":
+		has_sprinted = true
+		emit_signal("CallSprint")
+	if anim_name == "attack" && current_state == STATE.SPRINT_END:
+		current_state = STATE.WAIT
+
+func StateToSprint():
+	if has_sprinted == false:
+		current_state = STATE.SPRINT_START
+
+func jumping() -> void:
+	global_position = Vector2(global_position.x, global_position.y - 800)
+	randomize()
+	var temp = int(rand_range(0, 2))
+	if temp == 0:
+		current_state = STATE.SPRINT_START
+	elif temp == 1:
+		current_state = STATE.LANDING_START
+
+func falling() -> void:
+	actual_dps = dpsLanding
+	collision_shape.disabled = true
+	var targetPositionStamp = Vector2()
+	targetPositionStamp.y = actual_target.position.y
+	directionPlayer = targetPositionStamp
