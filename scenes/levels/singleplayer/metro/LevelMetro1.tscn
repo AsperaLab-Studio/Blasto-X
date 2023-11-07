@@ -33,7 +33,6 @@
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
 [ext_resource path="res://scenes/pg/singleplayer/turian.tscn" type="PackedScene" id=34]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )
 
@@ -112,8 +111,8 @@ __meta__ = {
 position = Vector2( -680, -496 )
 script = ExtResource( 10 )
 enemy_types = [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 34 ) ]
-next_stage = "station/LevelStation2"
-current_level = "station/LevelStation1"
+next_stage = "metro/LevelMetro2"
+current_level = "metro/LevelMetro1"
 
 [node name="MovingWall" type="StaticBody2D" parent="StageManager"]
 position = Vector2( 8936, 1272 )
@@ -550,6 +549,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
