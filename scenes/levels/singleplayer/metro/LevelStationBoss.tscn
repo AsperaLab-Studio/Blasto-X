@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=25]
 [ext_resource path="res://assets/img/UI/bosses/the leg/cornice the leg rossa.png" type="Texture" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
+[ext_resource path="res://scenes/pg/bosses/asariBoss2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
@@ -121,9 +122,11 @@ script = ExtResource( 9 )
 
 [node name="asariBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
 position = Vector2( 701, 827 )
+HealthBarName = "GUI/UIHealthBossContainer1"
 
-[node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
-position = Vector2( 592, 870 )
+[node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
+position = Vector2( 588, 830 )
+HealthBarName = "GUI/UI/HealthBossContainer2"
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )
@@ -476,7 +479,7 @@ scenes = [ ExtResource( 29 ) ]
 position = Vector2( 0, -126 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 44, 1360 )
+position = Vector2( 62, 1400 )
 scale = Vector2( 1, 1 )
 boss = true
 
@@ -525,49 +528,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]

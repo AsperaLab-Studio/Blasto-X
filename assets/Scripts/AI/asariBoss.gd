@@ -17,12 +17,12 @@ export(int) var death_speed := 150
 export(int) var moving_speed := 50
 export(int) var charge_speed := 100
 export(float) var jump_speed := 50
-export(float) var fall_speed := 50
+export(float) var fall_speed := 500
 export(int) var dpsSprint := 15
 export(int) var dpsLanding := 20
 export(int) var HP := 5
 export(float) var ChargeDeelay := 5.0
-export(float) var SprintDistance := 500.0
+export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 3
 
@@ -65,7 +65,7 @@ func _process(_delta: float) -> void:
 			STATE.HIT:
 				anim_player.play("hit")
 				
-			STATE.WAIT:
+			STATE.WAIT:  #next state -> JUMP
 				if near_player:
 					if anim_player.current_animation != "idle":
 						anim_player.play("idle")
@@ -75,32 +75,32 @@ func _process(_delta: float) -> void:
 				if !near_player:
 					current_state = STATE.JUMP
 					
-			STATE.JUMP:
+			STATE.JUMP: #jump and choose what attack to do
 				if anim_player.current_animation != "Jump":
 					anim_player.play("Jump")
 				has_sprinted = false
 			
-			STATE.LANDING_START:
+			STATE.LANDING_START: #set the target position and moves over it | next state -> LANDING_END
 				directionPlayer = actual_target.position
 				global_position = (Vector2(directionPlayer.x, global_position.y))
 				
 				current_state = STATE.LANDING_END
 			
-			STATE.LANDING_END:
+			STATE.LANDING_END: #move toward the target (downwards) | next state -> WAIT
 				if anim_player.current_animation != "Falling":
 					anim_player.play("Falling")
 				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
 				if global_position == Vector2(global_position.x, directionPlayer.y) && anim_player.current_animation != "Landing":
 					anim_player.play("Landing")
 			
-			STATE.SPRINT_START:
+			STATE.SPRINT_START: #set the target direction and teleport next to it (x axis)  | next state -> SPRINT END
 				actual_dps = dpsSprint
 				global_position = Vector2((actual_target.position.x + SprintDistance * sprint_direction), actual_target.position.y)
 				directionPlayer = Vector2((actual_target.position.x), (actual_target.position.y))
 				
 				current_state = STATE.SPRINT_END
 			
-			STATE.SPRINT_END:
+			STATE.SPRINT_END: #moves towards the player and when the animation finish it attacks |  | next state -> WAIT
 				move_towards(directionPlayer, charge_speed)
 				if anim_player.current_animation != "Sprint":
 					anim_player.play("Sprint")
@@ -199,14 +199,20 @@ func choose_array_numb(array):
 	return array[randi() % array.size()]
 
 func _on_asariBoss_CallSprint():
-	sprint_direction = 1
+	if directionPlayer.x < 660:
+		sprint_direction = 1
+	elif directionPlayer.x > 660:
+		sprint_direction = -1
 	StateToSprint()
 
 func _on_asariBoss2_CallSprint():
-	sprint_direction = -1
+	if directionPlayer.x > 210:
+		sprint_direction = -1
+	elif directionPlayer.x < 210:
+		sprint_direction = 1
 	StateToSprint()
 
-func _on_FallCollision_area_entered(area):
+func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
 	if area.owner.is_in_group("player"):
 		if current_state == STATE.LANDING_END && global_position.y == directionPlayer.y && anim_player.current_animation == "Landing":
 			attack()
@@ -222,7 +228,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Jump":
 		jumping()
 	if anim_name == "Landing":
-		collision_shape.disabled = false
+		collision_shape_body.disabled = false
 		current_state = STATE.WAIT
 	if anim_name == "Sprint":
 		has_sprinted = true
@@ -234,7 +240,7 @@ func StateToSprint():
 	if has_sprinted == false:
 		current_state = STATE.SPRINT_START
 
-func jumping() -> void:
+func jumping() -> void: #teleport upwards to "disappear" | randomizes a number and choose what attack to do
 	global_position = Vector2(global_position.x, global_position.y - 800)
 	randomize()
 	var temp = int(rand_range(0, 2))
@@ -243,9 +249,9 @@ func jumping() -> void:
 	elif temp == 1:
 		current_state = STATE.LANDING_START
 
-func falling() -> void:
+func falling() -> void: #set the target
 	actual_dps = dpsLanding
-	collision_shape.disabled = true
+	collision_shape_body.disabled = true
 	var targetPositionStamp = Vector2()
 	targetPositionStamp.y = actual_target.position.y
 	directionPlayer = targetPositionStamp
