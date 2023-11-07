@@ -18,12 +18,13 @@ onready var respawnPoint = get_node("respawnPoint")
 
 var menuShowed = false
 var players
-var bosses
+var bosses: Array
 var isMultiplayer = false
 
 func _ready():
 	players = playersParent.get_children()
-	bosses = bossParent.get_children()
+	bosses.append(bossParent.get_child(0))
+	bosses.append(bossParent.get_child(1))
 
 	if playersParent.get_child_count() == 2:
 		isMultiplayer = true

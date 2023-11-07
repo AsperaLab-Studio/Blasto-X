@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
 [ext_resource path="res://scenes/pg/bosses/asariBoss2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/Scripts/AI/AsariBossesManager.gd" type="Script" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -119,13 +120,22 @@ position = Vector2( -680, -496 )
 script = ExtResource( 9 )
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
+script = ExtResource( 30 )
+asariBossName1 = "asariBoss1"
+asariBossName2 = "asariBoss2"
 
-[node name="asariBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
+[node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
 position = Vector2( 701, 827 )
+dpsSprint = 2
+dpsLanding = 3
+HP = 10
 HealthBarName = "GUI/UIHealthBossContainer1"
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 588, 830 )
+position = Vector2( 820, 860 )
+dpsSprint = 2
+dpsLanding = 3
+HP = 10
 HealthBarName = "GUI/UI/HealthBossContainer2"
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
@@ -190,41 +200,41 @@ value = 10.0
 texture_progress = ExtResource( 14 )
 
 [node name="HealthBossContainer1" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1926, 968 )
+position = Vector2( 2520, 968 )
 script = ExtResource( 22 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer1"]
-margin_left = -1085.0
-margin_top = -26.0
-margin_right = -89.0
-margin_bottom = 60.0
-max_value = 20.0
-value = 20.0
+margin_left = -1229.47
+margin_top = -4.0
+margin_right = -649.471
+margin_bottom = 55.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 
-[node name="TheLeg1" type="Sprite" parent="GUI/UI/HealthBossContainer1"]
-position = Vector2( -581.76, 20.7754 )
-scale = Vector2( 0.661, 0.596 )
+[node name="TheLeg2" type="Sprite" parent="GUI/UI/HealthBossContainer1"]
+position = Vector2( -939.471, 20 )
+scale = Vector2( 0.383589, 0.343705 )
 texture = ExtResource( 5 )
 
 [node name="HealthBossContainer2" type="Node2D" parent="GUI/UI"]
-position = Vector2( 830, 970 )
+position = Vector2( 1424, 970 )
 script = ExtResource( 22 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer2"]
-margin_left = -1085.0
-margin_top = -26.0
-margin_right = -89.0
-margin_bottom = 60.0
-max_value = 20.0
-value = 20.0
+margin_left = -801.0
+margin_top = -4.0
+margin_right = -221.0
+margin_bottom = 55.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 
 [node name="TheLeg2" type="Sprite" parent="GUI/UI/HealthBossContainer2"]
-position = Vector2( -581.76, 20.7754 )
-scale = Vector2( 0.664756, 0.595638 )
+position = Vector2( -511, 20 )
+scale = Vector2( 0.383589, 0.343705 )
 texture = ExtResource( 26 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
@@ -528,49 +538,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -599,8 +609,8 @@ script = ExtResource( 17 )
 boss = true
 randomShackeStrenght = 10.0
 
-[connection signal="CallSprint" from="StageManager/EnemiesContainer/asariBoss" to="StageManager/EnemiesContainer/asariBoss2" method="_on_asariBoss_CallSprint"]
-[connection signal="CallSprint" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer/asariBoss" method="_on_asariBoss2_CallSprint"]
+[connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_attackDone"]
+[connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_attackDone"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]
