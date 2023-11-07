@@ -10,6 +10,7 @@ onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
+onready var jump_position2D : Position2D = $JumpPosition
 
 enum STATE {ATTACK, JUMP, LANDING, SPRINT, IDLE, HIT, DIED}
 
@@ -42,6 +43,7 @@ var sprint_direction = 1
 
 var targetPos: Vector2
 var oneTime = false
+var jumpPos: Vector2
 
 var rng
 
@@ -50,6 +52,8 @@ var chargeFree: bool = false
 
 var sceneManager = null
 
+var gp: Vector2
+
 func _ready():
 	rng = RandomNumberGenerator.new()
 	UIHealthBar = get_parent().get_parent().get_parent().get_node(HealthBarName)
@@ -57,8 +61,10 @@ func _ready():
 	healthBar = UIHealthBar
 	
 	sceneManager = get_parent().get_parent()
+	jumpPos = jump_position2D.global_position
 
 func _process(_delta: float) -> void:
+	gp = global_position
 	actual_target = select_target()
 	
 	if(!paused):
@@ -72,8 +78,9 @@ func _process(_delta: float) -> void:
 				anim_player.play("hit")
 
 			STATE.ATTACK:
-				anim_player.play("attack")	
-
+				if near_player && !actual_target.invincible:
+					anim_player.play("attack")
+					
 				if anim_player.current_animation != "attack":
 					emit_signal("attackDone")
 					current_state = STATE.JUMP
@@ -82,18 +89,26 @@ func _process(_delta: float) -> void:
 				if oneTime == false:
 					anim_player.play("Jump")
 					has_sprinted = true
-					targetPos = Vector2(global_position.x, (global_position.y - 8000))
+					targetPos = Vector2(global_position.x, jumpPos.y)
 					collision_shape_body.disabled = true
 					oneTime = true
 				if sprite.frame == 8:
-					jumping()
+					move_towards(targetPos, jump_speed)
+
 				if global_position == targetPos:
 					current_state = STATE.IDLE
 			
 			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
-				anim_player.play("Falling")
+				if oneTime == false:
+					anim_player.play("Falling")
+					actual_dps = dpsLanding
 
-				move_towards(Vector2(global_position.x, directionPlayer.y), fall_speed)
+					global_position = Vector2(actual_target.global_position.x, global_position.y)
+
+					targetPos = actual_target.global_position
+					oneTime = true
+
+				move_towards(targetPos, fall_speed)
 			
 			STATE.SPRINT: #set the target direction and teleport next to it (x axis)  | next state -> SPRINT END
 				if oneTime == false:
@@ -177,17 +192,6 @@ func pause():
 	anim_player.stop()
 	set_process(false)
 
-
-func jumping() -> void:
-	move_towards(targetPos, jump_speed)
-
-func falling() -> void:
-	actual_dps = dpsLanding
-	collision_shape_body.disabled = true
-	var targetPositionStamp = Vector2()
-	targetPositionStamp.y = actual_target.position.y
-	directionPlayer = targetPositionStamp
-
 func choose_array_numb(array):
 	return array[randi() % array.size()]
 
@@ -205,25 +209,23 @@ func choose_array_numb(array):
 
 func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
 	if area.owner.is_in_group("player"):
-		if (current_state == STATE.LANDING && global_position.y == directionPlayer.y && 
-			anim_player.current_animation == "Landing"):
+		if current_state == STATE.LANDING:
 			attack()
-
-func _on_AnimationPlayer_animation_started(anim_name):
-	if anim_name == "Falling":
-		falling()
+			
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
+		oneTime = false
 		current_state = STATE.IDLE
 	if anim_name == "Falling":
+		oneTime = false
 		collision_shape_body.disabled = false
 		current_state = STATE.IDLE
-	if anim_name == "Sprint":
-		pass
 	if anim_name == "attack":
-		current_state = STATE.IDLE
+		oneTime = false
 
 func _on_AttackCollision_area_entered(area):
 	if area.owner.is_in_group("player"):
 		current_state = STATE.ATTACK
+		near_player = true
+		

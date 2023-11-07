@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
-[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg.png" type="Texture" id=11]
+[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg 2.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=14]
@@ -31,6 +31,7 @@
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/Scripts/AI/AsariBossesManager.gd" type="Script" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
+[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg 1.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxFlat" id=41]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -123,16 +124,17 @@ script = ExtResource( 9 )
 script = ExtResource( 30 )
 asariBossName1 = "asariBoss1"
 asariBossName2 = "asariBoss2"
+delay = 1.5
 
 [node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
-position = Vector2( 701, 827 )
+position = Vector2( 671, 806 )
 dpsSprint = 2
 dpsLanding = 3
 HP = 10
 HealthBarName = "GUI/UIHealthBossContainer1"
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 820, 860 )
+position = Vector2( 824, 894 )
 dpsSprint = 2
 dpsLanding = 3
 HP = 10
@@ -210,10 +212,10 @@ margin_right = -649.471
 margin_bottom = 55.0
 max_value = 10.0
 value = 10.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 32 )
 nine_patch_stretch = true
 
-[node name="TheLeg2" type="Sprite" parent="GUI/UI/HealthBossContainer1"]
+[node name="TheLeg1" type="Sprite" parent="GUI/UI/HealthBossContainer1"]
 position = Vector2( -939.471, 20 )
 scale = Vector2( 0.383589, 0.343705 )
 texture = ExtResource( 5 )
@@ -489,7 +491,7 @@ scenes = [ ExtResource( 29 ) ]
 position = Vector2( 0, -126 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 62, 1400 )
+position = Vector2( 59, 1485 )
 scale = Vector2( 1, 1 )
 boss = true
 
@@ -538,49 +540,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]

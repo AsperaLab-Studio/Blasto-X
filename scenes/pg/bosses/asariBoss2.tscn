@@ -40,6 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=20]
 resource_name = "Sprint"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -214,7 +215,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 3
 vframes = 6
-frame = 5
+frame = 9
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -296,10 +297,9 @@ margin_bottom = -63.7829
 stream = ExtResource( 4 )
 bus = "SFX"
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 0, -315 )
+[node name="JumpPosition" type="Position2D" parent="."]
+position = Vector2( 0, -535 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]

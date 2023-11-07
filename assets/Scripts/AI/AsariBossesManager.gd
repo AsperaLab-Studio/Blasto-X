@@ -34,7 +34,9 @@ func start():
 
 func _on_asariBoss1_attackDone():
 	asariBoss2.current_state = asariBoss2.STATE.LANDING
+	asariBoss2.oneTime = false
 
 
 func _on_asariBoss2_attackDone():
 	asariBoss1.current_state = asariBoss1.STATE.LANDING
+	asariBoss1.oneTime = false
