@@ -46,18 +46,22 @@ outline_size = 2
 font_data = SubResource( 3 )
 
 [sub_resource type="AtlasTexture" id=28]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 3, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=29]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 358, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=30]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 713, 0, 355, 108 )
 
 [sub_resource type="AtlasTexture" id=31]
+flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 1068, 0, 355, 108 )
 
@@ -129,7 +133,7 @@ shape = SubResource( 1 )
 [node name="Positions" type="Node" parent="StageManager"]
 
 [node name="0" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 71.8, 761.004 )
+position = Vector2( 60, 761.004 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="1" type="Position2D" parent="StageManager/Positions"]
@@ -137,7 +141,7 @@ position = Vector2( 1799, 855.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="2" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 104.8, 1414.7 )
+position = Vector2( 60, 1414.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="3" type="Position2D" parent="StageManager/Positions"]
@@ -145,7 +149,7 @@ position = Vector2( 1729.8, 1977.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="4" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 104.8, 2500.7 )
+position = Vector2( 60, 2500.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="5" type="Position2D" parent="StageManager/Positions"]
@@ -153,7 +157,7 @@ position = Vector2( 1729.8, 3067.4 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="6" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 104.8, 3585.4 )
+position = Vector2( 60, 3585.4 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="EnemiesSpawn" type="Node" parent="StageManager"]
