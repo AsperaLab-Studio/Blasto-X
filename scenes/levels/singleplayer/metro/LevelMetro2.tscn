@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=1]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=8]
 [ext_resource path="res://assets/audio/ost/lvls city/lvl 2-city.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/img/UI/go.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/UI/go_down.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/frontground/lvl desert/desert1 door.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=12]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=13]
@@ -45,29 +45,21 @@ size = 100
 outline_size = 2
 font_data = SubResource( 3 )
 
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 10 )
-region = Rect2( 3, 0, 355, 108 )
+region = Rect2( 0, 0, 53, 73 )
 
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 10 )
-region = Rect2( 358, 0, 355, 108 )
+region = Rect2( 0, 73, 53, 73 )
 
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 10 )
-region = Rect2( 713, 0, 355, 108 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 1068, 0, 355, 108 )
+region = Rect2( 0, 146, 53, 73 )
 
 [sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -508,9 +500,9 @@ texture = ExtResource( 8 )
 [node name="Go" type="AnimatedSprite" parent="GUI/UI"]
 visible = false
 position = Vector2( 1480, 512 )
-scale = Vector2( 0.815703, 0.801639 )
+scale = Vector2( 2.89441, 2.84451 )
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
