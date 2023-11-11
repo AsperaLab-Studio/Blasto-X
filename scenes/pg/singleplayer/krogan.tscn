@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/img/sprites/VFX/enemyMeleeHittedVFX.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/sprites/VFX/dustCloudVFX.png" type="Texture" id=8]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.6
@@ -239,7 +238,6 @@ anims/idle = SubResource( 4 )
 anims/move = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -2, 0 )
 shape = SubResource( 11 )
 
@@ -249,7 +247,6 @@ wait_time = 0.15
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="Pivot" type="Node2D" parent="."]
-visible = false
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 collision_layer = 2

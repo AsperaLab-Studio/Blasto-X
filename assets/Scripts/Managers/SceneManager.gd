@@ -37,7 +37,7 @@ var menuShowed = false
 var players
 var actualCamera
 
-var right_left = false
+var right_left = true
 var previous_limit
 var firstTime = true
 
@@ -47,6 +47,9 @@ func _ready() -> void:
 
 	_select_stage(current_stage)
 	randomize()	
+	
+	if horizonal_vertical:
+		right_left = false
 
 func _process(_delta: float) -> void:
 	TotalPoints.text = str(points)
@@ -105,7 +108,8 @@ func _process(_delta: float) -> void:
 	
 
 func _select_stage(number):
-	right_left = !right_left
+	if horizonal_vertical:
+		right_left = !right_left
 
 	if positions.size() - 1 == number: 
 		ScoreFolder.visible = true

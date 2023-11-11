@@ -19,8 +19,8 @@
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=17]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=18]
 [ext_resource path="res://scenes/pg/singleplayer/krogan.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/pg/singleplayer/turian.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/pg/singleplayer/asari.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/pg/singleplayer/asari group.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/pg/singleplayer/salarian.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/tile/metro/lvl 2 m/metro2Tile1.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
@@ -87,7 +87,7 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -554, -554 )
 script = ExtResource( 25 )
-enemy_types = [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ) ]
+enemy_types = [ ExtResource( 20 ), ExtResource( 19 ), ExtResource( 21 ) ]
 next_stage = "metro/LevelMetro3"
 current_level = "metro/LevelMetro2"
 horizonal_vertical = true
@@ -502,7 +502,7 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 2.89441, 2.84451 )
 frames = SubResource( 32 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
