@@ -30,7 +30,35 @@ func start():
 		asariBoss1.current_state = asariBoss1.STATE.SPRINT
 		asariBoss2.current_state = asariBoss2.STATE.JUMP
 
+func choose_attack():
+	randomize()
+	var choice = int(rand_range(0, 2))
+	if choice == 0:
+		if asariBoss1.current_state == asariBoss1.STATE.IDLE:
+			asariBoss1.current_state = asariBoss1.STATE.JUMP
+		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
+			asariBoss2.current_state = asariBoss2.STATE.SPRINT
+	else:
+		if asariBoss1.current_state == asariBoss1.STATE.IDLE:
+			asariBoss1.current_state = asariBoss1.STATE.SPRINT
+		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
+			asariBoss2.current_state = asariBoss2.STATE.JUMP
 
+func choose_landing_boss1():
+	randomize()
+	var choice = int(rand_range(0, 2))
+	if choice == 0:
+		asariBoss1.current_state = asariBoss1.STATE.LANDING_ATTACK
+	else:
+		asariBoss1.current_state = asariBoss1.STATE.LANDING_POSITIONING
+
+func choose_landing_boss2():
+	randomize()
+	var choice = int(rand_range(0, 2))
+	if choice == 0:
+		asariBoss2.current_state = asariBoss2.STATE.LANDING_ATTACK
+	else:
+		asariBoss2.current_state = asariBoss2.STATE.LANDING_POSITIONING
 
 func _on_asariBoss1_attackDone():
 	asariBoss2.current_state = asariBoss2.STATE.LANDING
