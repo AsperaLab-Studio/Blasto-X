@@ -72,15 +72,17 @@ func _on_asariBoss2_attackDone():
 func choose_where_to_land():
 	randomize()
 	var choice = int(rand_range(0, 4))
-	if choice == 0:
-		asariBoss1.targetPos = asariBoss1.landing_point_1
-		asariBoss2.targetPos = asariBoss2.landing_point_3
-	if choice == 1:
-		asariBoss1.targetPos = asariBoss1.landing_point_2
-		asariBoss2.targetPos = asariBoss2.landing_point_4
-	if choice == 2:
-		asariBoss1.targetPos = asariBoss1.landing_point_3
-		asariBoss2.targetPos = asariBoss2.landing_point_1
-	if choice == 3:
-		asariBoss1.targetPos = asariBoss1.landing_point_4
-		asariBoss2.targetPos = asariBoss2.landing_point_2
+
+	match choice:
+		0:
+			asariBoss1.targetPos = asariBoss1.landing_points[0]
+			asariBoss2.targetPos = asariBoss2.landing_points[2]
+		1:
+			asariBoss1.targetPos = asariBoss1.landing_points[1]
+			asariBoss2.targetPos = asariBoss2.landing_points[3]
+		2:
+			asariBoss1.targetPos = asariBoss1.landing_points[2]
+			asariBoss2.targetPos = asariBoss2.landing_points[0]
+		3:
+			asariBoss1.targetPos = asariBoss1.landing_points[3]
+			asariBoss2.targetPos = asariBoss2.landing_points[1]

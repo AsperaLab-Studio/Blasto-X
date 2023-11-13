@@ -12,7 +12,7 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var jump_position2D : Position2D = $JumpPosition
 
-enum STATE {ATTACK, JUMP, LANDING_ATTACK, LANDING_POSITIONING, SPRINT, IDLE, HIT, DIED}
+enum STATE {ATTACK, JUMP, LANDING, SPRINT, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var moving_speed := 50
@@ -27,10 +27,7 @@ export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 3
 
-export var landing_point_1 : Vector2
-export var landing_point_2 : Vector2
-export var landing_point_3 : Vector2
-export var landing_point_4 : Vector2
+export var landing_points : Vector2[3]
 
 var current_state = STATE.IDLE
 var actual_target: Player = null
@@ -103,37 +100,19 @@ func _process(_delta: float) -> void:
 				if global_position == targetPos:
 					current_state = STATE.IDLE
 			
-			STATE.LANDING_ATTACK: #move toward the target (downwards) | next state -> WAIT
+			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
 				if oneTime == false:
 					anim_player.play("Falling")
 					actual_dps = dpsLanding
-
+					if didLandingAtk == false:
+						targetPos = actual_target.global_position
+						didLandingAtk = true
+					else if didLandingAtk == true:
+						#signal for AsariBossManager.choose_where_to_land()
+						didLandingAtk = false;
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 
-					targetPos = actual_target.global_position
 					oneTime = true
-					didLandingAtk = true
-
-				move_towards(targetPos, fall_speed)
-			
-			STATE.LANDING_POSITIONING:
-				if oneTime == false:
-					anim_player.play("Falling")
-
-#					randomize()
-#					var choice = int(rand_range(0, 4))
-#					if choice == 0:
-#						targetPos = landing_point_1
-#					if choice == 1:
-#						targetPos = landing_point_2
-#					if choice == 2:
-#						targetPos = landing_point_3
-#					if choice == 3:
-#						targetPos = landing_point_4
-					
-					global_position = Vector2(targetPos.x, global_position.y)
-					oneTime = true
-					
 				move_towards(targetPos, fall_speed)
 			
 			STATE.SPRINT: #set the target direction and teleport next to it (x axis)  | next state -> SPRINT END
