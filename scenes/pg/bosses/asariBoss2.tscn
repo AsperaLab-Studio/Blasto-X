@@ -300,6 +300,9 @@ bus = "SFX"
 [node name="JumpPosition" type="Position2D" parent="."]
 position = Vector2( 0, -535 )
 
+[node name="IdleWait" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]

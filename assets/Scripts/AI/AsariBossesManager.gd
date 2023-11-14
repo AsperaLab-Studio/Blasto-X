@@ -44,21 +44,21 @@ func choose_attack():
 		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
 			asariBoss2.current_state = asariBoss2.STATE.JUMP
 
-func choose_landing_boss1():
-	randomize()
-	var choice = int(rand_range(0, 2))
-	if choice == 0:
-		asariBoss1.current_state = asariBoss1.STATE.LANDING_ATTACK
-	else:
-		asariBoss1.current_state = asariBoss1.STATE.LANDING_POSITIONING
-
-func choose_landing_boss2():
-	randomize()
-	var choice = int(rand_range(0, 2))
-	if choice == 0:
-		asariBoss2.current_state = asariBoss2.STATE.LANDING_ATTACK
-	else:
-		asariBoss2.current_state = asariBoss2.STATE.LANDING_POSITIONING
+#func choose_landing_boss1():
+#	randomize()
+#	var choice = int(rand_range(0, 2))
+#	if choice == 0:
+#		asariBoss1.current_state = asariBoss1.STATE.LANDING_ATTACK
+#	else:
+#		asariBoss1.current_state = asariBoss1.STATE.LANDING_POSITIONING
+#
+#func choose_landing_boss2():
+#	randomize()
+#	var choice = int(rand_range(0, 2))
+#	if choice == 0:
+#		asariBoss2.current_state = asariBoss2.STATE.LANDING_ATTACK
+#	else:
+#		asariBoss2.current_state = asariBoss2.STATE.LANDING_POSITIONING
 
 func _on_asariBoss1_attackDone():
 	asariBoss2.current_state = asariBoss2.STATE.LANDING
@@ -75,14 +75,22 @@ func choose_where_to_land():
 
 	match choice:
 		0:
-			asariBoss1.targetPos = asariBoss1.landing_points[0]
-			asariBoss2.targetPos = asariBoss2.landing_points[2]
+			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
+				asariBoss1.targetPos = asariBoss1.landing_points[0]
+			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
+				asariBoss2.targetPos = asariBoss2.landing_points[2]
 		1:
-			asariBoss1.targetPos = asariBoss1.landing_points[1]
-			asariBoss2.targetPos = asariBoss2.landing_points[3]
+			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
+				asariBoss1.targetPos = asariBoss1.landing_points[1]
+			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
+				asariBoss2.targetPos = asariBoss2.landing_points[3]
 		2:
-			asariBoss1.targetPos = asariBoss1.landing_points[2]
-			asariBoss2.targetPos = asariBoss2.landing_points[0]
+			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
+				asariBoss1.targetPos = asariBoss1.landing_points[2]
+			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
+				asariBoss2.targetPos = asariBoss2.landing_points[0]
 		3:
-			asariBoss1.targetPos = asariBoss1.landing_points[3]
-			asariBoss2.targetPos = asariBoss2.landing_points[1]
+			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
+				asariBoss1.targetPos = asariBoss1.landing_points[3]
+			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
+				asariBoss2.targetPos = asariBoss2.landing_points[1]

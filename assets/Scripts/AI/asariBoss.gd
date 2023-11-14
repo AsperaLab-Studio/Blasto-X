@@ -2,10 +2,12 @@ class_name asariBoss
 extends KinematicBody2D
 
 signal attackDone
+signal chooseLanding
+signal chooseMove
 
 onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
-onready var attack_delay_timer: Timer = $AttackDelayTimer
+onready var idle_wait_timer: Timer = $IdleWait
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
@@ -27,7 +29,7 @@ export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 3
 
-export var landing_points : Vector2[3]
+export var landing_points : Array
 
 var current_state = STATE.IDLE
 var actual_target: Player = null
@@ -75,6 +77,9 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:  #next state -> JUMP
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
+				if idle_wait_timer.is_stopped():
+						idle_wait_timer.wait_time = wait_time_attack
+						idle_wait_timer.start()
 		
 			STATE.HIT:
 				anim_player.play("hit")
@@ -107,9 +112,9 @@ func _process(_delta: float) -> void:
 					if didLandingAtk == false:
 						targetPos = actual_target.global_position
 						didLandingAtk = true
-					else if didLandingAtk == true:
-						#signal for AsariBossManager.choose_where_to_land()
-						didLandingAtk = false;
+					if didLandingAtk == true:
+						emit_signal("chooseLanding")
+						didLandingAtk = false
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 
 					oneTime = true
