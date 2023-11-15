@@ -540,49 +540,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -611,8 +611,26 @@ script = ExtResource( 17 )
 boss = true
 randomShackeStrenght = 10.0
 
+[node name="LandingPoints" type="Node" parent="."]
+
+[node name="LandingPoint1" type="Node2D" parent="LandingPoints"]
+position = Vector2( 68, 934 )
+
+[node name="LandingPoint2" type="Node2D" parent="LandingPoints"]
+position = Vector2( 63, 837 )
+
+[node name="LandingPoint3" type="Node2D" parent="LandingPoints"]
+position = Vector2( 862, 936 )
+
+[node name="LandingPoint4" type="Node2D" parent="LandingPoints"]
+position = Vector2( 857, 837 )
+
 [connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_attackDone"]
+[connection signal="chooseLanding" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseLanding"]
+[connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseMove"]
 [connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_attackDone"]
+[connection signal="chooseLanding" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_chooseLanding"]
+[connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_chooseMove"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]

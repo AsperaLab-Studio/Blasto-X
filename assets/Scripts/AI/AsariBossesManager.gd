@@ -94,3 +94,19 @@ func choose_where_to_land():
 				asariBoss1.targetPos = asariBoss1.landing_points[3]
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
 				asariBoss2.targetPos = asariBoss2.landing_points[1]
+
+
+func _on_asariBoss1_chooseLanding():
+	choose_where_to_land()
+
+
+func _on_asariBoss2_chooseLanding():
+	choose_where_to_land()
+
+
+func _on_asariBoss1_chooseMove():
+	choose_attack()
+
+
+func _on_asariBoss2_chooseMove():
+	choose_attack()

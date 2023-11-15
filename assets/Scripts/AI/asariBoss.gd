@@ -29,7 +29,7 @@ export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 3
 
-export var landing_points : Array
+var landing_points : Array
 
 var current_state = STATE.IDLE
 var actual_target: Player = null
@@ -65,6 +65,10 @@ func _ready():
 	healthBar = UIHealthBar
 	
 	sceneManager = get_parent().get_parent()
+	landing_points[0] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint1").global_position
+	landing_points[1] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint2").global_position
+	landing_points[2] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint3").global_position
+	landing_points[3] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint4").global_position
 	jumpPos = jump_position2D.global_position
 
 func _process(_delta: float) -> void:
@@ -239,3 +243,7 @@ func _on_AttackCollision_area_entered(area):
 		current_state = STATE.ATTACK
 		near_player = true
 		
+
+
+func _on_IdleWait_timeout():
+	emit_signal("chooseMove")

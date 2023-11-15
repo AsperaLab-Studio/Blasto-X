@@ -318,3 +318,4 @@ wait_time = 2.0
 [connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
 [connection signal="area_exited" from="Pivot/AttackCollision" to="." method="_on_Area2D_area_exited"]
 [connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]
+[connection signal="timeout" from="IdleWait" to="." method="_on_IdleWait_timeout"]
