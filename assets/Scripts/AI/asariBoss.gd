@@ -28,8 +28,8 @@ export(float) var ChargeDeelay := 5.0
 export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 3
+export(Array, NodePath) var landing_points
 
-var landing_points : Array
 
 var current_state = STATE.IDLE
 var actual_target: Player = null
@@ -64,11 +64,12 @@ func _ready():
 	anim_player.play("idle")
 	healthBar = UIHealthBar
 	
+	landing_points[0] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint1")
+	landing_points[1] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint2")
+	landing_points[2] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint3")
+	landing_points[3] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint4")
+	
 	sceneManager = get_parent().get_parent()
-	landing_points[0] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint1").global_position
-	landing_points[1] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint2").global_position
-	landing_points[2] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint3").global_position
-	landing_points[3] = get_parent().get_parent().get_parent().get_node("LandingPoints").get_node("LandingPoint4").global_position
 	jumpPos = jump_position2D.global_position
 
 func _process(_delta: float) -> void:

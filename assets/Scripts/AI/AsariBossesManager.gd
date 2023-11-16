@@ -76,25 +76,32 @@ func choose_where_to_land():
 	match choice:
 		0:
 			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
-				asariBoss1.targetPos = asariBoss1.landing_points[0]
+				var position2d_node = get_node(asariBoss1.landing_points[0]).global_position
+				asariBoss1.targetPos = position2d_node#.global_position
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
-				asariBoss2.targetPos = asariBoss2.landing_points[2]
+				var position2d_node = get_node(asariBoss2.landing_points[2]).global_position
+				asariBoss2.targetPos = position2d_node#.global_position
 		1:
 			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
-				asariBoss1.targetPos = asariBoss1.landing_points[1]
+				var position2d_node = get_node(asariBoss1.landing_points[1]).global_position
+				asariBoss1.targetPos = position2d_node#.global_position
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
-				asariBoss2.targetPos = asariBoss2.landing_points[3]
+				var position2d_node = get_node(asariBoss2.landing_points[3]).global_position
+				asariBoss2.targetPos = position2d_node#.global_position
 		2:
 			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
-				asariBoss1.targetPos = asariBoss1.landing_points[2]
+				var position2d_node = get_node(asariBoss1.landing_points[2]).global_position
+				asariBoss1.targetPos = position2d_node#.global_position
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
-				asariBoss2.targetPos = asariBoss2.landing_points[0]
+				var position2d_node = get_node(asariBoss2.landing_points[0]).global_position
+				asariBoss2.targetPos = position2d_node#.global_position
 		3:
 			if asariBoss1.didLandingAtk && asariBoss1.current_state == asariBoss1.STATE.LANDING:
-				asariBoss1.targetPos = asariBoss1.landing_points[3]
+				var position2d_node = get_node(asariBoss1.landing_points[3]).global_position
+				asariBoss1.targetPos = position2d_node#.global_position
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
-				asariBoss2.targetPos = asariBoss2.landing_points[1]
-
+				var position2d_node = get_node(asariBoss2.landing_points[1]).global_position
+				asariBoss2.targetPos = position2d_node#.global_position
 
 func _on_asariBoss1_chooseLanding():
 	choose_where_to_land()
