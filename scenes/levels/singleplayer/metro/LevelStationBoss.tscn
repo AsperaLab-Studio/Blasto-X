@@ -127,14 +127,14 @@ asariBossName2 = "asariBoss2"
 delay = 1.5
 
 [node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
-position = Vector2( 671, 806 )
+position = Vector2( 130, 786 )
 dpsSprint = 2
 dpsLanding = 3
 HP = 10
 HealthBarName = "GUI/UIHealthBossContainer1"
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 824, 894 )
+position = Vector2( 175, 899 )
 dpsSprint = 2
 dpsLanding = 3
 HP = 10
@@ -491,7 +491,7 @@ scenes = [ ExtResource( 29 ) ]
 position = Vector2( 0, -126 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 59, 1485 )
+position = Vector2( 676, 1412 )
 scale = Vector2( 1, 1 )
 boss = true
 
@@ -540,49 +540,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="obj" type="Node" parent="."]

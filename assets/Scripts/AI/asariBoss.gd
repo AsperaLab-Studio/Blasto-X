@@ -44,6 +44,8 @@ var targetList = null
 var actual_dps = dpsSprint
 var has_sprinted : bool = false
 var sprint_direction = 1
+var direction : Vector2 
+var movement
 
 var targetPos: Vector2
 var oneTime = false
@@ -63,11 +65,6 @@ func _ready():
 	UIHealthBar = get_parent().get_parent().get_parent().get_node(HealthBarName)
 	anim_player.play("idle")
 	healthBar = UIHealthBar
-	
-	landing_points[0] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint1")
-	landing_points[1] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint2")
-	landing_points[2] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint3")
-	landing_points[3] = get_parent().get_parent().get_parent().get_node("LandingPoints/LandingPoint4")
 	
 	sceneManager = get_parent().get_parent()
 	jumpPos = jump_position2D.global_position
@@ -118,7 +115,7 @@ func _process(_delta: float) -> void:
 						targetPos = actual_target.global_position
 						didLandingAtk = true
 					if didLandingAtk == true:
-						emit_signal("chooseLanding")
+						#emit_signal("chooseLanding")
 						didLandingAtk = false
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 
@@ -131,10 +128,13 @@ func _process(_delta: float) -> void:
 					
 					directionPlayer = actual_target.global_position
 					
+					direction = Vector2(directionPlayer - global_position).normalized()
 					anim_player.play("Sprint")
+					movement = direction * sprint_speed * _delta
+					flip_sprite(directionPlayer)
 					oneTime = true
-
-				move_towards(directionPlayer, sprint_speed)
+				global_position += movement
+				#move_towards(direction, sprint_speed)
 					
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -194,6 +194,26 @@ func move_towards(target: Vector2, speed):
 				
 		move_and_slide(velocity * speed)
 	
+func move_sprint(_movement):
+	global_position += _movement
+
+func flip_sprite(target):
+	if target:
+		if global_position.y > target.y:
+			z_index = 0
+		else:
+			z_index = -1
+		
+		var velocity = global_position.direction_to(target)
+		
+		if velocity.x < 0:
+			sprite.flip_h = true
+			if pivot.scale.x > 0:
+				pivot.scale.x = - pivot.scale.x
+		elif velocity.x > 0:
+			sprite.flip_h = false
+			if pivot.scale.x < 0:
+				pivot.scale.x = - pivot.scale.x
 
 func attack():
 	actual_target.hit(actual_dps, self)
@@ -209,18 +229,6 @@ func pause():
 
 func choose_array_numb(array):
 	return array[randi() % array.size()]
-
-# func _on_asariBoss_CallSprint():
-# 	if directionPlayer.x < 660:
-# 		sprint_direction = 1
-# 	elif directionPlayer.x > 660:
-# 		sprint_direction = -1
-
-# func _on_asariBoss2_CallSprint():
-# 	if directionPlayer.x > 210:
-# 		sprint_direction = -1
-# 	elif directionPlayer.x < 210:
-# 		sprint_direction = 1
 
 func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
 	if area.owner.is_in_group("player"):
@@ -243,8 +251,12 @@ func _on_AttackCollision_area_entered(area):
 	if area.owner.is_in_group("player"):
 		current_state = STATE.ATTACK
 		near_player = true
-		
 
 
 func _on_IdleWait_timeout():
 	emit_signal("chooseMove")
+
+
+func _on_HitBox_area_entered(area):
+	if area.owner.is_in_group("border") && current_state == STATE.SPRINT:
+		current_state = STATE.IDLE
