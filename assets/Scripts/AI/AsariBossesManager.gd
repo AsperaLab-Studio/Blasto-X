@@ -44,22 +44,6 @@ func choose_attack():
 		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
 			asariBoss2.current_state = asariBoss2.STATE.JUMP
 
-#func choose_landing_boss1():
-#	randomize()
-#	var choice = int(rand_range(0, 2))
-#	if choice == 0:
-#		asariBoss1.current_state = asariBoss1.STATE.LANDING_ATTACK
-#	else:
-#		asariBoss1.current_state = asariBoss1.STATE.LANDING_POSITIONING
-#
-#func choose_landing_boss2():
-#	randomize()
-#	var choice = int(rand_range(0, 2))
-#	if choice == 0:
-#		asariBoss2.current_state = asariBoss2.STATE.LANDING_ATTACK
-#	else:
-#		asariBoss2.current_state = asariBoss2.STATE.LANDING_POSITIONING
-
 func _on_asariBoss1_attackDone():
 	asariBoss2.current_state = asariBoss2.STATE.LANDING
 	asariBoss2.oneTime = false
@@ -102,14 +86,6 @@ func choose_where_to_land():
 			if asariBoss2.didLandingAtk && asariBoss2.current_state == asariBoss2.STATE.LANDING:
 				var position2d_node = get_node(asariBoss2.landing_points[1]).global_position
 				asariBoss2.targetPos = position2d_node#.global_position
-
-func _on_asariBoss1_chooseLanding():
-	choose_where_to_land()
-
-
-func _on_asariBoss2_chooseLanding():
-	choose_where_to_land()
-
 
 func _on_asariBoss1_chooseMove():
 	choose_attack()

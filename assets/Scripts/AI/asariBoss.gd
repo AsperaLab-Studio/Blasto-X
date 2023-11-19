@@ -105,18 +105,13 @@ func _process(_delta: float) -> void:
 					move_towards(targetPos, jump_speed)
 
 				if global_position == targetPos:
-					current_state = STATE.IDLE
+					current_state = STATE.LANDING
 			
 			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
 				if oneTime == false:
 					anim_player.play("Falling")
 					actual_dps = dpsLanding
-					if didLandingAtk == false:
-						targetPos = actual_target.global_position
-						didLandingAtk = true
-					if didLandingAtk == true:
-						#emit_signal("chooseLanding")
-						didLandingAtk = false
+					targetPos = actual_target.global_position
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 
 					oneTime = true
