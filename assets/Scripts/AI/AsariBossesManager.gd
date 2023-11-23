@@ -45,12 +45,18 @@ func choose_attack():
 			asariBoss2.current_state = asariBoss2.STATE.JUMP
 
 func _on_asariBoss1_attackDone():
-	asariBoss2.current_state = asariBoss2.STATE.LANDING
+	if asariBoss2.current_state == asariBoss2.STATE.JUMP:
+		asariBoss2.current_state = asariBoss2.STATE.LANDING
+	elif asariBoss2.current_state != asariBoss2.STATE.JUMP:
+		asariBoss2.current_state = asariBoss2.STATE.JUMP
 	asariBoss2.oneTime = false
 
 
 func _on_asariBoss2_attackDone():
-	asariBoss1.current_state = asariBoss1.STATE.LANDING
+	if asariBoss1.current_state == asariBoss1.STATE.JUMP:
+		asariBoss1.current_state = asariBoss1.STATE.LANDING
+	elif asariBoss1.current_state != asariBoss1.STATE.JUMP:
+		asariBoss1.current_state = asariBoss1.STATE.JUMP
 	asariBoss1.oneTime = false
 
 func choose_where_to_land():
