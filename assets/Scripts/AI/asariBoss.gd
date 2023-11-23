@@ -131,6 +131,7 @@ func _process(_delta: float) -> void:
 				global_position += movement
 				if global_position > directionPlayer && direction > Vector2(0, 0) || global_position < directionPlayer && direction < Vector2(0, 0):
 					current_state = STATE.IDLE
+					emit_signal("attackDone")
 				#move_towards(direction, sprint_speed)
 					
 			STATE.DIED:
