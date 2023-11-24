@@ -27,7 +27,7 @@ export(int) var HP := 5
 export(float) var ChargeDeelay := 5.0
 export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
-export var wait_time_attack := 3
+export var wait_time_attack := 2
 export(Array, NodePath) var landing_points
 
 
@@ -232,6 +232,8 @@ func _on_FallCollision_area_entered(area): #impact area when landing after falli
 	if area.owner.is_in_group("player"):
 		if current_state == STATE.LANDING:
 			attack()
+			emit_signal("attackDone")
+			current_state = STATE.IDLE
 			
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -246,15 +248,12 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		oneTime = false
 
 func _on_AttackCollision_area_entered(area):
-	if area.owner.is_in_group("player"):
+	if area.owner.is_in_group("player") && current_state == STATE.SPRINT:
 		current_state = STATE.ATTACK
 		near_player = true
 
 
 func _on_IdleWait_timeout():
-	emit_signal("chooseMove")
-
-
-func _on_HitBox_area_entered(area):
-	if area.owner.is_in_group("border") && current_state == STATE.SPRINT:
-		current_state = STATE.IDLE
+	if current_state == STATE.IDLE:
+		current_state == STATE.SPRINT
+		emit_signal("attackDone")
