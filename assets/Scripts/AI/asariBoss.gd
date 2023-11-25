@@ -101,8 +101,8 @@ func _process(_delta: float) -> void:
 				if sprite.frame == 8:
 					move_towards(targetPos, jump_speed)
 
-#				if global_position == targetPos:
-#					current_state = STATE.LANDING
+				if global_position == targetPos:
+					current_state = STATE.LANDING
 			
 			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
 				if oneTime == false:
@@ -230,10 +230,10 @@ func _on_FallCollision_area_entered(area): #impact area when landing after falli
 			didLandingAtk = true
 			attack()
 			emit_signal("attackDone")
-			current_state = STATE.SPRINT
-#			if idle_wait_timer.is_stopped():
-#				idle_wait_timer.wait_time = wait_time_attack
-#				idle_wait_timer.start()
+			current_state = STATE.IDLE
+			if idle_wait_timer.is_stopped():
+				idle_wait_timer.wait_time = wait_time_attack
+				idle_wait_timer.start()
 			
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -245,10 +245,10 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		collision_shape_body.disabled = false
 		if didLandingAtk == false:
 			emit_signal("attackDone")
-			current_state = STATE.SPRINT
-#			if idle_wait_timer.is_stopped():
-#				idle_wait_timer.wait_time = wait_time_attack
-#				idle_wait_timer.start()
+			current_state = STATE.IDLE
+			if idle_wait_timer.is_stopped():
+				idle_wait_timer.wait_time = wait_time_attack
+				idle_wait_timer.start()
 	if anim_name == "attack":
 		oneTime = false
 
