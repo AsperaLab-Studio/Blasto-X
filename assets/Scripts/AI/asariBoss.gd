@@ -79,9 +79,6 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:  #next state -> JUMP
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
-				if idle_wait_timer.is_stopped():
-						idle_wait_timer.wait_time = wait_time_attack
-						idle_wait_timer.start()
 		
 			STATE.HIT:
 				anim_player.play("hit")
@@ -104,8 +101,8 @@ func _process(_delta: float) -> void:
 				if sprite.frame == 8:
 					move_towards(targetPos, jump_speed)
 
-				if global_position == targetPos:
-					current_state = STATE.LANDING
+#				if global_position == targetPos:
+#					current_state = STATE.LANDING
 			
 			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
 				if oneTime == false:
@@ -132,7 +129,6 @@ func _process(_delta: float) -> void:
 				if global_position > directionPlayer && direction > Vector2(0, 0) || global_position < directionPlayer && direction < Vector2(0, 0):
 					current_state = STATE.IDLE
 					emit_signal("attackDone")
-				#move_towards(direction, sprint_speed)
 					
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -231,9 +227,13 @@ func choose_array_numb(array):
 func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
 	if area.owner.is_in_group("player"):
 		if current_state == STATE.LANDING:
+			didLandingAtk = true
 			attack()
 			emit_signal("attackDone")
-			current_state = STATE.IDLE
+			current_state = STATE.SPRINT
+#			if idle_wait_timer.is_stopped():
+#				idle_wait_timer.wait_time = wait_time_attack
+#				idle_wait_timer.start()
 			
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -243,7 +243,12 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Falling":
 		oneTime = false
 		collision_shape_body.disabled = false
-		current_state = STATE.IDLE
+		if didLandingAtk == false:
+			emit_signal("attackDone")
+			current_state = STATE.SPRINT
+#			if idle_wait_timer.is_stopped():
+#				idle_wait_timer.wait_time = wait_time_attack
+#				idle_wait_timer.start()
 	if anim_name == "attack":
 		oneTime = false
 
@@ -254,6 +259,4 @@ func _on_AttackCollision_area_entered(area):
 
 
 func _on_IdleWait_timeout():
-	if current_state == STATE.IDLE:
-		current_state == STATE.SPRINT
-		emit_signal("attackDone")
+	current_state = STATE.SPRINT
