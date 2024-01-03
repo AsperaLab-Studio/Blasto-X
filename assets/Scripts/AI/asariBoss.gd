@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:  #next state -> JUMP
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
-		
+
 			STATE.HIT:
 				anim_player.play("hit")
 
@@ -127,8 +127,8 @@ func _process(_delta: float) -> void:
 					oneTime = true
 				global_position += movement
 				if global_position > directionPlayer && direction > Vector2(0, 0) || global_position < directionPlayer && direction < Vector2(0, 0):
-					current_state = STATE.IDLE
-					emit_signal("attackDone")
+					current_state = STATE.JUMP
+					#SIGNAL emit_signal("attackDone")
 					
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -229,7 +229,7 @@ func _on_FallCollision_area_entered(area): #impact area when landing after falli
 		if current_state == STATE.LANDING:
 			didLandingAtk = true
 			attack()
-			emit_signal("attackDone")
+			#SIGNAL emit_signal("attackDone")
 			current_state = STATE.IDLE
 			if idle_wait_timer.is_stopped():
 				idle_wait_timer.wait_time = wait_time_attack
@@ -244,7 +244,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		oneTime = false
 		collision_shape_body.disabled = false
 		if didLandingAtk == false:
-			emit_signal("attackDone")
+			#SIGNAL emit_signal("attackDone")
 			current_state = STATE.IDLE
 			if idle_wait_timer.is_stopped():
 				idle_wait_timer.wait_time = wait_time_attack
