@@ -8,6 +8,8 @@ position = Vector2( -65, 0 )
 script = ExtResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
+group = true
 
 [node name="Enemy2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 103, 0 )
+group = true
