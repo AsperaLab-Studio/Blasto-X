@@ -17,25 +17,20 @@ onready var jump_position2D : Position2D = $JumpPosition
 enum STATE {ATTACK, JUMP, LANDING, SPRINT, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
-export(int) var moving_speed := 50
 export(int) var sprint_speed := 250
 export(float) var jump_speed := 500.0
 export(float) var fall_speed := 500.0
 export(int) var dpsSprint := 15
 export(int) var dpsLanding := 20
 export(int) var HP := 5
-export(float) var ChargeDeelay := 5.0
-export(float) var SprintDistance := 200.0
 export var HealthBarName = ""
 export var wait_time_attack := 2
-export(Array, NodePath) var landing_points
 
 
 var current_state = STATE.IDLE
 var actual_target: Player = null
 var directionPlayer = Vector2()
 var near_player: bool = false
-var near_enemy: bool = false
 var healthBar = null
 var amount = 0
 var paused = false
@@ -43,7 +38,6 @@ var areaCollided = null
 var targetList = null
 var actual_dps = dpsSprint
 var has_sprinted : bool = false
-var sprint_direction = 1
 var direction : Vector2 
 var movement
 
@@ -76,7 +70,7 @@ func _process(_delta: float) -> void:
 	if(!paused):
 
 		match current_state:
-			STATE.IDLE:  #next state -> JUMP
+			STATE.IDLE:
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
 
@@ -88,12 +82,12 @@ func _process(_delta: float) -> void:
 					anim_player.play("attack")
 					
 				if anim_player.current_animation != "attack":
-					emit_signal("attackDone")
+					#SIGNAL emit_signal("attackDone") -----------
 					current_state = STATE.JUMP
 
-			STATE.JUMP: #jump and choose what attack to do
+			STATE.JUMP:
 				if oneTime == false:
-					anim_player.play("Jump")
+					attack_setup(0, "Jump")
 					has_sprinted = true
 					targetPos = Vector2(global_position.x, jumpPos.y)
 					collision_shape_body.disabled = true
@@ -104,31 +98,28 @@ func _process(_delta: float) -> void:
 				if global_position == targetPos:
 					current_state = STATE.LANDING
 			
-			STATE.LANDING: #move toward the target (downwards) | next state -> WAIT
+			STATE.LANDING:
 				if oneTime == false:
-					anim_player.play("Falling")
-					actual_dps = dpsLanding
+					attack_setup(dpsLanding, "Falling")
 					targetPos = actual_target.global_position
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 
 					oneTime = true
 				move_towards(targetPos, fall_speed)
 			
-			STATE.SPRINT: #set the target direction and teleport next to it (x axis)  | next state -> SPRINT END
+			STATE.SPRINT:
 				if oneTime == false:
-					actual_dps = dpsSprint
-					
 					directionPlayer = actual_target.global_position
 					
 					direction = Vector2(directionPlayer - global_position).normalized()
-					anim_player.play("Sprint")
+					attack_setup(dpsSprint, "Sprint")
 					movement = direction * sprint_speed * _delta
 					flip_sprite(directionPlayer)
 					oneTime = true
 				global_position += movement
 				if global_position > directionPlayer && direction > Vector2(0, 0) || global_position < directionPlayer && direction < Vector2(0, 0):
 					current_state = STATE.JUMP
-					#SIGNAL emit_signal("attackDone")
+					#SIGNAL emit_signal("attackDone") --------
 					
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -146,7 +137,7 @@ func _process(_delta: float) -> void:
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
-	
+
 func select_target() -> Player:
 	var distance: float = 100000
 	var choosedTarget: Player = null
@@ -157,7 +148,6 @@ func select_target() -> Player:
 			distance = tmpDistance
 	
 	return choosedTarget
-
 
 func hit(dpsTaken, attackType, source) -> void:
 	if (current_state != STATE.JUMP && current_state != STATE.SPRINT):
@@ -170,28 +160,15 @@ func hit(dpsTaken, attackType, source) -> void:
 	
 func move_towards(target: Vector2, speed):
 	if target:
-		if global_position.y > target.y:
-			z_index = 0
-		else:
-			z_index = -1
-			
-		var velocity = global_position.direction_to(target)
-		
-		if velocity.x < 0:
-			sprite.flip_h = true
-			if pivot.scale.x > 0:
-				pivot.scale.x = - pivot.scale.x
-		elif velocity.x > 0:
-			sprite.flip_h = false
-			if pivot.scale.x < 0:
-				pivot.scale.x = - pivot.scale.x
+		flip_sprite(target)
 				
+		var velocity = global_position.direction_to(target)
 		move_and_slide(velocity * speed)
 	
 func move_sprint(_movement):
 	global_position += _movement
 
-func flip_sprite(target):
+func flip_sprite(target: Vector2):
 	if target:
 		if global_position.y > target.y:
 			z_index = 0
@@ -230,10 +207,7 @@ func _on_FallCollision_area_entered(area): #impact area when landing after falli
 			didLandingAtk = true
 			attack()
 			#SIGNAL emit_signal("attackDone")
-			current_state = STATE.IDLE
-			if idle_wait_timer.is_stopped():
-				idle_wait_timer.wait_time = wait_time_attack
-				idle_wait_timer.start()
+			set_idle_with_timer()
 			
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -245,10 +219,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		collision_shape_body.disabled = false
 		if didLandingAtk == false:
 			#SIGNAL emit_signal("attackDone")
-			current_state = STATE.IDLE
-			if idle_wait_timer.is_stopped():
-				idle_wait_timer.wait_time = wait_time_attack
-				idle_wait_timer.start()
+			set_idle_with_timer()
 	if anim_name == "attack":
 		oneTime = false
 
@@ -257,6 +228,15 @@ func _on_AttackCollision_area_entered(area):
 		current_state = STATE.ATTACK
 		near_player = true
 
-
 func _on_IdleWait_timeout():
 	current_state = STATE.SPRINT
+
+func attack_setup(animationName, dpsChanged):
+	anim_player.play(animationName)
+	actual_dps = dpsChanged
+
+func set_idle_with_timer():
+	current_state = STATE.IDLE
+	if idle_wait_timer.is_stopped():
+		idle_wait_timer.wait_time = wait_time_attack
+		idle_wait_timer.start()
