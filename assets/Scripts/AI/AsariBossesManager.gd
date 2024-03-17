@@ -72,13 +72,13 @@ func _on_asariBoss2_chooseMove():
 
 
 func _on_asariBoss1_didSprintAttack():
-	if asariBoss2.current_state == asariBoss2.STATE.JUMP:
-		asariBoss2.current_state = asariBoss2.STATE.LANDING
+	asariBoss2.oneTime = false
+	asariBoss2.current_state = asariBoss2.STATE.LANDING
 
 
 func _on_asariBoss2_didSprintAttack():
-	if asariBoss1.current_state == asariBoss1.STATE.JUMP:
-		asariBoss1.current_state = asariBoss1.STATE.LANDING
+	asariBoss1.oneTime = false
+	asariBoss1.current_state = asariBoss1.STATE.LANDING
 
 
 func _on_asariBoss1_hasDied():

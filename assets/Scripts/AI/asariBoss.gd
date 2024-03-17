@@ -87,6 +87,7 @@ func _process(_delta: float) -> void:
 				if anim_player.current_animation != "attack":
 					if !isAlone:
 						emit_signal("attackDone")
+						emit_signal("didSprintAttack")
 						current_state = STATE.IDLE
 					if isAlone:
 						current_state = STATE.JUMP
@@ -103,6 +104,7 @@ func _process(_delta: float) -> void:
 
 				if global_position == targetPos:
 					if isAlone:
+						oneTime = false
 						current_state = STATE.LANDING
 			
 			STATE.LANDING:
@@ -128,9 +130,11 @@ func _process(_delta: float) -> void:
 					if isAlone:
 						current_state = STATE.JUMP
 					if !isAlone:
+						current_state = STATE.IDLE
+						oneTime = false
 						emit_signal("attackDone")
 						emit_signal("didSprintAttack")
-					
+			
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
