@@ -2,6 +2,8 @@ class_name asariBoss
 extends KinematicBody2D
 
 signal attackDone
+signal didSprintAttack
+signal hasDied
 signal chooseLanding
 signal chooseMove
 
@@ -44,6 +46,7 @@ var movement
 var targetPos: Vector2
 var oneTime = false
 var jumpPos: Vector2
+var isAlone = false
 
 var rng
 
@@ -82,8 +85,10 @@ func _process(_delta: float) -> void:
 					anim_player.play("attack")
 					
 				if anim_player.current_animation != "attack":
-					#SIGNAL emit_signal("attackDone") -----------
-					current_state = STATE.JUMP
+					if !isAlone:
+						emit_signal("attackDone")
+					if isAlone:
+						current_state = STATE.JUMP
 
 			STATE.JUMP:
 				if oneTime == false:
@@ -96,7 +101,8 @@ func _process(_delta: float) -> void:
 					move_towards(targetPos, jump_speed)
 
 				if global_position == targetPos:
-					current_state = STATE.LANDING
+					if isAlone:
+						current_state = STATE.LANDING
 			
 			STATE.LANDING:
 				if oneTime == false:
@@ -117,9 +123,12 @@ func _process(_delta: float) -> void:
 					flip_sprite(directionPlayer)
 					oneTime = true
 				global_position += movement
-				if global_position > directionPlayer && direction > Vector2(0, 0) || global_position < directionPlayer && direction < Vector2(0, 0):
-					current_state = STATE.JUMP
-					#SIGNAL emit_signal("attackDone") --------
+				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
+					if isAlone:
+						current_state = STATE.JUMP
+					if !isAlone:
+						emit_signal("attackDone")
+						emit_signal("didSprintAttack")
 					
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -127,6 +136,7 @@ func _process(_delta: float) -> void:
 				
 				collition_area2d.disabled = true
 				
+				emit_signal("hasDied")
 				anim_player.play("died")
 				
 				var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()
@@ -137,6 +147,7 @@ func _process(_delta: float) -> void:
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
+
 
 func select_target() -> Player:
 	var distance: float = 100000
@@ -149,6 +160,7 @@ func select_target() -> Player:
 	
 	return choosedTarget
 
+
 func hit(dpsTaken, attackType, source) -> void:
 	if (current_state != STATE.JUMP && current_state != STATE.SPRINT):
 		healthBar.update_healthbar(dpsTaken)
@@ -157,16 +169,19 @@ func hit(dpsTaken, attackType, source) -> void:
 			current_state = STATE.DIED
 		else:
 			current_state = STATE.HIT
-	
+
+
 func move_towards(target: Vector2, speed):
 	if target:
 		flip_sprite(target)
 				
 		var velocity = global_position.direction_to(target)
 		move_and_slide(velocity * speed)
-	
+
+
 func move_sprint(_movement):
 	global_position += _movement
+
 
 func flip_sprite(target: Vector2):
 	if target:
@@ -186,27 +201,29 @@ func flip_sprite(target: Vector2):
 			if pivot.scale.x < 0:
 				pivot.scale.x = - pivot.scale.x
 
+
 func attack():
 	actual_target.hit(actual_dps, self)
-	
+
 
 func death():
 	queue_free()
-	
+
 
 func pause():
 	anim_player.stop()
 	set_process(false)
 
+
 func choose_array_numb(array):
 	return array[randi() % array.size()]
+
 
 func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
 	if area.owner.is_in_group("player"):
 		if current_state == STATE.LANDING:
 			didLandingAtk = true
 			attack()
-			#SIGNAL emit_signal("attackDone")
 			set_idle_with_timer()
 			
 
@@ -218,8 +235,8 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		oneTime = false
 		collision_shape_body.disabled = false
 		if didLandingAtk == false:
-			#SIGNAL emit_signal("attackDone")
 			set_idle_with_timer()
+			
 	if anim_name == "attack":
 		oneTime = false
 
@@ -229,11 +246,15 @@ func _on_AttackCollision_area_entered(area):
 		near_player = true
 
 func _on_IdleWait_timeout():
-	current_state = STATE.SPRINT
+	if isAlone:
+		current_state = STATE.SPRINT
+	if !isAlone:
+		emit_signal("attackDone")
 
-func attack_setup(animationName, dpsChanged):
-	anim_player.play(animationName)
+func attack_setup(dpsChanged, animationName):
 	actual_dps = dpsChanged
+	anim_player.play(animationName)
+
 
 func set_idle_with_timer():
 	current_state = STATE.IDLE

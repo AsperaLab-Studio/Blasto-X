@@ -9,6 +9,9 @@ var asariBoss2: asariBoss
 var timer = Timer.new()
 var rng
 
+var asari1Attacked = false
+var asari2Attacked = false
+
 func _ready():
 	rng = RandomNumberGenerator.new()
 	asariBoss1 = get_node(asariBossName1)
@@ -34,30 +37,30 @@ func choose_attack():
 	randomize()
 	var choice = int(rand_range(0, 2))
 	if choice == 0:
-		if asariBoss1.current_state == asariBoss1.STATE.IDLE:
-			asariBoss1.current_state = asariBoss1.STATE.JUMP
-		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
-			asariBoss2.current_state = asariBoss2.STATE.SPRINT
+		asariBoss1.current_state = asariBoss1.STATE.JUMP
+		asariBoss2.current_state = asariBoss2.STATE.SPRINT
 	else:
-		if asariBoss1.current_state == asariBoss1.STATE.IDLE:
-			asariBoss1.current_state = asariBoss1.STATE.SPRINT
-		if asariBoss2.current_state == asariBoss2.STATE.IDLE:
-			asariBoss2.current_state = asariBoss2.STATE.JUMP
+		asariBoss1.current_state = asariBoss1.STATE.SPRINT
+		asariBoss2.current_state = asariBoss2.STATE.JUMP
+
+
+func check_boss_attacks():
+	if asari1Attacked && asari2Attacked:
+		choose_attack()
+		asariBoss1.oneTime = false
+		asariBoss2.oneTime = false
+		asari1Attacked = false
+		asari2Attacked = false
+
 
 func _on_asariBoss1_attackDone():
-	if asariBoss2.current_state == asariBoss2.STATE.JUMP:
-		asariBoss2.current_state = asariBoss2.STATE.LANDING
-	elif asariBoss2.current_state == asariBoss2.STATE.IDLE:
-		asariBoss2.current_state = asariBoss2.STATE.JUMP
-	asariBoss2.oneTime = false
+	asari1Attacked = true
+	check_boss_attacks()
 
 
 func _on_asariBoss2_attackDone():
-	if asariBoss1.current_state == asariBoss1.STATE.JUMP:
-		asariBoss1.current_state = asariBoss1.STATE.LANDING
-	elif asariBoss1.current_state == asariBoss1.STATE.IDLE:
-		asariBoss1.current_state = asariBoss1.STATE.JUMP
-	asariBoss1.oneTime = false
+	asari2Attacked = true
+	check_boss_attacks()
 
 
 func _on_asariBoss1_chooseMove():
@@ -66,3 +69,21 @@ func _on_asariBoss1_chooseMove():
 
 func _on_asariBoss2_chooseMove():
 	choose_attack()
+
+
+func _on_asariBoss1_didSprintAttack():
+	if asariBoss2.current_state == asariBoss2.STATE.JUMP:
+		asariBoss2.current_state = asariBoss2.STATE.LANDING
+
+
+func _on_asariBoss2_didSprintAttack():
+	if asariBoss1.current_state == asariBoss1.STATE.JUMP:
+		asariBoss1.current_state = asariBoss1.STATE.LANDING
+
+
+func _on_asariBoss1_hasDied():
+	asariBoss2.isAlone = true
+
+
+func _on_asariBoss2_hasDied():
+	asariBoss1.isAlone = true
