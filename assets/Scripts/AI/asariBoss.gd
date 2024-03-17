@@ -87,6 +87,7 @@ func _process(_delta: float) -> void:
 				if anim_player.current_animation != "attack":
 					if !isAlone:
 						emit_signal("attackDone")
+						current_state = STATE.IDLE
 					if isAlone:
 						current_state = STATE.JUMP
 
