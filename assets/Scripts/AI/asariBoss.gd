@@ -16,7 +16,7 @@ onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var jump_position2D : Position2D = $JumpPosition
 
-enum STATE {ATTACK, JUMP, LANDING, SPRINT, IDLE, HIT, DIED}
+enum STATE {ATTACK, JUMP, FLOATING, LANDING, SPRINT, IDLE, HIT, DIED}
 
 export(int) var death_speed := 150
 export(int) var sprint_speed := 250
@@ -52,6 +52,7 @@ var rng
 
 var UIHealthBar: Node2D 
 var didLandingAtk: bool = false
+var canLand: bool = false
 
 var sceneManager = null
 
@@ -102,20 +103,28 @@ func _process(_delta: float) -> void:
 				if sprite.frame == 8:
 					move_towards(targetPos, jump_speed)
 
-				if global_position == targetPos:
+				if global_position <= targetPos:
 					if isAlone:
 						oneTime = false
 						current_state = STATE.LANDING
-			
+					if !isAlone:
+						oneTime = false
+						current_state = STATE.FLOATING
+
+			STATE.FLOATING:
+				if canLand:
+					canLand = false
+					current_state = STATE.LANDING
+
 			STATE.LANDING:
 				if oneTime == false:
 					attack_setup(dpsLanding, "Falling")
 					targetPos = actual_target.global_position
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
-
+					
 					oneTime = true
 				move_towards(targetPos, fall_speed)
-			
+
 			STATE.SPRINT:
 				if oneTime == false:
 					directionPlayer = actual_target.global_position
@@ -263,6 +272,6 @@ func attack_setup(dpsChanged, animationName):
 
 func set_idle_with_timer():
 	current_state = STATE.IDLE
-	if idle_wait_timer.is_stopped():
-		idle_wait_timer.wait_time = wait_time_attack
-		idle_wait_timer.start()
+	idle_wait_timer.stop()
+	idle_wait_timer.wait_time = wait_time_attack
+	idle_wait_timer.start()
