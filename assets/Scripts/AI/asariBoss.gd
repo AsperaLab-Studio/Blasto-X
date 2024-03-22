@@ -11,7 +11,7 @@ onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
 onready var idle_wait_timer: Timer = $IdleWait
 onready var anim_player : AnimationPlayer = $AnimationPlayer
-onready var collision_shape : CollisionShape2D = $HitBox/CollisionShape2D
+onready var collision_shape : CollisionShape2D = $Pivot/HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
 onready var jump_position2D : Position2D = $JumpPosition
@@ -134,15 +134,17 @@ func _process(_delta: float) -> void:
 					movement = direction * sprint_speed * _delta
 					flip_sprite(directionPlayer)
 					oneTime = true
+				
 				global_position += movement
+				
 				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
 					if isAlone:
 						current_state = STATE.JUMP
 					if !isAlone:
-						current_state = STATE.IDLE
-						oneTime = false
 						emit_signal("attackDone")
 						emit_signal("didSprintAttack")
+						oneTime = false
+						current_state = STATE.IDLE
 			
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -245,6 +247,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		oneTime = false
 		current_state = STATE.IDLE
+	
 	if anim_name == "Falling":
 		oneTime = false
 		collision_shape_body.disabled = false

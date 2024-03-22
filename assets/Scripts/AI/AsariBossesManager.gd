@@ -46,6 +46,8 @@ func choose_attack():
 
 func check_boss_attacks():
 	if asari1Attacked && asari2Attacked:
+		asariBoss1.current_state = asariBoss1.STATE.IDLE
+		asariBoss2.current_state = asariBoss2.STATE.IDLE
 		choose_attack()
 		asariBoss1.oneTime = false
 		asariBoss2.oneTime = false
