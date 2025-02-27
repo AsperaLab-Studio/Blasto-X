@@ -221,3 +221,5 @@ func respawn(p):
 
 func _on_FadingSystem_black_screen():
 	transition()
+
+
