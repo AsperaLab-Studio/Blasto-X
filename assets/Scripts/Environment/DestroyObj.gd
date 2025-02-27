@@ -33,6 +33,5 @@ func _process(_delta):
 		
 
 func hit(dps, _type, _source):
-	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
-	Wwise.post_event_id(AK.EVENTS.BOX_DAMAGED, self.get_parent())
+	$Box.play()
 	sprite.frame = sprite.frame + dps

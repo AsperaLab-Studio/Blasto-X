@@ -66,6 +66,8 @@ func _ready():
 	
 	sceneManager = get_parent().get_parent()
 	jumpPos = jump_position2D.global_position
+	$UI/HealthContainer/HealthBar.max_value = HP
+	$UI/HealthContainer/HealthBar.value = HP
 
 func _process(_delta: float) -> void:
 	gp = global_position
@@ -190,7 +192,6 @@ func select_target() -> Player:
 
 func hit(dpsTaken, attackType, source) -> void:
 	if invincible == false:
-		invincible = true
 		if (current_state != STATE.JUMP && current_state != STATE.SPRINT):
 			healthBar.update_healthbar(dpsTaken)
 			amount = amount + dpsTaken
@@ -289,7 +290,7 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 	if anim_name == "hit":
 		invincibility_timer.start(1)
 		invincible = true
-		
+
 func _on_InvincibilityTimer_timeout() -> void:
 	invincible = false
 	
