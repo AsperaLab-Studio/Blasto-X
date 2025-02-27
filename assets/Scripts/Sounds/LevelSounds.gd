@@ -40,4 +40,3 @@ func _on_pauseMenu_visibility_changed():
 		Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
 		Wwise.post_event_id(AK.EVENTS.MENU_MOUSE_OVER, self.get_parent())
 
-

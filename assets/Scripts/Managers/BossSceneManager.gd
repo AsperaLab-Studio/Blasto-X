@@ -114,3 +114,4 @@ func refill_bosses():
 
 	for boss in bosses:
 		boss.targetList = players
+
