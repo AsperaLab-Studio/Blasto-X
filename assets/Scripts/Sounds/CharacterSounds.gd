@@ -35,6 +35,40 @@ func JumpSound():
 	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
 	Wwise.post_event_id(AK.EVENTS.BLASTO_JUMP, self.get_parent())
 
+# Cerulean Star
+
+func AttackLightSound01():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_ATTACK_01, self.get_parent())
+
+func AttackLightSound02():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_ATTACK_02, self.get_parent())
+
+func AttackLightSound03():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_ATTACK_03, self.get_parent())
+
+func AttackHeavySound():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_ATTACK_HEAVY, self.get_parent())
+
+func AttackShotSound():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_ATTACK_SHOOT, self.get_parent())
+
+func DeathCeruleanSound():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_DEATH, self.get_parent())
+
+func HitCeruleanSound():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_HIT, self.get_parent())
+
+func JumpCeruleanSound():
+	Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+	Wwise.post_event_id(AK.EVENTS.CERULEAN_JUMP, self.get_parent())
+
 
 # Enemies
 
