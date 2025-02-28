@@ -363,12 +363,26 @@ tracks/0/keys = {
 "values": [ 24, 25, 26 ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("Audio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "AttackShotSound"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -417,7 +431,7 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 4 )
 hframes = 3
 vframes = 11
-frame = 24
+frame = 25
 
 [node name="meleeHittedVFX" type="Sprite" parent="SpritePivot"]
 visible = false
@@ -456,7 +470,7 @@ shape = SubResource( 12 )
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="Pivot"]
-position = Vector2( 75.3883, 0.936502 )
+position = Vector2( 75.3883, -1.873 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 position = Vector2( 69.7693, -1.873 )

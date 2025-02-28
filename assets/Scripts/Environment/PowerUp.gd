@@ -18,7 +18,8 @@ func _on_Area2D_area_entered(area:Area2D):
 			POWER_UP_TYPE.MEDIKIT:
 				if area.owner.current_hp != area.owner.hp:
 					entered = true
-					$Heal.play()
+					Wwise.register_game_obj(self.get_parent(), self.get_parent().name)
+					Wwise.post_event_id(AK.EVENTS.PICK_UP_HEAL, self.get_parent())
 					$Sprite/Area2D/CollisionShape2D.disabled = true
 					$Sprite.visible = false
 					if area.owner.current_hp + amount >= area.owner.hp:
@@ -27,9 +28,4 @@ func _on_Area2D_area_entered(area:Area2D):
 						area.owner.current_hp = area.owner.current_hp + amount
 						
 					area.owner.emit_signal("update_healthbar", area.owner.current_hp)
-					
-	
-	if entered && not $Heal.is_playing():
-		queue_free()
-		
-		
+					queue_free()
