@@ -16,8 +16,7 @@ func _on_StartBtn_pressed():
 	var loadBtn = playMenu.get_node("LoadBtn")
 	
 	if(Global.multiplayerReady == true):
-		pass
-		#multiBtn.visible = true
+		multiBtn.visible = true
 	else:
 		multiBtn.visible = false
 	
